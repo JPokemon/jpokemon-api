@@ -1,0 +1,28 @@
+##########################
+# What git should ignore #
+##########################
+
+# Compiled files #
+##################
+dependency-reduced-pom.xml
+target
+
+# There are no tests #
+######################
+src/test
+
+# Sublime files #
+#################
+*.sublime-project
+*.sublime-workspace
+
+# Intellij files #
+##################
+.idea
+*.iml
+
+# Misc #
+########
+.DS_Store
+docs
+todo.TODO

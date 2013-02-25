@@ -7,9 +7,14 @@
 dependency-reduced-pom.xml
 target
 
-# There are no tests #
-######################
+# Tests/Javadocs (for now) #
+############################
 src/test
+src/main/javadoc
+
+# Maven pom (for now) #
+#######################
+pom.xml
 
 # Sublime files #
 #################

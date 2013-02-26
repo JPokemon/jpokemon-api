@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Normal`.
@@ -18,7 +19,7 @@ public class NormalType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.ROCK) || type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.ROCK) || type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;
@@ -26,7 +27,7 @@ public class NormalType extends PokemonType {
 
 	@Override
 	public boolean isIneffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GHOST)) {
+		if (type.equals(ClassicTypes.GHOST)) {
 			return true;
 		}
 		return false;

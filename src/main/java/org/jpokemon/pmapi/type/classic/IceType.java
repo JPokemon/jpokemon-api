@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Ice`.
@@ -13,8 +14,8 @@ public class IceType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GRASS) || type.equals(PokemonTypes.GROUND) || type.equals(PokemonTypes.FLYING)
-				|| type.equals(PokemonTypes.DRAGON)) {
+		if (type.equals(ClassicTypes.GRASS) || type.equals(ClassicTypes.GROUND) || type.equals(ClassicTypes.FLYING)
+				|| type.equals(ClassicTypes.DRAGON)) {
 			return true;
 		}
 		return false;
@@ -22,8 +23,8 @@ public class IceType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.FIRE) || type.equals(PokemonTypes.WATER) || type.equals(PokemonTypes.ICE)
-				|| type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.FIRE) || type.equals(ClassicTypes.WATER) || type.equals(ClassicTypes.ICE)
+				|| type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;

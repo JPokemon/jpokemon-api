@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.jpokemon.pmapi.type.PokemonType;
-import org.jpokemon.pmapi.util.PokemonEvolution;
+import org.jpokemon.pmapi.pokemon.evolution.PokemonEvolution;
 import org.jpokemon.pmapi.util.ExperienceCurve;
 
 /**
@@ -245,80 +245,87 @@ public class PokemonSpecies {
 	}
 
 	/**
-	 * @brief Gets the base Attack stat for this species.
+	 * Gets the base Attack stat for this species.
 	 */
 	public int getBaseAtk() {
-		return atk;
+		return baseStats[1];
 	}
 
 	/**
-	 * @brief Sets the base Attack stat for this species.
+	 * Sets the base Attack stat for this species.
 	 */
 	public void setBaseAtk(int atk) {
-		this.atk = atk;
+		baseStats[1] = atk;
 	}
 
 	/**
-	 * @brief Gets the base Defense stat for this species.
+	 * Gets the base Defense stat for this species.
 	 */
 	public int getBaseDef() {
-		return def;
+		return baseStats[2];
 	}
 
 	/**
-	 * @brief Sets the base Defense stat for this species.
+	 * Sets the base Defense stat for this species.
 	 */
 	public void setBaseDef(int def) {
-		this.def = def;
+		baseStats[2] = def;
 	}
 
 	/**
-	 * @brief Gets the base Special Attack stat for this species.
+	 * Gets the base Special Attack stat for this species.
 	 */
 	public int getBaseSpAtk() {
-		return satk;
+		return baseStats[3];
 	}
 
 	/**
-	 * @brief Sets the base Special Attack stat for this species.
+	 * Sets the base Special Attack stat for this species.
 	 */
 	public void setBaseSpAtk(int satk) {
-		this.satk = satk;
+		baseStats[3] = satk;
 	}
 
 	/**
-	 * @brief Gets the base Special Defense stat for this species.
+	 * Gets the base Special Defense stat for this species.
 	 */
 	public int getBaseSpDef() {
-		return sdef;
+		return baseStats[4];
 	}
 
 	/**
-	 * @brief Sets the base Special Defense stat for this species.
+	 * Sets the base Special Defense stat for this species.
 	 */
 	public void setBaseSpDef(int sdef) {
-		this.sdef = sdef;
+		baseStats[4] = sdef;
 	}
 
 	/**
-	 * @brief Gets the base Speed stat for this species.
+	 * Gets the base Speed stat for this species.
 	 */
 	public int getBaseSpeed() {
-		return spd;
+		return baseStats[5];
 	}
 
 	/**
-	 * @brief Sets the base Speed stat for this species.
+	 * Sets the base Speed stat for this species.
 	 */
 	public void setBaseSpeed(int spd) {
-		this.spd = spd;
+		baseStats[5] = spd;
 	}
 
 	/**
-	 * @brief Gets the base experience awarded for defeating this species.
+	 * Gets the base experience awarded for defeating this species.
 	 */
 	public int getBaseExp() {
-		return exp;
+		return baseStats[6];
+	}
+
+	/**
+	 * Sets the base experience awarded for defeating this species.
+	 */
+	public void setBaseExp(int exp) {
+		baseStats[6] = exp;
 	}
 
 	/**
@@ -342,10 +349,10 @@ public class PokemonSpecies {
 	}
 
 	/**
-	 * @brief Checks whether this species evolves into another at some point.
+	 * Checks whether this species evolves into another at some point.
 	 */
 	public boolean hasEvolution() {
-		return (evol != null);
+		return (evolutions != null);
 	}
 
 	/** Gets the type of experience curve for this species. */
@@ -354,8 +361,8 @@ public class PokemonSpecies {
 	}
 
 	/** Sets the type of experience curve for this species. */
-	public void setExperienceCurve(ExperienceCurve expCount) {
-		this.expCount = expCount;
+	public void setExperienceCurve(ExperienceCurve expCurve) {
+		this.expCurve = expCurve;
 	}
 
 	public HashMap<String, Integer> getMoveList() {

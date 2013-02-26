@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Steel`.
@@ -13,7 +14,7 @@ public class SteelType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.ICE) || type.equals(PokemonTypes.ROCK)) {
+		if (type.equals(ClassicTypes.ICE) || type.equals(ClassicTypes.ROCK)) {
 			return true;
 		}
 		return false;
@@ -21,8 +22,8 @@ public class SteelType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.FIRE) || type.equals(PokemonTypes.WATER) || type.equals(PokemonTypes.ELECTRIC)
-				|| type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.FIRE) || type.equals(ClassicTypes.WATER) || type.equals(ClassicTypes.ELECTRIC)
+				|| type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;

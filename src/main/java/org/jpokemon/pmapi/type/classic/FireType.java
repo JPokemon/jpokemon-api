@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Fire`.
@@ -13,8 +14,8 @@ public class FireType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GRASS) || type.equals(PokemonTypes.ICE) || type.equals(PokemonTypes.BUG)
-				|| type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.GRASS) || type.equals(ClassicTypes.ICE) || type.equals(ClassicTypes.BUG)
+				|| type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;
@@ -22,8 +23,8 @@ public class FireType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.FIRE) || type.equals(PokemonTypes.WATER) || type.equals(PokemonTypes.ROCK)
-				|| type.equals(PokemonTypes.DRAGON)) {
+		if (type.equals(ClassicTypes.FIRE) || type.equals(ClassicTypes.WATER) || type.equals(ClassicTypes.ROCK)
+				|| type.equals(ClassicTypes.DRAGON)) {
 			return true;
 		}
 		return false;

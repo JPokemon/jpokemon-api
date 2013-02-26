@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Dragon`.
@@ -13,7 +14,7 @@ public class DragonType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.DRAGON)) {
+		if (type.equals(ClassicTypes.DRAGON)) {
 			return true;
 		}
 		return false;
@@ -21,7 +22,7 @@ public class DragonType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;

@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Flying`.
@@ -13,7 +14,7 @@ public class FlyingType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GRASS) || type.equals(PokemonTypes.FIGHTING) || type.equals(PokemonTypes.BUG)) {
+		if (type.equals(ClassicTypes.GRASS) || type.equals(ClassicTypes.FIGHTING) || type.equals(ClassicTypes.BUG)) {
 			return true;
 		}
 		return false;
@@ -21,7 +22,7 @@ public class FlyingType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.ELECTRIC) || type.equals(PokemonTypes.ROCK) || type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.ELECTRIC) || type.equals(ClassicTypes.ROCK) || type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;

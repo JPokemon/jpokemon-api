@@ -46,7 +46,7 @@ public class Move {
 
 	/** Sets the name of this move. */
 	public void setName(String name) {
-		return name;
+		this.name = name;
 	}
 
 	/** Gets the {@link PokemonType} of this move. */

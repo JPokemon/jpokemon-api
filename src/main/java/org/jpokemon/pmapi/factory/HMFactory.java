@@ -19,5 +19,7 @@ public class HMFactory {
 		newHM.setHoldable(false);
 		newHM.setConsumable(false);
 		//newHM.addUseEffect();
+		
+		return newHM;
 	}
 }

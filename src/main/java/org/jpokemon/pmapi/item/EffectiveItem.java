@@ -32,7 +32,6 @@ import java.util.HashMap;
  * @since alpha
  */
 public class EffectiveItem extends Item {
-	//private HashMap<ItemAttributeType, ItemAttribute> attributes;
 	private HashMap<Class<? extends UseEffect>, UseEffect> useEffects;
 	private HashMap<Class<? extends HoldEffect>, HoldEffect> holdEffects;
 
@@ -71,7 +70,7 @@ public class EffectiveItem extends Item {
 
 			// If the instantiation is successful, add it to the item.
 			if (useEffect != null) {
-				useEffect.attach(this);
+				useEffect.attachTo(this);
 				useEffects.put(useEffectClass,useEffect);				
 			}
 
@@ -109,7 +108,7 @@ public class EffectiveItem extends Item {
 
 			// If the instantiation is successful, add it to the item.
 			if (holdEffect != null) {
-				holdEffect.attach(this);
+				holdEffect.attachTo(this);
 				holdEffects.put(holdEffectClass,holdEffect);				
 			}
 

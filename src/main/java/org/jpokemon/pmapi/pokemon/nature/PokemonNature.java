@@ -43,7 +43,7 @@ public class PokemonNature {
 	}
 
 	/** Gets the stat modifier for a given stat. */
-	public static float getStatModifier(Stat stat) {
+	public float getStatModifier(Stat stat) {
 		if (increased.equals(stat)) {
 			return 1.1f;
 		} else if (decreased.equals(stat)) {

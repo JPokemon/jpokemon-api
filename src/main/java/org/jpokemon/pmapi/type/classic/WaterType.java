@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Water`.
@@ -13,7 +14,7 @@ public class WaterType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.FIRE) || type.equals(PokemonTypes.GROUND) || type.equals(PokemonTypes.ROCK)) {
+		if (type.equals(ClassicTypes.FIRE) || type.equals(ClassicTypes.GROUND) || type.equals(ClassicTypes.ROCK)) {
 			return true;
 		}
 		return false;
@@ -21,7 +22,7 @@ public class WaterType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.WATER) || type.equals(PokemonTypes.GRASS) || type.equals(PokemonTypes.DRAGON)) {
+		if (type.equals(ClassicTypes.WATER) || type.equals(ClassicTypes.GRASS) || type.equals(ClassicTypes.DRAGON)) {
 			return true;
 		}
 		return false;

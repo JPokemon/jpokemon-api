@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Psychic`.
@@ -13,7 +14,7 @@ public class PsychicType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.FIGHTING) || type.equals(PokemonTypes.POISON)) {
+		if (type.equals(ClassicTypes.FIGHTING) || type.equals(ClassicTypes.POISON)) {
 			return true;
 		}
 		return false;
@@ -21,7 +22,7 @@ public class PsychicType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.PSYCHIC) || type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.PSYCHIC) || type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;
@@ -29,7 +30,7 @@ public class PsychicType extends PokemonType {
 
 	@Override
 	public boolean isIneffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.DARK)) {
+		if (type.equals(ClassicTypes.DARK)) {
 			return true;
 		}
 		return false;

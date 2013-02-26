@@ -73,7 +73,7 @@ public final class ClassicTypes {
 
 	//Adds the types to a list for lookup
 	static {
-		for (Field field : PokemonTypes.class.getFields()) {
+		for (Field field : ClassicTypes.class.getFields()) {
 			try {
 				if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0) {
 					Object temp = field.get(null);

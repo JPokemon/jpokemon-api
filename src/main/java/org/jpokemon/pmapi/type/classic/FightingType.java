@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Fighting`.
@@ -13,8 +14,8 @@ public class FightingType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.NORMAL) || type.equals(PokemonTypes.ICE) || type.equals(PokemonTypes.ROCK)
-				|| type.equals(PokemonTypes.DARK) || type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.NORMAL) || type.equals(ClassicTypes.ICE) || type.equals(ClassicTypes.ROCK)
+				|| type.equals(ClassicTypes.DARK) || type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;
@@ -22,8 +23,8 @@ public class FightingType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.POISON) || type.equals(PokemonTypes.FLYING) || type.equals(PokemonTypes.PSYCHIC)
-				|| type.equals(PokemonTypes.BUG)) {
+		if (type.equals(ClassicTypes.POISON) || type.equals(ClassicTypes.FLYING) || type.equals(ClassicTypes.PSYCHIC)
+				|| type.equals(ClassicTypes.BUG)) {
 			return true;
 		}
 		return false;
@@ -31,7 +32,7 @@ public class FightingType extends PokemonType {
 
 	@Override
 	public boolean isIneffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GHOST)) {
+		if (type.equals(ClassicTypes.GHOST)) {
 			return true;
 		}
 		return false;

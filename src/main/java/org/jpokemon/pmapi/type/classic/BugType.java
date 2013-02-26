@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Bug`.
@@ -13,7 +14,7 @@ public class BugType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GRASS) || type.equals(PokemonTypes.PSYCHIC) || type.equals(PokemonTypes.DARK)) {
+		if (type.equals(ClassicTypes.GRASS) || type.equals(ClassicTypes.PSYCHIC) || type.equals(ClassicTypes.DARK)) {
 				return true;
 		}
 		return false;
@@ -21,8 +22,8 @@ public class BugType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.FIRE) || type.equals(PokemonTypes.FIGHTING) || type.equals(PokemonTypes.POISON)
-				|| type.equals(PokemonTypes.FLYING) || type.equals(PokemonTypes.GHOST) || type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.FIRE) || type.equals(ClassicTypes.FIGHTING) || type.equals(ClassicTypes.POISON)
+				|| type.equals(ClassicTypes.FLYING) || type.equals(ClassicTypes.GHOST) || type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;

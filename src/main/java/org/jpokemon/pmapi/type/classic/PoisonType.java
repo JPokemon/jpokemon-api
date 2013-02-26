@@ -1,6 +1,7 @@
 package org.jpokemon.pmapi.type.classic;
 
 import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.pmapi.type.ClassicTypes;
 
 /**
  * Defines the classic Pokémon type `Poison`.
@@ -13,7 +14,7 @@ public class PoisonType extends PokemonType {
 
 	@Override
 	public boolean isSuperEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.GRASS)) {
+		if (type.equals(ClassicTypes.GRASS)) {
 			return true;
 		}
 		return false;
@@ -21,8 +22,8 @@ public class PoisonType extends PokemonType {
 
 	@Override
 	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.POISON) || type.equals(PokemonTypes.GROUND) || type.equals(PokemonTypes.ROCK)
-				|| type.equals(PokemonTypes.GHOST)) {
+		if (type.equals(ClassicTypes.POISON) || type.equals(ClassicTypes.GROUND) || type.equals(ClassicTypes.ROCK)
+				|| type.equals(ClassicTypes.GHOST)) {
 			return true;
 		}
 		return false;
@@ -30,7 +31,7 @@ public class PoisonType extends PokemonType {
 
 	@Override
 	public boolean isIneffectiveAgainst(PokemonType type) {
-		if (type.equals(PokemonTypes.STEEL)) {
+		if (type.equals(ClassicTypes.STEEL)) {
 			return true;
 		}
 		return false;

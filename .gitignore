@@ -11,6 +11,7 @@ target
 ############################
 src/test
 src/main/javadoc
+src/site
 
 # Maven pom (for now) #
 #######################

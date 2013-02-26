@@ -3,11 +3,21 @@ package org.jpokemon.pmapi.item;
 import java.util.HashMap;
 
 /**
- * Defines an item that can have on-use and on-held style effects as defined by
+ * Defines an item that can have on-use and on-hold style effects as defined by
  * {@link UseEffect} and {@link HeldEffect}. This class effectively provides 
  * one possible approach to handling items with complex effects; there is no 
  * reason why another approach (such as the traditional inheritance scheme) 
  * might not fit your own project better.
+ *
+ * In addition, items can have an unlimited number of `attribute` properties, 
+ * which do not have executable patterns. So a `Berry` item might have an `id` 
+ * attribute, a `flavour` attribute, and so on. This would also be an easy way
+ * to indicate what pocket an item belongs in. For example:
+ *
+ * >     EffectiveItem cherriBerry = new EffectiveItem();
+ * >     cherryBerry.addAttribute(new IdentityAttribute(1));
+ * >     cherryBerry.addAttribute(new FlavorAttribute(10, 0, 0, 0, 0));
+ * >     cherryBerry.addAttribute(new PocketAttribute("Berries"));
  * 
  * This approach functions similarly to an entity-component system. Classic 
  * effects are found in the `effect` sub-package.
@@ -22,14 +32,15 @@ import java.util.HashMap;
  * @since alpha
  */
 public class EffectiveItem extends Item {
+	//private HashMap<ItemAttributeType, ItemAttribute> attributes;
 	private HashMap<Class<? extends UseEffect>, UseEffect> useEffects;
-	private HashMap<Class<? extends HeldEffect>, HeldEffect> heldEffects;
+	private HashMap<Class<? extends HoldEffect>, HoldEffect> holdEffects;
 
 	/** Provides the default constructor. */
 	public EffectiveItem() {
 		super();
 		useEffects = new HashMap<Class<? extends UseEffect>, UseEffect>();
-		heldEffects = new HashMap<Class<? extends HeldEffect>, HeldEffect>();
+		holdEffects = new HashMap<Class<? extends HoldEffect>, HoldEffect>();
 	}
 
 	/**

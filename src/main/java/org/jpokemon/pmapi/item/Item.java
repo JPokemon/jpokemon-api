@@ -15,10 +15,10 @@ import java.util.HashMap;
  * Suppose you wanted to initialize a [Cherry Berry][link1] item. This could be
  * achieved using something like
  *
- * >     Item cherriBerry = new Item();
- * >     cherryBerry.addAttribute(new IdentityAttribute(1));
- * >     cherryBerry.addAttribute(new FlavorAttribute(10, 0, 0, 0, 0));
- * >     PocketAttribute pocket = cherryBerry.addAttribute(new PocketAttribute());
+ * >     Item cheriBerry = new Item();
+ * >     cheryBerry.addAttribute(new IdentityAttribute(1));
+ * >     cheryBerry.addAttribute(new FlavorAttribute(10, 0, 0, 0, 0));
+ * >     PocketAttribute pocket = cheryBerry.addAttribute(new PocketAttribute());
  * >     pocket.setPocket(PocketAttribute.BERRIES);
  * >     // Add other relevant attributes
  *
@@ -28,11 +28,11 @@ import java.util.HashMap;
  * suppose you wanted to check what pocket an item should be sorted into. If 
  * the Item was constructed as above, you could do something like
  *
- * >     boolean hasPocket = cherriBerry.hasAttribute(ItemAttributeType.POCKET);
+ * >     boolean hasPocket = cheriBerry.hasAttribute(ItemAttributeType.POCKET);
  * >     if (hasPocket) {
- * >         PocketAttribute attribute = cherriBerry.getAttribute(ItemAttributeType.POCKET);
+ * >         PocketAttribute attribute = cheriBerry.getAttribute(ItemAttributeType.POCKET);
  * >         String pocketName = attribute.getPocket();
- * >         // Sort cherriBerry into the pocket with name "pocketName".
+ * >         // Sort cheriBerry into the pocket with name "pocketName".
  * >     }
  *
  * The use of {@link ItemAttributeType} (as opposed to just indexing the 
@@ -69,8 +69,11 @@ public class Item {
 	/** Indicates the sale price for this item. */
 	protected int salePrice = 0;
 	
-	/** Indicates whether this item is usable in any sense. */
-	protected boolean usable = false;
+	/** Indicates whether this item is usable outside of battle. */
+	protected boolean usableOutsideBattle = false;
+
+	/** Indicates whether this item is during battle. */
+	protected boolean usableDuringBattle = false;
 
 	/** Indicates whether this item is consumed upon use, including use while holding. */
 	protected boolean consumable = false;
@@ -78,8 +81,11 @@ public class Item {
 	/** Indicates whether this item is holdable by a Pokémon. */
 	protected boolean holdable = false;
 
-	/** Indicates whether this item has an effect when held by a Pokémon. */
-	protected boolean holdEffect = false;
+	/** Indicates whether this item has a passive effect when held by a Pokémon. */
+	protected boolean passiveHoldEffect = false;
+
+	/** Indicates whether this item has an active effect when held by a Pokémon. */
+	protected boolean activeHoldEffect = false;
 
 	/** Gets the name of this item. */
 	public String getName() {
@@ -121,14 +127,24 @@ public class Item {
 		this.salePrice = salePrice;
 	}
 
-	/** Checks whether this item is usable in any sense. */
-	public boolean isUsable() {
-		return usable;
+	/** Checks whether this item is usable outside of battle. */
+	public boolean isUsableOutsideBattle() {
+		return usableOutsideBattle;
 	}
 
-	/** Sets whether this item is usable in any sense. */
-	public void setUsable(boolean usable) {
-		this.usable = usable;
+	/** Sets whether this item is usable outside of battle. */
+	public void setUsableOutsideBattle(boolean usableOutsideBattle) {
+		this.usableOutsideBattle = usableOutsideBattle;
+	}
+
+	/** Checks whether this item is usable during battle. */
+	public boolean isUsableDuringBattle() {
+		return usableDuringBattle;
+	}
+
+	/** Sets whether this item is usable during battle. */
+	public void setUsableDuringBattle(boolean usableDuringBattle) {
+		this.usableDuringBattle = usableDuringBattle;
 	}
 
 	/** Checks whether this item is consumed upon use. */
@@ -151,14 +167,24 @@ public class Item {
 		this.holdable = holdable;
 	}
 
-	/** Checks whether this item has an effect when held by a Pokémon. */
-	public boolean hasHoldEffect() {
-		return holdEffect;
+	/** Checks whether this item has a passive effect when held by a Pokémon. */
+	public boolean hasPassiveHoldEffect() {
+		return passiveHoldEffect;
 	}
 
-	/** Sets whether this item has an effect when held by a Pokémon. */
-	public void setHoldEffect(boolean holdEffect) {
-		this.holdEffect = holdEffect;
+	/** Sets whether this item has a passive effect when held by a Pokémon. */
+	public void setPassiveHoldEffect(boolean passiveHoldEffect) {
+		this.passiveHoldEffect = passiveHoldEffect;
+	}
+
+	/** Checks whether this item has an active effect when held by a Pokémon. */
+	public boolean hasActiveHoldEffect() {
+		return activeHoldEffect;
+	}
+
+	/** Sets whether this item has an active effect when held by a Pokémon. */
+	public void setActiveHoldEffect(boolean activeHoldEffect) {
+		this.activeHoldEffect = activeHoldEffect;
 	}
 
 	/** Adds an attribute to the item. */
@@ -188,5 +214,12 @@ public class Item {
 		}
 
 		return null;
+	}
+
+	@Override
+	public String toString() {
+		String value =  "Item name: " + name +
+						"\nDesc: " + description;
+		return value;
 	}
 }

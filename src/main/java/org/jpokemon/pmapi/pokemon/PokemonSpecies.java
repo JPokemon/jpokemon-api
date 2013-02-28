@@ -406,4 +406,18 @@ public class PokemonSpecies {
 	public void setMaleRatio(float percentMale) {
 		this.percentMale = percentMale;
 	}
+
+	@Override
+	public String toString() {
+		String value = 	"Species name: " + name +
+						"\nBase stats: " + baseStats +
+						"\nHeight: " + height + " Weight: " + weight;
+
+		if (secondaryType != null) {
+			value += "\nTypes: " + primaryType + " " + secondaryType;
+		} else {
+			value += "\nType: " + primaryType;
+		}
+		return value;
+	}
 }

@@ -12,6 +12,7 @@ target
 src/test
 src/main/javadoc
 src/site
+parser
 
 # Maven pom (for now) #
 #######################

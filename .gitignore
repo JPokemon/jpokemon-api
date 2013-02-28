@@ -6,17 +6,13 @@
 ##################
 dependency-reduced-pom.xml
 target
+site
 
 # Tests/Javadocs (for now) #
 ############################
 src/test
 src/main/javadoc
 src/site
-parser
-
-# Maven pom (for now) #
-#######################
-pom.xml
 
 # Sublime files #
 #################
@@ -31,5 +27,6 @@ pom.xml
 # Misc #
 ########
 .DS_Store
-docs
-todo.TODO
+*.TODO
+parser
+backup

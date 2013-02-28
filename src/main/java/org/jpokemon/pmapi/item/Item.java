@@ -12,31 +12,23 @@ import java.util.HashMap;
  * `attribute` properties, ideally which do not have executable patterns. So a 
  * `Berry` item might have an `id` attribute, a `flavour` attribute, and so on. 
  * This would also be an easy way to indicate what pocket an item belongs in. 
- * Suppose you wanted to initialize a [Cherry Berry][link1] item. This could be
- * achieved using something like
+ * Suppose you wanted to initialize a [Cheri Berry][link1] item that goes in a 
+ * particular pocket (by name). This could be achieved using something like
  *
  * >     Item cheriBerry = new Item();
- * >     cheryBerry.addAttribute(new IdentityAttribute(1));
- * >     cheryBerry.addAttribute(new FlavorAttribute(10, 0, 0, 0, 0));
- * >     PocketAttribute pocket = cheryBerry.addAttribute(new PocketAttribute());
+ * >     PocketAttribute pocket = cheriBerry.addAttribute("Pocket", new PocketAttribute());
  * >     pocket.setPocket(PocketAttribute.BERRIES);
  * >     // Add other relevant attributes
  *
- * These attributes and other can be found in the `attribute` sub-package. Of 
- * course, this can get a little repetitive, so it's probably a good idea to 
- * set up a `BerryFactory` if you want to make more than a few of them. Now 
- * suppose you wanted to check what pocket an item should be sorted into. If 
- * the Item was constructed as above, you could do something like
+ * Now suppose you wanted to check what pocket an item should be sorted into. 
+ * If the Item was constructed as above, you could do something like
  *
- * >     boolean hasPocket = cheriBerry.hasAttribute(ItemAttributeType.POCKET);
+ * >     boolean hasPocket = cheriBerry.hasAttribute("Pocket");
  * >     if (hasPocket) {
- * >         PocketAttribute attribute = cheriBerry.getAttribute(ItemAttributeType.POCKET);
+ * >         PocketAttribute attribute = cheriBerry.getAttribute("Pocket");
  * >         String pocketName = attribute.getPocket();
  * >         // Sort cheriBerry into the pocket with name "pocketName".
  * >     }
- *
- * The use of {@link ItemAttributeType} (as opposed to just indexing the 
- * attributes by class) is intended to make serialization less difficult.
  * 
  * For details on creating your own attributes, see the {@link ItemAttribute}
  * class. Note that this technique is probably not powerful enough to allow for
@@ -51,11 +43,11 @@ import java.util.HashMap;
  *
  * @author Atheriel
  *
- * @since  alpha
+ * @since  Alpha
  */
 public class Item {
 	/** Indicates the non-basic attributes of the item. */
-	protected HashMap<ItemAttributeType, ItemAttribute> attributes;
+	protected HashMap<String, ItemAttribute> attributes;
 	
 	/** Indicates the name of the item (as it would appear in the bag or a shop). */
 	protected String name = "????";
@@ -187,39 +179,40 @@ public class Item {
 		this.activeHoldEffect = activeHoldEffect;
 	}
 
-	/** Adds an attribute to the item. */
-	public void addAttribute(ItemAttributeType type, ItemAttribute attribute) {
+	/** Adds an attribute to the item. It must have a distinct name. */
+	public void addAttribute(String name, ItemAttribute attribute) {
 		if (attributes == null) {
-			attributes = new HashMap<ItemAttributeType, ItemAttribute>();
+			attributes = new HashMap<String, ItemAttribute>();
 		}
-		attributes.put(type, attribute);
-		// Maybe add a check to make sure it has not been added already?
+		if (!attributes.containsKey(name)) {
+			attributes.put(name, attribute);			
+		}
 	}
 
 	/**
 	 * Gets the {@link ItemAttribute} instance for this item of a given type.
 	 * 
-	 * @param  type The type of attribute requested.
+	 * @param  name The name of attribute requested.
 	 * 
-	 * @return      The item's attribute of this type, or `null` if it does not
-	 *              possess one.
+	 * @return      The item's attribute under this name, or `null` if it does 
+	 *              not possess one.
 	 */
-	public ItemAttribute getAttribute(ItemAttributeType type) {
+	public ItemAttribute getAttribute(String name) {
 		if (attributes == null) {
 			return null;
 		}
 
-		if (attributes.containsKey(type)) {
-			return attributes.get(type);
+		if (attributes.containsKey(name)) {
+			return attributes.get(name);
 		}
 
 		return null;
 	}
 
+	/** Gets a string representation of this item: its name. */
 	@Override
 	public String toString() {
-		String value =  "Item name: " + name +
-						"\nDesc: " + description;
+		String value =  "Item: " + name;
 		return value;
 	}
 }

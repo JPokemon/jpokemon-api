@@ -2,6 +2,10 @@ package org.jpokemon.pmapi.util;
 
 /**
  * Defines the available stats for a Pokémon.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public enum Stat {
 	

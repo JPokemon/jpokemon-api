@@ -11,8 +11,6 @@ site
 # Tests/Javadocs (for now) #
 ############################
 src/test
-src/main/javadoc
-src/site
 
 # Sublime files #
 #################

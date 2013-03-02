@@ -12,6 +12,10 @@ import org.jpokemon.pmapi.util.ExperienceCurve;
  * `Bublasaur` and not the tag `Seed Pokémon`.
  *
  * To reduce clutter, `base stats` are kept in a seven-element array.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public class PokemonSpecies {
 	/** Indicates this species' number in the National Pokédex. */
@@ -147,79 +151,57 @@ public class PokemonSpecies {
 		this.primaryAbility = ability;
 	}
 
-	/**
-	 * @brief Checks if this species has a secondary ability.
-	 */
+	/** Checks if this species has a secondary ability. */
 	public boolean hasSecondaryAbility() {
 		return (secondaryAbility != null);
 	}
 
-	/**
-	 * @brief Gets this species' secondary ability.
-	 */
+	/** Gets this species' secondary ability. */
 	public String getSecondaryAbility() {
 		return secondaryAbility;
 	}
 
-	/**
-	 * @brief Sets this species' secondary ability.
-	 */
+	/** Sets this species' secondary ability. */
 	public void setSecondaryAbility(String ability) {
 		this.secondaryAbility = ability;
 	}
 
-	/**
-	 * @brief Gets this species' average height.
-	 */
+	/** Gets this species' average height. */
 	public float getHeight() {
 		return height;
 	}
 
-	/**
-	 * @brief Sets this species' average height.
-	 */
+	/** Sets this species' average height. */
 	public void setHeight(float height) {
 		this.height = height;
 	}
 
-	/**
-	 * @brief Gets this species' average weight.
-	 */
+	/** Gets this species' average weight. */
 	public float getWeight() {
 		return weight;
 	}
 
-	/**
-	 * @brief Sets this species' average weight.
-	 */
+	/** Sets this species' average weight. */
 	public void setWeight(float weight) {
 		this.weight = weight;
 	}
 
-	/**
-	 * @brief Gets this species' colour classification.
-	 */
+	/** Gets this species' colour classification. */
 	public String getColour() {
 		return colour;
 	}
 
-	/**
-	 * @brief Sets this species' colour classification.
-	 */
+	/** Sets this species' colour classification. */
 	public void setColour(String colour) {
 		this.colour = colour;
 	}
 
-	/**
-	 * @brief Gets the Pokédex entry for this species.
-	 */
+	/** Gets the Pokédex entry for this species. */
 	public String getPokedexEntry() {
 		return dexEntry;
 	}
 
-	/**
-	 * @brief Sets the Pokédex entry for this species.
-	 */
+	/** Sets the Pokédex entry for this species. */
 	public void setPokedexEntry(String dexEntry) {
 		this.dexEntry = dexEntry;
 	}

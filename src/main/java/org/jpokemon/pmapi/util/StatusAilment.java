@@ -3,6 +3,10 @@ package org.jpokemon.pmapi.util;
 /**
  * Defines the six persistent status ailments a Pokémon may suffer even outside
  * of battle (includes `Poison`, `Frozen`, and so on).
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public enum StatusAilment {
 	/** Indicates that the Pokémon does not have a status ailment. */

@@ -31,7 +31,7 @@ import java.util.HashMap;
  * >     }
  * 
  * For details on creating your own attributes, see the {@link ItemAttribute}
- * class. Note that this technique is probably not powerful enough to allow for
+ * entry. Note that this technique is probably not powerful enough to allow for
  * the kinds of in-game effects some items will require.
  * 
  * Note that the `attributes` {@link HashMap} will not initialize until an 

@@ -13,6 +13,10 @@ import org.jpokemon.pmapi.util.Taste;
  *
  * Note that this class is final. If you want to add or remove natures, it 
  * cannot be extended; you must write your own lookup class.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public final class ClassicNatures {
 	private static final ArrayList<PokemonNature> natureList;

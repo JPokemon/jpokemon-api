@@ -3,7 +3,11 @@ package org.jpokemon.pmapi.util;
 /**
  * Defines the taste preferences a Pokémon may possess. This class functions 
  * very much like an enum. Note that this class cannot be extended, because 
- * it is relied on by the PokemonNature class.
+ * it is relied on by the Nature-related classes.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public final class Taste {
 	/** Provides the neutral taste preference. */

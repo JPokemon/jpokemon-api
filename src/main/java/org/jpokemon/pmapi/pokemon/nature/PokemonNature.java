@@ -9,6 +9,10 @@ import org.jpokemon.pmapi.util.Taste;
  *
  * To define your own nature, construct an instance of this class. If you want 
  * to add attributes to the nature, it can also be extended.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public class PokemonNature {
 	protected final String name;

@@ -13,6 +13,10 @@ import org.jpokemon.pmapi.type.classic.*;
  *
  * Note that this class is final. If you want to add or remove types, it cannot
  * be extended; you must write your own lookup class.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public final class ClassicTypes {
 	private static final HashMap<String, PokemonType> typeList = new HashMap<String, PokemonType>(18);

@@ -4,6 +4,10 @@ package org.jpokemon.pmapi.type;
  * Defines an abstract Pokémon type (such as Grass or Dark) that must be 
  * extended to create a class for each type. The classic 17 types are 
  * instantiated by the {@link ClassicTypes} class.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public abstract class PokemonType {
 	/** Indicates the name of the type. */

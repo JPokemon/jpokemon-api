@@ -7,6 +7,10 @@ import org.jpokemon.pmapi.type.PokemonType;
  *
  * Moves that cause status ailments, affect stats, and so on are termed as 
  * having a `secondary effect`.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public class Move {
 	/** Indicates the name of this move. */

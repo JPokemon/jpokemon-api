@@ -12,6 +12,10 @@ import java.util.Collection;
  * different kind of lookup for different applications. There is of course no 
  * obligation to implement this manager in your own project. It is merely an 
  * illustration of what you will probably require.
+ *
+ * @author Atheriel
+ *
+ * @since  Alpha
  */
 public interface IndexedItemManager {
 

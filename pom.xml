@@ -133,8 +133,8 @@
                             <packages>org.jpokemon.pmapi.type:org.jpokemon.pmapi.type.*</packages>
                         </group>
                         <group>
-                            <title>Moves and Items</title>
-                            <packages>org.jpokemon.pmapi.move:org.jpokemon.pmapi.item</packages>
+                            <title>Moves, Items and Trainers</title>
+                            <packages>org.jpokemon.pmapi.move:org.jpokemon.pmapi.item:org.jpokemon.pmapi.trainer</packages>
                         </group>
                         <group>
                             <title>Miscellaneous</title>

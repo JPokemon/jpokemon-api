@@ -1,9 +1,7 @@
 package org.jpokemon.pmapi.pokemon.ability;
 
 /**
- * Defines an ability that a Pokémon may possess. Since in practice these 
- * abilities are so widely different, this class contains only a name and 
- * description field.
+ * Defines an ability that a Pokémon may possess.
  *
  * @author Atheriel
  *
@@ -15,6 +13,9 @@ public class PokemonAbility {
 
 	/** Indicates the description of the ability as it would appear in an info tab. */
 	protected String description;
+
+	/** Indicates the effect of the ability. */
+	protected AbilityEffect effect;
 
 	/** Gets the name of this ability. */
 	public String getName() {
@@ -34,5 +35,15 @@ public class PokemonAbility {
 	/** Sets the description of this ability. */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/** Gets the effect of this ability. */
+	public AbilityEffect getEffect() {
+		return this.effect;
+	}
+
+	/** Sets the effect of this ability. */
+	public void setEffect(AbilityEffect effect) {
+		this.effect = effect;
 	}
 }

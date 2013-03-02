@@ -11,7 +11,7 @@
     <name>jPokémon: The Pokémon API</name>
     <description>Provides well-documented data structures and utilities for Pokémon games written in Java.</description>
     <inceptionYear>2013</inceptionYear>
-    <url>http://maven.apache.org</url>
+    <url>http://atheriel.github.com/jPokemon/</url>
 
     <!-- Project properties & definitions -->
     <properties>
@@ -30,9 +30,9 @@
 
     <!-- Source code repository -->
     <scm> 
-        <connection>scm:git:https://Atheriel@bitbucket.org/Atheriel/jpokemon.git</connection> 
-        <developerConnection>scm:git:https://Atheriel@bitbucket.org/Atheriel/jpokemon.git</developerConnection> 
-        <url>https://bitbucket.org/Atheriel/jpokemon</url>
+        <connection>scm:git:https://github.com/atheriel/jPokemon.git</connection> 
+        <developerConnection>scm:git:https://github.com/atheriel/jPokemon.git</developerConnection> 
+        <url>https://github.com/atheriel/jPokemon</url>
     </scm>
 
     <!-- Developers -->
@@ -133,20 +133,12 @@
                             <packages>org.jpokemon.pmapi.type:org.jpokemon.pmapi.type.*</packages>
                         </group>
                         <group>
-                            <title>Items</title>
-                            <packages>org.jpokemon.pmapi.item:org.jpokemon.pmapi.item.*</packages>
-                        </group>
-                        <group>
-                            <title>Moves</title>
-                            <packages>org.jpokemon.pmapi.move:org.jpokemon.pmapi.move.*</packages>
+                            <title>Moves and Items</title>
+                            <packages>org.jpokemon.pmapi.move:org.jpokemon.pmapi.item</packages>
                         </group>
                         <group>
                             <title>Miscellaneous</title>
                             <packages>org.jpokemon.pmapi.util</packages>
-                        </group>
-                        <group>
-                            <title>Systems and Utilities</title>
-                            <packages>org.jpokemon.pmapi.entitysystem:org.jpokemon.pmapi.factory</packages>
                         </group>
                     </groups>
                     

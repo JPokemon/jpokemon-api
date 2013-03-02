@@ -1,0 +1,23 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../move/Move.html" title="org.jpokemon.pmapi.move.Move" alt="" coords="1535,11,1663,47"/>
+<area shape="rect" id="node21_1" href="./PokemonType.html" title="org.jpokemon.pmapi.type.PokemonType" alt="" coords="1731,113,1829,137"/>
+<area shape="rect" id="node2_2" href="../pokemon/PokemonSpecies.html" title="org.jpokemon.pmapi.pokemon.PokemonSpecies" alt="" coords="1708,11,1852,47"/>
+<area shape="rect" id="node3_3" href="./classic/WaterType.html" title="org.jpokemon.pmapi.type.classic.WaterType" alt="" coords="15,203,169,239"/>
+<area shape="rect" id="node4_4" href="./classic/TypelessType.html" title="org.jpokemon.pmapi.type.classic.TypelessType" alt="" coords="214,203,367,239"/>
+<area shape="rect" id="node5_5" href="./classic/SteelType.html" title="org.jpokemon.pmapi.type.classic.SteelType" alt="" coords="413,203,566,239"/>
+<area shape="rect" id="node6_6" href="./classic/RockType.html" title="org.jpokemon.pmapi.type.classic.RockType" alt="" coords="611,203,765,239"/>
+<area shape="rect" id="node7_7" href="./classic/PsychicType.html" title="org.jpokemon.pmapi.type.classic.PsychicType" alt="" coords="810,203,963,239"/>
+<area shape="rect" id="node8_8" href="./classic/PoisonType.html" title="org.jpokemon.pmapi.type.classic.PoisonType" alt="" coords="1009,203,1162,239"/>
+<area shape="rect" id="node9_9" href="./classic/NormalType.html" title="org.jpokemon.pmapi.type.classic.NormalType" alt="" coords="1207,203,1361,239"/>
+<area shape="rect" id="node10_10" href="./classic/IceType.html" title="org.jpokemon.pmapi.type.classic.IceType" alt="" coords="1406,203,1559,239"/>
+<area shape="rect" id="node11_11" href="./classic/GroundType.html" title="org.jpokemon.pmapi.type.classic.GroundType" alt="" coords="1605,203,1758,239"/>
+<area shape="rect" id="node12_12" href="./classic/GrassType.html" title="org.jpokemon.pmapi.type.classic.GrassType" alt="" coords="1803,203,1957,239"/>
+<area shape="rect" id="node13_13" href="./classic/GhostType.html" title="org.jpokemon.pmapi.type.classic.GhostType" alt="" coords="2002,203,2155,239"/>
+<area shape="rect" id="node14_14" href="./classic/FlyingType.html" title="org.jpokemon.pmapi.type.classic.FlyingType" alt="" coords="2201,203,2354,239"/>
+<area shape="rect" id="node15_15" href="./classic/FireType.html" title="org.jpokemon.pmapi.type.classic.FireType" alt="" coords="2399,203,2553,239"/>
+<area shape="rect" id="node16_16" href="./classic/FightingType.html" title="org.jpokemon.pmapi.type.classic.FightingType" alt="" coords="2598,203,2751,239"/>
+<area shape="rect" id="node17_17" href="./classic/ElectricType.html" title="org.jpokemon.pmapi.type.classic.ElectricType" alt="" coords="2797,203,2950,239"/>
+<area shape="rect" id="node18_18" href="./classic/DragonType.html" title="org.jpokemon.pmapi.type.classic.DragonType" alt="" coords="2995,203,3149,239"/>
+<area shape="rect" id="node19_19" href="./classic/DarkType.html" title="org.jpokemon.pmapi.type.classic.DarkType" alt="" coords="3194,203,3347,239"/>
+<area shape="rect" id="node20_20" href="./classic/BugType.html" title="org.jpokemon.pmapi.type.classic.BugType" alt="" coords="3393,203,3546,239"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./Taste.html" title="org.jpokemon.pmapi.util.Taste" alt="" coords="17,19,66,43"/>
+<area shape="rect" id="node2_1" href="./StatusAilment.html" title="org.jpokemon.pmapi.util.StatusAilment" alt="" coords="113,11,213,50"/>
+<area shape="rect" id="node3_2" href="./Stat.html" title="org.jpokemon.pmapi.util.Stat" alt="" coords="258,11,358,50"/>
+<area shape="rect" id="node4_3" href="./ExperienceCurve.html" title="org.jpokemon.pmapi.util.ExperienceCurve" alt="" coords="404,11,516,50"/>
+</map>

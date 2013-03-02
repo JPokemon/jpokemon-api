@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./UseEffect.html" title="org.jpokemon.pmapi.item.UseEffect" alt="" coords="16,116,88,140"/>
+<area shape="rect" id="node9_1" href="./EffectiveItem.html" title="org.jpokemon.pmapi.item.EffectiveItem" alt="" coords="114,212,203,236"/>
+<area shape="rect" id="node2_2" href="./Machine.html" title="org.jpokemon.pmapi.item.Machine" alt="" coords="241,19,306,43"/>
+<area shape="rect" id="node3_3" href="./ItemStack.html" title="org.jpokemon.pmapi.item.ItemStack" alt="" coords="122,19,195,43"/>
+<area shape="rect" id="node6_4" href="./Item.html" title="org.jpokemon.pmapi.item.Item" alt="" coords="137,116,180,140"/>
+<area shape="rect" id="node4_5" href="./ItemAttributeType.html" title="org.jpokemon.pmapi.item.ItemAttributeType" alt="" coords="352,19,467,43"/>
+<area shape="rect" id="node5_6" href="./ItemAttribute.html" title="org.jpokemon.pmapi.item.ItemAttribute" alt="" coords="512,11,600,50"/>
+<area shape="rect" id="node7_7" href="./IndexedItemManager.html" title="org.jpokemon.pmapi.item.IndexedItemManager" alt="" coords="645,11,779,50"/>
+<area shape="rect" id="node8_8" href="./HoldEffect.html" title="org.jpokemon.pmapi.item.HoldEffect" alt="" coords="229,116,304,140"/>
+<area shape="rect" id="node10_9" href="./Ball.html" title="org.jpokemon.pmapi.item.Ball" alt="" coords="829,19,869,43"/>
+</map>

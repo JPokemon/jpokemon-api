@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./evolution/PokemonEvolution.html" title="org.jpokemon.pmapi.pokemon.evolution.PokemonEvolution" alt="" coords="16,11,200,47"/>
+<area shape="rect" id="node2_1" href="./PokemonSpecies.html" title="org.jpokemon.pmapi.pokemon.PokemonSpecies" alt="" coords="51,113,165,137"/>
+<area shape="rect" id="node3_2" href="../type/PokemonType.html" title="org.jpokemon.pmapi.type.PokemonType" alt="" coords="47,210,169,246"/>
+<area shape="rect" id="node4_3" href="../util/ExperienceCurve.html" title="org.jpokemon.pmapi.util.ExperienceCurve" alt="" coords="215,203,332,253"/>
+</map>

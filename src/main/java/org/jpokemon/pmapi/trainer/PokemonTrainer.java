@@ -4,11 +4,21 @@ import java.util.ArrayList;
 
 /**
  * Defines a basic trainer class. Trainers possess a party of Pokemon 
- * instances and a list of item names.
+ * instances and a list of item names. They may also belong to a class of other
+ * trainers.
+ *
+ * @author Atheriel
+ *
+ * @since Alpha
+ *
+ * @see TrainerClass
  */
 public class PokemonTrainer {
 	/** Indicates the name of the trainer. */
 	protected String name;
+
+	/** Indicates the name of the trainer's class, or `null` if it has none. */
+	protected String className = null;
 	
 	/** Indicates the list of items the trainer has (by name). */
 	protected ArrayList<String> items;
@@ -24,6 +34,21 @@ public class PokemonTrainer {
 	/** Sets the name of this trainer. */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/** Checks if this trainer belongs to a trainer class. */
+	public boolean hasClass() {
+		return (className != null);
+	}
+
+	/** Gets the name of this trainer's class. */
+	public String getClassName() {
+		return this.className;
+	}
+
+	/** Sets the name of this trainer's class. */
+	public void setClassName(String className) {
+		this.className = className;
 	}
 
 	/** Gets the names of the items this trainer possesses. */

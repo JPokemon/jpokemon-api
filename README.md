@@ -1,1 +1,1 @@
-Temporary readme.
+This is the `gh-pages` branch of the jPokemon project. It is the home of the [site hosted on Github](http://atheriel.github.com/jPokemon/).

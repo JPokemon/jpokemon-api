@@ -1,6 +1,7 @@
 org.jpokemon.pmapi.item
 org.jpokemon.pmapi.move
 org.jpokemon.pmapi.pokemon
+org.jpokemon.pmapi.pokemon.ability
 org.jpokemon.pmapi.pokemon.evolution
 org.jpokemon.pmapi.pokemon.nature
 org.jpokemon.pmapi.type

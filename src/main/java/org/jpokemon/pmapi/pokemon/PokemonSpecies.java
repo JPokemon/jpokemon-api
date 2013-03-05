@@ -57,6 +57,9 @@ public class PokemonSpecies {
 	/** Indicates the base stats (hp, atk, def, satk, sdef, spd, exp) for this species. */
 	protected int[] baseStats;
 
+	/** Indicates the EVs gained (hp, atk, def, satk, sdef, spd) from defeating this species. */
+	protected int[] eVals;
+
 	/** Indicates the number of steps required to hatch an egg of this species. */
 	protected int steps;
 
@@ -76,7 +79,7 @@ public class PokemonSpecies {
 	protected int eggGroup;
 
 	/** Indicates the second egg group of this species (if it has one). */
-	protected int secondEggGroup = null;
+	protected int secondEggGroup = -1;
 
 	/** Indicates whether this species is breedable in any way. */
 	protected boolean breedable;
@@ -97,6 +100,7 @@ public class PokemonSpecies {
 	/** Provides the default constructor. Initializes the base stats array. */
 	public PokemonSpecies() {
 		baseStats = new int[7];
+		eVals = new int[6];
 	}
 
 	/** Get the Pokédex number for this species. */
@@ -329,6 +333,25 @@ public class PokemonSpecies {
 		this.baseStats = baseStats;
 	}
 
+	/**
+	 * Gets the effort values gained from defeating this species.
+	 *
+	 * @return An array of six integers: hp, atk, def, satk, sdef, and spd.
+	 */
+	public int[] getEVals() {
+		return eVals;
+	}
+
+	/**
+	 * Sets the effort values gained from defeating this species.
+	 * 
+	 * @param  eVals An array of six integers: hp, atk, def, satk, sdef, and
+	 *               spd.
+	 */
+	public void setEVals(int[] eVals) {
+		this.eVals = eVals;
+	}
+
 	/** Checks whether this species is genderless. */
 	public boolean isGenderless() {
 		return genderless;
@@ -381,7 +404,7 @@ public class PokemonSpecies {
 
 	/** Checks if this species has a second egg group */
 	public boolean hasSecondEggGroup() {
-		return (secondEggGroup != null);
+		return (secondEggGroup != -1);
 	}
 
 	/** Gets the second egg group for this species (if it has one). */

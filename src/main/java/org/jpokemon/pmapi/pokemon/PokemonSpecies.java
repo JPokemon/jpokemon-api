@@ -3,8 +3,8 @@ package org.jpokemon.pmapi.pokemon;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.jpokemon.pmapi.type.PokemonType;
 import org.jpokemon.pmapi.pokemon.evolution.PokemonEvolution;
+import org.jpokemon.pmapi.type.PokemonType;
 import org.jpokemon.pmapi.util.ExperienceCurve;
 
 /**
@@ -60,26 +60,39 @@ public class PokemonSpecies {
 	/** Indicates the number of steps required to hatch an egg of this species. */
 	protected int steps;
 
-	/** Indicates the evolutions for this species (if it has any). */
-	protected ArrayList<PokemonEvolution> evolutions;
-
-	/** Indicates whether this species is breedable in any way. */
-	protected boolean breedable;
-
 	/** Indicates what percentage of this species are male. */
 	protected float percentMale = 0.5f;
 
 	/** Indicates whether this species is genderless. */
 	protected boolean genderless;
 
+	/** Indicates the difficulty in catching this species. */
+	protected int catchRate;
+
+	/** Indicates the basic level of happiness of this species. */
+	protected int tameness;
+
+	/** Indicates the first egg group of this species. */
+	protected int eggGroup;
+
+	/** Indicates the second egg group of this species (if it has one). */
+	protected int secondEggGroup = null;
+
+	/** Indicates whether this species is breedable in any way. */
+	protected boolean breedable;
+
+	/** Indicates the evolutions for this species (if it has any). */
+	protected ArrayList<PokemonEvolution> evolutions;
+
 	/** Indicates the egg moves for this species. */
-	protected ArrayList<String> eggMoveList = new ArrayList<String>();
+	protected String[] eggMoveList;
 	
 	/** Indicates the moves that can be learned from machines by this species. */
-	protected ArrayList<String> machineMoveList = new ArrayList<String>();
+	protected String[] machineMoveList;
 
 	/** Indicates the moves learned at a given level by this species. */
-	protected HashMap<String, Integer> moveList = new HashMap<String, Integer>();
+	protected HashMap<Integer, String> moveList;
+
 
 	/** Provides the default constructor. Initializes the base stats array. */
 	public PokemonSpecies() {
@@ -166,6 +179,16 @@ public class PokemonSpecies {
 		this.secondaryAbility = ability;
 	}
 
+	/** Gets the type of experience curve for this species. */
+	public ExperienceCurve getExperienceCurveType() {
+		return expCurve;
+	}
+
+	/** Sets the type of experience curve for this species. */
+	public void setExperienceCurve(ExperienceCurve expCurve) {
+		this.expCurve = expCurve;
+	}
+
 	/** Gets this species' average height. */
 	public float getHeight() {
 		return height;
@@ -226,86 +249,62 @@ public class PokemonSpecies {
 		baseStats[0] = hp;
 	}
 
-	/**
-	 * Gets the base Attack stat for this species.
-	 */
+	/** Gets the base Attack stat for this species. */
 	public int getBaseAtk() {
 		return baseStats[1];
 	}
 
-	/**
-	 * Sets the base Attack stat for this species.
-	 */
+	/** Sets the base Attack stat for this species. */
 	public void setBaseAtk(int atk) {
 		baseStats[1] = atk;
 	}
 
-	/**
-	 * Gets the base Defense stat for this species.
-	 */
+	/** Gets the base Defense stat for this species. */
 	public int getBaseDef() {
 		return baseStats[2];
 	}
 
-	/**
-	 * Sets the base Defense stat for this species.
-	 */
+	/** Sets the base Defense stat for this species. */
 	public void setBaseDef(int def) {
 		baseStats[2] = def;
 	}
 
-	/**
-	 * Gets the base Special Attack stat for this species.
-	 */
+	/** Gets the base Special Attack stat for this species. */
 	public int getBaseSpAtk() {
 		return baseStats[3];
 	}
 
-	/**
-	 * Sets the base Special Attack stat for this species.
-	 */
+	/** Sets the base Special Attack stat for this species. */
 	public void setBaseSpAtk(int satk) {
 		baseStats[3] = satk;
 	}
 
-	/**
-	 * Gets the base Special Defense stat for this species.
-	 */
+	/** Gets the base Special Defense stat for this species. */
 	public int getBaseSpDef() {
 		return baseStats[4];
 	}
 
-	/**
-	 * Sets the base Special Defense stat for this species.
-	 */
+	/** Sets the base Special Defense stat for this species. */
 	public void setBaseSpDef(int sdef) {
 		baseStats[4] = sdef;
 	}
 
-	/**
-	 * Gets the base Speed stat for this species.
-	 */
+	/** Gets the base Speed stat for this species. */
 	public int getBaseSpeed() {
 		return baseStats[5];
 	}
 
-	/**
-	 * Sets the base Speed stat for this species.
-	 */
+	/** Sets the base Speed stat for this species. */
 	public void setBaseSpeed(int spd) {
 		baseStats[5] = spd;
 	}
 
-	/**
-	 * Gets the base experience awarded for defeating this species.
-	 */
+	/** Gets the base experience awarded for defeating this species. */
 	public int getBaseExp() {
 		return baseStats[6];
 	}
 
-	/**
-	 * Sets the base experience awarded for defeating this species.
-	 */
+	/** Sets the base experience awarded for defeating this species. */
 	public void setBaseExp(int exp) {
 		baseStats[6] = exp;
 	}
@@ -330,47 +329,6 @@ public class PokemonSpecies {
 		this.baseStats = baseStats;
 	}
 
-	/**
-	 * Checks whether this species evolves into another at some point.
-	 */
-	public boolean hasEvolution() {
-		return (evolutions != null);
-	}
-
-	/** Gets the type of experience curve for this species. */
-	public ExperienceCurve getExperienceCurveType() {
-		return expCurve;
-	}
-
-	/** Sets the type of experience curve for this species. */
-	public void setExperienceCurve(ExperienceCurve expCurve) {
-		this.expCurve = expCurve;
-	}
-
-	public HashMap<String, Integer> getMoveList() {
-		return moveList;
-	}
-
-	public void addMove(String name, int level) {
-		moveList.put(name, level);
-	}
-
-	public ArrayList<String> getEggMoves() {
-		return eggMoveList;
-	}
-
-	public void addEggMove(String name) {
-		eggMoveList.add(name);
-	}
-
-	public ArrayList<String> getMachineMoves() {
-		return machineMoveList;
-	}
-
-	public void addMachineMove(String name) {
-		machineMoveList.add(name);
-	}
-
 	/** Checks whether this species is genderless. */
 	public boolean isGenderless() {
 		return genderless;
@@ -381,12 +339,106 @@ public class PokemonSpecies {
 		this.genderless = genderless;
 	}
 
+	/** Gets the proportion of this species that are male. */
 	public float getMaleRatio() {
 		return percentMale;
 	}
 
+	/** Sets the proportion of this species that should be male. */
 	public void setMaleRatio(float percentMale) {
 		this.percentMale = percentMale;
+	}
+
+	/** Gets the catch rate for this species. */
+	public int getCatchRate() {
+		return catchRate;
+	}
+
+	/** Sets the catch rate for this species. */
+	public void setCatchRate(int catchRate) {
+		this.catchRate = catchRate;
+	}
+
+	/** Gets the base level of happiness for this species. */
+	public int getTameness() {
+		return tameness;
+	}
+
+	/** Sets the base level of happiness for this species. */
+	public void setTameness(int tameness) {
+		this.tameness = tameness;
+	}
+
+	/** Gets the egg group for this species. */
+	public int getEggGroup() {
+		return eggGroup;
+	}
+
+	/** Sets the egg group for this species. */
+	public void setEggGroup(int eggGroup) {
+		this.eggGroup = eggGroup;
+	}
+
+	/** Checks if this species has a second egg group */
+	public boolean hasSecondEggGroup() {
+		return (secondEggGroup != null);
+	}
+
+	/** Gets the second egg group for this species (if it has one). */
+	public int getSecondEggGroup() {
+		return secondEggGroup;
+	}
+
+	/** Sets the second egg group for this species. */
+	public void setSecondEggGroup(int secondEggGroup) {
+		this.secondEggGroup = secondEggGroup;
+	}
+
+	/** Checks whether this species can be bred at all. */
+	public boolean isBreedable() {
+		return breedable;
+	}
+
+	/** Sets whether this species can be bred at all. */
+	public void setBreedable(boolean breedable) {
+		this.breedable = breedable;
+	}
+
+	/** Sets the move list learned by levelling up. */
+	public HashMap<Integer, String> getMoveList() {
+		return moveList;
+	}
+
+	/** Sets the move list learned by levelling up. */
+	public void setMoveList(HashMap<Integer, String> moveList) {
+		this.moveList = moveList;
+	}
+
+	/** Gets the list of moves that can be learned by breeding. */
+	public String[] getEggMoves() {
+		return eggMoveList;
+	}
+
+	/** Sets the list of moves that can be learned by breeding. */
+	public void setEggMoves(String[] eggMoveList) {
+		this.eggMoveList = eggMoveList;
+	}
+
+	/** Gets the list of moves that can be learned by TMs and HMs. */
+	public String[] getMachineMoves() {
+		return machineMoveList;
+	}
+
+	/** Sets the list of moves that can be learned by TMs and HMs. */
+	public void setMachineMoves(String[]  machineMoveList) {
+		this.machineMoveList = machineMoveList;
+	}
+
+	/**
+	 * Checks whether this species evolves into another at some point.
+	 */
+	public boolean hasEvolution() {
+		return (evolutions != null);
 	}
 
 	@Override

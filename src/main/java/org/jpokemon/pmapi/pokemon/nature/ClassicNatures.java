@@ -111,7 +111,7 @@ public final class ClassicNatures {
 	//Adds the natures listed above to a list for randomization purposes.
 	static {
 		natureList = new ArrayList<PokemonNature>(25);
-		for (Field field : PokemonNature.class.getFields()) {
+		for (Field field : ClassicNatures.class.getFields()) {
 			try {
 				if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0) {
 					Object temp = field.get(null);

@@ -1,3 +1,4 @@
+org.jpokemon.pmapi
 org.jpokemon.pmapi.item
 org.jpokemon.pmapi.move
 org.jpokemon.pmapi.pokemon
@@ -6,5 +7,4 @@ org.jpokemon.pmapi.pokemon.evolution
 org.jpokemon.pmapi.pokemon.nature
 org.jpokemon.pmapi.trainer
 org.jpokemon.pmapi.type
-org.jpokemon.pmapi.type.classic
 org.jpokemon.pmapi.util

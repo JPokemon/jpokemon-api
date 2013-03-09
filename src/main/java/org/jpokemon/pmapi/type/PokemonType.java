@@ -45,6 +45,7 @@ public class PokemonType {
 		if (manager == null) {
 			throw new JPokemonException("A manager must be specified before types can be instantiated! You can also used ClassicTypes.");
 		}
+		// System.out.println("New type created.");
 	}
 
 	/** Gets the name of this type. */
@@ -88,8 +89,8 @@ public class PokemonType {
 	public PokemonType setNotVeryEffectiveAgainst(String... notVeryEffectiveAgainst) {
 		if (notVeryEffectiveAgainst != null) {
 			this.notVeryEffectiveAgainst = new ArrayList<String>();
-			for (String s : superEffectiveAgainst) {
-				this.superEffectiveAgainst.add(s);
+			for (String s : notVeryEffectiveAgainst) {
+				this.notVeryEffectiveAgainst.add(s);
 			}
 		}
 		return this;
@@ -104,8 +105,8 @@ public class PokemonType {
 	public PokemonType setIneffectiveAgainst(String... ineffectiveAgainst) {
 		if (ineffectiveAgainst != null) {
 			this.ineffectiveAgainst = new ArrayList<String>();
-			for (String s : superEffectiveAgainst) {
-				this.superEffectiveAgainst.add(s);
+			for (String s : ineffectiveAgainst) {
+				this.ineffectiveAgainst.add(s);
 			}
 		}
 		return this;

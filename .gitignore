@@ -8,10 +8,6 @@ dependency-reduced-pom.xml
 target
 site
 
-# Tests/Javadocs (for now) #
-############################
-src/test
-
 # Sublime files #
 #################
 *.sublime-project

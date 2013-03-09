@@ -73,4 +73,8 @@ public class SimpleTypeManager implements TypeManager {
 		}
 		return typeList.get(name);
 	}
+
+	public String[] getTypeList() {
+		return (String[]) typeList.keySet().toArray();
+	}
 }

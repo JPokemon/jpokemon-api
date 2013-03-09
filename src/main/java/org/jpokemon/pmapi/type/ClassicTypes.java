@@ -2,7 +2,6 @@ package org.jpokemon.pmapi.type;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 import org.jpokemon.pmapi.JPokemonException;
@@ -79,16 +78,15 @@ public class ClassicTypes extends SimpleTypeManager {
 
 	static {
 		try {
+
 			// Makes this class the manager for types.
 			instance = new ClassicTypes();
-
-			TYPELESS = new TypelessType();
 
 			// Instantiates the classic types (via a reflection shortcut).
 			for (Field field : ClassicTypes.class.getFields()) {
 				try {
-					if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0 && field.getType() == PokemonType.class) {
-						field.set(null, new PokemonType());
+					if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0 && field.getType() == PokemonType.class && !field.getName().equals("TYPELESS")) {
+ 						field.set(null, new PokemonType());
 					}
 				} catch (Exception exception) {
 					throw new RuntimeException(exception);
@@ -96,6 +94,7 @@ public class ClassicTypes extends SimpleTypeManager {
 			}
 
 			// Defines the classic types
+			TYPELESS = new TypelessType();
 			NORMAL.setName("Normal").setNotVeryEffectiveAgainst("Rock", "Steel").setIneffectiveAgainst("Ghost");
 			FIRE.setName("Fire").setSuperEffectiveAgainst("Grass", "Bug", "Steel").setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
 			WATER.setName("Water").setSuperEffectiveAgainst("Fire", "Ground", "Rock").setNotVeryEffectiveAgainst("Water", "Grass", "Dragon");
@@ -128,6 +127,15 @@ public class ClassicTypes extends SimpleTypeManager {
 	}
 
 	/**
+	 * Checks if a type is as known by ClassicTypes.
+	 *
+	 * @return `true` if the type is known.
+	 */
+	public static boolean isKnown(String typeName) {
+		return (instance.getType(typeName) != null);
+	}
+
+	/**
 	 * Gets a known type by name, including additional ones.
 	 * 
 	 * @param  name The name of the type requested.
@@ -138,7 +146,15 @@ public class ClassicTypes extends SimpleTypeManager {
 		return instance.getTypeByName(name);
 	}
 
-	// Private constructor
+	/**
+	 * Initializes the classic types. This method can be called if you do not 
+	 * want to rely on this singleton class being initialized by the first call
+	 * to one of its fields or methods. 
+	 */
+	public static void init() {
+	}
+
+	/** Provides a private constructor. */
 	private ClassicTypes() throws JPokemonException {
 		super();
 	}

@@ -179,14 +179,23 @@ public class Item {
 		this.activeHoldEffect = activeHoldEffect;
 	}
 
+	/** Checks if the item has an attribute of the given name. */
+	public boolean hasAttribute(String name) {
+		if (attributes == null) {
+			return false;
+		}
+		return attributes.containsKey(name);
+	}
+
 	/** Adds an attribute to the item. It must have a distinct name. */
-	public void addAttribute(String name, ItemAttribute attribute) {
+	public ItemAttribute addAttribute(String name, ItemAttribute attribute) {
 		if (attributes == null) {
 			attributes = new HashMap<String, ItemAttribute>();
 		}
 		if (!attributes.containsKey(name)) {
 			attributes.put(name, attribute);			
 		}
+		return attribute;
 	}
 
 	/**

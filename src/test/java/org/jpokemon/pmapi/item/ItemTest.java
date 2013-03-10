@@ -11,6 +11,7 @@ import org.junit.runners.JUnit4;
 
 import org.jpokemon.pmapi.item.Item;
 import org.jpokemon.pmapi.item.attribute.*;
+import org.jpokemon.pmapi.JPokemonError;
 
 /**
  * Tests the features of items.
@@ -25,7 +26,7 @@ public class ItemTest {
 	/**
 	 * Checks if an attribute can be properly added to an item.
 	 */
-	@Test
+	@Test(expected=JPokemonError.class)
 	public void testItemAttribute() {
 		Item cheriBerry = new Item();
 		PocketAttribute pocket = (PocketAttribute) cheriBerry.addAttribute("Pocket", new PocketAttribute());

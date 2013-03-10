@@ -2,50 +2,31 @@ package org.jpokemon.pmapi.item;
 
 import java.util.HashMap;
 
+import org.jpokemon.pmapi.JPokemonError;
+
 /**
  * Defines a basic item. This class provides the most basic attributes that all
  * items in a Pokémon game are likely to share. To create your own items, you 
  * have two options: (1) extend this class, or (2) make use of the `attribute` 
- * system outlined below.
- *
- * In addition to its basic functionality, items can have any number of other 
- * `attribute` properties, ideally which do not have executable patterns. So a 
- * `Berry` item might have an `id` attribute, a `flavour` attribute, and so on. 
- * This would also be an easy way to indicate what pocket an item belongs in. 
- * Suppose you wanted to initialize a [Cheri Berry][link1] item that goes in a 
- * particular pocket (by name). This could be achieved using something like
- *
- * >     Item cheriBerry = new Item();
- * >     PocketAttribute pocket = cheriBerry.addAttribute("Pocket", new PocketAttribute());
- * >     pocket.setPocket(PocketAttribute.BERRIES);
- * >     // Add other relevant attributes
- *
- * Now suppose you wanted to check what pocket an item should be sorted into. 
- * If the Item was constructed as above, you could do something like
- *
- * >     boolean hasPocket = cheriBerry.hasAttribute("Pocket");
- * >     if (hasPocket) {
- * >         PocketAttribute attribute = cheriBerry.getAttribute("Pocket");
- * >         String pocketName = attribute.getPocket();
- * >         // Sort cheriBerry into the pocket with name "pocketName".
- * >     }
- * 
- * For details on creating your own attributes, see the {@link ItemAttribute}
- * entry. Note that this technique is probably not powerful enough to allow for
- * the kinds of in-game effects some items will require.
+ * system. See the wiki for details.
  * 
  * Note that the `attributes` {@link HashMap} will not initialize until an 
  * attribute is added. Thus, if a traditional inheritance scheme is preferable 
  * for your project, this class can be extended and this functionality ignored
  * without memory inefficiency.
  *
- * [link1]: http://bulbapedia.bulbagarden.net/wiki/Cheri_Berry
+ * The same goes for the management features; if the `manager` field remains 
+ * `null`, its functionality is ignored, and only a very weak protest is made by
+ * the constructor in the form of an unchecked error.
  *
  * @author Atheriel
  *
  * @since  Alpha
  */
 public class Item {
+	/** Indicates the manager being used to register items. May be `null`. */
+	public static ItemManager manager = null;
+
 	/** Indicates the non-basic attributes of the item. */
 	protected HashMap<String, ItemAttribute> attributes;
 	
@@ -55,29 +36,40 @@ public class Item {
 	/** Indicates the description of this item (as it would appear in the bag or a shop). */
 	protected String description = "";
 
-	/** Indicates whether this item is sellable to a vendor. */
+	/** Indicates whether this item is sellable to a vendor. Defaults to `false`. */
 	protected boolean sellable = false;
 	
-	/** Indicates the sale price for this item. */
+	/** Indicates the sale price for this item. Defaults to `0`. */
 	protected int salePrice = 0;
 	
-	/** Indicates whether this item is usable outside of battle. */
+	/** Indicates whether this item is usable outside of battle. Defaults to `false`. */
 	protected boolean usableOutsideBattle = false;
 
-	/** Indicates whether this item is during battle. */
+	/** Indicates whether this item is during battle. Defaults to `false`. */
 	protected boolean usableDuringBattle = false;
 
-	/** Indicates whether this item is consumed upon use, including use while holding. */
+	/** Indicates whether this item is consumed upon use, including use while holding. Defaults to `false`. */
 	protected boolean consumable = false;
 
-	/** Indicates whether this item is holdable by a Pokémon. */
+	/** Indicates whether this item is holdable by a Pokémon. Defaults to `false`. */
 	protected boolean holdable = false;
 
-	/** Indicates whether this item has a passive effect when held by a Pokémon. */
+	/** Indicates whether this item has a passive effect when held by a Pokémon. Defaults to `false`. */
 	protected boolean passiveHoldEffect = false;
 
-	/** Indicates whether this item has an active effect when held by a Pokémon. */
+	/** Indicates whether this item has an active effect when held by a Pokémon. Defaults to `false`. */
 	protected boolean activeHoldEffect = false;
+
+	/**
+	 * Provides the default constructor.
+	 * 
+	 * @throws JPokemonError in protest if a manager has not been defined.
+	 */
+	public Item() {
+		if (manager == null) {
+			throw new JPokemonError("An item has been instantiated, but no manager is defined!");
+		}
+	}
 
 	/** Gets the name of this item. */
 	public String getName() {
@@ -87,6 +79,9 @@ public class Item {
 	/** Sets the name of this item. */
 	public void setName(String name) {
 		this.name = name;
+		if (manager != null) {
+			manager.registerItem(this);
+		}
 	}
 
 	/** Gets the description of this item. */

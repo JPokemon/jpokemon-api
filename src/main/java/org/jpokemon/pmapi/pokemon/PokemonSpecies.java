@@ -20,6 +20,9 @@ import org.jpokemon.pmapi.util.ExperienceCurve;
 public class PokemonSpecies {
 	/** Indicates this species' number in the National Pokédex. */
 	protected int pokedexNo;
+	
+	/** Indicates this species' number in the Regional Pokédex */
+	protected int regionalNo;
 
 	/** Indicates the name of this species. */
 	protected String name;
@@ -38,7 +41,10 @@ public class PokemonSpecies {
 
 	/** Indicates the secondary Ability of this species (if it has one). */
 	protected String secondaryAbility = null;
-
+	
+	/** Indicates the dream world Ability of this species (If none, is set to primary ability) */
+	protected String dreamAbility = primaryAbility;
+	
 	/** Indicates this species' experience gain behaviour. */
 	protected ExperienceCurve expCurve;
 
@@ -112,6 +118,16 @@ public class PokemonSpecies {
 	public void setPokedexNumber(int dexNo) {
 		this.pokedexNo = dexNo;
 	}
+	
+	/** Get the Regional Pokédex number for this species. */
+	public int getRegionalPokedexNumber() {
+		return regionalNo;
+	}
+
+	/** Set the Regional Pokédex number for this species. */
+	public void setRegionalPokedexNumber(int dexNo) {
+		this.regionalNo = dexNo;
+	}
 
 	/** Gets the name of this species. */
 	public String getName() {
@@ -181,6 +197,21 @@ public class PokemonSpecies {
 	/** Sets this species' secondary ability. */
 	public void setSecondaryAbility(String ability) {
 		this.secondaryAbility = ability;
+	}
+	
+		/** Checks if this species has a secondary ability. */
+	public boolean hasDreamAbility() {
+		return (!dreamAbility.equalsIgnoreCase(primaryAbility);
+	}
+
+	/** Gets this species' secondary ability. */
+	public String getSecondaryAbility() {
+		return dreamAbility;
+	}
+
+	/** Sets this species' secondary ability. */
+	public void setDreamAbility(String ability) {
+		this.dreamAbility = ability;
 	}
 
 	/** Gets the type of experience curve for this species. */
@@ -475,6 +506,13 @@ public class PokemonSpecies {
 		} else {
 			value += "\nType: " + primaryType;
 		}
+		if (secondaryAbility != null) {
+			value += "\nAbilities: " + primaryAbility + " " + secondaryAbility;
+		} else {
+			value += "\nAbility: " + primaryAbility;
+		}
+		if(!dreamAbility.equalsIgnoreCase(primaryAbility)
+			value += " " + dreamAbility
 		return value;
 	}
 }

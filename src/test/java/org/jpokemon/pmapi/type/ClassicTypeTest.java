@@ -42,10 +42,8 @@ public class ClassicTypeTest {
 	 */
 	@Test
 	public void testTypeAddition() {
-		try {
-			PokemonType test = new PokemonType();
-			test.setName("Test");			
-		} catch(JPokemonException e) {}
+		PokemonType test = new PokemonType();
+		test.setName("Test");			
 		assertTrue("Test is now a type.", ClassicTypes.isKnown("Test"));
 	}
 }

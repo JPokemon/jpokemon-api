@@ -47,6 +47,7 @@ public class ItemTest {
 	/**
 	 * Checks if an attribute can be properly added to an item.
 	 */
+	@Test
 	public void testItemAttribute() {
 		Item cheriBerry = new Item();
 		PocketAttribute pocket = (PocketAttribute) cheriBerry.addAttribute("Pocket", new PocketAttribute());

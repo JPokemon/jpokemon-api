@@ -1,7 +1,5 @@
 package org.jpokemon.pmapi.type;
 
-import org.jpokemon.pmapi.JPokemonException;
-
 /**
  * Defines a "typeless" Pokémon type (the `????` type). This class will return
  * `false` for all checks against it, and is by default named "????".
@@ -9,7 +7,7 @@ import org.jpokemon.pmapi.JPokemonException;
 public class TypelessType extends PokemonType {
 
 	/** Provides the default constructor. */
-	public TypelessType() throws JPokemonException {
+	public TypelessType() {
 		super();
 		this.setName("????");
 	}

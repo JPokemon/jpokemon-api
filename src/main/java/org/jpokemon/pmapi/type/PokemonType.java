@@ -3,14 +3,12 @@ package org.jpokemon.pmapi.type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jpokemon.pmapi.JPokemonException;
-
 /**
  * Defines a Pokémon type (such as Grass or Dark). For convenience, the classic
  * 17 types are instantiated by the {@link ClassicTypes} class.
  *
- * Note that this class will try to register itself with the manager as soon as
- * `setName` is called, so that it will have a name to register under.
+ * If a {@link TypeManager} has been defined, calling {@link #setName} will 
+ * automatically register it with the manager under that name.
  *
  * @author Atheriel
  *
@@ -35,17 +33,8 @@ public class PokemonType {
 	/** Indicates the names of types this type is ineffective against (does not affect). */
 	protected List<String> ineffectiveAgainst;
 
-	/**
-	 * Provides the default constructor.
-	 *
-	 * @throws JPokemonException if a manager has not yet been identified to 
-	 *         					 register types.
-	 */
-	public PokemonType() throws JPokemonException {
-		if (manager == null) {
-			throw new JPokemonException("A manager must be specified before types can be instantiated! You can also used ClassicTypes.");
-		}
-		// System.out.println("New type created.");
+	/** Provides the default constructor. */
+	public PokemonType() {
 	}
 
 	/** Gets the name of this type. */
@@ -54,13 +43,14 @@ public class PokemonType {
 	}
 
 	/**
-	 * Sets the name of this type, and also registers it with the manager.
-	 *
-	 * @throws JPokemonException if a type with this name already exists.
+	 * Sets the name of this type, and registers it with the {@link TypeManager}
+	 * if one is defined.
 	 */
-	public PokemonType setName(String name) throws JPokemonException {
+	public PokemonType setName(String name) {
 		this.name = name;
-		manager.registerType(this);
+		if (manager != null) {
+			manager.registerType(this);
+		}
 		return this;
 	}
 

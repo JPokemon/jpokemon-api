@@ -201,15 +201,15 @@ public class PokemonSpecies {
 	
 		/** Checks if this species has a secondary ability. */
 	public boolean hasDreamAbility() {
-		return (!dreamAbility.equalsIgnoreCase(primaryAbility);
+		return (!dreamAbility.equalsIgnoreCase(primaryAbility));
 	}
 
-	/** Gets this species' secondary ability. */
-	public String getSecondaryAbility() {
+	/** Gets this species' dreamworld (hidden) ability. */
+	public String getDreamAbility() {
 		return dreamAbility;
 	}
 
-	/** Sets this species' secondary ability. */
+	/** Sets this species' dreamworld (hidden) ability. */
 	public void setDreamAbility(String ability) {
 		this.dreamAbility = ability;
 	}
@@ -511,8 +511,8 @@ public class PokemonSpecies {
 		} else {
 			value += "\nAbility: " + primaryAbility;
 		}
-		if(!dreamAbility.equalsIgnoreCase(primaryAbility)
-			value += " " + dreamAbility
+		if(!dreamAbility.equalsIgnoreCase(primaryAbility))
+			value += " " + dreamAbility;
 		return value;
 	}
 }

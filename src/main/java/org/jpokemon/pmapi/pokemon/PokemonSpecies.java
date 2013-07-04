@@ -8,8 +8,8 @@ import org.jpokemon.pmapi.type.PokemonType;
 import org.jpokemon.pmapi.util.ExperienceCurve;
 
 /**
- * Defines a Pokémon species. Note that this refers to an object like 
- * `Bublasaur` and not the tag `Seed Pokémon`.
+ * Defines a Pokemon species. Note that this refers to an object like 
+ * `Bublasaur` and not the tag `Seed Pokemon`.
  *
  * To reduce clutter, `base stats` are kept in a seven-element array.
  *

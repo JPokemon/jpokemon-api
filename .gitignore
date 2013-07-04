@@ -8,6 +8,11 @@ dependency-reduced-pom.xml
 target
 site
 
+# Documentation files #
+#######################
+docs/build
+docs/cache
+
 # Sublime files #
 #################
 *.sublime-project

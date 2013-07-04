@@ -80,9 +80,10 @@ public class PokemonNature {
 	}
 
 	/**
-	 * Gets the stat modifier for a given stat.
+	 * Gets the stat modifier for a given stat as a float.
 	 * 
-	 * @deprecated Implementation-dependent.
+	 * @deprecated Use {@link #getStatIncreased} or
+	 * 	       {@link #getStatDecreased} instead.
 	 */
 	public float getStatModifier(Stat stat) {
 		if (increased.equals(stat)) {

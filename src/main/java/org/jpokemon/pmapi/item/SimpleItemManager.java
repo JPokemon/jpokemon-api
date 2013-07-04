@@ -19,14 +19,15 @@ public class SimpleItemManager implements ItemManager {
 	/**
 	 * Provides the default constructor.
 	 * 
-	 * @throws JPokemonException if there is a conflict with another 
-	 *         					 {@link ItemManager} in registering items.
+	 * @throws JPokemonError if there is a conflict with another 
+	 *         				 {@link ItemManager} in registering items.
 	 */
-	public SimpleItemManager() throws JPokemonException {
+	public SimpleItemManager() throws JPokemonError {
 		if (Item.manager != null) {
-			throw new JPokemonException("Item registration conflict: another item manager has already been defined!");
+			throw new JPokemonError("Item registration conflict: another item manager has already been defined!");
+		} else {
+			Item.manager = this;
 		}
-		Item.manager = this;
 	}
 
 	/**

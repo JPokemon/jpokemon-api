@@ -10,7 +10,7 @@ import org.jpokemon.pmapi.JPokemonError;
  * have two options: (1) extend this class, or (2) make use of the `attribute` 
  * system. See the wiki for details.
  * 
- * Note that the `attributes` {@link HashMap} will not initialize until an 
+ * Note that the ``attributes`` {@link HashMap} will not initialize until an 
  * attribute is added. Thus, if a traditional inheritance scheme is preferable 
  * for your project, this class can be extended and this functionality ignored
  * without memory inefficiency.
@@ -60,15 +60,8 @@ public class Item {
 	/** Indicates whether this item has an active effect when held by a Pokémon. Defaults to `false`. */
 	protected boolean activeHoldEffect = false;
 
-	/**
-	 * Provides the default constructor.
-	 * 
-	 * @throws JPokemonError in protest if a manager has not been defined.
-	 */
+	/** Provides the default constructor. */
 	public Item() {
-		if (manager == null) {
-			throw new JPokemonError("An item has been instantiated, but no manager is defined!");
-		}
 	}
 
 	/** Gets the name of this item. */

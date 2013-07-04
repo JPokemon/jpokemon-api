@@ -1,13 +1,17 @@
 package org.jpokemon.pmapi.type;
 
-import org.jpokemon.pmapi.JPokemonException;
+import org.jpokemon.pmapi.JPokemonError;
 
 /**
  * Provides an interface for keeping track of {@link PokemonTypes} in an 
  * application. The most basic implementation of this (devoid of types) is the
  * {@link SimpleTypeManager} class, and the 17 classic types are implemented in
- * the {@link ClassicTypes} class. It is not recommended to use more than one 
+ * the {@link ClassicTypes} class. It is not possible to use more than one 
  * manager for types at a time.
+ *
+ * @author atheriel@gmail.com
+ *
+ * @since  0.1.0-alpha
  */
 public interface TypeManager {
 	
@@ -18,9 +22,9 @@ public interface TypeManager {
 	 * 
 	 * @return  `true` if the type is in fact registered; otherwise `false`.
 	 *
-	 * @throws JPokemonException if there is an error registering the type.
+	 * @throws JPokemonError if there is an error registering the type.
 	 */
-	public abstract boolean registerType(PokemonType type) throws JPokemonException;
+	public abstract boolean registerType(PokemonType type) throws JPokemonError;
 
 	/**
 	 * Checks if a type is registered with the manager.

@@ -2,7 +2,7 @@ package org.jpokemon.pmapi.type;
 
 import java.util.TreeMap;
 
-import org.jpokemon.pmapi.JPokemonException;
+import org.jpokemon.pmapi.JPokemonError;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link TypeManager} 
@@ -15,12 +15,12 @@ public class SimpleTypeManager implements TypeManager {
 	/**
 	 * Provides the default constructor.
 	 * 
-	 * @throws JPokemonException if there is a conflict with another 
-	 *         					 {@link TypeManager} in registering types.
+	 * @throws JPokemonError if there is a conflict with another 
+	 *         			     {@link TypeManager} in registering types.
 	 */
-	public SimpleTypeManager() throws JPokemonException {
+	public SimpleTypeManager() throws JPokemonError {
 		if (PokemonType.manager != null) {
-			throw new JPokemonException("Type registration conflict: another type manager has already been defined!");
+			throw new JPokemonError("Type registration conflict: another type manager has already been defined!");
 		}
 		PokemonType.manager = this;
 	}
@@ -34,17 +34,17 @@ public class SimpleTypeManager implements TypeManager {
 	 *
 	 * @return  `true` if the type is in fact registered; otherwise `false`.
 	 *
-	 * @throws JPokemonException if a type has already taken the name being 
-	 *         					 used by the given type, or if the type is 
-	 *         					 already known (perhaps by some other name).
+	 * @throws JPokemonError if a type has already taken the name being used by 
+	 *         				 the given type, or if the type is already known 
+	 *         				 (perhaps by some other name).
 	 */
 	@Override
-	public boolean registerType(PokemonType type) throws JPokemonException {
+	public boolean registerType(PokemonType type) throws JPokemonError {
 		if (typeList.containsKey(type.getName())) {
-			throw new JPokemonException("A type with the name " + type.getName() + " has already been registered!");
+			throw new JPokemonError("A type with the name " + type.getName() + " has already been registered!");
 		}
 		if (typeList.containsValue(type)) {
-			throw new JPokemonException("This type is already registered!");
+			throw new JPokemonError("This type is already registered!");
 		}
 		typeList.put(type.getName(), type);
 		return true;

@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.TreeMap;
 
-import org.jpokemon.pmapi.JPokemonException;
+import org.jpokemon.pmapi.JPokemonError;
 
 /**
  * Defines the list of the 17 classic Pokémon types. This class functions very 
@@ -112,7 +112,7 @@ public class ClassicTypes extends SimpleTypeManager {
 			DRAGON.setName("Dragon").setSuperEffectiveAgainst("Dragon").setNotVeryEffectiveAgainst("Steel");
 			DARK.setName("Dark").setSuperEffectiveAgainst("Psychic", "Ghost").setNotVeryEffectiveAgainst("Fighting", "Dark", "Steel");
 			STEEL.setName("Steel").setSuperEffectiveAgainst("Ice", "Rock").setNotVeryEffectiveAgainst("Fire", "Water", "Electric", "Steel");			
-		} catch (JPokemonException e) {
+		} catch (JPokemonError e) {
 			e.printStackTrace();
 		}
 	}
@@ -155,7 +155,7 @@ public class ClassicTypes extends SimpleTypeManager {
 	}
 
 	/** Provides a private constructor. */
-	private ClassicTypes() throws JPokemonException {
+	private ClassicTypes() throws JPokemonError {
 		super();
 	}
 }

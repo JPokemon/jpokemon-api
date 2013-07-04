@@ -12,25 +12,26 @@ import java.util.Map;
  * If a {@link TypeManager} has been defined, calling {@link #setName} will
  * automatically register it with the manager under that name.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
+ * @author Zach Taylor
  * 
- * @since Alpha
+ * @since 0.1
  * 
  * @see TypeManager
  * @see ClassicTypes
  */
 public class PokemonType {
 	/**
-	 * Indicates the manager that registers types; must be set before types can be
-	 * instantiated.
+	 * Indicates the manager that registers types; must be set before types can 
+	 * be instantiated.
 	 */
 	public static TypeManager manager = null;
 
 	/** Indicates the name of the type. */
 	protected String name;
 
-	/** Indicates the effectivity of against other types. */
-	protected Map<String, PokemonTypeEffectivity> effectivity = new HashMap<String, PokemonTypeEffectivity>();
+	/** Defines a mapping of this type's effectiveness against others. */
+	protected Map<String, TypeEffectiveness> effectivenessMap = new HashMap<String, TypeEffectiveness>();
 
 	/** Provides the default constructor. */
 	public PokemonType() {
@@ -55,34 +56,38 @@ public class PokemonType {
 
 	/** Gets the list of types this type is super-effective against by name. */
 	public String[] getSuperEffectiveAgainst() {
-		return (String[]) this.getEffectivityList(PokemonTypeEffectivity.SUPER).toArray();
+		return (String[]) this.getEffectivenessList(TypeEffectiveness.SUPER).toArray();
 	}
 
 	/** Sets the list of types this type is super-effective against by name. */
 	public PokemonType setSuperEffectiveAgainst(String... superEffectiveAgainst) {
-		this.putEffectivity(PokemonTypeEffectivity.SUPER, superEffectiveAgainst);
+		this.putEffectiveness(TypeEffectiveness.SUPER, superEffectiveAgainst);
 		return this;
 	}
 
-	/** Gets the list of types this type is not very effective against by name. */
+	/** 
+	 * Gets the list of types this type is not very effective against by name.
+	 */
 	public String[] getNotVeryEffectiveAgainst() {
-		return (String[]) this.getEffectivityList(PokemonTypeEffectivity.NOT_VERY).toArray();
+		return (String[]) this.getEffectivenessList(TypeEffectiveness.NOT_VERY).toArray();
 	}
 
-	/** Sets the list of types this type is not very effective against by name. */
+	/** 
+	 * Sets the list of types this type is not very effective against by name.
+	 */
 	public PokemonType setNotVeryEffectiveAgainst(String... notVeryEffectiveAgainst) {
-		this.putEffectivity(PokemonTypeEffectivity.NOT_VERY, notVeryEffectiveAgainst);
+		this.putEffectiveness(TypeEffectiveness.NOT_VERY, notVeryEffectiveAgainst);
 		return this;
 	}
 
 	/** Gets the list of types this type is ineffective against by name. */
 	public String[] getIneffectiveAgainst() {
-		return (String[]) this.getEffectivityList(PokemonTypeEffectivity.INEFFECTIVE).toArray();
+		return (String[]) this.getEffectivenessList(TypeEffectiveness.INEFFECTIVE).toArray();
 	}
 
 	/** Sets the list of types this type is ineffective against by name. */
 	public PokemonType setIneffectiveAgainst(String... ineffectiveAgainst) {
-		this.putEffectivity(PokemonTypeEffectivity.INEFFECTIVE, ineffectiveAgainst);
+		this.putEffectiveness(TypeEffectiveness.INEFFECTIVE, ineffectiveAgainst);
 		return this;
 	}
 
@@ -99,7 +104,7 @@ public class PokemonType {
 		if (typeName == null) {
 			return false;
 		}
-		if (this.effectivity.get(typeName) != PokemonTypeEffectivity.SUPER) {
+		if (this.effectivenessMap.get(typeName) != TypeEffectiveness.SUPER) {
 			return false;
 		}
 		return true;
@@ -111,14 +116,14 @@ public class PokemonType {
 	}
 
 	/**
-	 * Checks whether this type is not very effective against a type of the given
-	 * name.
+	 * Checks whether this type is not very effective against a type of the 
+	 * given name.
 	 */
 	public boolean isNotVeryEffectiveAgainst(String typeName) {
 		if (typeName == null) {
 			return false;
 		}
-		if (this.effectivity.get(typeName) != PokemonTypeEffectivity.NOT_VERY) {
+		if (this.effectivenessMap.get(typeName) != TypeEffectiveness.NOT_VERY) {
 			return false;
 		}
 		return true;
@@ -129,12 +134,14 @@ public class PokemonType {
 		return isIneffectiveAgainst(type.getName());
 	}
 
-	/** Checks whether this type is ineffective against a type of the given name. */
+	/** 
+	 * Checks whether this type is ineffective against a type of the given name.
+	 */
 	public boolean isIneffectiveAgainst(String typeName) {
 		if (typeName == null) {
 			return false;
 		}
-		if (this.effectivity.get(typeName) != PokemonTypeEffectivity.INEFFECTIVE) {
+		if (this.effectivenessMap.get(typeName) != TypeEffectiveness.INEFFECTIVE) {
 			return false;
 		}
 		return true;
@@ -145,29 +152,29 @@ public class PokemonType {
 		return name;
 	}
 
-	private List<String> getEffectivityList(PokemonTypeEffectivity pokemonTypeEffectivity) {
+	/** Retrieves a list of types for a given effectiveness from the mapping. */
+	private List<String> getEffectivenessList(TypeEffectiveness effectiveness) {
 		List<String> found = new ArrayList<String>();
-
-		for (Map.Entry<String, PokemonTypeEffectivity> effectivityEntry : this.effectivity.entrySet()) {
-			if (effectivityEntry.getValue() == pokemonTypeEffectivity) {
-				found.add(effectivityEntry.getKey());
+		for (Map.Entry<String, TypeEffectiveness> effectivenessEntry : this.effectivenessMap.entrySet()) {
+			if (effectivenessEntry.getValue() == effectiveness) {
+				found.add(effectivenessEntry.getKey());
 			}
 		}
-
 		return found;
 	}
 
-	private void putEffectivity(PokemonTypeEffectivity pokemonTypeEffectivity, String... types) {
+	/** Adds the name of the type to the effectiveness mapping. */
+	private void putEffectiveness(TypeEffectiveness effectiveness, String... types) {
 		if (types == null) {
 			return;
 		}
-
 		for (String s : types) {
-			this.effectivity.put(s, pokemonTypeEffectivity);
+			this.effectivenessMap.put(s, effectiveness);
 		}
 	}
 
-	private enum PokemonTypeEffectivity {
+	/** Provides an internal enum for the available kinds of "effective". */
+	private enum TypeEffectiveness {
 		SUPER, NOT_VERY, INEFFECTIVE;
 	}
 }

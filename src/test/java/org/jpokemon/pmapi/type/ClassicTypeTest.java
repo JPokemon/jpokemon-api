@@ -15,9 +15,9 @@ import org.jpokemon.pmapi.type.PokemonType;
 /**
  * Tests type registration and some classic type properties.
  *
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since  Alpha
+ * @since 0.1
  */
 @RunWith(JUnit4.class)
 public class ClassicTypeTest {
@@ -27,9 +27,7 @@ public class ClassicTypeTest {
 		ClassicTypes.init();
 	}
 
-	/**
-	 * Tests some properties of classic types.
-	 */
+	/** Tests some properties of classic types. */
 	@Test
 	public void testClassicTypes() {
 		assertTrue("Dark is known.", ClassicTypes.isKnown("Dark"));
@@ -37,9 +35,7 @@ public class ClassicTypeTest {
 		assertFalse("Normal is not super-effective against Fighting.", ClassicTypes.getType("Normal").isSuperEffectiveAgainst("Fighting"));
 	}
 
-	/**
-	 * Creates a new type and tests that it has been registered.
-	 */
+	/** Creates a new type and tests that it has been registered. */
 	@Test
 	public void testTypeAddition() {
 		PokemonType test = new PokemonType();

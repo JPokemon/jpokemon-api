@@ -10,10 +10,10 @@ public class ClassicAbilities {
 	public static final PokemonAbility DRIZZLE = new PokemonAbility().setName("Drizzle").setDescription(
 			"The Pokémon makes it rain if it appears in battle.");
 
-	public static final PokemonAbility SPEED_BOOST = new PokemonAbility().setName("Speed_Boost").setDescription(
+	public static final PokemonAbility SPEED_BOOST = new PokemonAbility().setName("Speed Boost").setDescription(
 			"The Pokémon's Speed stat is gradually boosted.");
 
-	public static final PokemonAbility BATTLE_ARMOR = new PokemonAbility().setName("Battle_Armor").setDescription(
+	public static final PokemonAbility BATTLE_ARMOR = new PokemonAbility().setName("Battle Armor").setDescription(
 			"The Pokémon is protected against critical hits.");
 
 	public static final PokemonAbility STURDY = new PokemonAbility().setName("Sturdy").setDescription(
@@ -25,22 +25,22 @@ public class ClassicAbilities {
 	public static final PokemonAbility LIMBER = new PokemonAbility().setName("Limber").setDescription(
 			"The Pokémon is protected from paralysis.");
 
-	public static final PokemonAbility SAND_VEIL = new PokemonAbility().setName("Sand_Veil").setDescription(
+	public static final PokemonAbility SAND_VEIL = new PokemonAbility().setName("Sand Veil").setDescription(
 			"Boosts the Pokémon's evasion in a sandstorm.");
 
 	public static final PokemonAbility STATIC = new PokemonAbility().setName("Static").setDescription(
 			"Contact with the Pokémon may cause paralysis.");
 
-	public static final PokemonAbility VOLT_ABSORB = new PokemonAbility().setName("Volt_Absorb").setDescription(
+	public static final PokemonAbility VOLT_ABSORB = new PokemonAbility().setName("Volt Absorb").setDescription(
 			"Restores HP if hit by an Electric-type move.");
 
-	public static final PokemonAbility WATER_ABSORB = new PokemonAbility().setName("Water_Absorb").setDescription(
+	public static final PokemonAbility WATER_ABSORB = new PokemonAbility().setName("Water Absorb").setDescription(
 			"Restores HP if hit by a Water-type move.");
 
 	public static final PokemonAbility OBLIVIOUS = new PokemonAbility().setName("Oblivious").setDescription(
 			"Prevents the Pokémon from becoming infatuated.");
 
-	public static final PokemonAbility CLOUD_NINE = new PokemonAbility().setName("Cloud_Nine").setDescription(
+	public static final PokemonAbility CLOUD_NINE = new PokemonAbility().setName("Cloud Nine").setDescription(
 			"Eliminates the effects of weather.");
 
 	public static final PokemonAbility COMPOUNDEYES = new PokemonAbility().setName("Compoundeyes").setDescription(
@@ -49,58 +49,58 @@ public class ClassicAbilities {
 	public static final PokemonAbility INSOMNIA = new PokemonAbility().setName("Insomnia").setDescription(
 			"Prevents the Pokémon from falling asleep.");
 
-	public static final PokemonAbility COLOR_CHANGE = new PokemonAbility().setName("Color_Change").setDescription(
+	public static final PokemonAbility COLOR_CHANGE = new PokemonAbility().setName("Color Change").setDescription(
 			"Changes the Pokémon's type to the foe's move.");
 
 	public static final PokemonAbility IMMUNITY = new PokemonAbility().setName("Immunity").setDescription(
 			"Prevents the Pokémon from getting poisoned.");
 
-	public static final PokemonAbility FLASH_FIRE = new PokemonAbility().setName("Flash_Fire").setDescription(
+	public static final PokemonAbility FLASH_FIRE = new PokemonAbility().setName("Flash Fire").setDescription(
 			"Powers up Fire-type moves if hit by a fire move.");
 
-	public static final PokemonAbility SHIELD_DUST = new PokemonAbility().setName("Shield_Dust").setDescription(
+	public static final PokemonAbility SHIELD_DUST = new PokemonAbility().setName("Shield Dust").setDescription(
 			"Blocks the added effects of attacks taken.");
 
-	public static final PokemonAbility OWN_TEMPO = new PokemonAbility().setName("Own_Tempo").setDescription(
+	public static final PokemonAbility OWN_TEMPO = new PokemonAbility().setName("Own Tempo").setDescription(
 			"Prevents the Pokémon from becoming confused.");
 
-	public static final PokemonAbility SUCTION_CUPS = new PokemonAbility().setName("Suction_Cups").setDescription(
+	public static final PokemonAbility SUCTION_CUPS = new PokemonAbility().setName("Suction Cups").setDescription(
 			"Negates moves that force switching out.");
 
 	public static final PokemonAbility INTIMIDATE = new PokemonAbility().setName("Intimidate").setDescription(
 			"Lowers the foe's Attack stat.");
 
-	public static final PokemonAbility SHADOW_TAG = new PokemonAbility().setName("Shadow_Tag").setDescription(
+	public static final PokemonAbility SHADOW_TAG = new PokemonAbility().setName("Shadow Tag").setDescription(
 			"Prevents the foe from escaping.");
 
-	public static final PokemonAbility ROUGH_SKIN = new PokemonAbility().setName("Rough_Skin").setDescription(
+	public static final PokemonAbility ROUGH_SKIN = new PokemonAbility().setName("Rough Skin").setDescription(
 			"Inflicts damage to the foe on contact.");
 
-	public static final PokemonAbility WONDER_GUARD = new PokemonAbility().setName("Wonder_Guard").setDescription(
+	public static final PokemonAbility WONDER_GUARD = new PokemonAbility().setName("Wonder Guard").setDescription(
 			"Only super effective moves will hit.");
 
 	public static final PokemonAbility LEVITATE = new PokemonAbility().setName("Levitate").setDescription(
 			"Gives full immunity to all Ground-type moves.");
 
-	public static final PokemonAbility EFFECT_SPORE = new PokemonAbility().setName("Effect_Spore").setDescription(
+	public static final PokemonAbility EFFECT_SPORE = new PokemonAbility().setName("Effect Spore").setDescription(
 			"Contact may paralyze, poison, or cause sleep.");
 
 	public static final PokemonAbility SYNCHRONIZE = new PokemonAbility().setName("Synchronize").setDescription(
 			"Passes on a burn, poison, or paralysis to the foe.");
 
-	public static final PokemonAbility CLEAR_BODY = new PokemonAbility().setName("Clear_Body").setDescription(
+	public static final PokemonAbility CLEAR_BODY = new PokemonAbility().setName("Clear Body").setDescription(
 			"Prevents the Pokémon's stats from being lowered.");
 
-	public static final PokemonAbility NATURAL_CURE = new PokemonAbility().setName("Natural_Cure").setDescription(
+	public static final PokemonAbility NATURAL_CURE = new PokemonAbility().setName("Natural Cure").setDescription(
 			"All status problems are healed upon switching out.");
 
 	public static final PokemonAbility LIGHTNINGROD = new PokemonAbility().setName("Lightningrod").setDescription(
 			"The Pokémon draws in all Electric-type moves.");
 
-	public static final PokemonAbility SERENE_GRACE = new PokemonAbility().setName("Serene_Grace").setDescription(
+	public static final PokemonAbility SERENE_GRACE = new PokemonAbility().setName("Serene Grace").setDescription(
 			"Boosts the likelihood of added effects appearing.");
 
-	public static final PokemonAbility SWIFT_SWIM = new PokemonAbility().setName("Swift_Swim").setDescription(
+	public static final PokemonAbility SWIFT_SWIM = new PokemonAbility().setName("Swift Swim").setDescription(
 			"Boosts the Pokémon's Speed in rain.");
 
 	public static final PokemonAbility CHLOROPHYLL = new PokemonAbility().setName("Chlorophyll").setDescription(
@@ -112,52 +112,52 @@ public class ClassicAbilities {
 	public static final PokemonAbility TRACE = new PokemonAbility().setName("Trace").setDescription(
 			"The Pokémon copies a foe's Ability.");
 
-	public static final PokemonAbility HUGE_POWER = new PokemonAbility().setName("Huge_Power").setDescription(
+	public static final PokemonAbility HUGE_POWER = new PokemonAbility().setName("Huge Power").setDescription(
 			"Raises the Pokémon's Attack stat.");
 
-	public static final PokemonAbility POISON_POINT = new PokemonAbility().setName("Poison_Point").setDescription(
+	public static final PokemonAbility POISON_POINT = new PokemonAbility().setName("Poison Point").setDescription(
 			"Contact with the Pokémon may poison the foe.");
 
-	public static final PokemonAbility INNER_FOCUS = new PokemonAbility().setName("Inner_Focus").setDescription(
+	public static final PokemonAbility INNER_FOCUS = new PokemonAbility().setName("Inner Focus").setDescription(
 			"The Pokémon is protected from flinching.");
 
-	public static final PokemonAbility MAGMA_ARMOR = new PokemonAbility().setName("Magma_Armor").setDescription(
+	public static final PokemonAbility MAGMA_ARMOR = new PokemonAbility().setName("Magma Armor").setDescription(
 			"Prevents the Pokémon from becoming frozen.");
 
-	public static final PokemonAbility WATER_VEIL = new PokemonAbility().setName("Water_Veil").setDescription(
+	public static final PokemonAbility WATER_VEIL = new PokemonAbility().setName("Water Veil").setDescription(
 			"Prevents the Pokémon from getting a burn.");
 
-	public static final PokemonAbility MAGNET_PULL = new PokemonAbility().setName("Magnet_Pull").setDescription(
+	public static final PokemonAbility MAGNET_PULL = new PokemonAbility().setName("Magnet Pull").setDescription(
 			"Prevents Steel-type Pokémon from escaping.");
 
 	public static final PokemonAbility SOUNDPROOF = new PokemonAbility().setName("Soundproof").setDescription(
 			"Gives full immunity to all sound-based moves.");
 
-	public static final PokemonAbility RAIN_DISH = new PokemonAbility().setName("Rain_Dish").setDescription(
+	public static final PokemonAbility RAIN_DISH = new PokemonAbility().setName("Rain Dish").setDescription(
 			"The Pokémon gradually recovers HP in rain.");
 
-	public static final PokemonAbility SAND_STREAM = new PokemonAbility().setName("Sand_Stream").setDescription(
+	public static final PokemonAbility SAND_STREAM = new PokemonAbility().setName("Sand Stream").setDescription(
 			"The Pokémon summons a sandstorm in battle.");
 
 	public static final PokemonAbility PRESSURE = new PokemonAbility().setName("Pressure").setDescription(
 			"The Pokémon raises the foe's PP usage.");
 
-	public static final PokemonAbility THICK_FAT = new PokemonAbility().setName("Thick_Fat").setDescription(
+	public static final PokemonAbility THICK_FAT = new PokemonAbility().setName("Thick Fat").setDescription(
 			"Raises resistance to Fire- and Ice-type moves.");
 
-	public static final PokemonAbility EARLY_BIRD = new PokemonAbility().setName("Early_Bird").setDescription(
+	public static final PokemonAbility EARLY_BIRD = new PokemonAbility().setName("Early Bird").setDescription(
 			"The Pokémon awakens quickly from sleep.");
 
-	public static final PokemonAbility FLAME_BODY = new PokemonAbility().setName("Flame_Body").setDescription(
+	public static final PokemonAbility FLAME_BODY = new PokemonAbility().setName("Flame Body").setDescription(
 			"Contact with the Pokémon may burn the foe.");
 
-	public static final PokemonAbility RUN_AWAY = new PokemonAbility().setName("Run_Away").setDescription(
+	public static final PokemonAbility RUN_AWAY = new PokemonAbility().setName("Run Away").setDescription(
 			"Enables sure getaway from wild Pokémon.");
 
-	public static final PokemonAbility KEEN_EYE = new PokemonAbility().setName("Keen_Eye").setDescription(
+	public static final PokemonAbility KEEN_EYE = new PokemonAbility().setName("Keen Eye").setDescription(
 			"Prevents the Pokémon from losing accuracy.");
 
-	public static final PokemonAbility HYPER_CUTTER = new PokemonAbility().setName("Hyper_Cutter").setDescription(
+	public static final PokemonAbility HYPER_CUTTER = new PokemonAbility().setName("Hyper Cutter").setDescription(
 			"Prevents the Attack stat from being lowered.");
 
 	public static final PokemonAbility PICKUP = new PokemonAbility().setName("Pickup").setDescription(
@@ -169,7 +169,7 @@ public class ClassicAbilities {
 	public static final PokemonAbility HUSTLE = new PokemonAbility().setName("Hustle").setDescription(
 			"Boosts the Attack stat, but lowers accuracy.");
 
-	public static final PokemonAbility CUTE_CHARM = new PokemonAbility().setName("Cute_Charm").setDescription(
+	public static final PokemonAbility CUTE_CHARM = new PokemonAbility().setName("Cute Charm").setDescription(
 			"Contact with the Pokémon may cause infatuation.");
 
 	public static final PokemonAbility PLUS = new PokemonAbility().setName("Plus").setDescription(
@@ -181,19 +181,19 @@ public class ClassicAbilities {
 	public static final PokemonAbility FORECAST = new PokemonAbility().setName("Forecast").setDescription(
 			"Transforms with the weather.");
 
-	public static final PokemonAbility STICKY_HOLD = new PokemonAbility().setName("Sticky_Hold").setDescription(
+	public static final PokemonAbility STICKY_HOLD = new PokemonAbility().setName("Sticky Hold").setDescription(
 			"Protects the Pokémon from item theft.");
 
-	public static final PokemonAbility SHED_SKIN = new PokemonAbility().setName("Shed_Skin").setDescription(
+	public static final PokemonAbility SHED_SKIN = new PokemonAbility().setName("Shed Skin").setDescription(
 			"The Pokémon may heal its own status problems.");
 
 	public static final PokemonAbility GUTS = new PokemonAbility().setName("Guts").setDescription(
 			"Boosts Attack if there is a status problem.");
 
-	public static final PokemonAbility MARVEL_SCALE = new PokemonAbility().setName("Marvel_Scale").setDescription(
+	public static final PokemonAbility MARVEL_SCALE = new PokemonAbility().setName("Marvel Scale").setDescription(
 			"Boosts Defense if there is a status problem.");
 
-	public static final PokemonAbility LIQUID_OOZE = new PokemonAbility().setName("Liquid_Ooze").setDescription(
+	public static final PokemonAbility LIQUID_OOZE = new PokemonAbility().setName("Liquid Ooze").setDescription(
 			"Inflicts damage on foes using any draining move.");
 
 	public static final PokemonAbility OVERGROW = new PokemonAbility().setName("Overgrow").setDescription(
@@ -208,34 +208,34 @@ public class ClassicAbilities {
 	public static final PokemonAbility SWARM = new PokemonAbility().setName("Swarm").setDescription(
 			"Powers up Bug-type moves in a pinch.");
 
-	public static final PokemonAbility ROCK_HEAD = new PokemonAbility().setName("Rock_Head").setDescription(
+	public static final PokemonAbility ROCK_HEAD = new PokemonAbility().setName("Rock Head").setDescription(
 			"Protects the Pokémon from recoil damage.");
 
 	public static final PokemonAbility DROUGHT = new PokemonAbility().setName("Drought").setDescription(
 			"The Pokémon makes it sunny if it is in battle.");
 
-	public static final PokemonAbility ARENA_TRAP = new PokemonAbility().setName("Arena_Trap").setDescription(
+	public static final PokemonAbility ARENA_TRAP = new PokemonAbility().setName("Arena Trap").setDescription(
 			"Prevents the foe from fleeing.");
 
-	public static final PokemonAbility VITAL_SPIRIT = new PokemonAbility().setName("Vital_Spirit").setDescription(
+	public static final PokemonAbility VITAL_SPIRIT = new PokemonAbility().setName("Vital Spirit").setDescription(
 			"Prevents the Pokémon from falling asleep.");
 
-	public static final PokemonAbility WHITE_SMOKE = new PokemonAbility().setName("White_Smoke").setDescription(
+	public static final PokemonAbility WHITE_SMOKE = new PokemonAbility().setName("White Smoke").setDescription(
 			"Prevents the Pokémon's stats from being lowered.");
 
-	public static final PokemonAbility PURE_POWER = new PokemonAbility().setName("Pure_Power").setDescription(
+	public static final PokemonAbility PURE_POWER = new PokemonAbility().setName("Pure Power").setDescription(
 			"Boosts the power of physical attacks.");
 
-	public static final PokemonAbility SHELL_ARMOR = new PokemonAbility().setName("Shell_Armor").setDescription(
+	public static final PokemonAbility SHELL_ARMOR = new PokemonAbility().setName("Shell Armor").setDescription(
 			"The Pokémon is protected against critical hits.");
 
-	public static final PokemonAbility AIR_LOCK = new PokemonAbility().setName("Air_Lock").setDescription(
+	public static final PokemonAbility AIR_LOCK = new PokemonAbility().setName("Air Lock").setDescription(
 			"Eliminates the effects of weather.");
 
-	public static final PokemonAbility TANGLED_FEET = new PokemonAbility().setName("Tangled_Feet").setDescription(
+	public static final PokemonAbility TANGLED_FEET = new PokemonAbility().setName("Tangled Feet").setDescription(
 			"Raises evasion if the Pokémon is confused.");
 
-	public static final PokemonAbility MOTOR_DRIVE = new PokemonAbility().setName("Motor_Drive").setDescription(
+	public static final PokemonAbility MOTOR_DRIVE = new PokemonAbility().setName("Motor Drive").setDescription(
 			"Raises Speed if hit by an Electric-type move.");
 
 	public static final PokemonAbility RIVALRY = new PokemonAbility().setName("Rivalry").setDescription(
@@ -244,13 +244,13 @@ public class ClassicAbilities {
 	public static final PokemonAbility STEADFAST = new PokemonAbility().setName("Steadfast").setDescription(
 			"Raises Speed each time the Pokémon flinches.");
 
-	public static final PokemonAbility SNOW_CLOAK = new PokemonAbility().setName("Snow_Cloak").setDescription(
+	public static final PokemonAbility SNOW_CLOAK = new PokemonAbility().setName("Snow Cloak").setDescription(
 			"Raises evasion in a hailstorm.");
 
 	public static final PokemonAbility GLUTTONY = new PokemonAbility().setName("Gluttony").setDescription(
 			"Encourages the early use of a held Berry.");
 
-	public static final PokemonAbility ANGER_POINT = new PokemonAbility().setName("Anger_Point").setDescription(
+	public static final PokemonAbility ANGER_POINT = new PokemonAbility().setName("Anger Point").setDescription(
 			"Raises Attack upon taking a critical hit.");
 
 	public static final PokemonAbility UNBURDEN = new PokemonAbility().setName("Unburden").setDescription(
@@ -262,31 +262,31 @@ public class ClassicAbilities {
 	public static final PokemonAbility SIMPLE = new PokemonAbility().setName("Simple").setDescription(
 			"The Pokémon is prone to wild stat changes.");
 
-	public static final PokemonAbility DRY_SKIN = new PokemonAbility().setName("Dry_Skin").setDescription(
+	public static final PokemonAbility DRY_SKIN = new PokemonAbility().setName("Dry Skin").setDescription(
 			"Reduces HP if it is hot. Water restores HP.");
 
 	public static final PokemonAbility DOWNLOAD = new PokemonAbility().setName("Download").setDescription(
 			"Adjusts power according to the foe's lowest defensive stat.");
 
-	public static final PokemonAbility IRON_FIST = new PokemonAbility().setName("Iron_Fist").setDescription(
+	public static final PokemonAbility IRON_FIST = new PokemonAbility().setName("Iron Fist").setDescription(
 			"Boosts the power of punching moves.");
 
-	public static final PokemonAbility POISON_HEAL = new PokemonAbility().setName("Poison_Heal").setDescription(
+	public static final PokemonAbility POISON_HEAL = new PokemonAbility().setName("Poison Heal").setDescription(
 			"Restores HP if the Pokémon is poisoned.");
 
 	public static final PokemonAbility ADAPTABILITY = new PokemonAbility().setName("Adaptability").setDescription(
 			"Powers up moves of the same type.");
 
-	public static final PokemonAbility SKILL_LINK = new PokemonAbility().setName("Skill_Link").setDescription(
+	public static final PokemonAbility SKILL_LINK = new PokemonAbility().setName("Skill Link").setDescription(
 			"Increases the frequency of multi-strike moves.");
 
 	public static final PokemonAbility HYDRATION = new PokemonAbility().setName("Hydration").setDescription(
 			"Heals status problems if it is raining.");
 
-	public static final PokemonAbility SOLAR_POWER = new PokemonAbility().setName("Solar_Power").setDescription(
+	public static final PokemonAbility SOLAR_POWER = new PokemonAbility().setName("Solar Power").setDescription(
 			"Boosts Sp. Atk, but lowers HP in sunshine.");
 
-	public static final PokemonAbility QUICK_FEET = new PokemonAbility().setName("Quick_Feet").setDescription(
+	public static final PokemonAbility QUICK_FEET = new PokemonAbility().setName("Quick Feet").setDescription(
 			"Boosts Speed if there is a status problem.");
 
 	public static final PokemonAbility NORMALIZE = new PokemonAbility().setName("Normalize").setDescription(
@@ -295,10 +295,10 @@ public class ClassicAbilities {
 	public static final PokemonAbility SNIPER = new PokemonAbility().setName("Sniper").setDescription(
 			"Powers up moves if they become critical hits.");
 
-	public static final PokemonAbility MAGIC_GUARD = new PokemonAbility().setName("Magic_Guard").setDescription(
+	public static final PokemonAbility MAGIC_GUARD = new PokemonAbility().setName("Magic Guard").setDescription(
 			"The Pokémon only takes damage from attacks.");
 
-	public static final PokemonAbility NO_GUARD = new PokemonAbility().setName("No_Guard").setDescription(
+	public static final PokemonAbility NO_GUARD = new PokemonAbility().setName("No Guard").setDescription(
 			"Ensures the Pokémon and its foe's attacks land.");
 
 	public static final PokemonAbility STALL = new PokemonAbility().setName("Stall").setDescription(
@@ -307,16 +307,16 @@ public class ClassicAbilities {
 	public static final PokemonAbility TECHNICIAN = new PokemonAbility().setName("Technician").setDescription(
 			"Powers up the Pokémon's weaker moves.");
 
-	public static final PokemonAbility LEAF_GUARD = new PokemonAbility().setName("Leaf_Guard").setDescription(
+	public static final PokemonAbility LEAF_GUARD = new PokemonAbility().setName("Leaf Guard").setDescription(
 			"Prevents status problems in sunny weather.");
 
 	public static final PokemonAbility KLUTZ = new PokemonAbility().setName("Klutz").setDescription(
 			"The Pokémon can't use any held items.");
 
-	public static final PokemonAbility MOLD_BREAKER = new PokemonAbility().setName("Mold_Breaker").setDescription(
+	public static final PokemonAbility MOLD_BREAKER = new PokemonAbility().setName("Mold Breaker").setDescription(
 			"Moves can be used regardless of Abilities.");
 
-	public static final PokemonAbility SUPER_LUCK = new PokemonAbility().setName("Super_Luck").setDescription(
+	public static final PokemonAbility SUPER_LUCK = new PokemonAbility().setName("Super Luck").setDescription(
 			"Heightens the critical-hit ratios of moves.");
 
 	public static final PokemonAbility AFTERMATH = new PokemonAbility().setName("Aftermath").setDescription(
@@ -331,31 +331,31 @@ public class ClassicAbilities {
 	public static final PokemonAbility UNAWARE = new PokemonAbility().setName("Unaware").setDescription(
 			"Ignores any change in stats by the foe.");
 
-	public static final PokemonAbility TINTED_LENS = new PokemonAbility().setName("Tinted_Lens").setDescription(
+	public static final PokemonAbility TINTED_LENS = new PokemonAbility().setName("Tinted Lens").setDescription(
 			"Powers up �not very effective� moves.");
 
 	public static final PokemonAbility FILTER = new PokemonAbility().setName("Filter").setDescription(
 			"Powers down super-effective moves.");
 
-	public static final PokemonAbility SLOW_START = new PokemonAbility().setName("Slow_Start").setDescription(
+	public static final PokemonAbility SLOW_START = new PokemonAbility().setName("Slow Start").setDescription(
 			"Temporarily halves Attack and Speed.");
 
 	public static final PokemonAbility SCRAPPY = new PokemonAbility().setName("Scrappy").setDescription(
 			"Enables moves to hit Ghost-type foes.");
 
-	public static final PokemonAbility STORM_DRAIN = new PokemonAbility().setName("Storm_Drain").setDescription(
+	public static final PokemonAbility STORM_DRAIN = new PokemonAbility().setName("Storm Drain").setDescription(
 			"The Pokémon draws in all Water-type moves.");
 
-	public static final PokemonAbility ICE_BODY = new PokemonAbility().setName("Ice_Body").setDescription(
+	public static final PokemonAbility ICE_BODY = new PokemonAbility().setName("Ice Body").setDescription(
 			"The Pokémon regains HP in a hailstorm.");
 
-	public static final PokemonAbility SOLID_ROCK = new PokemonAbility().setName("Solid_Rock").setDescription(
+	public static final PokemonAbility SOLID_ROCK = new PokemonAbility().setName("Solid Rock").setDescription(
 			"Powers down super-effective moves.");
 
-	public static final PokemonAbility SNOW_WARNING = new PokemonAbility().setName("Snow_Warning").setDescription(
+	public static final PokemonAbility SNOW_WARNING = new PokemonAbility().setName("Snow Warning").setDescription(
 			"The Pokémon summons a hailstorm in battle.");
 
-	public static final PokemonAbility HONEY_GATHER = new PokemonAbility().setName("Honey_Gather").setDescription(
+	public static final PokemonAbility HONEY_GATHER = new PokemonAbility().setName("Honey Gather").setDescription(
 			"The Pokémon may gather Honey from somewhere.");
 
 	public static final PokemonAbility FRISK = new PokemonAbility().setName("Frisk").setDescription(
@@ -367,16 +367,16 @@ public class ClassicAbilities {
 	public static final PokemonAbility MULTITYPE = new PokemonAbility().setName("Multitype").setDescription(
 			"Changes type to match the held Plate.");
 
-	public static final PokemonAbility FLOWER_GIFT = new PokemonAbility().setName("Flower_Gift").setDescription(
+	public static final PokemonAbility FLOWER_GIFT = new PokemonAbility().setName("Flower Gift").setDescription(
 			"Powers up party Pokémon when it is sunny.");
 
-	public static final PokemonAbility BAD_DREAMS = new PokemonAbility().setName("Bad_Dreams").setDescription(
+	public static final PokemonAbility BAD_DREAMS = new PokemonAbility().setName("Bad Dreams").setDescription(
 			"Reduces a sleeping foe's HP.");
 
 	public static final PokemonAbility PICKPOCKET = new PokemonAbility().setName("Pickpocket").setDescription(
 			"Steals attacking Pokémon's held item on contact.");
 
-	public static final PokemonAbility SHEER_FORCE = new PokemonAbility().setName("Sheer_Force").setDescription(
+	public static final PokemonAbility SHEER_FORCE = new PokemonAbility().setName("Sheer Force").setDescription(
 			"Strengthens moves with extra effects to 1.3� their power, but prevents their extra effects.");
 
 	public static final PokemonAbility CONTRARY = new PokemonAbility().setName("Contrary").setDescription(
@@ -391,31 +391,31 @@ public class ClassicAbilities {
 	public static final PokemonAbility DEFEATIST = new PokemonAbility().setName("Defeatist").setDescription(
 			"Halves Attack and Special Attack below 50% HP.");
 
-	public static final PokemonAbility CURSED_BODY = new PokemonAbility().setName("Cursed_Body").setDescription(
+	public static final PokemonAbility CURSED_BODY = new PokemonAbility().setName("Cursed Body").setDescription(
 			"Has a 30% chance of Disabling any move that hits the Pokémon.");
 
 	public static final PokemonAbility HEALER = new PokemonAbility().setName("Healer").setDescription(
 			"Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.");
 
-	public static final PokemonAbility FRIEND_GUARD = new PokemonAbility().setName("Friend_Guard").setDescription(
+	public static final PokemonAbility FRIEND_GUARD = new PokemonAbility().setName("Friend Guard").setDescription(
 			"Decreases damage inflicted against ally Pokémon.");
 
-	public static final PokemonAbility WEAK_ARMOR = new PokemonAbility().setName("Weak_Armor").setDescription(
+	public static final PokemonAbility WEAK_ARMOR = new PokemonAbility().setName("Weak Armor").setDescription(
 			"Raises Speed and lowers Defense by one stage each upon being hit by any move.");
 
-	public static final PokemonAbility HEAVY_METAL = new PokemonAbility().setName("Heavy_Metal").setDescription(
+	public static final PokemonAbility HEAVY_METAL = new PokemonAbility().setName("Heavy Metal").setDescription(
 			"Doubles the Pokémon's weight.");
 
-	public static final PokemonAbility LIGHT_METAL = new PokemonAbility().setName("Light_Metal").setDescription(
+	public static final PokemonAbility LIGHT_METAL = new PokemonAbility().setName("Light Metal").setDescription(
 			"Halves the Pokémon's weight.");
 
 	public static final PokemonAbility MULTISCALE = new PokemonAbility().setName("Multiscale").setDescription(
 			"Halves damage taken from full HP.");
 
-	public static final PokemonAbility TOXIC_BOOST = new PokemonAbility().setName("Toxic_Boost").setDescription(
+	public static final PokemonAbility TOXIC_BOOST = new PokemonAbility().setName("Toxic Boost").setDescription(
 			"Increases Attack to 1.5� when poisoned.");
 
-	public static final PokemonAbility FLARE_BOOST = new PokemonAbility().setName("Flare_Boost").setDescription(
+	public static final PokemonAbility FLARE_BOOST = new PokemonAbility().setName("Flare Boost").setDescription(
 			"Increases Special Attack to 1.5� when burned.");
 
 	public static final PokemonAbility HARVEST = new PokemonAbility().setName("Harvest").setDescription(
@@ -430,19 +430,19 @@ public class ClassicAbilities {
 	public static final PokemonAbility OVERCOAT = new PokemonAbility().setName("Overcoat").setDescription(
 			"Protects against damage from weather.");
 
-	public static final PokemonAbility POISON_TOUCH = new PokemonAbility().setName("Poison_Touch").setDescription(
+	public static final PokemonAbility POISON_TOUCH = new PokemonAbility().setName("Poison Touch").setDescription(
 			"Has a 30% chance of poisoning Pokémon upon contact when attacking.");
 
 	public static final PokemonAbility REGENERATOR = new PokemonAbility().setName("Regenerator").setDescription(
 			"Heals for 1/3 max HP upon leaving battle.");
 
-	public static final PokemonAbility BIG_PECKS = new PokemonAbility().setName("Big_Pecks").setDescription(
+	public static final PokemonAbility BIG_PECKS = new PokemonAbility().setName("Big Pecks").setDescription(
 			"Protects the Pokémon from Defense-lowering attacks.");
 
-	public static final PokemonAbility SAND_RUSH = new PokemonAbility().setName("Sand_Rush").setDescription(
+	public static final PokemonAbility SAND_RUSH = new PokemonAbility().setName("Sand Rush").setDescription(
 			"Doubles Speed during a sandstorm.");
 
-	public static final PokemonAbility WONDER_SKIN = new PokemonAbility().setName("Wonder_Skin").setDescription(
+	public static final PokemonAbility WONDER_SKIN = new PokemonAbility().setName("Wonder Skin").setDescription(
 			"Has a 50% chance of protecting against non-damaging moves that inflict major status ailments.");
 
 	public static final PokemonAbility ANALYTIC = new PokemonAbility().setName("Analytic").setDescription(
@@ -469,25 +469,25 @@ public class ClassicAbilities {
 	public static final PokemonAbility RATTLED = new PokemonAbility().setName("Rattled").setDescription(
 			"Raises Speed one stage upon being hit by a Dark, Ghost, or Bug move.");
 
-	public static final PokemonAbility MAGIC_BOUNCE = new PokemonAbility().setName("Magic_Bounce").setDescription(
+	public static final PokemonAbility MAGIC_BOUNCE = new PokemonAbility().setName("Magic Bounce").setDescription(
 			"Reflects most non-damaging moves back at their user.");
 
-	public static final PokemonAbility SAP_SIPPER = new PokemonAbility().setName("Sap_Sipper").setDescription(
+	public static final PokemonAbility SAP_SIPPER = new PokemonAbility().setName("Sap Sipper").setDescription(
 			"Absorbs Grass moves, raising Attack one stage.");
 
 	public static final PokemonAbility PRANKSTER = new PokemonAbility().setName("Prankster").setDescription(
 			"Raises non-damaging moves' priority by one stage.");
 
-	public static final PokemonAbility SAND_FORCE = new PokemonAbility().setName("Sand_Force").setDescription(
+	public static final PokemonAbility SAND_FORCE = new PokemonAbility().setName("Sand Force").setDescription(
 			"Strengthens Rock, Ground, and Steel moves to 1.3� their power during a sandstorm.");
 
-	public static final PokemonAbility IRON_BARBS = new PokemonAbility().setName("Iron_Barbs").setDescription(
+	public static final PokemonAbility IRON_BARBS = new PokemonAbility().setName("Iron Barbs").setDescription(
 			"Damages attacking Pokémon for 1/8 their max HP on contact.");
 
-	public static final PokemonAbility ZEN_MODE = new PokemonAbility().setName("Zen_Mode").setDescription(
+	public static final PokemonAbility ZEN_MODE = new PokemonAbility().setName("Zen Mode").setDescription(
 			"Changes the Pokémon's shape when HP is halved.");
 
-	public static final PokemonAbility VICTORY_STAR = new PokemonAbility().setName("Victory_Star").setDescription(
+	public static final PokemonAbility VICTORY_STAR = new PokemonAbility().setName("Victory Star").setDescription(
 			"Raises moves' accuracy to 1.1� for friendly Pokémon.");
 
 	public static final PokemonAbility TURBOBLAZE = new PokemonAbility().setName("Turboblaze").setDescription(

@@ -5,10 +5,20 @@ import java.util.Map;
 
 import org.jpokemon.pmapi.JPokemonError;
 
-public class SimpleAbilityManager {
-	private static final Map<String, PokemonAbility> abilityMap = new HashMap<String, PokemonAbility>();
+/**
+ * Defines a "simplest-possible" implementation of the {@link AbilityManager}
+ * interface.<br>
+ * <br>
+ * Important: this manager loads no types by default.
+ */
+public class SimpleAbilityManager implements AbilityManager {
+	/** */
+	private static final AbilityManager instance = new SimpleAbilityManager();
 
-	public static void registerAbility(PokemonAbility ability) throws JPokemonError {
+	private final Map<String, PokemonAbility> abilityMap = new HashMap<String, PokemonAbility>();
+
+	@Override
+	public void registerAbility(PokemonAbility ability) throws JPokemonError {
 		if (ability == null) {
 			throw new JPokemonError("Cannot register a null ability");
 		}
@@ -22,12 +32,19 @@ public class SimpleAbilityManager {
 		abilityMap.put(ability.getName(), ability);
 	}
 
-	public static boolean isRegistered(PokemonAbility ability) {
+	@Override
+	public boolean isRegistered(PokemonAbility ability) {
 		return abilityMap.containsValue(ability);
 	}
 
-	public static PokemonAbility getByName(String name) {
+	@Override
+	public PokemonAbility getByName(String name) {
 		return abilityMap.get(name);
+	}
+
+	/** Gets the singleton instance of this class */
+	public static AbilityManager getInstance() {
+		return instance;
 	}
 
 	/** Provides a private constructor. */

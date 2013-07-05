@@ -1,5 +1,10 @@
 package org.jpokemon.pmapi.pokemon.ability;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
+import org.jpokemon.pmapi.JPokemonError;
+
 public class ClassicAbilities {
 	public static final PokemonAbility CACOPHONY = new PokemonAbility().setName("Cacophony").setDescription(
 			"Avoids sound-based moves.");
@@ -495,4 +500,29 @@ public class ClassicAbilities {
 
 	public static final PokemonAbility TERAVOLT = new PokemonAbility().setName("Teravolt").setDescription(
 			"Moves can be used regardless of Abilities.");
+
+	/**
+	 * Registers all internal {@link PokemonAbility}s with the specified manager.
+	 * 
+	 * @param manager The manager to register with
+	 * 
+	 * @throws JPokemonError If the manager throws an error during
+	 *           {@link AbilityManager#registerAbility(PokemonAbility)
+	 *           AbilityManager.registerAbility}
+	 */
+	public static void init(AbilityManager manager) {
+		for (Field field : ClassicAbilities.class.getFields()) {
+			try {
+				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
+					Object temp = field.get(null);
+
+					if (temp instanceof PokemonAbility) {
+						PokemonAbility ability = (PokemonAbility) temp;
+						manager.registerAbility(ability);
+					}
+				}
+			} catch (IllegalAccessException exception) {
+			}
+		}
+	}
 }

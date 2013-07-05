@@ -337,7 +337,7 @@ public class ClassicAbilities {
 			"Ignores any change in stats by the foe.");
 
 	public static final PokemonAbility TINTED_LENS = new PokemonAbility().setName("Tinted Lens").setDescription(
-			"Powers up “not very effective” moves.");
+			"Powers up \"not very effective\" moves.");
 
 	public static final PokemonAbility FILTER = new PokemonAbility().setName("Filter").setDescription(
 			"Powers down super-effective moves.");
@@ -382,7 +382,7 @@ public class ClassicAbilities {
 			"Steals attacking PokÃ©mon's held item on contact.");
 
 	public static final PokemonAbility SHEER_FORCE = new PokemonAbility().setName("Sheer Force").setDescription(
-			"Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.");
+			"Strengthens moves with extra effects to 1.3x their power, but prevents their extra effects.");
 
 	public static final PokemonAbility CONTRARY = new PokemonAbility().setName("Contrary").setDescription(
 			"Inverts stat modifiers.");
@@ -418,10 +418,10 @@ public class ClassicAbilities {
 			"Halves damage taken from full HP.");
 
 	public static final PokemonAbility TOXIC_BOOST = new PokemonAbility().setName("Toxic Boost").setDescription(
-			"Increases Attack to 1.5× when poisoned.");
+			"Increases Attack to 1.5x when poisoned.");
 
 	public static final PokemonAbility FLARE_BOOST = new PokemonAbility().setName("Flare Boost").setDescription(
-			"Increases Special Attack to 1.5× when burned.");
+			"Increases Special Attack to 1.5x when burned.");
 
 	public static final PokemonAbility HARVEST = new PokemonAbility().setName("Harvest").setDescription(
 			"Restores any held Berry after the turn on which it is used.");
@@ -484,7 +484,7 @@ public class ClassicAbilities {
 			"Raises non-damaging moves' priority by one stage.");
 
 	public static final PokemonAbility SAND_FORCE = new PokemonAbility().setName("Sand Force").setDescription(
-			"Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm.");
+			"Strengthens Rock, Ground, and Steel moves to 1.3x their power during a sandstorm.");
 
 	public static final PokemonAbility IRON_BARBS = new PokemonAbility().setName("Iron Barbs").setDescription(
 			"Damages attacking PokÃ©mon for 1/8 their max HP on contact.");
@@ -493,7 +493,7 @@ public class ClassicAbilities {
 			"Changes the PokÃ©mon's shape when HP is halved.");
 
 	public static final PokemonAbility VICTORY_STAR = new PokemonAbility().setName("Victory Star").setDescription(
-			"Raises moves' accuracy to 1.1× for friendly PokÃ©mon.");
+			"Raises moves' accuracy to 1.1x for friendly PokÃ©mon.");
 
 	public static final PokemonAbility TURBOBLAZE = new PokemonAbility().setName("Turboblaze").setDescription(
 			"Moves can be used regardless of Abilities.");

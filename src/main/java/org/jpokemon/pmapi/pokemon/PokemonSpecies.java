@@ -2,6 +2,7 @@ package org.jpokemon.pmapi.pokemon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.jpokemon.pmapi.pokemon.evolution.PokemonEvolution;
 import org.jpokemon.pmapi.type.PokemonType;
@@ -11,11 +12,9 @@ import org.jpokemon.pmapi.util.ExperienceCurve;
  * Defines a Pokemon species. Note that this refers to an object like 
  * `Bublasaur` and not the tag `Seed Pokemon`.
  *
- * To reduce clutter, `base stats` are kept in a seven-element array.
+ * @author atheriel@gmail.com
  *
- * @author Atheriel
- *
- * @since  Alpha
+ * @since  0.1
  */
 public class PokemonSpecies {
 	/** Indicates this species' number in the National Pokédex. */
@@ -61,10 +60,10 @@ public class PokemonSpecies {
 	protected String dexEntry;
 
 	/** Indicates the base stats (hp, atk, def, satk, sdef, spd, exp) for this species. */
-	protected int[] baseStats;
+	protected Map<String, Integer> baseStats;
 
 	/** Indicates the EVs gained (hp, atk, def, satk, sdef, spd) from defeating this species. */
-	protected int[] eVals;
+	protected Map<String, Integer> effortValues;
 
 	/** Indicates the number of steps required to hatch an egg of this species. */
 	protected int steps;
@@ -102,11 +101,8 @@ public class PokemonSpecies {
 	/** Indicates the moves learned at a given level by this species. */
 	protected HashMap<Integer, String> moveList;
 
-
-	/** Provides the default constructor. Initializes the base stats array. */
+	/** Provides the default constructor. */
 	public PokemonSpecies() {
-		baseStats = new int[7];
-		eVals = new int[6];
 	}
 
 	/** Get the Pokédex number for this species. */
@@ -199,7 +195,7 @@ public class PokemonSpecies {
 		this.secondaryAbility = ability;
 	}
 	
-		/** Checks if this species has a secondary ability. */
+	/** Checks if this species has a dreamworld (hidden) ability. */
 	public boolean hasDreamAbility() {
 		return (!dreamAbility.equalsIgnoreCase(primaryAbility));
 	}
@@ -274,113 +270,98 @@ public class PokemonSpecies {
 		this.steps = steps;
 	}
 
-	/** Gets the base HP stat for this species. */
-	public int getBaseHp() {
-		return baseStats[0];
+	/** 
+	 * Gets a base stat with the given name for this species. Note that an 
+	 * invalid key will retrieve a value of 0.
+	 * 
+	 * @param  name The name of the base stat, e.g. "Attack".
+	 * @return      The integer value of the base stat, e.g. 47.
+	 */
+	public int getBaseStat(String name) {
+		if (baseStats == null) {
+			return 0;
+		} else if (!baseStats.containsKey(name)) {
+			return 0;
+		}
+		return baseStats.get(name);
 	}
 
-	/** Sets the base HP stat for this species. */
-	public void setBaseHp(int hp) {
-		baseStats[0] = hp;
-	}
-
-	/** Gets the base Attack stat for this species. */
-	public int getBaseAtk() {
-		return baseStats[1];
-	}
-
-	/** Sets the base Attack stat for this species. */
-	public void setBaseAtk(int atk) {
-		baseStats[1] = atk;
-	}
-
-	/** Gets the base Defense stat for this species. */
-	public int getBaseDef() {
-		return baseStats[2];
-	}
-
-	/** Sets the base Defense stat for this species. */
-	public void setBaseDef(int def) {
-		baseStats[2] = def;
-	}
-
-	/** Gets the base Special Attack stat for this species. */
-	public int getBaseSpAtk() {
-		return baseStats[3];
-	}
-
-	/** Sets the base Special Attack stat for this species. */
-	public void setBaseSpAtk(int satk) {
-		baseStats[3] = satk;
-	}
-
-	/** Gets the base Special Defense stat for this species. */
-	public int getBaseSpDef() {
-		return baseStats[4];
-	}
-
-	/** Sets the base Special Defense stat for this species. */
-	public void setBaseSpDef(int sdef) {
-		baseStats[4] = sdef;
-	}
-
-	/** Gets the base Speed stat for this species. */
-	public int getBaseSpeed() {
-		return baseStats[5];
-	}
-
-	/** Sets the base Speed stat for this species. */
-	public void setBaseSpeed(int spd) {
-		baseStats[5] = spd;
-	}
-
-	/** Gets the base experience awarded for defeating this species. */
-	public int getBaseExp() {
-		return baseStats[6];
-	}
-
-	/** Sets the base experience awarded for defeating this species. */
-	public void setBaseExp(int exp) {
-		baseStats[6] = exp;
+	/** 
+	 * Sets a base stat with the given name for this species. Instantiates the 
+	 * base stat map if necessary.
+	 * 
+	 * @param name  The name of the base stat, e.g. "Attack".
+	 * @param value The integer value of the base stat, e.g. 47.
+	 */
+	public void setBaseStat(String name, int value) {
+		if (baseStats == null) {
+			baseStats = new HashMap<String, Integer>();
+		}
+		baseStats.put(name, value);
 	}
 
 	/**
-	 * Gets the base stats for this species.
-	 *
-	 * @return An array of seven integers: hp, atk, def, satk, sdef, spd, and 
-	 *         exp.
+	 * Gets the base stats for this species as a map of name keys to integer 
+	 * values.
 	 */
-	public int[] getBaseStats() {
+	public Map<String, Integer> getBaseStats() {
 		return baseStats;
 	}
 
 	/**
 	 * Sets the base stats for this species.
 	 * 
-	 * @param  baseStats An array of seven integers: hp, atk, def, satk, sdef, 
-	 *                   spd, and exp.
+	 * @param  baseStats A map of name keys to integer values.
 	 */
-	public void setBaseStats(int[] baseStats) {
+	public void setBaseStats(Map<String, Integer> baseStats) {
 		this.baseStats = baseStats;
 	}
 
-	/**
-	 * Gets the effort values gained from defeating this species.
-	 *
-	 * @return An array of six integers: hp, atk, def, satk, sdef, and spd.
+	/** 
+	 * Gets the effort value with a given name awarded for defeating this 
+	 * species. Note that an invalid key will retrieve a value of 0.
+	 * 
+	 * @param  name The name of the effort value, typicaly a base stat.
+	 * @return      The integer value of the EV, e.g. 3.
 	 */
-	public int[] getEVals() {
-		return eVals;
+	public int getEffortValue(String name) {
+		if (effortValues == null) {
+			return 0;
+		} else if (!effortValues.containsKey(name)) {
+			return 0;
+		}
+		return effortValues.get(name);
+	}
+
+	/** 
+	 * Sets the effort value with a given name awarded for defeating this 
+	 * species. Instantiates the effort value map if necessary.
+	 * 
+	 * @param name  The name of the effort value, typicaly a base stat.
+	 * @param value The integer value of the EV, e.g. 3.
+	 */
+	public void setEffortValue(String name, int value) {
+		if (effortValues == null) {
+			effortValues = new HashMap<String, Integer>();
+		}
+		effortValues.put(name, value);
 	}
 
 	/**
-	 * Sets the effort values gained from defeating this species.
-	 * 
-	 * @param  eVals An array of six integers: hp, atk, def, satk, sdef, and
-	 *               spd.
+	 * Gets the effort values awarded for defeating this species as a map of 
+	 * name keys to integer values.
 	 */
-	public void setEVals(int[] eVals) {
-		this.eVals = eVals;
+	public Map<String, Integer> getEffortValues() {
+		return effortValues;
+	}
+
+	/**
+	 * Sets the effort values awarded for defeating this species.
+	 * 
+	 * @param  effortValues A map of name keys to integer values.
+	 */
+	public void setEffortValues(Map<String, Integer> effortValues) {
+		this.effortValues = effortValues;
 	}
 
 	/** Checks whether this species is genderless. */

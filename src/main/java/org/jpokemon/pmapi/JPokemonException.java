@@ -6,7 +6,6 @@ import java.lang.Exception;
  * Provides an exception that can be thrown when this library is misused.
  */
 public class JPokemonException extends Exception {
-
 	/** Constructs a new JPokemonException. */
 	public JPokemonException() {
 		super();
@@ -16,4 +15,6 @@ public class JPokemonException extends Exception {
 	public JPokemonException(String message) {
 		super(message);
 	}
+
+	private static final long serialVersionUID = 1L;
 }

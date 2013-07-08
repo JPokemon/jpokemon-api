@@ -2,8 +2,6 @@ package org.jpokemon.pmapi.item;
 
 import java.util.HashMap;
 
-import org.jpokemon.pmapi.JPokemonError;
-
 /**
  * Defines a basic item. This class provides the most basic attributes that all
  * items in a Pokémon game are likely to share. To create your own items, you 
@@ -70,11 +68,9 @@ public class Item {
 	}
 
 	/** Sets the name of this item. */
-	public void setName(String name) {
+	public Item setName(String name) {
 		this.name = name;
-		if (manager != null) {
-			manager.registerItem(this);
-		}
+		return this;
 	}
 
 	/** Gets the description of this item. */
@@ -83,8 +79,9 @@ public class Item {
 	}
 
 	/** Sets the description of this item. */
-	public void setDescription(String description) {
+	public Item setDescription(String description) {
 		this.description = description;
+		return this;
 	}
 
 	/** Checks whether this item is sellable to a vendor. */
@@ -93,8 +90,9 @@ public class Item {
 	}
 
 	/** Sets whether this item is sellable to a vendor. */
-	public void setSellable(boolean sellable) {
+	public Item setSellable(boolean sellable) {
 		this.sellable = sellable;
+		return this;
 	}
 
 	/** Gets the sale price for this item. */
@@ -103,8 +101,9 @@ public class Item {
 	}
 
 	/** Sets the sale price for this item. */
-	public void setSalePrice(int salePrice) {
+	public Item setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
+		return this;
 	}
 
 	/** Checks whether this item is usable outside of battle. */
@@ -113,8 +112,9 @@ public class Item {
 	}
 
 	/** Sets whether this item is usable outside of battle. */
-	public void setUsableOutsideBattle(boolean usableOutsideBattle) {
+	public Item setUsableOutsideBattle(boolean usableOutsideBattle) {
 		this.usableOutsideBattle = usableOutsideBattle;
+		return this;
 	}
 
 	/** Checks whether this item is usable during battle. */
@@ -123,8 +123,9 @@ public class Item {
 	}
 
 	/** Sets whether this item is usable during battle. */
-	public void setUsableDuringBattle(boolean usableDuringBattle) {
+	public Item setUsableDuringBattle(boolean usableDuringBattle) {
 		this.usableDuringBattle = usableDuringBattle;
+		return this;
 	}
 
 	/** Checks whether this item is consumed upon use. */
@@ -133,8 +134,9 @@ public class Item {
 	}
 
 	/** Sets whether this item is consumed upon use. */
-	public void setConsumable(boolean consumable) {
+	public Item setConsumable(boolean consumable) {
 		this.consumable = consumable;
+		return this;
 	}
 
 	/** Checks whether this item can be held by a Pokémon. */
@@ -143,8 +145,9 @@ public class Item {
 	}
 
 	/** Sets whether this item can be held by a Pokémon. */
-	public void setHoldable(boolean holdable) {
+	public Item setHoldable(boolean holdable) {
 		this.holdable = holdable;
+		return this;
 	}
 
 	/** Checks whether this item has a passive effect when held by a Pokémon. */
@@ -153,8 +156,9 @@ public class Item {
 	}
 
 	/** Sets whether this item has a passive effect when held by a Pokémon. */
-	public void setPassiveHoldEffect(boolean passiveHoldEffect) {
+	public Item setPassiveHoldEffect(boolean passiveHoldEffect) {
 		this.passiveHoldEffect = passiveHoldEffect;
+		return this;
 	}
 
 	/** Checks whether this item has an active effect when held by a Pokémon. */
@@ -163,8 +167,9 @@ public class Item {
 	}
 
 	/** Sets whether this item has an active effect when held by a Pokémon. */
-	public void setActiveHoldEffect(boolean activeHoldEffect) {
+	public Item setActiveHoldEffect(boolean activeHoldEffect) {
 		this.activeHoldEffect = activeHoldEffect;
+		return this;
 	}
 
 	/** Checks if the item has an attribute of the given name. */
@@ -176,14 +181,14 @@ public class Item {
 	}
 
 	/** Adds an attribute to the item. It must have a distinct name. */
-	public ItemAttribute addAttribute(String name, ItemAttribute attribute) {
+	public Item addAttribute(String name, ItemAttribute attribute) {
 		if (attributes == null) {
 			attributes = new HashMap<String, ItemAttribute>();
 		}
 		if (!attributes.containsKey(name)) {
 			attributes.put(name, attribute);			
 		}
-		return attribute;
+		return this;
 	}
 
 	/**

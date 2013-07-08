@@ -21,14 +21,14 @@ public interface ItemManager {
 	 *
 	 * @throws JPokemonError if there is an error registering the type.
 	 */
-	public abstract boolean registerItem(Item item) throws JPokemonError;
+	public boolean registerItem(Item item) throws JPokemonError;
 
 	/**
 	 * Checks if an item is registered with the manager.
 	 *
 	 * @return `true` if the item is known to the manager.
 	 */
-	public abstract boolean isRegistered(Item item);
+	public boolean isRegistered(Item item);
 
 	/**
 	 * Gets an item registered by this manager by name.
@@ -37,5 +37,5 @@ public interface ItemManager {
 	 * 
 	 * @return      The {@link Item} instance for this item.
 	 */
-	public abstract Item getItemByName(String name);
+	public Item getItemByName(String name);
 }

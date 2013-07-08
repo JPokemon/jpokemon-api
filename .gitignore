@@ -23,6 +23,7 @@ docs/cache
 #################
 .project
 .classpath
+*.prefs
 
 # Intellij files #
 ##################

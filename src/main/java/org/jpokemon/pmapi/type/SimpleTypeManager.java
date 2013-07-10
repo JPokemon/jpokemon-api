@@ -11,8 +11,6 @@ import org.jpokemon.pmapi.JPokemonError;
  * the {@link ClassicTypes} class.
  */
 public class SimpleTypeManager implements TypeManager {
-	private static final TypeManager instance = new SimpleTypeManager();
-
 	private final Map<String, PokemonType> typeList = new HashMap<String, PokemonType>();
 
 	@Override
@@ -40,9 +38,12 @@ public class SimpleTypeManager implements TypeManager {
 		return typeList.get(name);
 	}
 
-	/** Gets the singleton instance of this class */
-	public static TypeManager getInstance() {
-		return instance;
+	public static void init() {
+		if (PokemonType.manager != null) {
+			throw new JPokemonError("PokemonType.manager already defined.");
+		}
+
+		PokemonType.manager = new SimpleTypeManager();
 	}
 
 	/** Provides the private constructor. */

@@ -8,8 +8,8 @@ import org.jpokemon.pmapi.JPokemonError;
 /**
  * Defines the list of the 17 classic Pokémon types. This class functions very
  * much like an enum, providing constants that can be referenced by Moves and
- * Species, and also provides the functionality of a {@link TypeManager}
- * 
+ * Species, and also provides the functionality of a {@link TypeManager}. <br />
+ * <br />
  * If you wish to add a new type, simply instantiate one and give it a name. To
  * modify a type, you can modify the static field of this class that refers to
  * it, or retrieve the instance by name with `getType`. Both are equivalent.
@@ -68,7 +68,8 @@ public class ClassicTypes {
 	/** Provides the classic type `GROUND`. */
 	public static final PokemonType GROUND = new PokemonType().setName("Ground")
 			.setSuperEffectiveAgainst("Fire", "Electric", "Poison", "Rock", "Steel")
-			.setNotVeryEffectiveAgainst("Bug", "Grass").setIneffectiveAgainst("Flying");
+			.setNotVeryEffectiveAgainst("Bug", "Grass")
+			.setIneffectiveAgainst("Flying");
 
 	/** Provides the classic type `FLYING`. */
 	public static final PokemonType FLYING = new PokemonType().setName("Flying")
@@ -111,14 +112,11 @@ public class ClassicTypes {
 	public static final PokemonType STEEL = new PokemonType().setName("Steel")
 			.setSuperEffectiveAgainst("Ice", "Rock")
 			.setNotVeryEffectiveAgainst("Fire", "Water", "Electric", "Steel");
-
 	/**
-	 * Initializes the classic types, and registers them with the specified
-	 * manager
-	 * 
-	 * @param manager The manager to register with
+	 * Initializes the classic types, and registers them with the
+	 * {@link PokemonType#manager}
 	 */
-	public static void init(TypeManager manager) {
+	public static void init() {
 		for (Field field : ClassicTypes.class.getFields()) {
 			try {
 				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
@@ -126,7 +124,7 @@ public class ClassicTypes {
 
 					if (temp instanceof PokemonType) {
 						PokemonType type = (PokemonType) temp;
-						manager.registerType(type);
+						PokemonType.manager.registerType(type);
 					}
 				}
 			} catch (IllegalAccessException exception) {

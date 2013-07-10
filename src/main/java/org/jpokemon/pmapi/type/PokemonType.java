@@ -22,8 +22,8 @@ import java.util.Map;
  */
 public class PokemonType {
 	/**
-	 * Indicates the manager that registers types; must be set before types can 
-	 * be instantiated.
+	 * Indicates the manager that registers types; must be set before types can be
+	 * instantiated.
 	 */
 	public static TypeManager manager = null;
 
@@ -55,8 +55,8 @@ public class PokemonType {
 	}
 
 	/** Gets the list of types this type is super-effective against by name. */
-	public String[] getSuperEffectiveAgainst() {
-		return (String[]) this.getEffectivenessList(TypeEffectiveness.SUPER).toArray();
+	public List<String> getSuperEffectiveAgainst() {
+		return this.getEffectivenessList(TypeEffectiveness.SUPER);
 	}
 
 	/** Sets the list of types this type is super-effective against by name. */
@@ -65,14 +65,14 @@ public class PokemonType {
 		return this;
 	}
 
-	/** 
+	/**
 	 * Gets the list of types this type is not very effective against by name.
 	 */
-	public String[] getNotVeryEffectiveAgainst() {
-		return (String[]) this.getEffectivenessList(TypeEffectiveness.NOT_VERY).toArray();
+	public List<String> getNotVeryEffectiveAgainst() {
+		return this.getEffectivenessList(TypeEffectiveness.NOT_VERY);
 	}
 
-	/** 
+	/**
 	 * Sets the list of types this type is not very effective against by name.
 	 */
 	public PokemonType setNotVeryEffectiveAgainst(String... notVeryEffectiveAgainst) {
@@ -81,8 +81,8 @@ public class PokemonType {
 	}
 
 	/** Gets the list of types this type is ineffective against by name. */
-	public String[] getIneffectiveAgainst() {
-		return (String[]) this.getEffectivenessList(TypeEffectiveness.INEFFECTIVE).toArray();
+	public List<String> getIneffectiveAgainst() {
+		return this.getEffectivenessList(TypeEffectiveness.INEFFECTIVE);
 	}
 
 	/** Sets the list of types this type is ineffective against by name. */
@@ -116,8 +116,8 @@ public class PokemonType {
 	}
 
 	/**
-	 * Checks whether this type is not very effective against a type of the 
-	 * given name.
+	 * Checks whether this type is not very effective against a type of the given
+	 * name.
 	 */
 	public boolean isNotVeryEffectiveAgainst(String typeName) {
 		if (typeName == null) {
@@ -134,7 +134,7 @@ public class PokemonType {
 		return isIneffectiveAgainst(type.getName());
 	}
 
-	/** 
+	/**
 	 * Checks whether this type is ineffective against a type of the given name.
 	 */
 	public boolean isIneffectiveAgainst(String typeName) {

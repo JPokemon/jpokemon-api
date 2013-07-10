@@ -1,6 +1,5 @@
 package org.jpokemon.pmapi.pokemon.nature;
 
-import org.jpokemon.pmapi.util.Stat;
 import org.jpokemon.pmapi.util.Taste;
 
 /**
@@ -16,8 +15,7 @@ import org.jpokemon.pmapi.util.Taste;
  * @since 0.1
  */
 public class PokemonNature {
-	protected String name;
-	protected Stat increased, decreased;
+	protected String name, increasedStat, decreasedStat;
 	protected Taste favorite, disliked;
 
 	/** Provides the default constructor. */
@@ -36,24 +34,24 @@ public class PokemonNature {
 	}
 
 	/** Gets the stat increased by this nature. */
-	public Stat getStatIncreased() {
-		return increased;
+	public String getStatIncreased() {
+		return increasedStat;
 	}
 
 	/** Sets the stat increased by this nature. */
-	public PokemonNature setStatIncreased(Stat stat) {
-		this.increased = stat;
+	public PokemonNature setStatIncreased(String stat) {
+		this.increasedStat = stat;
 		return this;
 	}
 
 	/** Gets the stat decreased by this nature. */
-	public Stat getStatDecreased() {
-		return decreased;
+	public String getStatDecreased() {
+		return decreasedStat;
 	}
 
 	/** Sets the stat decreased by this nature. */
-	public PokemonNature setStatDecreased(Stat stat) {
-		this.decreased = stat;
+	public PokemonNature setStatDecreased(String stat) {
+		this.decreasedStat = stat;
 		return this;
 	}
 
@@ -85,11 +83,11 @@ public class PokemonNature {
 	 * @deprecated Use {@link #getStatIncreased} or
 	 * 	       {@link #getStatDecreased} instead.
 	 */
-	public float getStatModifier(Stat stat) {
-		if (increased.equals(stat)) {
+	public float getStatModifier(String stat) {
+		if (increasedStat.equals(stat)) {
 			return 1.1f;
 		}
-		else if (decreased.equals(stat)) {
+		else if (decreasedStat.equals(stat)) {
 			return 0.9f;
 		}
 		return 1.0f;

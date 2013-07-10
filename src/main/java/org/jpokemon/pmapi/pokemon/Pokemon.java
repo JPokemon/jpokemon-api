@@ -2,7 +2,9 @@ package org.jpokemon.pmapi.pokemon;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jpokemon.pmapi.move.MoveInstance;
 
@@ -25,6 +27,9 @@ public class Pokemon {
 
 	/** Indicates the moves of this Pokémon */
 	protected List<MoveInstance> moves = new ArrayList<MoveInstance>();
+
+	/** Indicates the stats of this Pokémon */
+	protected Map<String, Stat> stats = new HashMap<String, Stat>();
 
 	/** Provides the default constructor. */
 	public Pokemon() {
@@ -61,8 +66,45 @@ public class Pokemon {
 		return Collections.unmodifiableList(moves);
 	}
 
+	/** Removes a move from this Pokémon's move set at the specified index */
+	public MoveInstance removeMove(int index) {
+		if (index >= moves.size() || index < 0) {
+			return null;
+		}
+
+		return moves.remove(index);
+	}
+
+	/** Removes the specified MoveInstance from this Pokémon's move set */
 	public Pokemon removeMove(MoveInstance move) {
 		moves.remove(move);
 		return this;
+	}
+
+	/** Adds a Stat to this Pokémon with the specified name */
+	public Pokemon addStat(String name, Stat stat) {
+		stats.put(name, stat);
+		return this;
+	}
+
+	/** Gets a Stat from this Pokémon using the specified name */
+	public Stat getStat(String name) {
+		return stats.get(name);
+	}
+
+	/** Gets the stats associated with this Pokémon as a list */
+	public List<Stat> getStats() {
+		List<Stat> statList = new ArrayList<Stat>();
+
+		for (Stat s : stats.values()) {
+			statList.add(s);
+		}
+
+		return statList;
+	}
+
+	/** Removes a Stat with the specified name from this Pokémon. */
+	public Stat removeStat(String name) {
+		return stats.remove(name);
 	}
 }

@@ -1,13 +1,11 @@
 package org.jpokemon.pmapi.pokemon.nature;
 
-import org.jpokemon.pmapi.util.Taste;
-
 /**
  * Defines a nature (personality) for a Pokémon. The 25 classic natures are
  * instantiated in the {@link ClassicNatures} class.
  * 
- * To define your own nature, construct an instance of this class. If you want
- * to add attributes to the nature, it can also be extended.
+ * To define your own nature, construct instances of this class. If you want to
+ * add attributes to the nature, it can also be extended.
  * 
  * @author Atheriel
  * @author Zach Taylor
@@ -15,8 +13,9 @@ import org.jpokemon.pmapi.util.Taste;
  * @since 0.1
  */
 public class PokemonNature {
-	protected String name, increasedStat, decreasedStat;
-	protected Taste favorite, disliked;
+	public static NatureManager manager;
+
+	protected String name, increasedStat, decreasedStat, favoriteTaste, dislikedTaste;
 
 	/** Provides the default constructor. */
 	public PokemonNature() {
@@ -56,32 +55,32 @@ public class PokemonNature {
 	}
 
 	/** Gets the taste preference of this nature. */
-	public Taste getTasteFavorite() {
-		return favorite;
+	public String getTasteFavorite() {
+		return favoriteTaste;
 	}
 
 	/** Sets the favorite taste of this nature. */
-	public PokemonNature setTasteFavorite(Taste taste) {
-		this.favorite = taste;
+	public PokemonNature setTasteFavorite(String taste) {
+		this.favoriteTaste = taste;
 		return this;
 	}
 
 	/** Gets the disliked taste of this nature. */
-	public Taste getTasteDisliked() {
-		return disliked;
+	public String getTasteDisliked() {
+		return dislikedTaste;
 	}
 
 	/** Sets the disliked taste of this nature. */
-	public PokemonNature setTasteDisliked(Taste taste) {
-		this.disliked = taste;
+	public PokemonNature setTasteDisliked(String taste) {
+		this.dislikedTaste = taste;
 		return this;
 	}
 
 	/**
 	 * Gets the stat modifier for a given stat as a float.
 	 * 
-	 * @deprecated Use {@link #getStatIncreased} or
-	 * 	       {@link #getStatDecreased} instead.
+	 * @deprecated Use {@link #getStatIncreased} or {@link #getStatDecreased}
+	 *             instead.
 	 */
 	public float getStatModifier(String stat) {
 		if (increasedStat.equals(stat)) {

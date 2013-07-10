@@ -1,20 +1,20 @@
 package org.jpokemon.pmapi.item.attribute;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.jpokemon.pmapi.item.ItemAttribute;
-import org.jpokemon.pmapi.util.Taste;
 
 /**
  * Provides a possible attribute describing qualities of berry items, including
  * flavor, size, firmness, smoothness, and index number.
- *
+ * 
  * @author Atheriel
- *
- * @since  Alpha
+ * 
+ * @since Alpha
  */
 public class BerryAttribute implements ItemAttribute {
-	private final HashMap<Taste, Integer> flavors = new HashMap<Taste, Integer>(6);
+	private final Map<String, Integer> flavors = new HashMap<String, Integer>(6);
 	private int index;
 	private float size;
 	private String firmness;
@@ -22,11 +22,11 @@ public class BerryAttribute implements ItemAttribute {
 
 	/** Provides the default constructor. */
 	public BerryAttribute() {
-		flavors.put(Taste.BITTER, 0);
-		flavors.put(Taste.DRY, 0);
-		flavors.put(Taste.SOUR, 0);
-		flavors.put(Taste.SPICY, 0);
-		flavors.put(Taste.SWEET, 0);
+		flavors.put("Bitter", 0);
+		flavors.put("Dry", 0);
+		flavors.put("Sour", 0);
+		flavors.put("Spicy", 0);
+		flavors.put("Sweet", 0);
 	}
 
 	/** Gets the index of this berry. */
@@ -42,78 +42,78 @@ public class BerryAttribute implements ItemAttribute {
 
 	/** Gets the size of this berry. */
 	public float getSize() {
-	    return size;
+		return size;
 	}
 
 	/** Sets the size of this berry. */
 	public BerryAttribute setSize(float size) {
-	    this.size = size;
-	    return this;
+		this.size = size;
+		return this;
 	}
 
 	/** Gets the firmness of this berry. */
 	public String getFirmness() {
-	    return this.firmness;
+		return this.firmness;
 	}
 
 	/** Sets the firmness of this berry. */
 	public BerryAttribute setFirmness(String firmness) {
-	    this.firmness = firmness;
-	    return this;
+		this.firmness = firmness;
+		return this;
 	}
 
 	/** Gets the amount of bitter flavor for this berry. */
 	public int getBitterFlavor() {
-		return flavors.get(Taste.BITTER);
+		return flavors.get("Bitter");
 	}
 
 	/** Sets the amount of bitter flavor for this berry. */
 	public BerryAttribute setBitterFlavor(int flavor) {
-		flavors.put(Taste.BITTER, flavor);
+		flavors.put("Bitter", flavor);
 		return this;
 	}
 
 	/** Gets the amount of dry flavor for this berry. */
 	public int getDryFlavor() {
-		return flavors.get(Taste.DRY);
+		return flavors.get("Dry");
 	}
 
 	/** Sets the amount of dry flavor for this berry. */
 	public BerryAttribute setDryFlavor(int flavor) {
-		flavors.put(Taste.DRY, flavor);
+		flavors.put("Dry", flavor);
 		return this;
 	}
 
 	/** Gets the amount of sour flavor for this berry. */
 	public int getSourFlavor() {
-		return flavors.get(Taste.SOUR);
+		return flavors.get("Sour");
 	}
 
 	/** Sets the amount of sour flavor for this berry. */
 	public BerryAttribute setSourFlavor(int flavor) {
-		flavors.put(Taste.SOUR, flavor);
+		flavors.put("Sour", flavor);
 		return this;
 	}
 
 	/** Gets the amount of spicy flavor for this berry. */
 	public int getSpicyFlavor() {
-		return flavors.get(Taste.SPICY);
+		return flavors.get("Spicy");
 	}
 
 	/** Sets the amount of spicy flavor for this berry. */
 	public BerryAttribute setSpicyFlavor(int flavor) {
-		flavors.put(Taste.SPICY, flavor);
+		flavors.put("Spicy", flavor);
 		return this;
 	}
 
 	/** Gets the amount of sweet flavor for this berry. */
 	public int getSweetFlavor() {
-		return flavors.get(Taste.SWEET);
+		return flavors.get("Sweet");
 	}
 
 	/** Sets the amount of sweet flavor for this berry. */
 	public BerryAttribute setSweetFlavor(int flavor) {
-		flavors.put(Taste.SWEET, flavor);
+		flavors.put("Sweet", flavor);
 		return this;
 	}
 

@@ -1,4 +1,4 @@
-package org.jpokemon.api.evolution;
+package org.jpokemon.api.evolutions;
 
 import org.jpokemon.api.species.PokemonSpecies;
 

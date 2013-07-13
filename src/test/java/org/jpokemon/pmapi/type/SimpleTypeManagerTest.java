@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.type;
+package org.jpokemon.api.type;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,8 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import org.jpokemon.pmapi.type.ClassicTypes;
-import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.api.type.ClassicTypes;
+import org.jpokemon.api.type.PokemonType;
 
 /**
  * Tests type registration and some classic type properties.

@@ -1,12 +1,12 @@
-package org.jpokemon.pmapi.pokemon;
+package org.jpokemon.api.pokemon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.pmapi.pokemon.evolution.PokemonEvolution;
-import org.jpokemon.pmapi.type.PokemonType;
-import org.jpokemon.pmapi.util.ExperienceCurve;
+import org.jpokemon.api.pokemon.evolution.PokemonEvolution;
+import org.jpokemon.api.type.PokemonType;
+import org.jpokemon.api.util.ExperienceCurve;
 
 /**
  * Defines a Pokemon species. Note that this refers to an object like 

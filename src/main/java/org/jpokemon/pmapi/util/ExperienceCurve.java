@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.util;
+package org.jpokemon.api.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

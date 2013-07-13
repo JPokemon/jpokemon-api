@@ -1,10 +1,10 @@
-package org.jpokemon.pmapi.item;
+package org.jpokemon.api.item;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.jpokemon.pmapi.JPokemonError;
-import org.jpokemon.pmapi.item.attribute.PocketAttribute;
+import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.item.attribute.PocketAttribute;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

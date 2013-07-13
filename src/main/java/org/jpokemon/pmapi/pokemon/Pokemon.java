@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon;
+package org.jpokemon.api.pokemon;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.pmapi.move.MoveInstance;
+import org.jpokemon.api.move.MoveInstance;
 
 /**
  * Defines a particular instance of a Pokémon.

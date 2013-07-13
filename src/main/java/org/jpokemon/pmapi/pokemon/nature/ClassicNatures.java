@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon.nature;
+package org.jpokemon.api.pokemon.nature;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

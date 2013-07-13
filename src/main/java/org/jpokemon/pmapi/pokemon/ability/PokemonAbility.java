@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon.ability;
+package org.jpokemon.api.pokemon.ability;
 
 /**
  * Defines an ability that a Pokémon may possess.

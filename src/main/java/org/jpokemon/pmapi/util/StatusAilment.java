@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.util;
+package org.jpokemon.api.util;
 
 /**
  * Defines the six persistent status ailments a Pokémon may suffer even outside

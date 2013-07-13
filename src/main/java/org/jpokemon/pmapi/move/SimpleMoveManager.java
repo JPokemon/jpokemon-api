@@ -1,9 +1,9 @@
-package org.jpokemon.pmapi.move;
+package org.jpokemon.api.move;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link MoveManager}

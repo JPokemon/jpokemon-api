@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon.nature;
+package org.jpokemon.api.pokemon.nature;
 
 /**
  * Defines a nature (personality) for a Pokémon. The 25 classic natures are

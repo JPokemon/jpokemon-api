@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.item;
+package org.jpokemon.api.item;
 
 /**
  * Provides an interface for `attributes` that can be added to items. At this 

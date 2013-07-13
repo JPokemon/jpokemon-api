@@ -1,9 +1,9 @@
-package org.jpokemon.pmapi.type;
+package org.jpokemon.api.type;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Defines the list of the 17 classic Pokémon types. This class functions very

@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.trainer;
+package org.jpokemon.api.trainer;
 
 import java.util.ArrayList;
 

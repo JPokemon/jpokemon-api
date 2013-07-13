@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.type;
+package org.jpokemon.api.type;
 
 /**
  * Defines a "typeless" Pokémon type (the `????` type). This class will return

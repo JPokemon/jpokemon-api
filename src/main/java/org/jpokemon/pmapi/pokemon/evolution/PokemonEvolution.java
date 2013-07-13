@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.pokemon.evolution;
+package org.jpokemon.api.pokemon.evolution;
 
-import org.jpokemon.pmapi.pokemon.PokemonSpecies;
+import org.jpokemon.api.pokemon.PokemonSpecies;
 
 /**
  * Defines an abstract evolution class.

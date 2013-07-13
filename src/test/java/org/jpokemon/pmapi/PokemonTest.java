@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi;
+package org.jpokemon.api;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import org.jpokemon.pmapi.pokemon.PokemonSpecies;
+import org.jpokemon.api.pokemon.PokemonSpecies;
 
 /**
  * Tests some species properties.

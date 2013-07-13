@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.item;
+package org.jpokemon.api.item;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Provides an interface for storing and keeping track of items at runtime. The 

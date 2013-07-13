@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.move;
+package org.jpokemon.api.move;
 
-import org.jpokemon.pmapi.type.PokemonType;
+import org.jpokemon.api.type.PokemonType;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.

@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.pokemon.nature;
+package org.jpokemon.api.pokemon.nature;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Provides an interface for keeping track of {@link PokemonNature}s in an

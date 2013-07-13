@@ -1,8 +1,8 @@
-package org.jpokemon.pmapi.item;
+package org.jpokemon.api.item;
 
 import java.util.TreeMap;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link ItemManager}

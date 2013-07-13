@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon.evolution;
+package org.jpokemon.api.pokemon.evolution;
 
 /**
  * Defines an evolution that occurs at a certain level.

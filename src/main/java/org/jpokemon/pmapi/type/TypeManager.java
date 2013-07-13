@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.type;
+package org.jpokemon.api.type;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Provides an interface for keeping track of {@link PokemonTypes} in an 

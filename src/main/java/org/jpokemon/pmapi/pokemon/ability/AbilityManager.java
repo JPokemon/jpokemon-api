@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.pokemon.ability;
+package org.jpokemon.api.pokemon.ability;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Provides an interface for keeping track of {@link PokemonAbility}s in an

@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.move;
+package org.jpokemon.api.move;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 /**
  * Provides an interface for keeping track of {@link Move}s in an application.

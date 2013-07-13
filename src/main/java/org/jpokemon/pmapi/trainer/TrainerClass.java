@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.trainer;
+package org.jpokemon.api.trainer;
 
 /**
  * Defines a class of trainers (such as Youngsters or Swimmers).

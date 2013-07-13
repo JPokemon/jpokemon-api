@@ -1,9 +1,9 @@
-package org.jpokemon.pmapi.pokemon.ability;
+package org.jpokemon.api.pokemon.ability;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 public class ClassicAbilities {
 	public static final PokemonAbility CACOPHONY = new PokemonAbility().setName("Cacophony").setDescription(

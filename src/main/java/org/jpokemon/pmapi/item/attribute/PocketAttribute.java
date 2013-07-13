@@ -1,6 +1,6 @@
-package org.jpokemon.pmapi.item.attribute;
+package org.jpokemon.api.item.attribute;
 
-import org.jpokemon.pmapi.item.ItemAttribute;
+import org.jpokemon.api.item.ItemAttribute;
 
 /**
  * Provides a possible attribute describing the pocket an item belongs to. The 

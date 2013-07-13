@@ -5,13 +5,13 @@
 
     <!-- Project details -->
     <groupId>org.jpokemon</groupId>
-    <artifactId>pmapi</artifactId>
+    <artifactId>api</artifactId>
     <packaging>jar</packaging>
-    <version>Alpha</version>
-    <name>jPokémon: The Pokémon API</name>
+    <version>0.1</version>
+    <name>The jPokémon Library</name>
     <description>Provides well-documented data structures and utilities for Pokémon games written in Java.</description>
     <inceptionYear>2013</inceptionYear>
-    <url>http://atheriel.github.com/jPokemon/</url>
+    <url>https://the-jpokemon-library.readthedocs.org/</url>
 
     <!-- Project properties & definitions -->
     <properties>
@@ -30,18 +30,25 @@
 
     <!-- Source code repository -->
     <scm> 
-        <connection>scm:git:https://github.com/atheriel/jPokemon.git</connection> 
-        <developerConnection>scm:git:https://github.com/atheriel/jPokemon.git</developerConnection> 
-        <url>https://github.com/atheriel/jPokemon</url>
+        <connection>scm:git:https://github.com/JPokemon/jpokemon-lib.git</connection> 
+        <developerConnection>scm:git:https://github.com/JPokemon/jpokemon-lib.git</developerConnection> 
+        <url>https://the-jpokemon-library.readthedocs.org/</url>
     </scm>
 
     <!-- Developers -->
     <developers>
         <developer>
-            <name>Atheriel</name>
             <email>atheriel@gmail.com</email>
             <roles>
-                <role>Lead Developer</role>
+                <role>Author</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Zach Taylor</name>
+            <email>zack.taylor@gmail.com</email>
+            <roles>
+                <role>Author</role>
+                <role>Maintainer</role>
             </roles>
         </developer>
     </developers>
@@ -89,28 +96,7 @@
     <!-- Site information -->
     <reporting>
         <outputDirectory>${basedir}/site</outputDirectory>
-        <plugins>
-
-            <!-- Creates reports on changes to the source code -->
-            <plugin> 
-                <groupId>org.apache.maven.plugins</groupId> 
-                <artifactId>maven-changelog-plugin</artifactId> 
-                <version>2.2</version> 
-                <reportSets> 
-                    <reportSet> 
-                        <id>dual-report</id> 
-                        <configuration> 
-                            <type>range</type> 
-                            <range>30</range> 
-                        </configuration> 
-                        <reports> 
-                            <report>changelog</report> 
-                            <report>file-activity</report> 
-                        </reports> 
-                    </reportSet> 
-                </reportSets> 
-            </plugin>
-            
+        <plugins>            
             <!-- Javadocs report -->
             <plugin> 
                 <groupId>org.apache.maven.plugins</groupId> 
@@ -128,25 +114,6 @@
                     <noindex>true</noindex>
                     <nodeprecatedlist>true</nodeprecatedlist>
                     <quiet>true</quiet>
-
-                    <groups>
-                        <group>
-                            <title>Pokémon</title>
-                            <packages>org.jpokemon.pmapi.pokemon:org.jpokemon.pmapi.pokemon.*</packages>
-                        </group>
-                        <group>
-                            <title>Types</title>
-                            <packages>org.jpokemon.pmapi.type:org.jpokemon.pmapi.type.*</packages>
-                        </group>
-                        <group>
-                            <title>Moves, Items and Trainers</title>
-                            <packages>org.jpokemon.pmapi.move:org.jpokemon.pmapi.item:org.jpokemon.pmapi.trainer</packages>
-                        </group>
-                        <group>
-                            <title>Miscellaneous</title>
-                            <packages>org.jpokemon.pmapi.util</packages>
-                        </group>
-                    </groups>
                     
                     <stylesheetfile>${basedir}/src/main/javadoc/stylesheet.css</stylesheetfile>
                     <javadocDirectory>${basedir}/src/main/javadoc</javadocDirectory>
@@ -166,41 +133,8 @@
                         -hide java.* -collpackages java.util -qualify -postfixpackage
                         -nodefontsize 9 -nodefontpackagesize 7
                     </additionalparam> -->
-
-                    <!-- Adds the javadocs to the Report section -->
-                    <reportSets> 
-                        <reportSet> 
-                            <reports> 
-                                <report>javadoc</report> 
-                            </reports> 
-                        </reportSet> 
-                    </reportSets>
                 </configuration>
             </plugin>
-
-            <plugin> 
-                <groupId>org.apache.maven.plugins</groupId> 
-                <artifactId>maven-project-info-reports-plugin</artifactId> 
-                <version>2.6</version> 
-                <reportSets> 
-                    <reportSet> 
-                        <reports>
-                            <!-- <report>about</report> -->
-                            <!-- <report>dependency-info</report> -->
-                            <!-- <report>distribution-management</report> -->
-                            <!-- <report>issue-tracking</report>  -->
-                            <!-- <report>cim</report> -->
-                            <!-- <report>mailing-list</report>  -->
-                            <report>project-team</report>
-                            <report>plugins</report> 
-                            <report>scm</report>
-                            <report>license</report> 
-                            <report>summary</report>
-                            <report>dependencies</report> 
-                        </reports> 
-                    </reportSet> 
-                </reportSets> 
-            </plugin> 
         </plugins> 
     </reporting>
 

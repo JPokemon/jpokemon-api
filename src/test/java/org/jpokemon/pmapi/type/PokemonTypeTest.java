@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.type;
+package org.jpokemon.api.type;
 
 import static org.junit.Assert.assertTrue;
 

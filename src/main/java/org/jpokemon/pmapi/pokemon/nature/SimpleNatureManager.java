@@ -1,9 +1,9 @@
-package org.jpokemon.pmapi.pokemon.nature;
+package org.jpokemon.api.pokemon.nature;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.pmapi.JPokemonError;
+import org.jpokemon.api.JPokemonError;
 
 public class SimpleNatureManager implements NatureManager {
 

@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon.ability;
+package org.jpokemon.api.pokemon.ability;
 
 /**
  * Provides an interface for effects that can be added to abilities. Since in 

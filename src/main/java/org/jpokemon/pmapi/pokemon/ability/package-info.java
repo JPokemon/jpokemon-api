@@ -1,4 +1,4 @@
 /**
  * Provides the classes related to Pokémon abilities.
  */
-package org.jpokemon.pmapi.pokemon.ability;
+package org.jpokemon.api.pokemon.ability;

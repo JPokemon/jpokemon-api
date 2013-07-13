@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.pokemon;
+package org.jpokemon.api.pokemon;
 
 /**
  * Defines a {@link Pokemon}'s stat instance. A stat instance holds a value, ev

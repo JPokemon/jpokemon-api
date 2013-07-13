@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi.item;
+package org.jpokemon.api.item;
 
 import java.util.HashMap;
 

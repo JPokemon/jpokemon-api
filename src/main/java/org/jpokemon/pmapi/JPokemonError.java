@@ -1,4 +1,4 @@
-package org.jpokemon.pmapi;
+package org.jpokemon.api;
 
 import java.lang.Error;
 

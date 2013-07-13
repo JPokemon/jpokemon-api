@@ -9,4 +9,4 @@
  * some additional functionality. Unless you plan on writing your own natures, 
  * this class should be sufficient.
  */
-package org.jpokemon.pmapi.pokemon.nature;
+package org.jpokemon.api.pokemon.nature;

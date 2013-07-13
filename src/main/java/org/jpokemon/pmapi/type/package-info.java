@@ -10,4 +10,4 @@
  * type, with some additional functionality. Even if you plan on writing your 
  * own types, this class should be sufficient.
  */
-package org.jpokemon.pmapi.type;
+package org.jpokemon.api.type;

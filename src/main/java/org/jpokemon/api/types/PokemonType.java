@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jpokemon.api.Manager;
+
 /**
  * Defines a Pokémon type (such as Grass or Dark). For convenience, the classic
  * 17 types are instantiated by the {@link ClassicTypes} class.
  * 
- * If a {@link TypeManager} has been defined, calling {@link #setName} will
+ * If a {@link Manager} has been defined, calling {@link #setName} will
  * automatically register it with the manager under that name.
  * 
  * @author atheriel@gmail.com
@@ -17,7 +19,7 @@ import java.util.Map;
  * 
  * @since  0.1
  * 
- * @see TypeManager
+ * @see Manager
  * @see ClassicTypes
  */
 public class PokemonType {
@@ -25,7 +27,7 @@ public class PokemonType {
 	 * Indicates the manager that registers types; must be set before types can 
 	 * be instantiated.
 	 */
-	public static TypeManager manager = null;
+	public static Manager<PokemonType> manager = null;
 
 	/** Indicates the name of the type. */
 	protected String name;
@@ -49,7 +51,7 @@ public class PokemonType {
 	public PokemonType setName(String name) {
 		this.name = name;
 		if (manager != null) {
-			manager.registerType(this);
+			manager.register(this);
 		}
 		return this;
 	}

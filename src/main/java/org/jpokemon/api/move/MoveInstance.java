@@ -5,7 +5,7 @@ package org.jpokemon.api.move;
  * 
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public class MoveInstance {
 	/** Indicates the Move that this is an instance of */

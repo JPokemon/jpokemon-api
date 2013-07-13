@@ -12,8 +12,6 @@ import org.jpokemon.api.pokemon.PokemonSpecies;
  * Tests some species properties.
  *
  * @author atheriel@gmail.com
- *
- * @since 0.1
  */
 @RunWith(JUnit4.class)
 public class PokemonTest {

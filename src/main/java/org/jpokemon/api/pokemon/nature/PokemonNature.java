@@ -7,10 +7,10 @@ package org.jpokemon.api.pokemon.nature;
  * To define your own nature, construct instances of this class. If you want to
  * add attributes to the nature, it can also be extended.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public class PokemonNature {
 	public static NatureManager manager;

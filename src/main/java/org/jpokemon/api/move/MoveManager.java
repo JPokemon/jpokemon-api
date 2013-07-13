@@ -10,7 +10,7 @@ import org.jpokemon.api.JPokemonError;
  * 
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public interface MoveManager {
 	/**

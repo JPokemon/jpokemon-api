@@ -7,9 +7,9 @@ import org.jpokemon.api.item.ItemAttribute;
  * names of the pockets each have their own static field, which can of course 
  * be modified.
  *
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since  Alpha
+ * @since  0.1
  */
 public class PocketAttribute implements ItemAttribute {
 	/** Indicates the name of the default pocket. */

@@ -3,10 +3,10 @@ package org.jpokemon.api.pokemon.ability;
 /**
  * Defines an ability that a Pokémon may possess.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public class PokemonAbility {
 	/** Indicates the name of the ability. */

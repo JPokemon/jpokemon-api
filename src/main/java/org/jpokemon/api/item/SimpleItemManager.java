@@ -8,9 +8,9 @@ import org.jpokemon.api.JPokemonError;
  * Defines a "simplest-possible" implementation of the {@link ItemManager}
  * interface.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
  * 
- * @since 0.1
+ * @since  0.1
  */
 public class SimpleItemManager implements ItemManager {
 	private static final ItemManager instance = new SimpleItemManager();

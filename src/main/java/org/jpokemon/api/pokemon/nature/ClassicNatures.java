@@ -12,10 +12,10 @@ import java.util.Random;
  * Note that this class is final. If you want to add or remove natures, it
  * cannot be extended; you must write your own lookup class.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public final class ClassicNatures {
 	private static final List<PokemonNature> natureList;

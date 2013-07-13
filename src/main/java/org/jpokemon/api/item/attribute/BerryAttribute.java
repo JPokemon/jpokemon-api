@@ -9,9 +9,10 @@ import org.jpokemon.api.item.ItemAttribute;
  * Provides a possible attribute describing qualities of berry items, including
  * flavor, size, firmness, smoothness, and index number.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
+ * @author Zach Taylor
  * 
- * @since Alpha
+ * @since  0.1
  */
 public class BerryAttribute implements ItemAttribute {
 	private final Map<String, Integer> flavors = new HashMap<String, Integer>(6);

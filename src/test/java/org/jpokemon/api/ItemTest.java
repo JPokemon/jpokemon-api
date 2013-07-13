@@ -12,9 +12,7 @@ import org.junit.runners.JUnit4;
 /**
  * Tests the features of items.
  * 
- * @author Atheriel
- * 
- * @since Alpha
+ * @author atheriel@gmail.com
  */
 @RunWith(JUnit4.class)
 public class ItemTest {

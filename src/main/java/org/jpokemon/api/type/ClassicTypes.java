@@ -8,15 +8,16 @@ import org.jpokemon.api.JPokemonError;
 /**
  * Defines the list of the 17 classic Pokémon types. This class functions very
  * much like an enum, providing constants that can be referenced by Moves and
- * Species, and also provides the functionality of a {@link TypeManager}. <br />
- * <br />
+ * Species, and also provides the functionality of a {@link TypeManager}.
+ * 
  * If you wish to add a new type, simply instantiate one and give it a name. To
  * modify a type, you can modify the static field of this class that refers to
  * it, or retrieve the instance by name with `getType`. Both are equivalent.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
+ * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public class ClassicTypes {
 	/** Provides the classic type `????`. */

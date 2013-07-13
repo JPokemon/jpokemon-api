@@ -16,7 +16,7 @@ import org.jpokemon.api.move.MoveInstance;
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  */
 public class Pokemon {
 	/** Indicates the name of this Pokémon. */

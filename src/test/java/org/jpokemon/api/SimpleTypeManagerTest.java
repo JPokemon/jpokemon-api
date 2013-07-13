@@ -15,8 +15,6 @@ import org.jpokemon.api.type.PokemonType;
  * Tests type registration and some classic type properties.
  * 
  * @author atheriel@gmail.com
- * 
- * @since 0.1
  */
 @RunWith(JUnit4.class)
 public class SimpleTypeManagerTest {

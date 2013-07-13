@@ -6,9 +6,9 @@ import org.jpokemon.api.JPokemonError;
  * Provides an interface for storing and keeping track of items at runtime. The 
  * most basic implementation of this is the {@link SimpleItemManager} class.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since  Alpha
+ * @since  0.1
  */
 public interface ItemManager {
 

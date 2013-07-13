@@ -15,15 +15,15 @@ import java.util.Map;
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since 0.1
+ * @since  0.1
  * 
  * @see TypeManager
  * @see ClassicTypes
  */
 public class PokemonType {
 	/**
-	 * Indicates the manager that registers types; must be set before types can be
-	 * instantiated.
+	 * Indicates the manager that registers types; must be set before types can 
+	 * be instantiated.
 	 */
 	public static TypeManager manager = null;
 
@@ -116,8 +116,8 @@ public class PokemonType {
 	}
 
 	/**
-	 * Checks whether this type is not very effective against a type of the given
-	 * name.
+	 * Checks whether this type is not very effective against a type of the 
+	 * given name.
 	 */
 	public boolean isNotVeryEffectiveAgainst(String typeName) {
 		if (typeName == null) {

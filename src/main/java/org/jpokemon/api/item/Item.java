@@ -17,9 +17,9 @@ import java.util.HashMap;
  * `null`, its functionality is ignored, and only a very weak protest is made by
  * the constructor in the form of an unchecked error.
  *
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since  Alpha
+ * @since  0.1
  */
 public class Item {
 	/** Indicates the manager being used to register items. May be `null`. */

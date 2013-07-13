@@ -2,15 +2,14 @@ package org.jpokemon.api.pokemon;
 
 /**
  * Defines a {@link Pokemon}'s stat instance. A stat instance holds a value, ev
- * points, and iv points.<br />
- * <br />
+ * points, and iv points.
+ * 
  * Note that a stat "value" may be defined to mean any necessary-to-record value
  * relative to the Pokemon instance.
  * 
- * @author zach
+ * @author Zach Taylor
  * 
- * @since 0.1
- * 
+ * @since  0.1
  */
 public class Stat {
 	/** Indicates the current value */

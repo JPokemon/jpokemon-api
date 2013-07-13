@@ -7,9 +7,9 @@ import java.util.ArrayList;
  * instances and a list of item names. They may also belong to a class of other
  * trainers.
  *
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since Alpha
+ * @since  0.1
  *
  * @see TrainerClass
  */

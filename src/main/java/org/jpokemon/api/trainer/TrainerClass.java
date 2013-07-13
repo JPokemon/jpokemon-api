@@ -3,9 +3,9 @@ package org.jpokemon.api.trainer;
 /**
  * Defines a class of trainers (such as Youngsters or Swimmers).
  *
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since Alpha
+ * @since  0.1
  */
 public class TrainerClass {
 	/** Indicates the name of the trainer class. */

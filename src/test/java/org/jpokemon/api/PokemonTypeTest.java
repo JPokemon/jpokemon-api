@@ -9,8 +9,6 @@ import org.junit.Test;
  *
  * @author Zack Taylor
  * @author atheriel@gmail.com
- *
- * @since 0.1
  */
 public class PokemonTypeTest {
 	

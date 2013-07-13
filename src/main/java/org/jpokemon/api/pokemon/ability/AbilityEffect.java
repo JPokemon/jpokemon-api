@@ -6,9 +6,9 @@ package org.jpokemon.api.pokemon.ability;
  * own, and you can implement it in any fashion you like. Or not at all, if you
  * wish to implement individual abilities in the engine itself.
  *
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since Alpha
+ * @since  0.1
  */
 public interface AbilityEffect {
 }

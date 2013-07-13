@@ -5,9 +5,9 @@ package org.jpokemon.api.item;
  * time, attributes have no common features, so in theory anything at all could
  * implement this.
  * 
- * @author Atheriel
+ * @author atheriel@gmail.com
  *
- * @since  Alpha
+ * @since  0.1
  */
 public interface ItemAttribute {
 }

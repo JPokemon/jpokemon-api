@@ -9,7 +9,8 @@ import org.jpokemon.api.JPokemonError;
  * class. It is not possible to use more than one manager for natures at a time.
  * 
  * @author atheriel@gmail.com
- * @since 0.1
+ * 
+ * @since  0.1
  */
 public interface NatureManager {
 

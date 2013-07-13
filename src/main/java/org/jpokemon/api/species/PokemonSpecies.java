@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.api.evolution.PokemonEvolution;
+import org.jpokemon.api.evolutions.PokemonEvolution;
 import org.jpokemon.api.types.PokemonType;
 import org.jpokemon.api.classic.ExperienceCurve;
 

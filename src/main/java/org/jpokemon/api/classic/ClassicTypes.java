@@ -1,16 +1,11 @@
 package org.jpokemon.api.classic;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.types.PokemonType;
-import org.jpokemon.api.types.TypelessType;
 
 /**
  * Defines the list of the 17 classic Pokémon types. This class functions very
  * much like an enum, providing constants that can be referenced by Moves and
- * Species, and also provides the functionality of a {@link TypeManager}.
+ * Species.
  * 
  * If you wish to add a new type, simply instantiate one and give it a name. To
  * modify a type, you can modify the static field of this class that refers to
@@ -115,28 +110,8 @@ public class ClassicTypes {
 	public static final PokemonType STEEL = new PokemonType().setName("Steel")
 			.setSuperEffectiveAgainst("Ice", "Rock")
 			.setNotVeryEffectiveAgainst("Fire", "Water", "Electric", "Steel");
-	/**
-	 * Initializes the classic types, and registers them with the
-	 * {@link PokemonType#manager}
-	 */
-	public static void init() {
-		for (Field field : ClassicTypes.class.getFields()) {
-			try {
-				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
-					Object temp = field.get(null);
-
-					if (temp instanceof PokemonType) {
-						PokemonType type = (PokemonType) temp;
-						PokemonType.manager.registerType(type);
-					}
-				}
-			} catch (IllegalAccessException exception) {
-			}
-		}
-	}
 
 	/** Provides a private constructor. */
-	private ClassicTypes() throws JPokemonError {
-		super();
+	private ClassicTypes() {
 	}
 }

@@ -2,14 +2,17 @@ package org.jpokemon.api.classic;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
+import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.Manager;
 import org.jpokemon.api.natures.PokemonNature;
 
 /**
- * Defines the 25 classic natures (personalities) that a Pokémon may possess.
+ * Defines a "simplest-possible" implementation of the {@link Manager} interface
+ * for natures. This manager provides the classic natures. See {@link #init}
  * 
  * Note that this class is final. If you want to add or remove natures, it
  * cannot be extended; you must write your own lookup class.
@@ -17,10 +20,10 @@ import org.jpokemon.api.natures.PokemonNature;
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since  0.1
+ * @since 0.1
  */
-public final class ClassicNatures {
-	private static final List<PokemonNature> natureList;
+public final class ClassicNatures implements Manager<PokemonNature> {
+	private Map<String, PokemonNature> natureMap = new HashMap<String, PokemonNature>();
 
 	// Neutral Natures:
 
@@ -135,42 +138,63 @@ public final class ClassicNatures {
 	public static final PokemonNature NAIVE = new PokemonNature().setName("Naive").setStatIncreased("Speed")
 			.setStatDecreased("Special Defense").setTasteFavorite("Sweet").setTasteDisliked("Bitter");
 
-	// Adds the natures listed above to a list for randomization purposes.
-	static {
-		natureList = new ArrayList<PokemonNature>(25);
-		for (Field field : ClassicNatures.class.getFields()) {
-			try {
-				if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0) {
-					Object temp = field.get(null);
-					if (temp instanceof PokemonNature) {
-						PokemonNature nature = (PokemonNature) temp;
-						natureList.add(nature);
-					}
-				}
-			} catch (Exception exception) {
-				throw new RuntimeException(exception);
-			}
+	@Override
+	public boolean register(PokemonNature nature) throws JPokemonError {
+		if (natureMap.containsKey(nature.getName())) {
+			throw new JPokemonError("A type with the name " + nature.getName() + " has already been registered!");
 		}
+		if (natureMap.containsValue(nature)) {
+			throw new JPokemonError("This type is already registered!");
+		}
+
+		natureMap.put(nature.getName(), nature);
+		return true;
+	}
+
+	@Override
+	public boolean isRegistered(PokemonNature nature) {
+		return natureMap.containsValue(nature);
+	}
+
+	@Override
+	public PokemonNature getByName(String name) {
+		if (!natureMap.containsKey(name)) {
+			return null;
+		}
+
+		return natureMap.get(name);
 	}
 
 	/**
-	 * Initializes the classic natures, and registers them with the
-	 * {@link PokemonNature#manager}
+	 * Initializes {@link PokemonNature#manager} to be an instance of
+	 * ClassicNatures, with all classic natures populated in the manager.
 	 */
 	public static void init() {
+		if (PokemonNature.manager != null) {
+			throw new JPokemonError("PokemonNature.manager already defined");
+		}
+
+		PokemonNature.manager = new ClassicNatures();
+
 		for (Field field : ClassicNatures.class.getFields()) {
 			try {
-				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
-					Object temp = field.get(null);
+				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) <= 0) {
+					continue;
+				}
 
-					if (temp instanceof PokemonNature) {
-						PokemonNature nature = (PokemonNature) temp;
-						PokemonNature.manager.registerNature(nature);
-					}
+				Object temp = field.get(null);
+
+				if (temp instanceof PokemonNature) {
+					PokemonNature nature = (PokemonNature) temp;
+					PokemonNature.manager.register(nature);
 				}
 			} catch (IllegalAccessException exception) {
 			}
 		}
+	}
+
+	/** Provides a private constructor */
+	private ClassicNatures() {
 	}
 
 	/**
@@ -179,7 +203,7 @@ public final class ClassicNatures {
 	 * 
 	 * @param random The {@link Random} object to select the nature with.
 	 */
-	public static PokemonNature getRandomNature(Random random) {
-		return natureList.get((short) random.nextInt(25));
+	public PokemonNature getRandomNature(Random random) {
+		return natureMap.get((short) random.nextInt(25));
 	}
 }

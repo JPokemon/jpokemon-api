@@ -23,11 +23,8 @@ import org.jpokemon.api.Manager;
  * @see ClassicTypes
  */
 public class PokemonType {
-	/**
-	 * Indicates the manager that registers types; must be set before types can 
-	 * be instantiated.
-	 */
-	public static Manager<PokemonType> manager = null;
+	/** Indicates the configured Manager for PokemonTypes, if set */
+	public static Manager<PokemonType> manager;
 
 	/** Indicates the name of the type. */
 	protected String name;

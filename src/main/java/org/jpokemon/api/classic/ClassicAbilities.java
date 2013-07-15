@@ -2,12 +2,18 @@ package org.jpokemon.api.classic;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.Manager;
 import org.jpokemon.api.abilities.PokemonAbility;
-import org.jpokemon.api.abilities.AbilityManager;
+import org.jpokemon.api.types.PokemonType;
 
-public class ClassicAbilities {
+public final class ClassicAbilities implements Manager<PokemonAbility> {
+
+	private final Map<String, PokemonAbility> abilityMap = new HashMap<String, PokemonAbility>();
+
 	public static final PokemonAbility CACOPHONY = new PokemonAbility().setName("Cacophony").setDescription(
 			"Avoids sound-based moves.");
 
@@ -504,27 +510,60 @@ public class ClassicAbilities {
 			"Moves can be used regardless of Abilities.");
 
 	/**
-	 * Registers all internal {@link PokemonAbility}s with the specified manager.
-	 * 
-	 * @param manager The manager to register with
-	 * 
-	 * @throws JPokemonError If the manager throws an error during
-	 *           {@link AbilityManager#registerAbility(PokemonAbility)
-	 *           AbilityManager.registerAbility}
+	 * Initializes {@link PokemonAbility#manager} to be an instance of
+	 * ClassicAbilities, with all classic abilities populated in the manager.
 	 */
-	public static void init(AbilityManager manager) {
+	public static void init() {
+		if (PokemonType.manager != null) {
+			throw new JPokemonError("PokemonType.manager already defined.");
+		}
+
+		PokemonAbility.manager = new ClassicAbilities();
+
 		for (Field field : ClassicAbilities.class.getFields()) {
 			try {
-				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
-					Object temp = field.get(null);
+				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) <= 0) {
+					continue;
+				}
 
-					if (temp instanceof PokemonAbility) {
-						PokemonAbility ability = (PokemonAbility) temp;
-						manager.registerAbility(ability);
-					}
+				Object temp = field.get(null);
+
+				if (temp instanceof PokemonAbility) {
+					PokemonAbility ability = (PokemonAbility) temp;
+					PokemonAbility.manager.register(ability);
 				}
 			} catch (IllegalAccessException exception) {
 			}
 		}
+	}
+
+	@Override
+	public boolean register(PokemonAbility ability) throws JPokemonError {
+		if (ability == null) {
+			throw new JPokemonError("Cannot register a null ability");
+		}
+		if (ability.getName() == null) {
+			throw new JPokemonError("An ability cannot be registered if it has no name");
+		}
+		if (abilityMap.containsKey(ability.getName())) {
+			throw new JPokemonError("An ability with the same name is already registered: " + ability.getName());
+		}
+
+		abilityMap.put(ability.getName(), ability);
+		return true;
+	}
+
+	@Override
+	public boolean isRegistered(PokemonAbility ability) {
+		return abilityMap.containsValue(ability);
+	}
+
+	@Override
+	public PokemonAbility getByName(String name) {
+		return abilityMap.get(name);
+	}
+
+	/** Provides a private constructor. */
+	private ClassicAbilities() {
 	}
 }

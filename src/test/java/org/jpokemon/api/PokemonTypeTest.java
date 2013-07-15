@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
 import org.jpokemon.api.types.*;
 import org.jpokemon.api.classic.ClassicTypes;
 
@@ -23,7 +22,9 @@ public class PokemonTypeTest {
 	@BeforeClass
 	public static void setup() {
 		// Setup the hard-coded classic types
-		ClassicTypeManager.init();
+		// PokemonType.manager may be defined by other tests, so make sure we replace the reference
+		PokemonType.manager = null;
+		ClassicTypes.init();
 	}
 
 	/** Tests some properties of classic types. */
@@ -38,7 +39,10 @@ public class PokemonTypeTest {
 	@Test
 	public void testTypeAddition() {
 		PokemonType test = new PokemonType().setName("Test");
-		PokemonType.manager.register(test);
+
+		// Presently, the PokemonType is registered on setName
+		// PokemonType.manager.register(test);
+
 		assertTrue("Test is now a type.", PokemonType.manager.isRegistered(test));
 	}
 

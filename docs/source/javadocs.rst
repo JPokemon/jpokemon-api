@@ -33,3 +33,20 @@ Class List
 
 	Utility <apidocs/org/jpokemon/pmapi/util/package-index>
 
+Javadoc
+-------
+.. toctree::
+	:maxdepth: 2
+
+	Base Package <apidocs/org/jpokemon/api/package-index> 
+	Abilities <apidocs/org/jpokemon/api/abilities/package-index> 
+	apidocs/org/jpokemon/api/classic/package-index 
+	apidocs/org/jpokemon/api/evolutions/package-index 
+	apidocs/org/jpokemon/api/items/package-index 
+	apidocs/org/jpokemon/api/items/attributes/package-index 
+	apidocs/org/jpokemon/api/moves/package-index 
+	apidocs/org/jpokemon/api/natures/package-index 
+	apidocs/org/jpokemon/api/species/package-index 
+	apidocs/org/jpokemon/api/trainers/package-index 
+	apidocs/org/jpokemon/api/types/package-index
+

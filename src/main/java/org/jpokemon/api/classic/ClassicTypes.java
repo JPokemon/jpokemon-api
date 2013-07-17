@@ -127,7 +127,7 @@ public class ClassicTypes {
 
 					if (temp instanceof PokemonType) {
 						PokemonType type = (PokemonType) temp;
-						PokemonType.manager.registerType(type);
+						PokemonType.manager.register(type);
 					}
 				}
 			} catch (IllegalAccessException exception) {

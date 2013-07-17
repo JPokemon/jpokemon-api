@@ -4,8 +4,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.Manager;
 import org.jpokemon.api.abilities.PokemonAbility;
-import org.jpokemon.api.abilities.AbilityManager;
 
 public class ClassicAbilities {
 	public static final PokemonAbility CACOPHONY = new PokemonAbility().setName("Cacophony").setDescription(
@@ -512,7 +512,7 @@ public class ClassicAbilities {
 	 *           {@link AbilityManager#registerAbility(PokemonAbility)
 	 *           AbilityManager.registerAbility}
 	 */
-	public static void init(AbilityManager manager) {
+	public static void init(Manager<PokemonAbility> manager) {
 		for (Field field : ClassicAbilities.class.getFields()) {
 			try {
 				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
@@ -520,7 +520,7 @@ public class ClassicAbilities {
 
 					if (temp instanceof PokemonAbility) {
 						PokemonAbility ability = (PokemonAbility) temp;
-						manager.registerAbility(ability);
+						manager.register(ability);
 					}
 				}
 			} catch (IllegalAccessException exception) {

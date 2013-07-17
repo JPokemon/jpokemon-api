@@ -1,8 +1,10 @@
-package org.jpokemon.api.items;
+package org.jpokemon.api.managers;
 
 import java.util.TreeMap;
 
 import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.Manager;
+import org.jpokemon.api.items.Item;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link ItemManager}
@@ -12,13 +14,11 @@ import org.jpokemon.api.JPokemonError;
  * 
  * @since  0.1
  */
-public class SimpleItemManager implements ItemManager {
-	private static final ItemManager instance = new SimpleItemManager();
-
+public class SimpleItemManager implements Manager<Item> {
 	private final TreeMap<String, Item> itemList = new TreeMap<String, Item>();
 
 	@Override
-	public boolean registerItem(Item item) throws JPokemonError {
+	public boolean register(Item item) throws JPokemonError {
 		if (itemList.containsKey(item.getName())) {
 			throw new JPokemonError("A item with the name " + item.getName() + " has already been registered!");
 		}
@@ -35,19 +35,10 @@ public class SimpleItemManager implements ItemManager {
 	}
 
 	@Override
-	public Item getItemByName(String name) {
+	public Item getByName(String name) {
 		if (!itemList.containsKey(name)) {
 			return null;
 		}
 		return itemList.get(name);
-	}
-
-	/** Gets the singleton instance of this class. */
-	public static ItemManager getInstance() {
-		return instance;
-	}
-
-	/** Provides a private constructor */
-	private SimpleItemManager() {
 	}
 }

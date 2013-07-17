@@ -1,9 +1,11 @@
-package org.jpokemon.api.abilities;
+package org.jpokemon.api.managers;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.Manager;
+import org.jpokemon.api.abilities.PokemonAbility;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link AbilityManager}
@@ -11,14 +13,11 @@ import org.jpokemon.api.JPokemonError;
  * <br>
  * Important: this manager loads no types by default.
  */
-public class SimpleAbilityManager implements AbilityManager {
-	/** */
-	private static final AbilityManager instance = new SimpleAbilityManager();
-
+public class SimpleAbilityManager implements Manager<PokemonAbility> {
 	private final Map<String, PokemonAbility> abilityMap = new HashMap<String, PokemonAbility>();
 
 	@Override
-	public void registerAbility(PokemonAbility ability) throws JPokemonError {
+	public boolean register(PokemonAbility ability) throws JPokemonError {
 		if (ability == null) {
 			throw new JPokemonError("Cannot register a null ability");
 		}
@@ -30,6 +29,7 @@ public class SimpleAbilityManager implements AbilityManager {
 		}
 
 		abilityMap.put(ability.getName(), ability);
+		return true;
 	}
 
 	@Override
@@ -42,12 +42,7 @@ public class SimpleAbilityManager implements AbilityManager {
 		return abilityMap.get(name);
 	}
 
-	/** Gets the singleton instance of this class */
-	public static AbilityManager getInstance() {
-		return instance;
-	}
-
 	/** Provides a private constructor. */
-	private SimpleAbilityManager() {
+	public SimpleAbilityManager() {
 	}
 }

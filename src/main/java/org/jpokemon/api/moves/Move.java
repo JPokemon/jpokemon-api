@@ -1,18 +1,24 @@
 package org.jpokemon.api.moves;
 
+import org.jpokemon.api.Manager;
 import org.jpokemon.api.types.PokemonType;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.
  *
+ * <p>
+ *
  * Moves that cause status ailments, affect stats, and so on are termed as 
- * having a `secondary effect`.
+ * having a "secondary effect".
  *
  * @author atheriel@gmail.com
  *
  * @since  0.1
  */
 public class Move {
+	/** Indicates the manager being used to register moves. May be ``null``. */
+	public static Manager<Move> manager = null;
+
 	/** Indicates the name of this move. */
 	protected String name;
 
@@ -51,6 +57,9 @@ public class Move {
 	/** Sets the name of this move. */
 	public void setName(String name) {
 		this.name = name;
+		if (manager != null) {
+			manager.register(this);
+		}
 	}
 
 	/** Gets the {@link PokemonType} of this move. */

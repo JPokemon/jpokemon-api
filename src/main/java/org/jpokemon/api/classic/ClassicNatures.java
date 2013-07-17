@@ -165,7 +165,7 @@ public final class ClassicNatures {
 
 					if (temp instanceof PokemonNature) {
 						PokemonNature nature = (PokemonNature) temp;
-						PokemonNature.manager.registerNature(nature);
+						PokemonNature.manager.register(nature);
 					}
 				}
 			} catch (IllegalAccessException exception) {
@@ -180,6 +180,6 @@ public final class ClassicNatures {
 	 * @param random The {@link Random} object to select the nature with.
 	 */
 	public static PokemonNature getRandomNature(Random random) {
-		return natureList.get((short) random.nextInt(25));
+		return natureList.get(random.nextInt(25));
 	}
 }

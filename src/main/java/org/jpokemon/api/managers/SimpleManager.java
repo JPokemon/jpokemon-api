@@ -50,6 +50,8 @@ import org.jpokemon.api.Manager;
  * @author atheriel@gmail.com
  *
  * @since  0.1
+ *
+ * @param  T The type to be managed, e.g. {@link PokemonNature}.
  */
 public class SimpleManager<T> implements Manager<T> {
 	private final TreeMap<String, T> objectMap = new TreeMap<String, T>();

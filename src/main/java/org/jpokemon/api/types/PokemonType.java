@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.api.Manager;
+import org.jpokemon.api.manager.Manager;
 
 /**
  * Defines a Pokémon type (such as Grass or Dark). For convenience, the classic

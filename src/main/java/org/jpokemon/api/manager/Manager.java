@@ -1,4 +1,6 @@
-package org.jpokemon.api;
+package org.jpokemon.api.manager;
+
+import org.jpokemon.api.JPokemonError;
 
 public interface Manager<T> {
 	

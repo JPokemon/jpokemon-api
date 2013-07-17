@@ -1,4 +1,4 @@
-package org.jpokemon.api.classic;
+package org.jpokemon.api.manager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Random;
 
 import org.jpokemon.api.JPokemonError;
-import org.jpokemon.api.Manager;
 import org.jpokemon.api.natures.PokemonNature;
 
 /**

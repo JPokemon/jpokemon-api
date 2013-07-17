@@ -1,4 +1,4 @@
-package org.jpokemon.api.classic;
+package org.jpokemon.api.manager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.JPokemonError;
-import org.jpokemon.api.Manager;
 import org.jpokemon.api.abilities.PokemonAbility;
 import org.jpokemon.api.types.PokemonType;
 

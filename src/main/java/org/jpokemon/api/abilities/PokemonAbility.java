@@ -1,6 +1,6 @@
 package org.jpokemon.api.abilities;
 
-import org.jpokemon.api.Manager;
+import org.jpokemon.api.manager.Manager;
 
 /**
  * Defines an ability that a Pokémon may possess.

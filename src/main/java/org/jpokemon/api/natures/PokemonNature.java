@@ -1,7 +1,7 @@
 package org.jpokemon.api.natures;
 
-import org.jpokemon.api.Manager;
-import org.jpokemon.api.classic.ClassicNatures;
+import org.jpokemon.api.manager.ClassicNatures;
+import org.jpokemon.api.manager.Manager;
 
 /**
  * Defines a nature (personality) for a Pokémon. The 25 classic natures are

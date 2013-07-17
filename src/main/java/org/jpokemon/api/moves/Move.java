@@ -1,5 +1,6 @@
 package org.jpokemon.api.moves;
 
+import org.jpokemon.api.manager.Manager;
 import org.jpokemon.api.types.PokemonType;
 
 /**
@@ -13,6 +14,9 @@ import org.jpokemon.api.types.PokemonType;
  * @since  0.1
  */
 public class Move {
+	/** Indicates the configured Manager for Moves, if set */
+	public static Manager<Move> manager;
+
 	/** Indicates the name of this move. */
 	protected String name;
 

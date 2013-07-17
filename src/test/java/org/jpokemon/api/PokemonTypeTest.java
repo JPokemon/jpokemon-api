@@ -7,8 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.jpokemon.api.manager.ClassicTypes;
 import org.jpokemon.api.types.*;
-import org.jpokemon.api.classic.ClassicTypes;
 
 /**
  * Tests type properties and the use of ClassicTypes.

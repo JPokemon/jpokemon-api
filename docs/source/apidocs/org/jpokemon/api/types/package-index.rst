@@ -7,7 +7,5 @@ org.jpokemon.api.types
    :maxdepth: 1
 
    PokemonType
-   SimpleTypeManager
-   TypeManager
    TypelessType
 

@@ -6,7 +6,5 @@ org.jpokemon.api.natures
 .. toctree::
    :maxdepth: 1
 
-   NatureManager
    PokemonNature
-   SimpleNatureManager
 

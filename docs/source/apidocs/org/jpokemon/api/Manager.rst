@@ -6,6 +6,12 @@ Manager
 
 .. java:type:: public interface Manager<T>
 
+   Provides an interface for object management and lookup functionality. A generic implementation is provided by the \ :java:ref:`SimpleManager`\  class that works across all classes in the library.
+
+   For implementations specific to each class, see:
+
+   :author: atheriel@gmail.com
+
 Methods
 -------
 getByName
@@ -14,10 +20,10 @@ getByName
 .. java:method:: public T getByName(String name)
    :outertype: Manager
 
-   Gets an item registered by this manager by name.
+   Gets an object registered by this manager by name.
 
-   :param name: The name of the item requested.
-   :return: The \ :java:ref:`Item`\  instance for this item.
+   :param name: The name of the object requested.
+   :return: The object by this name, or ``null`` if it does not exist.
 
 isRegistered
 ^^^^^^^^^^^^
@@ -25,9 +31,9 @@ isRegistered
 .. java:method:: public boolean isRegistered(T managed)
    :outertype: Manager
 
-   Checks if an item is registered with the manager.
+   Checks if an object is registered with the manager.
 
-   :return: `true` if the item is known to the manager.
+   :return: ``true`` if the object is known to the manager.
 
 register
 ^^^^^^^^
@@ -38,5 +44,5 @@ register
    Registers the object with the manager so it can be looked up by name.
 
    :param managed: The object to be registered.
-   :return: `true` if the object is in fact registered; otherwise `false`.
+   :return: ``true`` if the object is in fact registered.
 

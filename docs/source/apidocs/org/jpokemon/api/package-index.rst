@@ -10,6 +10,5 @@ org.jpokemon.api
    JPokemonException
    Manager
    Pokemon
-   SimpleManager
    Stat
 

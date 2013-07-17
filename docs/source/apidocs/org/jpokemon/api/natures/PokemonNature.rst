@@ -1,3 +1,5 @@
+.. java:import:: org.jpokemon.api Manager
+
 PokemonNature
 =============
 
@@ -6,7 +8,9 @@ PokemonNature
 
 .. java:type:: public class PokemonNature
 
-   Defines a nature (personality) for a Pokémon. The 25 classic natures are instantiated in the \ :java:ref:`ClassicNatures`\  class. To define your own nature, construct instances of this class. If you want to add attributes to the nature, it can also be extended.
+   Defines a nature (personality) for a Pokémon. The 25 classic natures are instantiated in the \ :java:ref:`ClassicNatures`\  class.
+
+   To define your own nature, construct instances of this class. If you want to add attributes to the nature, it can also be extended.
 
    :author: Zach Taylor
 
@@ -15,8 +19,10 @@ Fields
 manager
 ^^^^^^^
 
-.. java:field:: public static NatureManager manager
+.. java:field:: public static Manager<PokemonNature> manager
    :outertype: PokemonNature
+
+   Indicates the manager being used to register items. May be ``null``.
 
 name
 ^^^^

@@ -6,10 +6,12 @@
 
 .. java:import:: org.jpokemon.api JPokemonError
 
+.. java:import:: org.jpokemon.api Manager
+
 SimpleManager
 =============
 
-.. java:package:: org.jpokemon.api
+.. java:package:: org.jpokemon.api.managers
    :noindex:
 
 .. java:type:: public class SimpleManager<T> implements Manager<T>

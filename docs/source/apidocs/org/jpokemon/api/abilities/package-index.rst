@@ -7,7 +7,5 @@ org.jpokemon.api.abilities
    :maxdepth: 1
 
    AbilityEffect
-   AbilityManager
    PokemonAbility
-   SimpleAbilityManager
 

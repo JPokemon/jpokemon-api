@@ -1,5 +1,7 @@
 .. java:import:: java.util HashMap
 
+.. java:import:: org.jpokemon.api Manager
+
 Item
 ====
 
@@ -8,7 +10,11 @@ Item
 
 .. java:type:: public class Item
 
-   Defines a basic item. This class provides the most basic attributes that all items in a Pokémon game are likely to share. To create your own items, you have two options: (1) extend this class, or (2) make use of the `attribute` system. See the wiki for details. Note that the ``attributes`` \ :java:ref:`HashMap`\  will not initialize until an attribute is added. Thus, if a traditional inheritance scheme is preferable for your project, this class can be extended and this functionality ignored without memory inefficiency. The same goes for the management features; if the `manager` field remains `null`, its functionality is ignored, and only a very weak protest is made by the constructor in the form of an unchecked error.
+   Defines a basic item. This class provides the most basic attributes that all items in a Pokémon game are likely to share. To create your own items, you have two options: (1) extend this class, or (2) make use of the ``attribute`` system. See the wiki for details.
+
+   Note that the ``attributes`` \ :java:ref:`HashMap`\  will not initialize until an attribute is added. Thus, if a traditional inheritance scheme is preferable for your project, this class can be extended and this functionality ignored without memory inefficiency.
+
+   The same goes for the management features; if the ``manager`` field remains ``null``, its functionality is ignored, and only a very weak protest is made by the constructor in the form of an unchecked error.
 
    :author: atheriel@gmail.com
 
@@ -57,10 +63,10 @@ holdable
 manager
 ^^^^^^^
 
-.. java:field:: public static ItemManager manager
+.. java:field:: public static Manager<Item> manager
    :outertype: Item
 
-   Indicates the manager being used to register items. May be `null`.
+   Indicates the manager being used to register items. May be ``null``.
 
 name
 ^^^^

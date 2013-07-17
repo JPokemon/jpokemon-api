@@ -8,6 +8,4 @@ org.jpokemon.api.items
 
    Item
    ItemAttribute
-   ItemManager
-   SimpleItemManager
 

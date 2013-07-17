@@ -4,9 +4,9 @@
 
 .. java:import:: org.jpokemon.api JPokemonError
 
-.. java:import:: org.jpokemon.api.abilities PokemonAbility
+.. java:import:: org.jpokemon.api Manager
 
-.. java:import:: org.jpokemon.api.abilities AbilityManager
+.. java:import:: org.jpokemon.api.abilities PokemonAbility
 
 ClassicAbilities
 ================
@@ -1013,7 +1013,7 @@ Methods
 init
 ^^^^
 
-.. java:method:: public static void init(AbilityManager manager)
+.. java:method:: public static void init(Manager<PokemonAbility> manager)
    :outertype: ClassicAbilities
 
    Registers all internal \ :java:ref:`PokemonAbility`\ s with the specified manager.

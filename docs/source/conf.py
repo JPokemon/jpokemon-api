@@ -80,7 +80,7 @@ highlight_language = 'java'
 
 # -- Options for HTML output ---------------------------------------------------
 
-html_theme = 'nature'
+html_theme = 'default'
 #html_theme_options = {}
 #html_theme_path = []
 

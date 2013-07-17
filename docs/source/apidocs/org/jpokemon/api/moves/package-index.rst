@@ -8,6 +8,4 @@ org.jpokemon.api.moves
 
    Move
    MoveInstance
-   MoveManager
-   SimpleMoveManager
 

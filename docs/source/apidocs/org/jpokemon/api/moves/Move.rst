@@ -1,3 +1,5 @@
+.. java:import:: org.jpokemon.api Manager
+
 .. java:import:: org.jpokemon.api.types PokemonType
 
 Move
@@ -8,7 +10,9 @@ Move
 
 .. java:type:: public class Move
 
-   Defines a move that can be learned and used by a Pokémon. Moves that cause status ailments, affect stats, and so on are termed as having a `secondary effect`.
+   Defines a move that can be learned and used by a Pokémon.
+
+   Moves that cause status ailments, affect stats, and so on are termed as having a "secondary effect".
 
    :author: atheriel@gmail.com
 
@@ -21,6 +25,14 @@ accuracy
    :outertype: Move
 
    Indicates the accuracy of this move.
+
+manager
+^^^^^^^
+
+.. java:field:: public static Manager<Move> manager
+   :outertype: Move
+
+   Indicates the manager being used to register moves. May be ``null``.
 
 maxPP
 ^^^^^

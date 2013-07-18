@@ -7,23 +7,23 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
+import org.jpokemon.api.manager.ClassicTypes;
 import org.jpokemon.api.types.*;
-import org.jpokemon.api.classic.ClassicTypes;
 
 /**
  * Tests type properties and the use of ClassicTypes.
  * 
  * @author atheriel@gmail.com
- * @author Zack Taylor
+ * @author Zach Taylor
  */
 @RunWith(JUnit4.class)
 public class PokemonTypeTest {
 
 	@BeforeClass
 	public static void setup() {
-		// Instantiate and link all classic types with SimpleTypeManager
-		SimpleTypeManager.init();
+		// Setup the hard-coded classic types
+		// PokemonType.manager may be defined by other tests, so make sure we replace the reference
+		PokemonType.manager = null;
 		ClassicTypes.init();
 	}
 
@@ -31,15 +31,18 @@ public class PokemonTypeTest {
 	@Test
 	public void testClassicTypes() {
 		assertTrue("Dark is known.", PokemonType.manager.isRegistered(ClassicTypes.DARK));
-		assertTrue("Normal is ineffective against Ghost.", PokemonType.manager.getTypeByName("Normal").isIneffectiveAgainst("Ghost"));
-		assertFalse("Normal is not super-effective against Fighting.", PokemonType.manager.getTypeByName("Normal").isSuperEffectiveAgainst("Fighting"));
+		assertTrue("Normal is ineffective against Ghost.", PokemonType.manager.getByName("Normal").isIneffectiveAgainst("Ghost"));
+		assertFalse("Normal is not super-effective against Fighting.", PokemonType.manager.getByName("Normal").isSuperEffectiveAgainst("Fighting"));
 	}
 
 	/** Creates a new type and tests that it has been registered. */
 	@Test
 	public void testTypeAddition() {
 		PokemonType test = new PokemonType().setName("Test");
-		PokemonType.manager.registerType(test);
+
+		// Presently, the PokemonType is registered on setName
+		// PokemonType.manager.register(test);
+
 		assertTrue("Test is now a type.", PokemonType.manager.isRegistered(test));
 	}
 

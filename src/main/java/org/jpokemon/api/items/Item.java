@@ -2,28 +2,34 @@ package org.jpokemon.api.items;
 
 import java.util.HashMap;
 
+import org.jpokemon.api.Manager;
+
 /**
  * Defines a basic item. This class provides the most basic attributes that all
  * items in a Pokémon game are likely to share. To create your own items, you 
- * have two options: (1) extend this class, or (2) make use of the `attribute` 
+ * have two options: (1) extend this class, or (2) make use of the ``attribute``
  * system. See the wiki for details.
+ *
+ * <p>
  * 
  * Note that the ``attributes`` {@link HashMap} will not initialize until an 
  * attribute is added. Thus, if a traditional inheritance scheme is preferable 
  * for your project, this class can be extended and this functionality ignored
  * without memory inefficiency.
  *
- * The same goes for the management features; if the `manager` field remains 
- * `null`, its functionality is ignored, and only a very weak protest is made by
- * the constructor in the form of an unchecked error.
+ * <p>
+ *
+ * The same goes for the management features; if the ``manager`` field remains 
+ * ``null``, its functionality is ignored, and only a very weak protest is made 
+ * by the constructor in the form of an unchecked error.
  *
  * @author atheriel@gmail.com
  *
  * @since  0.1
  */
 public class Item {
-	/** Indicates the manager being used to register items. May be `null`. */
-	public static ItemManager manager = null;
+	/** Indicates the manager being used to register items. May be ``null``. */
+	public static Manager<Item> manager = null;
 
 	/** Indicates the non-basic attributes of the item. */
 	protected HashMap<String, ItemAttribute> attributes;
@@ -70,6 +76,9 @@ public class Item {
 	/** Sets the name of this item. */
 	public Item setName(String name) {
 		this.name = name;
+		if (manager != null) {
+			manager.register(this);
+		}
 		return this;
 	}
 

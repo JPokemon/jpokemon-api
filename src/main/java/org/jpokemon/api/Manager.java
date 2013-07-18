@@ -1,5 +1,7 @@
 package org.jpokemon.api;
 
+import org.jpokemon.api.JPokemonError;
+
 /**
  * Provides an interface for object management and lookup functionality. A 
  * generic implementation is provided by the {@link SimpleManager} class that 

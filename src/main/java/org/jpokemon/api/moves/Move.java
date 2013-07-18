@@ -6,9 +6,7 @@ import org.jpokemon.api.types.PokemonType;
 /**
  * Defines a move that can be learned and used by a Pokémon.
  *
- * <p>
- *
- * Moves that cause status ailments, affect stats, and so on are termed as 
+ * <p> Moves that cause status ailments, affect stats, and so on are termed as 
  * having a "secondary effect".
  *
  * @author atheriel@gmail.com

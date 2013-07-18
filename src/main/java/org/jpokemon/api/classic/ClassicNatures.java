@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.natures.PokemonNature;
 
 /**
- * Defines the 25 classic natures (personalities) that a Pokémon may possess.
+ * Defines the 25 classic natures (personalities) for a Pokémon.
  * 
  * <p>If you wanted to add a series of new natures, the best way to do so might 
  * be to extend this class and add a few more static fields.
@@ -24,7 +25,7 @@ import org.jpokemon.api.natures.PokemonNature;
  * @see  SimpleNatureManager
  */
 public class ClassicNatures {
-	private static final List<PokemonNature> natureList;
+	private static final List<PokemonNature> natureList = new ArrayList<PokemonNature>(25);
 
 	// Neutral Natures:
 
@@ -139,22 +140,24 @@ public class ClassicNatures {
 	public static final PokemonNature NAIVE = new PokemonNature().setName("Naive").setStatIncreased("Speed")
 			.setStatDecreased("Special Defense").setTasteFavorite("Sweet").setTasteDisliked("Bitter");
 
-	// Adds the natures listed above to a list for randomization purposes.
 	static {
-		natureList = new ArrayList<PokemonNature>(25);
 		for (Field field : ClassicNatures.class.getFields()) {
 			try {
-				if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0) {
-					Object temp = field.get(null);
-					if (temp instanceof PokemonNature) {
-						PokemonNature nature = (PokemonNature) temp;
-						natureList.add(nature);
-					}
+				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) <= 0) {
+					continue;
 				}
-			} catch (Exception exception) {
-				throw new RuntimeException(exception);
+				Object temp = field.get(null);
+				if (temp instanceof PokemonNature) {
+					PokemonNature nature = (PokemonNature) temp;
+					natureList.add(nature);
+				}
+			} catch (IllegalAccessException exception) {
 			}
 		}
+	}
+
+	/** Provides a private constructor, so it cannot be instantiated. */
+	private ClassicNatures() {
 	}
 
 	/**

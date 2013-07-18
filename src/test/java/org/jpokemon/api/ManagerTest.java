@@ -2,32 +2,34 @@ package org.jpokemon.api;
 
 import static org.junit.Assert.assertTrue;
 
-import org.jpokemon.api.JPokemonError;
-import org.jpokemon.api.Manager;
-import org.jpokemon.api.SimpleManager;
+import org.jpokemon.api.manager.Manager;
+import org.jpokemon.api.manager.SimpleManager;
 import org.jpokemon.api.types.PokemonType;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 /**
- * Tests the management of classes. This test uses the PokemonType class as an 
+ * Tests the management of classes. This test uses the PokemonType class as an
  * example of a managed class.
  * 
  * @author atheriel@gmail.com
  */
 @RunWith(JUnit4.class)
 public class ManagerTest {
-	static SimpleManager<PokemonType> manager;
+	static Manager<PokemonType> manager;
 	static PokemonType type;
 
 	@BeforeClass
 	public static void setup() {
 		type = new PokemonType();
+
+		// Other tests define PokemonType.manager, so SimpleManager instantiation has problems...
+		PokemonType.manager = null;
 		manager = new SimpleManager<PokemonType>(PokemonType.class);
-		type.setName("TestType"); // automatically registers it
+
+		type.setName("TestType"); // automatically registers it?
 	}
 
 	/**

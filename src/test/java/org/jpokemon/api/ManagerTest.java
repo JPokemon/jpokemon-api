@@ -2,6 +2,7 @@ package org.jpokemon.api;
 
 import static org.junit.Assert.assertTrue;
 
+import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.manager.Manager;
 import org.jpokemon.api.manager.SimpleManager;
 import org.junit.BeforeClass;

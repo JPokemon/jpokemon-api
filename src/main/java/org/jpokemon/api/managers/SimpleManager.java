@@ -2,11 +2,10 @@ package org.jpokemon.api.managers;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
 import java.util.TreeMap;
 
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
+import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Provides type management and lookup functionality. In order for this class 

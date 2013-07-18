@@ -2,8 +2,8 @@ package org.jpokemon.api.managers;
 
 import java.util.TreeMap;
 
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
+import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.items.Item;
 
 /**

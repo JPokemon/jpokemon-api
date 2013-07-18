@@ -3,9 +3,9 @@ package org.jpokemon.api.managers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
 import org.jpokemon.api.Nature;
+import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Provides a basic implementation of the {@link Manager} interface for use with

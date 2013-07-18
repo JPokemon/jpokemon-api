@@ -3,10 +3,9 @@ package org.jpokemon.api;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.items.*;
 import org.jpokemon.api.items.attributes.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

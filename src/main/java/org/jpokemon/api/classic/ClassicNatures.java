@@ -19,6 +19,9 @@ import org.jpokemon.api.natures.PokemonNature;
  * @author Zach Taylor
  * 
  * @since  0.1
+ *
+ * @see  PokemonNature
+ * @see  SimpleNatureManager
  */
 public class ClassicNatures {
 	private static final List<PokemonNature> natureList;
@@ -161,7 +164,7 @@ public class ClassicNatures {
 	 * @param random The {@link Random} object to select the nature with.
 	 */
 	public static PokemonNature getRandomNature(Random random) {
-		int pool = natureList.size()
+		int pool = natureList.size();
 		return natureList.get(random.nextInt(pool));
 	}
 }

@@ -16,11 +16,15 @@ ClassicNatures
 .. java:package:: org.jpokemon.api.classic
    :noindex:
 
-.. java:type:: public final class ClassicNatures
+.. java:type:: public class ClassicNatures
 
-   Defines the 25 classic natures (personalities) that a Pokémon may possess. Note that this class is final. If you want to add or remove natures, it cannot be extended; you must write your own lookup class.
+   Defines the 25 classic natures (personalities) that a Pokémon may possess.
+
+   If you wanted to add a series of new natures, the best way to do so might be to extend this class and add a few more static fields.
 
    :codeauthor: Zach Taylor
+
+   **See also:** :java:ref:`PokemonNature`, :java:ref:`SimpleNatureManager`
 
 Fields
 ------
@@ -159,9 +163,4 @@ Methods
    Helper method to get a random nature, with a uniform probability distribution.
 
    :param random: The \ :java:ref:`Random`\  object to select the nature with.
-
-.. java:method:: public static void init()
-   :outertype: ClassicNatures
-
-   Initializes the classic natures, and registers them with the \ :java:ref:`PokemonNature.manager`\
 

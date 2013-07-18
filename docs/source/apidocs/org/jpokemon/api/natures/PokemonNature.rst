@@ -10,12 +10,44 @@ PokemonNature
 
    Defines a nature (personality) for a Pokémon. The 25 classic natures are instantiated in the \ :java:ref:`ClassicNatures`\  class.
 
-   To define your own nature, construct instances of this class. If you want to add attributes to the nature, it can also be extended.
+   To define your own nature, construct instances of this class. If you want to add attributes to the nature, it can of course be extended.
+
+   \ **Usage Example**\
+
+   One could create a nature in the following way:
+
+   .. parsed-literal::
+
+      PokemonNature aweseome = new PokemonNature().setName("Awesome");
+      awesome.setStatIncreased("Speed").setStatDecreased("Special Defense");
+      awesome.setTasteFavorite("Sweet").setTasteDisliked("Bitter");
 
    :codeauthor: Zach Taylor
 
+   **See also:** :java:ref:`ClassicNatures`, :java:ref:`SimpleNatureManager`
+
 Fields
 ------
+
+.. java:field:: protected String decreasedStat
+   :outertype: PokemonNature
+
+   Indicates the stat decreased by this nature.
+
+.. java:field:: protected String dislikedTaste
+   :outertype: PokemonNature
+
+   Indicates the taste disliked by Pokémon of this nature.
+
+.. java:field:: protected String favoriteTaste
+   :outertype: PokemonNature
+
+   Indicates the taste favoured by Pokémon of this nature.
+
+.. java:field:: protected String increasedStat
+   :outertype: PokemonNature
+
+   Indicates the stat increased by this nature.
 
 .. java:field:: public static Manager<PokemonNature> manager
    :outertype: PokemonNature
@@ -24,6 +56,8 @@ Fields
 
 .. java:field:: protected String name
    :outertype: PokemonNature
+
+   Indicates the name of this nature.
 
 Constructors
 ------------

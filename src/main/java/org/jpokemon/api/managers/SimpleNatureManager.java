@@ -7,21 +7,42 @@ import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
 import org.jpokemon.api.natures.PokemonNature;
 
+/**
+ * Provides a basic implementation of the {@link Manager} interface for use with
+ * {@link PokemonNature}s. For a more generic version, see the {@link 
+ * SimpleManager} class.
+ *
+ * @author atheriel@gmail.com
+ *
+ * @since  0.1
+ */
 public class SimpleNatureManager implements Manager<PokemonNature> {
-
 	private Map<String, PokemonNature> natureMap = new HashMap<String, PokemonNature>();
+
+	/**
+	 * Provides the default constructor.
+	 *
+	 * @throws JPokemonError if there is a conflict over management. That is, 
+	 *         {@link PokemonNature#manager} is not ``null``.
+	 */
+	public SimpleNatureManager() throws JPokemonError {
+		if (PokemonNature.manager != null) {
+			throw new JPokemonError("A manager has already been defined for PokemonNatures!");
+		}
+		PokemonNature.manager = new SimpleNatureManager();
+	}
 
 	@Override
 	public boolean register(PokemonNature nature) throws JPokemonError {
-		if (natureMap.containsKey(nature.getName())) {
-			throw new JPokemonError("A type with the name " + nature.getName() + " has already been registered!");
+		String name = nature.getName();
+		if (name == null) {
+			throw new JPokemonError("The nature does not have a name to register under!");
+		} else if (natureMap.containsKey(name) && natureMap.get(name) != nature) {
+			throw new JPokemonError("A nature with the name " + name + " has already been registered!");
+		} else {
+			natureMap.put(name, nature);
+			return true;
 		}
-		if (natureMap.containsValue(nature)) {
-			throw new JPokemonError("This type is already registered!");
-		}
-
-		natureMap.put(nature.getName(), nature);
-		return true;
 	}
 
 	@Override
@@ -34,18 +55,6 @@ public class SimpleNatureManager implements Manager<PokemonNature> {
 		if (!natureMap.containsKey(name)) {
 			return null;
 		}
-
 		return natureMap.get(name);
-	}
-
-	public static void init() {
-		if (PokemonNature.manager != null) {
-			throw new JPokemonError("PokemonNature.manager already defined");
-		}
-
-		PokemonNature.manager = new SimpleNatureManager();
-	}
-
-	private SimpleNatureManager() {
 	}
 }

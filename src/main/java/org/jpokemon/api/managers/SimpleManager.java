@@ -126,7 +126,7 @@ public class SimpleManager<T> implements Manager<T> {
 		// Use the name to register, and check that it does not conflict
 		if (name == null) {
 			throw new JPokemonError("The object does not have a name to register under!");
-		} else if (objectMap.containsKey(name)) {
+		} else if (objectMap.containsKey(name) && objectMap.get(name) != managed) {
 			throw new JPokemonError("A object with the name " + name + " has already been registered!");
 		} else {
 			objectMap.put(name, managed);
@@ -153,7 +153,7 @@ public class SimpleManager<T> implements Manager<T> {
 	 * @return 		``true`` if the name is known to the manager.
 	 */
 	public boolean isRegistered(String name) {
-		return objectMap.containsValue(managed);
+		return objectMap.containsKey(name);
 	}
 
 	/**

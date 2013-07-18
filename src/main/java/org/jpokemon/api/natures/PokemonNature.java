@@ -23,6 +23,9 @@ import org.jpokemon.api.Manager;
  * @author Zach Taylor
  * 
  * @since  0.1
+ *
+ * @see  ClassicNatures
+ * @see  SimpleNatureManager
  */
 public class PokemonNature {
 	/** Indicates the manager being used to register items. May be ``null``. */

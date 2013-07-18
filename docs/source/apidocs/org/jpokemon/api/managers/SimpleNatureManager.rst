@@ -16,13 +16,24 @@ SimpleNatureManager
 
 .. java:type:: public class SimpleNatureManager implements Manager<PokemonNature>
 
+   Provides a basic implementation of the \ :java:ref:`Manager`\  interface for use with \ :java:ref:`PokemonNature`\ s. For a more generic version, see the \ :java:ref:`SimpleManager`\  class.
+
+   :codeauthor: atheriel@gmail.com
+
+Constructors
+------------
+
+.. java:constructor:: public SimpleNatureManager() throws JPokemonError
+   :outertype: SimpleNatureManager
+
+   Provides the default constructor.
+
+   :throws JPokemonError: if there is a conflict over management. That is, \ :java:ref:`PokemonNature.manager`\  is not ``null``.
+
 Methods
 -------
 
 .. java:method:: @Override public PokemonNature getByName(String name)
-   :outertype: SimpleNatureManager
-
-.. java:method:: public static void init()
    :outertype: SimpleNatureManager
 
 .. java:method:: @Override public boolean isRegistered(PokemonNature nature)

@@ -6,6 +6,7 @@ org.jpokemon.api
 .. toctree::
    :maxdepth: 1
 
+   Gender
    JPokemonError
    JPokemonException
    Manager

@@ -9,6 +9,7 @@ org.jpokemon.api.classic
    ClassicAbilities
    ClassicNatures
    ClassicTypes
+   ContestCategories
    ExperienceCurve
-   StatusAilment
+   StatusAilments
 

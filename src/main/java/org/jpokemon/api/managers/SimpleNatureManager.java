@@ -5,35 +5,35 @@ import java.util.Map;
 
 import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.natures.PokemonNature;
+import org.jpokemon.api.Nature;
 
 /**
  * Provides a basic implementation of the {@link Manager} interface for use with
- * {@link PokemonNature}s. For a more generic version, see the {@link 
+ * {@link Nature}s. For a more generic version, see the {@link 
  * SimpleManager} class.
  *
  * @author atheriel@gmail.com
  *
  * @since  0.1
  */
-public class SimpleNatureManager implements Manager<PokemonNature> {
-	private Map<String, PokemonNature> natureMap = new HashMap<String, PokemonNature>();
+public class SimpleNatureManager implements Manager<Nature> {
+	private Map<String, Nature> natureMap = new HashMap<String, Nature>();
 
 	/**
 	 * Provides the default constructor.
 	 *
 	 * @throws JPokemonError if there is a conflict over management. That is, 
-	 *         {@link PokemonNature#manager} is not ``null``.
+	 *         {@link Nature#manager} is not ``null``.
 	 */
 	public SimpleNatureManager() throws JPokemonError {
-		if (PokemonNature.manager != null) {
-			throw new JPokemonError("A manager has already been defined for PokemonNatures!");
+		if (Nature.manager != null) {
+			throw new JPokemonError("A manager has already been defined for Natures!");
 		}
-		PokemonNature.manager = new SimpleNatureManager();
+		Nature.manager = new SimpleNatureManager();
 	}
 
 	@Override
-	public boolean register(PokemonNature nature) throws JPokemonError {
+	public boolean register(Nature nature) throws JPokemonError {
 		String name = nature.getName();
 		if (name == null) {
 			throw new JPokemonError("The nature does not have a name to register under!");
@@ -46,12 +46,12 @@ public class SimpleNatureManager implements Manager<PokemonNature> {
 	}
 
 	@Override
-	public boolean isRegistered(PokemonNature nature) {
+	public boolean isRegistered(Nature nature) {
 		return natureMap.containsValue(nature);
 	}
 
 	@Override
-	public PokemonNature getByName(String name) {
+	public Nature getByName(String name) {
 		if (!natureMap.containsKey(name)) {
 			return null;
 		}

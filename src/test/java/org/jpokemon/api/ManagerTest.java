@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.jpokemon.api.manager.Manager;
 import org.jpokemon.api.manager.SimpleManager;
-import org.jpokemon.api.types.PokemonType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,16 +17,16 @@ import org.junit.runners.JUnit4;
  */
 @RunWith(JUnit4.class)
 public class ManagerTest {
-	static Manager<PokemonType> manager;
-	static PokemonType type;
+	static Manager<Type> manager;
+	static Type type;
 
 	@BeforeClass
 	public static void setup() {
-		type = new PokemonType();
+		type = new Type();
 
 		// Other tests define PokemonType.manager, so SimpleManager instantiation has problems...
-		PokemonType.manager = null;
-		manager = new SimpleManager<PokemonType>(PokemonType.class);
+		Type.manager = null;
+		manager = new SimpleManager<Type>(Type.class);
 
 		type.setName("TestType"); // automatically registers it?
 	}
@@ -37,7 +36,7 @@ public class ManagerTest {
 	 */
 	@Test(expected = JPokemonError.class)
 	public void testEnforcedSingleManagement() {
-		SimpleManager<PokemonType> manager2 = new SimpleManager<PokemonType>(PokemonType.class);
+		SimpleManager<Type> manager2 = new SimpleManager<Type>(Type.class);
 	}
 
 	/**
@@ -54,7 +53,7 @@ public class ManagerTest {
 	 */
 	@Test(expected = JPokemonError.class)
 	public void testManagementConflicts() {
-		PokemonType type2 = new PokemonType();
+		Type type2 = new Type();
 		type2.setName("TestType"); // automatically registers it
 	}
 
@@ -63,7 +62,7 @@ public class ManagerTest {
 	 */
 	@Test(expected = JPokemonError.class)
 	public void testNameRequirement() {
-		PokemonType type2 = new PokemonType();
+		Type type2 = new Type();
 		manager.register(type2);
 	}
 }

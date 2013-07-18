@@ -19,30 +19,30 @@ import org.jpokemon.api.Manager;
  * </ul>
  *
  * The following classes fulfill these criteria: {@link PokemonAbility}, {@link 
- * PokemonNature}, {@link PokemonSpecies}, {@link PokemonType}, {@link Move}, 
+ * Nature}, {@link Species}, {@link Type}, {@link Move}, 
  * and {@link Item}.<p> 
  *
  * <h2>Usage Example</h2> 
  * 
- * <p>For example, in conjunction with {@link PokemonType}, which fulfills the 
- * requirements with its {@link PokemonType#manager} field and {@link 
- * PokemonType#getName()} method, we can instantiate a manager like so:
+ * <p>For example, in conjunction with {@link Type}, which fulfills the 
+ * requirements with its {@link Type#manager} field and {@link 
+ * Type#getName()} method, we can instantiate a manager like so:
  * 
  * <pre>
- * SimpleManager&lt;PokemonType&gt; typeManager = new SimpleManager&lt;PokemonType&gt;(PokemonType.class);
+ * SimpleManager&lt;Type&gt; typeManager = new SimpleManager&lt;Type&gt;(Type.class);
  * </pre>
  * 
  * To test that this manager is really looking after types, we can try
  *
  * <pre>
- * PokemonType fire = new PokemonType();
+ * Type fire = new Type();
  * fire.setName("Fire");
  * fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel");
  * fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
  * </pre>
  *
  * to set up some of the type's properties. The method {@link 
- * PokemonType#setName()} does some of the work for us; if ``manager`` is 
+ * Type#setName()} does some of the work for us; if ``manager`` is 
  * defined, it will call {@link #register(fire)} automatically. Thus a call to
  *
  * <pre>
@@ -58,7 +58,7 @@ import org.jpokemon.api.Manager;
  *
  * @since  0.1
  *
- * @param  T The type to be managed, e.g. {@link PokemonNature}.
+ * @param  T The type to be managed, e.g. {@link Nature}.
  */
 public class SimpleManager<T> implements Manager<T> {
 	private final TreeMap<String, T> objectMap = new TreeMap<String, T>();

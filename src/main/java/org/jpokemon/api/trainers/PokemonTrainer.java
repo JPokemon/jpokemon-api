@@ -3,9 +3,8 @@ package org.jpokemon.api.trainers;
 import java.util.ArrayList;
 
 /**
- * Defines a basic trainer class. Trainers possess a party of Pokemon 
- * instances and a list of item names. They may also belong to a class of other
- * trainers.
+ * Defines a basic trainer class. Trainers possess a party of Pokemon instances 
+ * and a list of item names. They may also belong to a class of other trainers.
  *
  * @author atheriel@gmail.com
  *
@@ -16,6 +15,9 @@ import java.util.ArrayList;
 public class PokemonTrainer {
 	/** Indicates the name of the trainer. */
 	protected String name;
+
+	/** Indicates the trainer's ID number. */
+	protected int ID;
 
 	/** Indicates the name of the trainer's class, or `null` if it has none. */
 	protected String className = null;
@@ -32,8 +34,19 @@ public class PokemonTrainer {
 	}
 
 	/** Sets the name of this trainer. */
-	public void setName(String name) {
+	public PokemonTrainer setName(String name) {
 		this.name = name;
+		return this;
+	}
+
+	/** Gets the ID number of this trainer. */
+	public int getID() {
+		return this.ID;
+	}
+
+	/** Sets the ID number of this trainer. */
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 
 	/** Checks if this trainer belongs to a trainer class. */

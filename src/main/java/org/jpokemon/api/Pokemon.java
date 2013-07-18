@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.api.species.PokemonSpecies;
 import org.jpokemon.api.moves.MoveInstance;
 
 /**
@@ -24,7 +23,7 @@ public class Pokemon {
 	protected String name;
 
 	/** Indicates the species of this Pokémon. */
-	protected PokemonSpecies species;
+	protected Species species;
 
 	/** Indicates the moves of this Pokémon */
 	protected List<MoveInstance> moves = new ArrayList<MoveInstance>();

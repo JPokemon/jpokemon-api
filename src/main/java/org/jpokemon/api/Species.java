@@ -1,11 +1,10 @@
-package org.jpokemon.api.species;
+package org.jpokemon.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.evolutions.PokemonEvolution;
-import org.jpokemon.api.types.PokemonType;
 import org.jpokemon.api.classic.ExperienceCurve;
 
 /**
@@ -16,7 +15,7 @@ import org.jpokemon.api.classic.ExperienceCurve;
  *
  * @since  0.1
  */
-public class PokemonSpecies {
+public class Species {
 	/** Indicates this species' number in the National Pokédex. */
 	protected int pokedexNo;
 	
@@ -27,10 +26,10 @@ public class PokemonSpecies {
 	protected String name;
 
 	/** Indicates the primary type of this species. */
-	protected PokemonType primaryType;
+	protected Type primaryType;
 
 	/** Indicates the secondary type of this species (if it has one). */
-	protected PokemonType secondaryType = null;
+	protected Type secondaryType = null;
 
 	/** Indicates the Genus (the "species" in the classic games) of this species. */
 	protected String genus;
@@ -102,7 +101,7 @@ public class PokemonSpecies {
 	protected HashMap<Integer, String> moveList;
 
 	/** Provides the default constructor. */
-	public PokemonSpecies() {
+	public Species() {
 	}
 
 	/** Get the Pokédex number for this species. */
@@ -136,12 +135,12 @@ public class PokemonSpecies {
 	}
 
 	/** Gets the primary type for this species. */
-	public PokemonType getPrimaryType() {
+	public Type getPrimaryType() {
 		return primaryType;
 	}
 
 	/** Sets the primary type for this species. */
-	public void setPrimaryType(PokemonType type) {
+	public void setPrimaryType(Type type) {
 		this.primaryType = type;
 	}
 
@@ -151,12 +150,12 @@ public class PokemonSpecies {
 	}
 
 	/** Gets the secondary type for this species (assuming it has one). */
-	public PokemonType getSecondaryType() {
+	public Type getSecondaryType() {
 		return secondaryType;
 	}
 
 	/** Sets the secondary type for this species. */
-	public void setSecondaryType(PokemonType type) {
+	public void setSecondaryType(Type type) {
 		this.secondaryType = type;
 	}
 

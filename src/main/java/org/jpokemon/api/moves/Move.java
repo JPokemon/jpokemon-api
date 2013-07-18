@@ -1,7 +1,7 @@
 package org.jpokemon.api.moves;
 
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.types.PokemonType;
+import org.jpokemon.api.Type;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.
@@ -20,8 +20,8 @@ public class Move {
 	/** Indicates the name of this move. */
 	protected String name;
 
-	/** Indicates the {@link PokemonType} of this move. */
-	protected PokemonType type;
+	/** Indicates the {@link Type} of this move. */
+	protected Type type;
 	
 	/** Indicates the power of this move. */
 	protected int power;
@@ -60,13 +60,13 @@ public class Move {
 		}
 	}
 
-	/** Gets the {@link PokemonType} of this move. */
-	public PokemonType getType() {
+	/** Gets the {@link Type} of this move. */
+	public Type getType() {
 		return type;
 	}
 
-	/** Sets the {@link PokemonType} of this move. */
-	public void setType(PokemonType type) {
+	/** Sets the {@link Type} of this move. */
+	public void setType(Type type) {
 		this.type = type;
 	}
 

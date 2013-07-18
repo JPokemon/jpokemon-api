@@ -1,6 +1,6 @@
 package org.jpokemon.api;
 
-import org.jpokemon.api.JPokemonError;
+import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Provides an interface for object management and lookup functionality. A 

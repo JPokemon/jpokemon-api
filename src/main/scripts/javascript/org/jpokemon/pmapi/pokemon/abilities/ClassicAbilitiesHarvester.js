@@ -8,9 +8,9 @@ var table = document.getElementById('select_me');
 var rows = table.getElementsByTagName('tr');
 
 var printStuff = function(name, description) {
-  var line = 'public static final PokemonAbility ';
+  var line = 'public static final Ability ';
   line += name.toUpperCase().replace(' ', '_');
-  line += ' = new PokemonAbility().setName("';
+  line += ' = new Ability().setName("';
   line += name;
   line += '").setDescription("';
   line += description

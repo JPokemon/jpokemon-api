@@ -17,7 +17,7 @@ import org.jpokemon.api.exceptions.JPokemonError;
  * 		identify the object of type ``T``.
  * </ul>
  *
- * The following classes fulfill these criteria: {@link PokemonAbility}, {@link 
+ * The following classes fulfill these criteria: {@link Ability}, {@link 
  * Nature}, {@link Species}, {@link Type}, {@link Move}, 
  * and {@link Item}.<p> 
  *

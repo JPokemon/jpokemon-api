@@ -10,9 +10,9 @@ import org.jpokemon.api.Manager;
  * 
  * @since 0.1
  */
-public class PokemonAbility {
+public class Ability {
 	/** Indicates the configured Manager for PokemonAbilities, if set */
-	public static Manager<PokemonAbility> manager;
+	public static Manager<Ability> manager;
 
 	/** Indicates the name of the ability. */
 	protected String name;
@@ -29,7 +29,7 @@ public class PokemonAbility {
 	}
 
 	/** Sets the name of this ability. */
-	public PokemonAbility setName(String name) {
+	public Ability setName(String name) {
 		this.name = name;
 		return this;
 	}
@@ -40,7 +40,7 @@ public class PokemonAbility {
 	}
 
 	/** Sets the description of this ability. */
-	public PokemonAbility setDescription(String description) {
+	public Ability setDescription(String description) {
 		this.description = description;
 		return this;
 	}
@@ -51,7 +51,7 @@ public class PokemonAbility {
 	}
 
 	/** Sets the effect of this ability. */
-	public PokemonAbility setEffect(AbilityEffect effect) {
+	public Ability setEffect(AbilityEffect effect) {
 		this.effect = effect;
 		return this;
 	}

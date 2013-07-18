@@ -12,16 +12,11 @@ JPokemonError
 
 Constructors
 ------------
-JPokemonError
-^^^^^^^^^^^^^
 
 .. java:constructor:: public JPokemonError()
    :outertype: JPokemonError
 
    Constructs a new JPokemonError.
-
-JPokemonError
-^^^^^^^^^^^^^
 
 .. java:constructor:: public JPokemonError(String message)
    :outertype: JPokemonError

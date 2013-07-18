@@ -20,26 +20,15 @@ SimpleTypeManager
 
 Methods
 -------
-getByName
-^^^^^^^^^
 
 .. java:method:: @Override public PokemonType getByName(String name)
    :outertype: SimpleTypeManager
 
-init
-^^^^
-
 .. java:method:: public static void init()
    :outertype: SimpleTypeManager
 
-isRegistered
-^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isRegistered(PokemonType type)
    :outertype: SimpleTypeManager
-
-register
-^^^^^^^^
 
 .. java:method:: @Override public boolean register(PokemonType type) throws JPokemonError
    :outertype: SimpleTypeManager

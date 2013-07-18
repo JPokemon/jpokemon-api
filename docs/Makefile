@@ -178,3 +178,6 @@ pseudoxml:
 
 apidocs:
 	javasphinx-apidoc -u -o ./source/apidocs ../src/main/java/
+
+api:
+	python extensions/javasphinx/apidoc.py -u --verbose -o ./source/apidocs ../src/main/java/

@@ -20,20 +20,12 @@ SimpleMoveManager
 
 Methods
 -------
-getByName
-^^^^^^^^^
 
 .. java:method:: @Override public Move getByName(String name)
    :outertype: SimpleMoveManager
 
-isRegistered
-^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isRegistered(Move move)
    :outertype: SimpleMoveManager
-
-register
-^^^^^^^^
 
 .. java:method:: @Override public boolean register(Move move) throws JPokemonError
    :outertype: SimpleMoveManager

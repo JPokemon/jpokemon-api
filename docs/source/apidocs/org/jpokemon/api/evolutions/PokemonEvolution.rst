@@ -12,8 +12,6 @@ PokemonEvolution
 
 Fields
 ------
-species
-^^^^^^^
 
 .. java:field:: protected PokemonSpecies species
    :outertype: PokemonEvolution
@@ -22,16 +20,11 @@ species
 
 Methods
 -------
-getSpecies
-^^^^^^^^^^
 
 .. java:method:: public PokemonSpecies getSpecies()
    :outertype: PokemonEvolution
 
    Gets the species the Pokémon will evolve into.
-
-setSpecies
-^^^^^^^^^^
 
 .. java:method:: public void setSpecies(PokemonSpecies species)
    :outertype: PokemonEvolution

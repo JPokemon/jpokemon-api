@@ -10,12 +10,12 @@ Manager
 
    For implementations specific to each class, see:
 
-   :author: atheriel@gmail.com
+   :codeauthor: atheriel@gmail.com
+
+   **See also:** :java:ref:`SimpleAbilityManager`
 
 Methods
 -------
-getByName
-^^^^^^^^^
 
 .. java:method:: public T getByName(String name)
    :outertype: Manager
@@ -25,9 +25,6 @@ getByName
    :param name: The name of the object requested.
    :return: The object by this name, or ``null`` if it does not exist.
 
-isRegistered
-^^^^^^^^^^^^
-
 .. java:method:: public boolean isRegistered(T managed)
    :outertype: Manager
 
@@ -35,14 +32,12 @@ isRegistered
 
    :return: ``true`` if the object is known to the manager.
 
-register
-^^^^^^^^
-
 .. java:method:: public boolean register(T managed) throws JPokemonError
    :outertype: Manager
 
    Registers the object with the manager so it can be looked up by name.
 
    :param managed: The object to be registered.
+   :throws JPokemonError: if there is an error registering the object.
    :return: ``true`` if the object is in fact registered.
 

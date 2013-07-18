@@ -18,26 +18,15 @@ SimpleNatureManager
 
 Methods
 -------
-getByName
-^^^^^^^^^
 
 .. java:method:: @Override public PokemonNature getByName(String name)
    :outertype: SimpleNatureManager
 
-init
-^^^^
-
 .. java:method:: public static void init()
    :outertype: SimpleNatureManager
 
-isRegistered
-^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isRegistered(PokemonNature nature)
    :outertype: SimpleNatureManager
-
-register
-^^^^^^^^
 
 .. java:method:: @Override public boolean register(PokemonNature nature) throws JPokemonError
    :outertype: SimpleNatureManager

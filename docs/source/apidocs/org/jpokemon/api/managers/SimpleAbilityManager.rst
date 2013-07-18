@@ -20,8 +20,6 @@ SimpleAbilityManager
 
 Constructors
 ------------
-SimpleAbilityManager
-^^^^^^^^^^^^^^^^^^^^
 
 .. java:constructor:: public SimpleAbilityManager()
    :outertype: SimpleAbilityManager
@@ -30,20 +28,12 @@ SimpleAbilityManager
 
 Methods
 -------
-getByName
-^^^^^^^^^
 
 .. java:method:: @Override public PokemonAbility getByName(String name)
    :outertype: SimpleAbilityManager
 
-isRegistered
-^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isRegistered(PokemonAbility ability)
    :outertype: SimpleAbilityManager
-
-register
-^^^^^^^^
 
 .. java:method:: @Override public boolean register(PokemonAbility ability) throws JPokemonError
    :outertype: SimpleAbilityManager

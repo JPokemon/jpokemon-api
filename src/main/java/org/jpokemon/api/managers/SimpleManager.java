@@ -9,16 +9,31 @@ import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
 
 /**
- * Provides object management and lookup functionality. In order for this class 
- * to function, the object ``T`` must have both
+ * Provides type management and lookup functionality. In order for this class 
+ * to function, the type ``T`` must have both
  * 
  * <ul>
  * 		<li>a static field ``manager`` of type {@link Manager} and
  * 		<li>a method ``getName()`` that returns a unique string that can 
- * 		identify the object.
+ * 		identify the object of type ``T``.
  * </ul>
+ *
+ * The following classes fulfill these criteria: {@link PokemonAbility}, {@link 
+ * PokemonNature}, {@link PokemonSpecies}, {@link PokemonType}, {@link Move}, 
+ * and {@link Item}.<p> 
+ *
+ * @note This class uses reflection. Pains have been taken to avoid producing 
+ * errors, but in the case that they appear, they will be silently repressed.
+ *
+ * @author atheriel@gmail.com
+ *
+ * @since  0.1
+ *
+ * @param  T The type to be managed, e.g. {@link PokemonNature}.
+ *
+ * <h1>Example</h1> 
  * 
- * For example, in conjunction with {@link PokemonType}, which fulfills the 
+ * <p>For example, in conjunction with {@link PokemonType}, which fulfills the 
  * requirements with its {@link PokemonType#manager} field and {@link 
  * PokemonType#getName()} method, we can instantiate a manager like so:
  * 
@@ -29,10 +44,10 @@ import org.jpokemon.api.Manager;
  * To test that this manager is really looking after types, we can try
  *
  * <pre>
- * PokemonType fire = new PokemonType();
- * fire.setName("Fire");
- * fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel")
- * fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
+ * 	PokemonType fire = new PokemonType();
+ *  fire.setName("Fire");
+ *  fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel")
+ *  fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
  * </pre>
  *
  * to set up some of the type's properties. The method {@link 
@@ -44,28 +59,23 @@ import org.jpokemon.api.Manager;
  * </pre>
  *
  * will at this point return ``true``.
- *
- * @note This class uses reflection. Consider that a warning.
- *
- * @author atheriel@gmail.com
- *
- * @since  0.1
- *
- * @param  T The type to be managed, e.g. {@link PokemonNature}.
  */
 public class SimpleManager<T> implements Manager<T> {
 	private final TreeMap<String, T> objectMap = new TreeMap<String, T>();
 	private final Class<T> managedClass; // Fucking type erasure...
 
 	/**
-	 * Due to type erasure, the class of the managed object needs to be passed 
-	 * to the manager during construction. This isn't the only possible solution
-	 * to this problem, but it is the simplest.
+	 * Constructs a new ``SimpleManager&lt;T&gt;`` for the given type, ``T``.
 	 * 
-	 * @param  managedClass The class of the managed object, e.g. 
+	 * Due to type erasure, the class of the managed type needs to be passed 
+	 * to the manager during construction.
+	 * 
+	 * @param  managedClass The class of the managed type, e.g. 
 	 *                     ``MyObject.class``.
+	 * @param  T 			The type to be managed.
 	 *
-	 * @throws JPokemonError if there is a conflict over object management.
+	 * @throws JPokemonError if there is a conflict over type management. That 
+	 *         is, the ``manager`` field of the type is not ``null``.
 	 */
 	public SimpleManager(Class<T> managedClass) throws JPokemonError {		
 		this.managedClass = managedClass;
@@ -74,7 +84,7 @@ public class SimpleManager<T> implements Manager<T> {
 		try {
 			Field manager = managedClass.getField("manager");
 			if (manager.get(null) != null) {
-				throw new JPokemonError("This object already has a defined manager!");
+				throw new JPokemonError("This type already has a defined manager!");
 			} else {
 				manager.set(null, this);
 			}
@@ -84,9 +94,21 @@ public class SimpleManager<T> implements Manager<T> {
 	}
 	
 	/**
-	 * Registers the object with the manager so it can be looked up by name.
+	 * Registers the object of type ``T`` with the manager so it can be looked 
+	 * up by name. There are two conditions under which registration will fail, 
+	 * either:
 	 * 
-	 * @param  managed The object to be registered.
+	 * <ul>
+	 * 		<li>The name of the object of type ``T`` is ``null`` or
+	 *   	<li>The name is already in use by another object known to the 
+	 *    	manager (i.e. you are trying to register something called "Fire",
+	 *    	while another known object is already called "Fire").
+	 * </ul>
+	 *
+	 * So long as you have bothered to specify unique names, this method should 
+	 * be successful.
+	 * 
+	 * @param  managed The object of type ``T`` to be registered.
 	 * 
 	 * @return 		   ``true`` if the object is in fact registered.
 	 *
@@ -113,16 +135,29 @@ public class SimpleManager<T> implements Manager<T> {
 	}
 
 	/**
-	 * Checks if an object is registered with the manager.
+	 * Checks if an object of type ``T`` is registered with the manager.
 	 *
-	 * @return ``true`` if the object is known to the manager.
+	 * @param  managed The object that may be registered.
+	 *
+	 * @return 		   ``true`` if the object is known to the manager.
 	 */
 	public boolean isRegistered(T managed) {
 		return objectMap.containsValue(managed);
 	}
 
 	/**
-	 * Gets an object registered by this manager by name.
+	 * Checks if a name is known to the manager.
+	 *
+	 * @param  name The name that some object may be registered under.
+	 *
+	 * @return 		``true`` if the name is known to the manager.
+	 */
+	public boolean isRegistered(String name) {
+		return objectMap.containsValue(managed);
+	}
+
+	/**
+	 * Gets an object of type ``T`` registered by this manager by name.
 	 * 
 	 * @param  name The name of the object requested.
 	 * 

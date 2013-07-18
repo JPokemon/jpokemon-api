@@ -10,8 +10,6 @@ TypelessType
 
 Constructors
 ------------
-TypelessType
-^^^^^^^^^^^^
 
 .. java:constructor:: public TypelessType()
    :outertype: TypelessType
@@ -20,8 +18,6 @@ TypelessType
 
 Methods
 -------
-isIneffectiveAgainst
-^^^^^^^^^^^^^^^^^^^^
 
 .. java:method:: @Override public boolean isIneffectiveAgainst(PokemonType type)
    :outertype: TypelessType
@@ -30,18 +26,12 @@ isIneffectiveAgainst
 
    :return: `false`
 
-isIneffectiveAgainst
-^^^^^^^^^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isIneffectiveAgainst(String typeName)
    :outertype: TypelessType
 
    Checks if this type is ineffective against the type of a given name.
 
    :return: `false`
-
-isNotVeryEffectiveAgainst
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. java:method:: @Override public boolean isNotVeryEffectiveAgainst(PokemonType type)
    :outertype: TypelessType
@@ -50,9 +40,6 @@ isNotVeryEffectiveAgainst
 
    :return: `false`
 
-isNotVeryEffectiveAgainst
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isNotVeryEffectiveAgainst(String typeName)
    :outertype: TypelessType
 
@@ -60,18 +47,12 @@ isNotVeryEffectiveAgainst
 
    :return: `false`
 
-isSuperEffectiveAgainst
-^^^^^^^^^^^^^^^^^^^^^^^
-
 .. java:method:: @Override public boolean isSuperEffectiveAgainst(PokemonType type)
    :outertype: TypelessType
 
    Checks if this type is super-effective against the given type.
 
    :return: `false`
-
-isSuperEffectiveAgainst
-^^^^^^^^^^^^^^^^^^^^^^^
 
 .. java:method:: @Override public boolean isSuperEffectiveAgainst(String typeName)
    :outertype: TypelessType

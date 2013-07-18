@@ -10,32 +10,22 @@ LevelEvolution
 
 Fields
 ------
-level
-^^^^^
 
 .. java:field:: protected int level
    :outertype: LevelEvolution
 
 Methods
 -------
-getLevel
-^^^^^^^^
 
 .. java:method:: public int getLevel()
    :outertype: LevelEvolution
 
    Gets the level the Pokémon will evolve at.
 
-setLevel
-^^^^^^^^
-
 .. java:method:: public void setLevel(int level)
    :outertype: LevelEvolution
 
    Sets the level the Pokémon will evolve at.
-
-toString
-^^^^^^^^
 
 .. java:method:: @Override public String toString()
    :outertype: LevelEvolution

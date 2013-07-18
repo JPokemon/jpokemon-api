@@ -3,20 +3,20 @@ package org.jpokemon.api.managers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.types.PokemonType;
+import org.jpokemon.api.Type;
+import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link TypeManager}
  * interface. Important: this manager loads no types by default! For that, see
  * the {@link ClassicTypes} class.
  */
-public class SimpleTypeManager implements Manager<PokemonType> {
-	private final Map<String, PokemonType> typeList = new HashMap<String, PokemonType>();
+public class SimpleTypeManager implements Manager<Type> {
+	private final Map<String, Type> typeList = new HashMap<String, Type>();
 
 	@Override
-	public boolean register(PokemonType type) throws JPokemonError {
+	public boolean register(Type type) throws JPokemonError {
 		if (typeList.containsKey(type.getName())) {
 			throw new JPokemonError("A type with the name " + type.getName() + " has already been registered!");
 		}
@@ -28,12 +28,12 @@ public class SimpleTypeManager implements Manager<PokemonType> {
 	}
 
 	@Override
-	public boolean isRegistered(PokemonType type) {
+	public boolean isRegistered(Type type) {
 		return typeList.containsValue(type);
 	}
 
 	@Override
-	public PokemonType getByName(String name) {
+	public Type getByName(String name) {
 		if (!typeList.containsKey(name)) {
 			return null;
 		}
@@ -41,10 +41,10 @@ public class SimpleTypeManager implements Manager<PokemonType> {
 	}
 
 	public static void init() {
-		if (PokemonType.manager != null) {
-			throw new JPokemonError("PokemonType.manager already defined.");
+		if (Type.manager != null) {
+			throw new JPokemonError("Type.manager already defined.");
 		}
 
-		PokemonType.manager = new SimpleTypeManager();
+		Type.manager = new SimpleTypeManager();
 	}
 }

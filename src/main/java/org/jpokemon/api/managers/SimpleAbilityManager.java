@@ -3,9 +3,9 @@ package org.jpokemon.api.managers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
 import org.jpokemon.api.abilities.PokemonAbility;
+import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link AbilityManager}

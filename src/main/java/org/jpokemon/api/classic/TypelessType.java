@@ -1,12 +1,12 @@
 package org.jpokemon.api.classic;
 
-import org.jpokemon.api.types.PokemonType;
+import org.jpokemon.api.Type;
 
 /**
  * Defines a "typeless" Pokémon type (the `????` type). This class will return
  * `false` for all checks against it, and is by default named "????".
  */
-public class TypelessType extends PokemonType {
+public class TypelessType extends Type {
 
 	/** Provides the default constructor. */
 	public TypelessType() {
@@ -20,7 +20,7 @@ public class TypelessType extends PokemonType {
 	 * @return      `false`
 	 */
 	@Override
-	public boolean isSuperEffectiveAgainst(PokemonType type) {
+	public boolean isSuperEffectiveAgainst(Type type) {
 		return false;
 	}
 
@@ -40,7 +40,7 @@ public class TypelessType extends PokemonType {
 	 * @return      `false`
 	 */
 	@Override
-	public boolean isNotVeryEffectiveAgainst(PokemonType type) {
+	public boolean isNotVeryEffectiveAgainst(Type type) {
 		return false;
 	}
 
@@ -61,7 +61,7 @@ public class TypelessType extends PokemonType {
 	 * @return      `false`
 	 */
 	@Override
-	public boolean isIneffectiveAgainst(PokemonType type) {
+	public boolean isIneffectiveAgainst(Type type) {
 		return false;
 	}
 

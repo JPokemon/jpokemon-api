@@ -1,4 +1,4 @@
-package org.jpokemon.api;
+package org.jpokemon.api.exceptions;
 
 import java.lang.Exception;
 

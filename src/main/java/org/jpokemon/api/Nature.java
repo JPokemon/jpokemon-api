@@ -1,6 +1,5 @@
-package org.jpokemon.api.natures;
+package org.jpokemon.api;
 
-import org.jpokemon.api.Manager;
 
 /**
  * Defines a nature (personality) for a Pokémon. The 25 classic natures are
@@ -14,7 +13,7 @@ import org.jpokemon.api.Manager;
  * <p>One could create a nature in the following way:
  *
  * <pre>
- * PokemonNature aweseome = new PokemonNature().setName("Awesome");
+ * Nature aweseome = new Nature().setName("Awesome");
  * awesome.setStatIncreased("Speed").setStatDecreased("Special Defense");
  * awesome.setTasteFavorite("Sweet").setTasteDisliked("Bitter");
  * </pre>
@@ -27,9 +26,9 @@ import org.jpokemon.api.Manager;
  * @see  ClassicNatures
  * @see  SimpleNatureManager
  */
-public class PokemonNature {
+public class Nature {
 	/** Indicates the manager being used to register items. May be ``null``. */
-	public static Manager<PokemonNature> manager;
+	public static Manager<Nature> manager;
 
 	/** Indicates the name of this nature. */
 	protected String name;
@@ -47,7 +46,7 @@ public class PokemonNature {
 	protected String dislikedTaste;
 
 	/** Provides the default constructor. */
-	public PokemonNature() {
+	public Nature() {
 	}
 
 	/** Gets the name of this nature. */
@@ -56,7 +55,7 @@ public class PokemonNature {
 	}
 
 	/** Sets the name of this nature. */
-	public PokemonNature setName(String name) {
+	public Nature setName(String name) {
 		this.name = name;
 		if (manager != null) {
 			manager.register(this);
@@ -70,7 +69,7 @@ public class PokemonNature {
 	}
 
 	/** Sets the stat increased by this nature. */
-	public PokemonNature setStatIncreased(String stat) {
+	public Nature setStatIncreased(String stat) {
 		this.increasedStat = stat;
 		return this;
 	}
@@ -81,7 +80,7 @@ public class PokemonNature {
 	}
 
 	/** Sets the stat decreased by this nature. */
-	public PokemonNature setStatDecreased(String stat) {
+	public Nature setStatDecreased(String stat) {
 		this.decreasedStat = stat;
 		return this;
 	}
@@ -92,7 +91,7 @@ public class PokemonNature {
 	}
 
 	/** Sets the favorite taste of this nature. */
-	public PokemonNature setTasteFavorite(String taste) {
+	public Nature setTasteFavorite(String taste) {
 		this.favoriteTaste = taste;
 		return this;
 	}
@@ -103,7 +102,7 @@ public class PokemonNature {
 	}
 
 	/** Sets the disliked taste of this nature. */
-	public PokemonNature setTasteDisliked(String taste) {
+	public Nature setTasteDisliked(String taste) {
 		this.dislikedTaste = taste;
 		return this;
 	}

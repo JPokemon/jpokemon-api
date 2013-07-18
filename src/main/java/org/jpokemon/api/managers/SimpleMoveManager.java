@@ -3,8 +3,8 @@ package org.jpokemon.api.managers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.Manager;
+import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.moves.Move;
 
 /**

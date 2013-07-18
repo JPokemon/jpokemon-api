@@ -1,21 +1,21 @@
 package org.jpokemon.api.evolutions;
 
-import org.jpokemon.api.species.PokemonSpecies;
+import org.jpokemon.api.Species;
 
 /**
  * Defines an abstract evolution class.
  */
 public abstract class PokemonEvolution {
 	/** Indicates the species the Pokémon will evolve into. */
-	protected PokemonSpecies species;
+	protected Species species;
 	
 	/** Gets the species the Pokémon will evolve into. */
-	public PokemonSpecies getSpecies() {
+	public Species getSpecies() {
 		return this.species;
 	}
 
 	/** Sets the species the Pokémon will evolve into. */
-	public void setSpecies(PokemonSpecies species) {
+	public void setSpecies(Species species) {
 		this.species = species;
 	}
 }

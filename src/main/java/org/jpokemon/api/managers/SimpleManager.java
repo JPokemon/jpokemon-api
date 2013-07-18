@@ -22,32 +22,23 @@ import org.jpokemon.api.Manager;
  * PokemonNature}, {@link PokemonSpecies}, {@link PokemonType}, {@link Move}, 
  * and {@link Item}.<p> 
  *
- * @note This class uses reflection. Pains have been taken to avoid producing 
- * errors, but in the case that they appear, they will be silently repressed.
- *
- * @author atheriel@gmail.com
- *
- * @since  0.1
- *
- * @param  T The type to be managed, e.g. {@link PokemonNature}.
- *
- * <h1>Example</h1> 
+ * <h2>Usage Example</h2> 
  * 
  * <p>For example, in conjunction with {@link PokemonType}, which fulfills the 
  * requirements with its {@link PokemonType#manager} field and {@link 
  * PokemonType#getName()} method, we can instantiate a manager like so:
  * 
  * <pre>
- * SimpleManager<PokemonType> typeManager = new SimpleManager<PokemonType>(PokemonType.class);
+ * SimpleManager&lt;PokemonType&gt; typeManager = new SimpleManager&lt;PokemonType&gt;(PokemonType.class);
  * </pre>
  * 
  * To test that this manager is really looking after types, we can try
  *
  * <pre>
- * 	PokemonType fire = new PokemonType();
- *  fire.setName("Fire");
- *  fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel")
- *  fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
+ * PokemonType fire = new PokemonType();
+ * fire.setName("Fire");
+ * fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel");
+ * fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
  * </pre>
  *
  * to set up some of the type's properties. The method {@link 
@@ -59,6 +50,15 @@ import org.jpokemon.api.Manager;
  * </pre>
  *
  * will at this point return ``true``.
+ *
+ * @note This class uses reflection. Pains have been taken to avoid producing 
+ * errors, but in the case that they appear, they will be silently repressed.
+ *
+ * @author atheriel@gmail.com
+ *
+ * @since  0.1
+ *
+ * @param  T The type to be managed, e.g. {@link PokemonNature}.
  */
 public class SimpleManager<T> implements Manager<T> {
 	private final TreeMap<String, T> objectMap = new TreeMap<String, T>();

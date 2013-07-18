@@ -25,22 +25,22 @@ SimpleManager
 
    The following classes fulfill these criteria: \ :java:ref:`PokemonAbility`\ , \ :java:ref:`PokemonNature`\ , \ :java:ref:`PokemonSpecies`\ , \ :java:ref:`PokemonType`\ , \ :java:ref:`Move`\ , and \ :java:ref:`Item`\ .
 
-   :codeauthor: atheriel@gmail.com
-   :param T: The type to be managed, e.g. \ :java:ref:`PokemonNature`\ .
-
-   \ **Example**\
+   \ **Usage Example**\
 
    For example, in conjunction with \ :java:ref:`PokemonType`\ , which fulfills the requirements with its \ :java:ref:`PokemonType.manager`\  field and \ :java:ref:`PokemonType.getName()`\  method, we can instantiate a manager like so:
 
    .. parsed-literal::
 
-      SimpleManager typeManager = new SimpleManager(PokemonType.class);
+      SimpleManager<PokemonType> typeManager = new SimpleManager<PokemonType>(PokemonType.class);
 
    To test that this manager is really looking after types, we can try
 
    .. parsed-literal::
 
-      PokemonType fire = new PokemonType(); fire.setName("Fire"); fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel") fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
+      PokemonType fire = new PokemonType();
+      fire.setName("Fire");
+      fire.setSuperEffectiveAgainst("Grass", "Bug", "Steel");
+      fire.setNotVeryEffectiveAgainst("Fire", "Water", "Rock", "Dragon");
 
    to set up some of the type's properties. The method \ :java:ref:`PokemonType.setName()`\  does some of the work for us; if ``manager`` is defined, it will call \ :java:ref:`register(fire)`\  automatically. Thus a call to
 
@@ -49,6 +49,9 @@ SimpleManager
       typeManager.getByName("Fire").isSuperEffectiveAgainst("Grass");
 
    will at this point return ``true``.
+
+   :codeauthor: atheriel@gmail.com
+   :param T: The type to be managed, e.g. \ :java:ref:`PokemonNature`\ .
 
    .. note::
       This class uses reflection. Pains have been taken to avoid producing errors, but in the case that they appear, they will be silently repressed.

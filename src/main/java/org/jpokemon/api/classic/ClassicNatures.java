@@ -2,6 +2,7 @@ package org.jpokemon.api.classic;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,15 +12,15 @@ import org.jpokemon.api.natures.PokemonNature;
 /**
  * Defines the 25 classic natures (personalities) that a Pokémon may possess.
  * 
- * Note that this class is final. If you want to add or remove natures, it
- * cannot be extended; you must write your own lookup class.
+ * <p>If you wanted to add a series of new natures, the best way to do so might 
+ * be to extend this class and add a few more static fields.
  * 
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
  * @since  0.1
  */
-public final class ClassicNatures {
+public class ClassicNatures {
 	private static final List<PokemonNature> natureList;
 
 	// Neutral Natures:
@@ -154,32 +155,13 @@ public final class ClassicNatures {
 	}
 
 	/**
-	 * Initializes the classic natures, and registers them with the
-	 * {@link PokemonNature#manager}
-	 */
-	public static void init() {
-		for (Field field : ClassicNatures.class.getFields()) {
-			try {
-				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
-					Object temp = field.get(null);
-
-					if (temp instanceof PokemonNature) {
-						PokemonNature nature = (PokemonNature) temp;
-						PokemonNature.manager.register(nature);
-					}
-				}
-			} catch (IllegalAccessException exception) {
-			}
-		}
-	}
-
-	/**
 	 * Helper method to get a random nature, with a uniform probability
 	 * distribution.
 	 * 
 	 * @param random The {@link Random} object to select the nature with.
 	 */
 	public static PokemonNature getRandomNature(Random random) {
-		return natureList.get(random.nextInt(25));
+		int pool = natureList.size()
+		return natureList.get(random.nextInt(pool));
 	}
 }

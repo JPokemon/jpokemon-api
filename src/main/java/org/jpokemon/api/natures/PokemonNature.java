@@ -6,10 +6,18 @@ import org.jpokemon.api.Manager;
  * Defines a nature (personality) for a Pokémon. The 25 classic natures are
  * instantiated in the {@link ClassicNatures} class.
  *
- * <p>
- * 
- * To define your own nature, construct instances of this class. If you want to
- * add attributes to the nature, it can also be extended.
+ * <p>To define your own nature, construct instances of this class. If you want 
+ * to add attributes to the nature, it can of course be extended.<p>
+ *
+ * <h2>Usage Example</h2>
+ *
+ * <p>One could create a nature in the following way:
+ *
+ * <pre>
+ * PokemonNature aweseome = new PokemonNature().setName("Awesome");
+ * awesome.setStatIncreased("Speed").setStatDecreased("Special Defense");
+ * awesome.setTasteFavorite("Sweet").setTasteDisliked("Bitter");
+ * </pre>
  * 
  * @author atheriel@gmail.com
  * @author Zach Taylor
@@ -20,7 +28,20 @@ public class PokemonNature {
 	/** Indicates the manager being used to register items. May be ``null``. */
 	public static Manager<PokemonNature> manager;
 
-	protected String name, increasedStat, decreasedStat, favoriteTaste, dislikedTaste;
+	/** Indicates the name of this nature. */
+	protected String name;
+	
+	/** Indicates the stat increased by this nature. */
+	protected String increasedStat;
+	
+	/** Indicates the stat decreased by this nature. */
+	protected String decreasedStat;
+	
+	/** Indicates the taste favoured by Pokémon of this nature. */
+	protected String favoriteTaste;
+	
+	/** Indicates the taste disliked by Pokémon of this nature. */
+	protected String dislikedTaste;
 
 	/** Provides the default constructor. */
 	public PokemonNature() {
@@ -34,6 +55,9 @@ public class PokemonNature {
 	/** Sets the name of this nature. */
 	public PokemonNature setName(String name) {
 		this.name = name;
+		if (manager != null) {
+			manager.register(this);
+		}
 		return this;
 	}
 

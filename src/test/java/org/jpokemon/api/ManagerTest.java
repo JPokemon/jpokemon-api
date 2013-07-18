@@ -3,8 +3,7 @@ package org.jpokemon.api;
 import static org.junit.Assert.assertTrue;
 
 import org.jpokemon.api.exceptions.JPokemonError;
-import org.jpokemon.api.manager.Manager;
-import org.jpokemon.api.manager.SimpleManager;
+import org.jpokemon.api.managers.SimpleManager;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,21 +22,13 @@ public class ManagerTest {
 
 	@BeforeClass
 	public static void setup() {
-		type = new Type();
+		type = new Type().setName("TestType");
 
 		// Other tests define PokemonType.manager, so SimpleManager instantiation has problems...
 		Type.manager = null;
 		manager = new SimpleManager<Type>(Type.class);
 
-		type.setName("TestType"); // automatically registers it?
-	}
-
-	/**
-	 * Verifies that only a single manager can be defined for a managed class.
-	 */
-	@Test(expected = JPokemonError.class)
-	public void testEnforcedSingleManagement() {
-		SimpleManager<Type> manager2 = new SimpleManager<Type>(Type.class);
+		manager.register(type);
 	}
 
 	/**
@@ -47,15 +38,6 @@ public class ManagerTest {
 	public void testManagement() {
 		assertTrue(manager.isRegistered(type));
 		assertTrue(manager.getByName("TestType") == type);
-	}
-
-	/**
-	 * Checks that only one object may be registered under a given name.
-	 */
-	@Test(expected = JPokemonError.class)
-	public void testManagementConflicts() {
-		Type type2 = new Type();
-		type2.setName("TestType"); // automatically registers it
 	}
 
 	/**

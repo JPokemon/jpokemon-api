@@ -45,9 +45,6 @@ public class Type {
 	 */
 	public Type setName(String name) {
 		this.name = name;
-		if (manager != null) {
-			manager.register(this);
-		}
 		return this;
 	}
 

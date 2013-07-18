@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.items.*;
 import org.jpokemon.api.items.attributes.*;
+import org.jpokemon.api.managers.SimpleItemManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -23,9 +24,9 @@ public class ItemTest {
 	 */
 	@Test(expected = JPokemonError.class)
 	public void testEnforcedItemUniqueness() {
-		ItemManager manager = SimpleItemManager.getInstance();
-		manager.registerItem(new Item().setName("Test Item"));
-		manager.registerItem(new Item().setName("Test Item"));
+		Manager<Item> manager = new SimpleItemManager();
+		manager.register(new Item().setName("Test Item"));
+		manager.register(new Item().setName("Test Item"));
 	}
 
 	/**

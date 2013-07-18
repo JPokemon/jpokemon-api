@@ -1,14 +1,19 @@
 package org.jpokemon.api.abilities;
 
+import org.jpokemon.api.Manager;
+
 /**
  * Defines an ability that a Pokémon may possess.
  * 
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since  0.1
+ * @since 0.1
  */
 public class PokemonAbility {
+	/** Indicates the configured Manager for PokemonAbilities, if set */
+	public static Manager<PokemonAbility> manager;
+
 	/** Indicates the name of the ability. */
 	protected String name;
 

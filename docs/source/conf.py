@@ -11,6 +11,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+sys.path.append(os.path.abspath('../extensions'))
 extensions = ['javasphinx']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -80,7 +81,7 @@ highlight_language = 'java'
 
 # -- Options for HTML output ---------------------------------------------------
 
-html_theme = 'nature'
+html_theme = 'default'
 #html_theme_options = {}
 #html_theme_path = []
 

@@ -2,25 +2,30 @@ package org.jpokemon.api.classic;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.jpokemon.api.JPokemonError;
 import org.jpokemon.api.natures.PokemonNature;
 
 /**
- * Defines the 25 classic natures (personalities) that a Pokémon may possess.
+ * Defines the 25 classic natures (personalities) for a Pokémon.
  * 
- * Note that this class is final. If you want to add or remove natures, it
- * cannot be extended; you must write your own lookup class.
+ * <p>If you wanted to add a series of new natures, the best way to do so might 
+ * be to extend this class and add a few more static fields.
  * 
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
  * @since  0.1
+ *
+ * @see  PokemonNature
+ * @see  SimpleNatureManager
  */
-public final class ClassicNatures {
-	private static final List<PokemonNature> natureList;
+public class ClassicNatures {
+	private static final List<PokemonNature> natureList = new ArrayList<PokemonNature>(25);
 
 	// Neutral Natures:
 
@@ -135,42 +140,24 @@ public final class ClassicNatures {
 	public static final PokemonNature NAIVE = new PokemonNature().setName("Naive").setStatIncreased("Speed")
 			.setStatDecreased("Special Defense").setTasteFavorite("Sweet").setTasteDisliked("Bitter");
 
-	// Adds the natures listed above to a list for randomization purposes.
 	static {
-		natureList = new ArrayList<PokemonNature>(25);
 		for (Field field : ClassicNatures.class.getFields()) {
 			try {
-				if ((field.getModifiers() & (Modifier.STATIC | Modifier.PUBLIC)) > 0) {
-					Object temp = field.get(null);
-					if (temp instanceof PokemonNature) {
-						PokemonNature nature = (PokemonNature) temp;
-						natureList.add(nature);
-					}
+				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) <= 0) {
+					continue;
 				}
-			} catch (Exception exception) {
-				throw new RuntimeException(exception);
-			}
-		}
-	}
-
-	/**
-	 * Initializes the classic natures, and registers them with the
-	 * {@link PokemonNature#manager}
-	 */
-	public static void init() {
-		for (Field field : ClassicNatures.class.getFields()) {
-			try {
-				if ((field.getModifiers() & (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) > 0) {
-					Object temp = field.get(null);
-
-					if (temp instanceof PokemonNature) {
-						PokemonNature nature = (PokemonNature) temp;
-						PokemonNature.manager.registerNature(nature);
-					}
+				Object temp = field.get(null);
+				if (temp instanceof PokemonNature) {
+					PokemonNature nature = (PokemonNature) temp;
+					natureList.add(nature);
 				}
 			} catch (IllegalAccessException exception) {
 			}
 		}
+	}
+
+	/** Provides a private constructor, so it cannot be instantiated. */
+	private ClassicNatures() {
 	}
 
 	/**
@@ -180,6 +167,7 @@ public final class ClassicNatures {
 	 * @param random The {@link Random} object to select the nature with.
 	 */
 	public static PokemonNature getRandomNature(Random random) {
-		return natureList.get((short) random.nextInt(25));
+		int pool = natureList.size();
+		return natureList.get(random.nextInt(pool));
 	}
 }

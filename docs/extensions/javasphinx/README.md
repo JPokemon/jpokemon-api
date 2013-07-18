@@ -1,0 +1,1 @@
+This is a clone (with some very minor modifications) of Bonto's [javasphinx](https://github.com/bronto/javasphinx). It may become a submodule in the future.

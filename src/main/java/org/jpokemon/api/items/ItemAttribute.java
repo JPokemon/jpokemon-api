@@ -29,6 +29,11 @@ public abstract class ItemAttribute {
 	/** Sets the name of this attribute. */
 	public ItemAttribute setName(String name) {
 		this.name = name;
+
+		if (ItemAttribute.manager != null) {
+			ItemAttribute.manager.register(this);
+		}
+
 		return this;
 	}
 }

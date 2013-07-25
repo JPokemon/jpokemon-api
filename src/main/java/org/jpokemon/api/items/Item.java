@@ -1,5 +1,7 @@
 package org.jpokemon.api.items;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.jpokemon.api.Manager;
@@ -199,37 +201,46 @@ public class Item {
 	}
 
 	/** Checks if the item has an attribute of the given name. */
-	public boolean hasAttribute(String attributeClass) {
-		if (attributeClass == null) {
+	public boolean hasAttribute(String key) {
+		if (key == null) {
 			return false;
 		}
 
-		return attributes.containsKey(attributeClass);
+		return attributes.containsKey(key);
 	}
 
 	/** Adds an attribute to the item. It must have a distinct name. */
-	public Item addAttribute(String attributeClass, String attributeRef) {
-		if (!attributes.containsKey(attributeClass)) {
-			attributes.put(attributeClass, attributeRef);
+	public Item addAttribute(String key, String value) {
+		if (!attributes.containsKey(key)) {
+			attributes.put(key, value);
 		}
 
 		return this;
 	}
 
 	/**
-	 * Gets the {@link ItemAttribute} instance for this item of a given type.
+	 * Gets the attribute of this item for the given key
 	 * 
-	 * @param name The name of attribute requested.
+	 * @param key The key of the attribute requested
 	 * 
 	 * @return The item's attribute under this name, or `null` if it does not
-	 *         possess one.
+	 *         possess one
 	 */
-	public String getAttribute(String attribute) {
-		if (!attributes.containsKey(attribute)) {
+	public String getAttribute(String key) {
+		if (!attributes.containsKey(key)) {
 			return null;
 		}
 
-		return attributes.get(attribute);
+		return attributes.get(key);
+	}
+
+	/**
+	 * Gets all of the attribute keys of this Item as an UnmodifiableCollection
+	 * 
+	 * @return A collection of this Item's attribute keys
+	 */
+	public Collection<String> getAllAttributes() {
+		return Collections.unmodifiableCollection(attributes.keySet());
 	}
 
 	/** Gets a string representation of this item: its name. */

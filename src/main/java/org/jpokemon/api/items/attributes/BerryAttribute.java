@@ -3,6 +3,8 @@ package org.jpokemon.api.items.attributes;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jpokemon.api.exceptions.JPokemonError;
+import org.jpokemon.api.items.Item;
 import org.jpokemon.api.items.ItemAttribute;
 
 /**
@@ -14,7 +16,7 @@ import org.jpokemon.api.items.ItemAttribute;
  * 
  * @since 0.1
  */
-public class BerryAttribute extends ItemAttribute {
+public class BerryAttribute implements ItemAttribute {
 	/** Indicates the size of this berry */
 	private float size;
 
@@ -72,5 +74,66 @@ public class BerryAttribute extends ItemAttribute {
 	public BerryAttribute setFlavor(String taste, int flavor) {
 		flavors.put(taste, flavor);
 		return this;
+	}
+
+	@Override
+	public void applyAttribute(Item item) {
+		if (item.hasAttribute("firmness")) {
+			throw new JPokemonError("Redefinition of property (firmness) with item : " + item.toString());
+		}
+		item.addAttribute("firmness", firmness + "");
+
+		if (item.hasAttribute("size")) {
+			throw new JPokemonError("Redefinition of property (size) with item : " + item.toString());
+		}
+		item.addAttribute("size", size + "");
+
+		if (item.hasAttribute("smoothness")) {
+			throw new JPokemonError("Redefinition of property (smoothness) with item : " + item.toString());
+		}
+		item.addAttribute("smoothness", smoothness + "");
+
+		for (Map.Entry<String, Integer> flavor : flavors.entrySet()) {
+			if (item.hasAttribute(flavor.getKey())) {
+				throw new JPokemonError("Redefinition of property (" + flavor.getKey() + ") with item : " + item.toString());
+			}
+			item.addAttribute("flavor." + flavor.getKey(), flavor.getValue() + "");
+		}
+	}
+
+	/**
+	 * Reads all necessary attributes from the specified Item to get an
+	 * ItemAttribute instance
+	 * 
+	 * @param item Item to read attributes from
+	 * @return A BerryAttribute built from attributes of the Item
+	 */
+	public static BerryAttribute getFromItem(Item item) {
+		BerryAttribute ba = new BerryAttribute();
+
+		if (!item.hasAttribute("firmness")) {
+			throw new JPokemonError("Missing property (firmness) from item : " + item.toString());
+		}
+		ba.setFirmness(item.getAttribute("firmness"));
+
+		if (!item.hasAttribute("size")) {
+			throw new JPokemonError("Missing property (size) from item : " + item.toString());
+		}
+		ba.setSize(Integer.parseInt(item.getAttribute("size")));
+
+		if (!item.hasAttribute("smoothness")) {
+			throw new JPokemonError("Missing property (smoothness) from item : " + item.toString());
+		}
+		ba.setSmoothness(Integer.parseInt(item.getAttribute("smoothness")));
+
+		for (String attributeKey : item.getAllAttributes()) {
+			if (!attributeKey.startsWith("flavor.")) {
+				continue;
+			}
+
+			ba.setFlavor(attributeKey.substring("flavor.".length()), Integer.parseInt(item.getAttribute(attributeKey)));
+		}
+
+		return ba;
 	}
 }

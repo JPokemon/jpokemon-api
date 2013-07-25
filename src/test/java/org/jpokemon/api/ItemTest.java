@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.items.*;
 import org.jpokemon.api.items.attributes.*;
-import org.jpokemon.api.managers.SimpleItemAttributeManager;
 import org.jpokemon.api.managers.SimpleItemManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,11 +35,10 @@ public class ItemTest {
 	@Test
 	public void testItemAttribute() {
 		// Define the Berry Pocket. setName will call register
-		ItemAttribute.manager = new SimpleItemAttributeManager();
-		new PocketAttribute().setPocketName("Berries").setName("BerryPocket");
+		new PocketAttribute().setPocketName("berries");
 
-		Item cheriBerry = new Item().addAttribute("Pocket", "BerryPocket");
-		assertTrue("Berry pocket", cheriBerry.hasAttribute("Pocket"));
-		assertEquals("Berry pocket", "Berries", ((PocketAttribute) ItemAttribute.manager.getByName(cheriBerry.getAttribute("Pocket"))).getPocketName());
+		Item cheriBerry = new Item().addAttribute("pocket", "berries");
+		assertTrue("Berry pocket", cheriBerry.hasAttribute("pocket"));
+		assertEquals("Berry pocket", "berries", cheriBerry.getAttribute("pocket"));
 	}
 }

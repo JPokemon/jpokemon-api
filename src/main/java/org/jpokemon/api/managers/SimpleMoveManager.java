@@ -23,10 +23,10 @@ public class SimpleMoveManager implements Manager<Move> {
 			throw new JPokemonError("Cannot register a null move");
 		}
 		if (move.getName() == null) {
-			throw new JPokemonError("An ability cannot be registered if it has no name");
+			throw new JPokemonError("A move cannot be registered if it has no name");
 		}
 		if (moveMap.containsKey(move.getName())) {
-			throw new JPokemonError("An ability with the same name is already registered: " + move.getName());
+			throw new JPokemonError("A move with the same name is already registered: " + move.getName());
 		}
 
 		moveMap.put(move.getName(), move);

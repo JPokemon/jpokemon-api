@@ -1,50 +1,23 @@
 package org.jpokemon.api.items.attributes;
 
+import org.jpokemon.api.exceptions.JPokemonError;
+import org.jpokemon.api.items.Item;
 import org.jpokemon.api.items.ItemAttribute;
 
 /**
- * Provides a possible attribute describing the pocket an item belongs to. The 
- * names of the pockets each have their own static field, which can of course 
- * be modified.
- *
+ * Provides a possible attribute describing the pocket an item belongs to. The
+ * names of the pockets each have their own static field, which can of course be
+ * modified.
+ * 
  * @author atheriel@gmail.com
- *
- * @since  0.1
+ * 
+ * @since 0.1
  */
 public class PocketAttribute implements ItemAttribute {
-	/** Indicates the name of the default pocket. */
-	public static String DEFAULT = "Items";
-
-	/** Indicates the name of the balls pocket. */
-	public static String BALLS = "Poké Balls";
-
-	/** Indicates the name of the battle items pocket. */
-	public static String BATTLE = "Battle Items";
-
-	/** Indicates the name of the berries pocket. */
-	public static String BERRIES = "Berries";
-
-	/** Indicates the name of the key items pocket. */
-	public static String KEY = "Key Items";
-
-	/** Indicates the name of the tm & hm pocket. */
-	public static String MACHINES = "TMs and HMs";
-
-	/** Indicates the name of the mail pocket. */
-	public static String MAIL = "Mail";
-
-	/** Indicates the name of the medicine pocket. */
-	public static String MEDICINE = "Medicine";
-
 	private String pocketName;
 
 	/** Provides the default constructor. */
 	public PocketAttribute() {
-	}
-
-	/** Constructs a new attribute with the given pocket name. */
-	public PocketAttribute(String pocketName) {
-		this.pocketName = pocketName;
 	}
 
 	/** Gets the name of the pocket this item belongs to. */
@@ -56,5 +29,31 @@ public class PocketAttribute implements ItemAttribute {
 	public PocketAttribute setPocketName(String pocketName) {
 		this.pocketName = pocketName;
 		return this;
+	}
+
+	@Override
+	public void applyAttribute(Item item) {
+		if (item.hasProperty("pocket")) {
+			throw new JPokemonError("Redefinition of property (pocket) with item : " + item.toString());
+		}
+		item.setProperty("pocket", pocketName);
+	}
+
+	/**
+	 * Reads all necessary attributes from the specified Item to get an
+	 * ItemAttribute instance
+	 * 
+	 * @param item Item to read attributes from
+	 * @return A BerryAttribute built from attributes of the Item
+	 */
+	public static PocketAttribute getFromItem(Item item) {
+		PocketAttribute pa = new PocketAttribute();
+
+		if (!item.hasProperty("pocket")) {
+			throw new JPokemonError("Missing property (pocket) from item : " + item.toString());
+		}
+		pa.setPocketName(item.getProperty("pocket"));
+
+		return pa;
 	}
 }

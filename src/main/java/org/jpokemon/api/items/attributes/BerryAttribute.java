@@ -26,6 +26,9 @@ public class BerryAttribute implements ItemAttribute {
 	/** Indicates the firmness of this berry */
 	private String firmness;
 
+	/** Indicates the time it takes to grow this berry */
+	private String growthTime;
+
 	/** Indicates the flavors of this berry */
 	private Map<String, Integer> flavors = new HashMap<String, Integer>(6);
 
@@ -76,6 +79,16 @@ public class BerryAttribute implements ItemAttribute {
 		return this;
 	}
 
+	/** Gets the amount of time this berry requires to grow */
+	public String getGrowthTime() {
+		return growthTime;
+	}
+
+	/** Sets the amount of time this berry requires to grow */
+	public void setGrowthTime(String growthTime) {
+		this.growthTime = growthTime;
+	}
+
 	@Override
 	public void applyAttribute(Item item) {
 		if (item.hasProperty("firmness")) {
@@ -92,6 +105,11 @@ public class BerryAttribute implements ItemAttribute {
 			throw new JPokemonError("Redefinition of property (smoothness) with item : " + item.toString());
 		}
 		item.setProperty("smoothness", smoothness + "");
+
+		if (item.hasProperty("growthtime")) {
+			throw new JPokemonError("Redefinition of property (growthtime) with item : " + item.toString());
+		}
+		item.setProperty("growthtime", growthTime);
 
 		for (Map.Entry<String, Integer> flavor : flavors.entrySet()) {
 			if (item.hasProperty(flavor.getKey())) {
@@ -126,6 +144,11 @@ public class BerryAttribute implements ItemAttribute {
 		}
 		ba.setSmoothness(Integer.parseInt(item.getProperty("smoothness")));
 
+		if (!item.hasProperty("growthtime")) {
+			throw new JPokemonError("Missing property (growthtime) from item : " + item.toString());
+		}
+		ba.setGrowthTime(item.getProperty("growthtime"));
+
 		for (String attributeKey : item.getAllAttributes()) {
 			if (!attributeKey.startsWith("flavor.")) {
 				continue;
@@ -136,4 +159,5 @@ public class BerryAttribute implements ItemAttribute {
 
 		return ba;
 	}
+
 }

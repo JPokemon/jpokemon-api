@@ -1,17 +1,14 @@
 package org.jpokemon.api;
 
-import java.util.Random;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Random;
+
+import org.jpokemon.api.trainers.PokemonTrainer;
+import org.jpokemon.api.trainers.TrainerIDGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import org.jpokemon.api.exceptions.JPokemonError;
-import org.jpokemon.api.trainers.PokemonTrainer;
-import org.jpokemon.api.trainers.TrainerIDGenerator;
 
 /**
  * Tests the generation of unique trainer IDs.

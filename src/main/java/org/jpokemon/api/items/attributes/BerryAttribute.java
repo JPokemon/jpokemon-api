@@ -78,26 +78,26 @@ public class BerryAttribute implements ItemAttribute {
 
 	@Override
 	public void applyAttribute(Item item) {
-		if (item.hasAttribute("firmness")) {
+		if (item.hasProperty("firmness")) {
 			throw new JPokemonError("Redefinition of property (firmness) with item : " + item.toString());
 		}
-		item.addAttribute("firmness", firmness + "");
+		item.setProperty("firmness", firmness + "");
 
-		if (item.hasAttribute("size")) {
+		if (item.hasProperty("size")) {
 			throw new JPokemonError("Redefinition of property (size) with item : " + item.toString());
 		}
-		item.addAttribute("size", size + "");
+		item.setProperty("size", size + "");
 
-		if (item.hasAttribute("smoothness")) {
+		if (item.hasProperty("smoothness")) {
 			throw new JPokemonError("Redefinition of property (smoothness) with item : " + item.toString());
 		}
-		item.addAttribute("smoothness", smoothness + "");
+		item.setProperty("smoothness", smoothness + "");
 
 		for (Map.Entry<String, Integer> flavor : flavors.entrySet()) {
-			if (item.hasAttribute(flavor.getKey())) {
+			if (item.hasProperty(flavor.getKey())) {
 				throw new JPokemonError("Redefinition of property (" + flavor.getKey() + ") with item : " + item.toString());
 			}
-			item.addAttribute("flavor." + flavor.getKey(), flavor.getValue() + "");
+			item.setProperty("flavor." + flavor.getKey(), flavor.getValue() + "");
 		}
 	}
 
@@ -111,27 +111,27 @@ public class BerryAttribute implements ItemAttribute {
 	public static BerryAttribute getFromItem(Item item) {
 		BerryAttribute ba = new BerryAttribute();
 
-		if (!item.hasAttribute("firmness")) {
+		if (!item.hasProperty("firmness")) {
 			throw new JPokemonError("Missing property (firmness) from item : " + item.toString());
 		}
-		ba.setFirmness(item.getAttribute("firmness"));
+		ba.setFirmness(item.getProperty("firmness"));
 
-		if (!item.hasAttribute("size")) {
+		if (!item.hasProperty("size")) {
 			throw new JPokemonError("Missing property (size) from item : " + item.toString());
 		}
-		ba.setSize(Integer.parseInt(item.getAttribute("size")));
+		ba.setSize(Integer.parseInt(item.getProperty("size")));
 
-		if (!item.hasAttribute("smoothness")) {
+		if (!item.hasProperty("smoothness")) {
 			throw new JPokemonError("Missing property (smoothness) from item : " + item.toString());
 		}
-		ba.setSmoothness(Integer.parseInt(item.getAttribute("smoothness")));
+		ba.setSmoothness(Integer.parseInt(item.getProperty("smoothness")));
 
 		for (String attributeKey : item.getAllAttributes()) {
 			if (!attributeKey.startsWith("flavor.")) {
 				continue;
 			}
 
-			ba.setFlavor(attributeKey.substring("flavor.".length()), Integer.parseInt(item.getAttribute(attributeKey)));
+			ba.setFlavor(attributeKey.substring("flavor.".length()), Integer.parseInt(item.getProperty(attributeKey)));
 		}
 
 		return ba;

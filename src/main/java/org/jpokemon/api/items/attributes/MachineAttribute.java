@@ -34,10 +34,10 @@ public class MachineAttribute implements ItemAttribute {
 
 	@Override
 	public void applyAttribute(Item item) {
-		if (item.hasAttribute("movename")) {
+		if (item.hasProperty("movename")) {
 			throw new JPokemonError("Redefinition of property (movename) with item : " + item.toString());
 		}
-		item.addAttribute("movename", moveName);
+		item.setProperty("movename", moveName);
 	}
 
 	/**
@@ -50,10 +50,10 @@ public class MachineAttribute implements ItemAttribute {
 	public static MachineAttribute getFromItem(Item item) {
 		MachineAttribute ma = new MachineAttribute();
 
-		if (!item.hasAttribute("movename")) {
+		if (!item.hasProperty("movename")) {
 			throw new JPokemonError("Missing property (movename) from item : " + item.toString());
 		}
-		ma.setMoveName(item.getAttribute("movename"));
+		ma.setMoveName(item.getProperty("movename"));
 
 		return ma;
 	}

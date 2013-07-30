@@ -37,8 +37,8 @@ public class ItemTest {
 		// Define the Berry Pocket. setName will call register
 		new PocketAttribute().setPocketName("berries");
 
-		Item cheriBerry = new Item().addAttribute("pocket", "berries");
-		assertTrue("Berry pocket", cheriBerry.hasAttribute("pocket"));
-		assertEquals("Berry pocket", "berries", cheriBerry.getAttribute("pocket"));
+		Item cheriBerry = new Item().setProperty("pocket", "berries");
+		assertTrue("Berry pocket", cheriBerry.hasProperty("pocket"));
+		assertEquals("Berry pocket", "berries", cheriBerry.getProperty("pocket"));
 	}
 }

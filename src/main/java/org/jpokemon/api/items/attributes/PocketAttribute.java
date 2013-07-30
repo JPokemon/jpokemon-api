@@ -33,10 +33,10 @@ public class PocketAttribute implements ItemAttribute {
 
 	@Override
 	public void applyAttribute(Item item) {
-		if (item.hasAttribute("pocket")) {
+		if (item.hasProperty("pocket")) {
 			throw new JPokemonError("Redefinition of property (pocket) with item : " + item.toString());
 		}
-		item.addAttribute("pocket", pocketName);
+		item.setProperty("pocket", pocketName);
 	}
 
 	/**
@@ -49,10 +49,10 @@ public class PocketAttribute implements ItemAttribute {
 	public static PocketAttribute getFromItem(Item item) {
 		PocketAttribute pa = new PocketAttribute();
 
-		if (!item.hasAttribute("pocket")) {
+		if (!item.hasProperty("pocket")) {
 			throw new JPokemonError("Missing property (pocket) from item : " + item.toString());
 		}
-		pa.setPocketName(item.getAttribute("pocket"));
+		pa.setPocketName(item.getProperty("pocket"));
 
 		return pa;
 	}

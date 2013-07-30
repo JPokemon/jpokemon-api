@@ -2,6 +2,12 @@ package org.jpokemon.api.items;
 
 /**
  * Provides an interface for `attributes` that can be added to items. Attributes
+ * are composed of the properties of {@link Item}s
+ * 
+ * <p>
+ * 
+ * It is convention for an ItemAttribute to be retrieved from an item by
+ * statically calling `getFromItem`
  * 
  * @author atheriel@gmail.com
  * @author Zach Taylor

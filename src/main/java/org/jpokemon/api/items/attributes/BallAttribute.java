@@ -33,10 +33,10 @@ public class BallAttribute implements ItemAttribute {
 
 	@Override
 	public void applyAttribute(Item item) {
-		if (item.hasAttribute("catchrate")) {
+		if (item.hasProperty("catchrate")) {
 			throw new JPokemonError("Redefinition of property (catchrate) with item : " + item.toString());
 		}
-		item.addAttribute("catchrate", catchRate + "");
+		item.setProperty("catchrate", catchRate + "");
 	}
 
 	/**
@@ -49,10 +49,10 @@ public class BallAttribute implements ItemAttribute {
 	public static BallAttribute getFromItem(Item item) {
 		BallAttribute ba = new BallAttribute();
 
-		if (!item.hasAttribute("catchrate")) {
+		if (!item.hasProperty("catchrate")) {
 			throw new JPokemonError("Missing property (catchrate) from item : " + item.toString());
 		}
-		ba.setCatchRate(Integer.parseInt(item.getAttribute("catchrate")));
+		ba.setCatchRate(Integer.parseInt(item.getProperty("catchrate")));
 
 		return ba;
 	}

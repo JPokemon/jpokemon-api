@@ -16,8 +16,8 @@ import org.jpokemon.api.Manager;
  * 
  * Note that the ``attributes`` {@link HashMap} will not initialize until an
  * attribute is added. Thus, if a traditional inheritance scheme is preferable
- * for your project, this class can be extended and this functionality ignored
- * without memory inefficiency.
+ * for your project, this functionality can be ignored without memory
+ * inefficiency.
  * 
  * <p>
  * 
@@ -33,8 +33,8 @@ public class Item {
 	/** Indicates the manager being used to register items. May be ``null``. */
 	public static Manager<Item> manager = null;
 
-	/** Indicates the non-basic attributes of the item. */
-	protected HashMap<String, String> attributes = new HashMap<String, String>();
+	/** Indicates attributed properties of the item. */
+	protected HashMap<String, String> properties = new HashMap<String, String>();
 
 	/** Indicates the name of the item (as it would appear in the bag or a shop). */
 	protected String name = "????";
@@ -200,38 +200,38 @@ public class Item {
 		return this;
 	}
 
-	/** Checks if the item has an attribute of the given name. */
-	public boolean hasAttribute(String key) {
+	/** Checks if the item has a given property. */
+	public boolean hasProperty(String key) {
 		if (key == null) {
 			return false;
 		}
 
-		return attributes.containsKey(key);
+		return properties.containsKey(key);
 	}
 
-	/** Adds an attribute to the item. It must have a distinct name. */
-	public Item addAttribute(String key, String value) {
-		if (!attributes.containsKey(key)) {
-			attributes.put(key, value);
+	/** Sets a property of this item. It must have a unique name. */
+	public Item setProperty(String key, String value) {
+		if (!properties.containsKey(key)) {
+			properties.put(key, value);
 		}
 
 		return this;
 	}
 
 	/**
-	 * Gets the attribute of this item for the given key
+	 * Gets the property of this item for the given key
 	 * 
-	 * @param key The key of the attribute requested
+	 * @param key The key of the property requested
 	 * 
-	 * @return The item's attribute under this name, or `null` if it does not
+	 * @return The item's property under this name, or `null` if it does not
 	 *         possess one
 	 */
-	public String getAttribute(String key) {
-		if (!attributes.containsKey(key)) {
+	public String getProperty(String key) {
+		if (!properties.containsKey(key)) {
 			return null;
 		}
 
-		return attributes.get(key);
+		return properties.get(key);
 	}
 
 	/**
@@ -240,7 +240,7 @@ public class Item {
 	 * @return A collection of this Item's attribute keys
 	 */
 	public Collection<String> getAllAttributes() {
-		return Collections.unmodifiableCollection(attributes.keySet());
+		return Collections.unmodifiableCollection(properties.keySet());
 	}
 
 	/** Gets a string representation of this item: its name. */

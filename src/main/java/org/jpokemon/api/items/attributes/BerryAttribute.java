@@ -149,7 +149,7 @@ public class BerryAttribute implements ItemAttribute {
 		}
 		ba.setGrowthTime(item.getProperty("growthtime"));
 
-		for (String attributeKey : item.getAllAttributes()) {
+		for (String attributeKey : item.getAllProperties()) {
 			if (!attributeKey.startsWith("flavor.")) {
 				continue;
 			}

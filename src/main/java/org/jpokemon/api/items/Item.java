@@ -239,7 +239,7 @@ public class Item {
 	 * 
 	 * @return A collection of this Item's attribute keys
 	 */
-	public Collection<String> getAllAttributes() {
+	public Collection<String> getAllProperties() {
 		return Collections.unmodifiableCollection(properties.keySet());
 	}
 

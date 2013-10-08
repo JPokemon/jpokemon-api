@@ -5,7 +5,7 @@ package org.jpokemon.api.moves;
  * 
  * @author Zach Taylor
  * 
- * @since  0.1
+ * @since 0.1
  */
 public class MoveInstance {
 	/** Indicates the Move that this is an instance of */
@@ -27,8 +27,9 @@ public class MoveInstance {
 	}
 
 	/** Sets the move associated with this instance */
-	public void setMove(Move move) {
+	public MoveInstance setMove(Move move) {
 		this.move = move;
+		return this;
 	}
 
 	/** Gets the current PP of this move instance */
@@ -37,8 +38,9 @@ public class MoveInstance {
 	}
 
 	/** Sets the current PP of this move instance */
-	public void setCurrentPP(int currentPP) {
+	public MoveInstance setCurrentPP(int currentPP) {
 		this.currentPP = currentPP;
+		return this;
 	}
 
 	/** Gets the max PP of this move instance */
@@ -47,7 +49,8 @@ public class MoveInstance {
 	}
 
 	/** Sets the max PP of this move instance */
-	public void setMaxPP(int maxPP) {
+	public MoveInstance setMaxPP(int maxPP) {
 		this.maxPP = maxPP;
+		return this;
 	}
 }

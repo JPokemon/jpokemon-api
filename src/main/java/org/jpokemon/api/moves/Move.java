@@ -5,13 +5,14 @@ import org.jpokemon.api.Type;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.
- *
- * <p> Moves that cause status ailments, affect stats, and so on are termed as 
+ * 
+ * <p>
+ * Moves that cause status ailments, affect stats, and so on are termed as
  * having a "secondary effect".
- *
+ * 
  * @author atheriel@gmail.com
- *
- * @since  0.1
+ * 
+ * @since 0.1
  */
 public class Move {
 	/** Indicates the manager being used to register moves. May be ``null``. */
@@ -22,7 +23,7 @@ public class Move {
 
 	/** Indicates the {@link Type} of this move. */
 	protected Type type;
-	
+
 	/** Indicates the power of this move. */
 	protected int power;
 
@@ -42,7 +43,7 @@ public class Move {
 	protected boolean secondaryEffect;
 
 	/** Indicates whether this move targets the user instead of the opponent. */
-	protected boolean selfTargeting;	
+	protected boolean selfTargeting;
 
 	/** Indicates whether this move is usable outside of battle. */
 	protected boolean usableOutsideBattle;
@@ -53,11 +54,9 @@ public class Move {
 	}
 
 	/** Sets the name of this move. */
-	public void setName(String name) {
+	public Move setName(String name) {
 		this.name = name;
-		if (manager != null) {
-			manager.register(this);
-		}
+		return this;
 	}
 
 	/** Gets the {@link Type} of this move. */
@@ -66,8 +65,9 @@ public class Move {
 	}
 
 	/** Sets the {@link Type} of this move. */
-	public void setType(Type type) {
+	public Move setType(Type type) {
 		this.type = type;
+		return this;
 	}
 
 	/** Checks whether this move undergoes damage calculation. */
@@ -81,8 +81,9 @@ public class Move {
 	}
 
 	/** Sets the power of this move. */
-	public void setPower(int power) {
+	public Move setPower(int power) {
 		this.power = power;
+		return this;
 	}
 
 	/** Checks whether this move undergoes miss calculation. */
@@ -96,8 +97,9 @@ public class Move {
 	}
 
 	/** Sets the accuracy of this move. */
-	public void setAccuracy(int accuracy) {
+	public Move setAccuracy(int accuracy) {
 		this.accuracy = accuracy;
+		return this;
 	}
 
 	/** Gets the maximum PP for this move. */
@@ -106,8 +108,9 @@ public class Move {
 	}
 
 	/** Sets the maximum PP for this move. */
-	public void setMaxPP(int maxPP) {
+	public Move setMaxPP(int maxPP) {
 		this.maxPP = maxPP;
+		return this;
 	}
 
 	/** Check if this move uses the `Special` stats. */
@@ -116,8 +119,9 @@ public class Move {
 	}
 
 	/** Sets whether this move should use the `Special` stats. */
-	public void setSpecial(boolean special) {
+	public Move setSpecial(boolean special) {
 		this.special = special;
+		return this;
 	}
 
 	/** Gets the move priority. */
@@ -126,8 +130,9 @@ public class Move {
 	}
 
 	/** Sets the move priority. */
-	public void setPriority(int priority) {
+	public Move setPriority(int priority) {
 		this.priority = priority;
+		return this;
 	}
 
 	/** Checks whether this move targets the user instead of its opponent. */
@@ -136,8 +141,9 @@ public class Move {
 	}
 
 	/** Sets whether this move should target the user instead of its opponent. */
-	public void setSelfTargeting(boolean selfTargeting) {
+	public Move setSelfTargeting(boolean selfTargeting) {
 		this.selfTargeting = selfTargeting;
+		return this;
 	}
 
 	/** Checks whether this move has a secondary effect. */
@@ -146,8 +152,9 @@ public class Move {
 	}
 
 	/** Sets whether this move should have a secondary effect. */
-	public void setSecondaryEffect(boolean secondaryEffect) {
+	public Move setSecondaryEffect(boolean secondaryEffect) {
 		this.secondaryEffect = secondaryEffect;
+		return this;
 	}
 
 	/** Checks whether the move can be used outside of battle. */
@@ -156,7 +163,8 @@ public class Move {
 	}
 
 	/** Sets whether the move should be usable outside of battle. */
-	public void setUsableOutsideBattle(boolean usableOutsideBattle) {
+	public Move setUsableOutsideBattle(boolean usableOutsideBattle) {
 		this.usableOutsideBattle = usableOutsideBattle;
+		return this;
 	}
 }

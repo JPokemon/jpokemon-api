@@ -93,11 +93,6 @@ public class Item {
 	/** Sets the name of this item. */
 	public Item setName(String name) {
 		this.name = name;
-
-		if (manager != null) {
-			manager.register(this);
-		}
-
 		return this;
 	}
 
@@ -241,12 +236,5 @@ public class Item {
 	 */
 	public Collection<String> getAllProperties() {
 		return Collections.unmodifiableCollection(properties.keySet());
-	}
-
-	/** Gets a string representation of this item: its name. */
-	@Override
-	public String toString() {
-		String value = "Item: " + name;
-		return value;
 	}
 }

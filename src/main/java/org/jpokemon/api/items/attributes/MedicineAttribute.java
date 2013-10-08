@@ -54,10 +54,10 @@ public class MedicineAttribute implements ItemAttribute {
 		}
 		item.setProperty("medicinestrength", strength + "");
 
-		if (item.hasProperty("permanent")) {
-			throw new JPokemonError("Redefinition of property (permanent) with item : " + item.toString());
+		if (item.hasProperty("medicinepermanent")) {
+			throw new JPokemonError("Redefinition of property (medicinepermanent) with item : " + item.toString());
 		}
-		item.setProperty("permanent", permanent + "");
+		item.setProperty("medicinepermanent", permanent + "");
 	}
 
 	public static MedicineAttribute getFromItem(Item item) {

@@ -1,7 +1,10 @@
 package org.jpokemon.api.moves;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.Type;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.
@@ -18,11 +21,14 @@ public class Move {
 	/** Indicates the manager being used to register moves. May be ``null``. */
 	public static Manager<Move> manager = null;
 
+	/** Indicates attributed properties of the item. */
+	protected HashMap<String, String> properties = new HashMap<String, String>();
+
 	/** Indicates the name of this move. */
 	protected String name;
 
-	/** Indicates the {@link Type} of this move. */
-	protected Type type;
+	/** Indicates the Type of this move. */
+	protected String type;
 
 	/** Indicates the power of this move. */
 	protected int power;
@@ -39,14 +45,8 @@ public class Move {
 	/** Indicates whether this move uses `Special` stats. */
 	protected boolean special;
 
-	/** Indicates whether this move has a secondary effect. */
-	protected boolean secondaryEffect;
-
 	/** Indicates whether this move targets the user instead of the opponent. */
 	protected boolean selfTargeting;
-
-	/** Indicates whether this move is usable outside of battle. */
-	protected boolean usableOutsideBattle;
 
 	/** Gets the name of this move. */
 	public String getName() {
@@ -59,13 +59,13 @@ public class Move {
 		return this;
 	}
 
-	/** Gets the {@link Type} of this move. */
-	public Type getType() {
+	/** Gets the type of this move. */
+	public String getType() {
 		return type;
 	}
 
-	/** Sets the {@link Type} of this move. */
-	public Move setType(Type type) {
+	/** Sets the type of this move. */
+	public Move setType(String type) {
 		this.type = type;
 		return this;
 	}
@@ -146,25 +146,46 @@ public class Move {
 		return this;
 	}
 
-	/** Checks whether this move has a secondary effect. */
-	public boolean hasSecondaryEffect() {
-		return false;
+	/** Checks if the move has a given property. */
+	public boolean hasProperty(String key) {
+		if (key == null) {
+			return false;
+		}
+
+		return properties.containsKey(key);
 	}
 
-	/** Sets whether this move should have a secondary effect. */
-	public Move setSecondaryEffect(boolean secondaryEffect) {
-		this.secondaryEffect = secondaryEffect;
+	/** Sets a property of this move. It must have a unique name. */
+	public Move setProperty(String key, String value) {
+		if (!properties.containsKey(key)) {
+			properties.put(key, value);
+		}
+
 		return this;
 	}
 
-	/** Checks whether the move can be used outside of battle. */
-	public boolean isUsableOutsideBattle() {
-		return usableOutsideBattle;
+	/**
+	 * Gets the property of this move for the given key
+	 * 
+	 * @param key The key of the property requested
+	 * 
+	 * @return The move's property under this name, or `null` if it does not
+	 *         possess one
+	 */
+	public String getProperty(String key) {
+		if (!properties.containsKey(key)) {
+			return null;
+		}
+
+		return properties.get(key);
 	}
 
-	/** Sets whether the move should be usable outside of battle. */
-	public Move setUsableOutsideBattle(boolean usableOutsideBattle) {
-		this.usableOutsideBattle = usableOutsideBattle;
-		return this;
+	/**
+	 * Gets all of the attribute keys of this Move as an UnmodifiableCollection
+	 * 
+	 * @return A collection of this Move's attribute keys
+	 */
+	public Collection<String> getAllProperties() {
+		return Collections.unmodifiableCollection(properties.keySet());
 	}
 }

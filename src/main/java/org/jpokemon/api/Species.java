@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.jpokemon.api.classic.ExperienceCurve;
-import org.jpokemon.api.evolutions.PokemonEvolution;
+import org.jpokemon.api.evolutions.Evolution;
 
 /**
  * Defines a Pokémon species. Note that this refers to an object like
@@ -93,7 +93,7 @@ public class Species {
 	protected boolean breedable;
 
 	/** Indicates the evolutions for this species (if it has any). */
-	protected List<PokemonEvolution> evolutions;
+	protected List<Evolution> evolutions;
 
 	/** Indicates the egg moves for this species. */
 	protected List<String> eggMoves;
@@ -477,21 +477,21 @@ public class Species {
 	}
 
 	/** Gets all the mapped evolutions of this species */
-	public List<PokemonEvolution> getEvolutions() {
+	public List<Evolution> getEvolutions() {
 		return evolutions;
 	}
 
 	/** Maps an evolution from this species to another */
-	public Species addEvolution(PokemonEvolution evolution) {
+	public Species addEvolution(Evolution evolution) {
 		if (evolutions == null) {
-			evolutions = new ArrayList<PokemonEvolution>();
+			evolutions = new ArrayList<Evolution>();
 		}
 		evolutions.add(evolution);
 		return this;
 	}
 
 	/** Removes an evolution mapping from this species */
-	public Species removeEvolution(PokemonEvolution evolution) {
+	public Species removeEvolution(Evolution evolution) {
 		if (evolutions != null) {
 			evolutions.remove(evolution);
 		}
@@ -499,7 +499,7 @@ public class Species {
 	}
 
 	/** Sets all evolutionary mappings of this species */
-	public Species setEvolutions(List<PokemonEvolution> evolutions) {
+	public Species setEvolutions(List<Evolution> evolutions) {
 		this.evolutions = evolutions;
 		return this;
 	}

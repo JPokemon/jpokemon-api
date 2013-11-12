@@ -10,16 +10,18 @@ import org.jpokemon.api.Manager;
  * Defines a move that can be learned and used by a Pokémon.
  * 
  * <p>
- * Moves that cause status ailments, affect stats, and so on are termed as
- * having a "secondary effect".
+ * Moves that cause status ailments, affect stats, and so on, are termed as
+ * having a "secondary effect". This effect is facilitated through use of the
+ * {@link #properties}.
  * 
  * @author atheriel@gmail.com
+ * @author Zach Taylor
  * 
  * @since 0.1
  */
 public class Move {
 	/** Indicates the manager being used to register moves. May be ``null``. */
-	public static Manager<Move> manager = null;
+	public static Manager<Move> manager;
 
 	/** Indicates attributed properties of the item. */
 	protected HashMap<String, String> properties = new HashMap<String, String>();

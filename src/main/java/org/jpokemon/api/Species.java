@@ -2,34 +2,38 @@ package org.jpokemon.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.api.evolutions.PokemonEvolution;
 import org.jpokemon.api.classic.ExperienceCurve;
+import org.jpokemon.api.evolutions.PokemonEvolution;
 
 /**
- * Defines a Pokemon species. Note that this refers to an object like 
- * `Bublasaur` and not the tag `Seed Pokemon`.
- *
+ * Defines a Pokémon species. Note that this refers to an object like
+ * 'Bulbasaur' and not the tag 'Seed Pokémon'.
+ * 
  * @author atheriel@gmail.com
- *
- * @since  0.1
+ * 
+ * @since 0.1
  */
 public class Species {
+	/** Indicates the manager being used to register species. May be null. */
+	public static Manager<Species> manager;
+
 	/** Indicates this species' number in the National Pokédex. */
-	protected int pokedexNo;
-	
+	protected int pokedexNumber;
+
 	/** Indicates this species' number in the Regional Pokédex */
-	protected int regionalNo;
+	protected int regionalPokedexNumber;
 
 	/** Indicates the name of this species. */
 	protected String name;
 
 	/** Indicates the primary type of this species. */
-	protected Type primaryType;
+	protected String primaryType;
 
 	/** Indicates the secondary type of this species (if it has one). */
-	protected Type secondaryType = null;
+	protected String secondaryType;
 
 	/** Indicates the Genus (the "species" in the classic games) of this species. */
 	protected String genus;
@@ -39,24 +43,24 @@ public class Species {
 
 	/** Indicates the secondary Ability of this species (if it has one). */
 	protected String secondaryAbility = null;
-	
-	/** Indicates the dream world Ability of this species (If none, is set to primary ability) */
-	protected String dreamAbility = primaryAbility;
-	
-	/** Indicates this species' experience gain behaviour. */
+
+	/** Indicates the dream world Ability of this species */
+	protected String dreamAbility;
+
+	/** Indicates this species' experience gain behavior. */
 	protected ExperienceCurve expCurve;
 
-	/** Indicates the average height of the species (as it appears in a Pokédex entry). */
-	protected float height;
+	/** Indicates the average height of the species */
+	protected float averageHeight;
 
-	/** Indicates the average weight of the species (as it appears in a Pokédex entry). */
-	protected float weight;
+	/** Indicates the average weight of the species */
+	protected float averageWeight;
 
-	/** Indicates the colour of the species (as it appears in a Pokédex entry). */
-	protected String colour;
+	/** Indicates the color of the species */
+	protected String color;
 
-	/** Indicates the description of the species (as it appears in a Pokédex entry). */
-	protected String dexEntry;
+	/** Indicates the description of the species */
+	protected String description;
 
 	/** Indicates the base stats (hp, atk, def, satk, sdef, spd, exp) for this species. */
 	protected Map<String, Integer> baseStats;
@@ -65,10 +69,10 @@ public class Species {
 	protected Map<String, Integer> effortValues;
 
 	/** Indicates the number of steps required to hatch an egg of this species. */
-	protected int steps;
+	protected int eggSteps;
 
 	/** Indicates what percentage of this species are male. */
-	protected float percentMale = 0.5f;
+	protected float maleRatio = 0.5f;
 
 	/** Indicates whether this species is genderless. */
 	protected boolean genderless;
@@ -80,22 +84,22 @@ public class Species {
 	protected int tameness;
 
 	/** Indicates the first egg group of this species. */
-	protected int eggGroup;
+	protected String firstEggGroup;
 
-	/** Indicates the second egg group of this species (if it has one). */
-	protected int secondEggGroup = -1;
+	/** Indicates the second egg group of this species. */
+	protected String secondEggGroup;
 
 	/** Indicates whether this species is breedable in any way. */
 	protected boolean breedable;
 
 	/** Indicates the evolutions for this species (if it has any). */
-	protected ArrayList<PokemonEvolution> evolutions;
+	protected List<PokemonEvolution> evolutions;
 
 	/** Indicates the egg moves for this species. */
-	protected String[] eggMoveList;
-	
+	protected List<String> eggMoves;
+
 	/** Indicates the moves that can be learned from machines by this species. */
-	protected String[] machineMoveList;
+	protected List<String> machineMoves;
 
 	/** Indicates the moves learned at a given level by this species. */
 	protected HashMap<Integer, String> moveList;
@@ -106,22 +110,23 @@ public class Species {
 
 	/** Get the Pokédex number for this species. */
 	public int getPokedexNumber() {
-		return pokedexNo;
+		return pokedexNumber;
 	}
 
 	/** Set the Pokédex number for this species. */
 	public void setPokedexNumber(int dexNo) {
-		this.pokedexNo = dexNo;
+		this.pokedexNumber = dexNo;
 	}
-	
+
 	/** Get the Regional Pokédex number for this species. */
 	public int getRegionalPokedexNumber() {
-		return regionalNo;
+		return regionalPokedexNumber;
 	}
 
 	/** Set the Regional Pokédex number for this species. */
-	public void setRegionalPokedexNumber(int dexNo) {
-		this.regionalNo = dexNo;
+	public Species setRegionalPokedexNumber(int dexNo) {
+		this.regionalPokedexNumber = dexNo;
+		return this;
 	}
 
 	/** Gets the name of this species. */
@@ -130,18 +135,20 @@ public class Species {
 	}
 
 	/** Sets the name of this species. */
-	public void setName(String name) {
+	public Species setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	/** Gets the primary type for this species. */
-	public Type getPrimaryType() {
+	public String getPrimaryType() {
 		return primaryType;
 	}
 
 	/** Sets the primary type for this species. */
-	public void setPrimaryType(Type type) {
+	public Species setPrimaryType(String type) {
 		this.primaryType = type;
+		return this;
 	}
 
 	/** Checks whether this species has a secondary type. */
@@ -150,13 +157,14 @@ public class Species {
 	}
 
 	/** Gets the secondary type for this species (assuming it has one). */
-	public Type getSecondaryType() {
+	public String getSecondaryType() {
 		return secondaryType;
 	}
 
 	/** Sets the secondary type for this species. */
-	public void setSecondaryType(Type type) {
+	public Species setSecondaryType(String type) {
 		this.secondaryType = type;
+		return this;
 	}
 
 	/** Gets the genus of this species. */
@@ -165,8 +173,9 @@ public class Species {
 	}
 
 	/** Sets the genus of this species. */
-	public void setGenus(String genus) {
+	public Species setGenus(String genus) {
 		this.genus = genus;
+		return this;
 	}
 
 	/** Gets the primary ability of this species. */
@@ -175,8 +184,9 @@ public class Species {
 	}
 
 	/** Sets the primary ability of this species. */
-	public void setPrimaryAbility(String ability) {
+	public Species setPrimaryAbility(String ability) {
 		this.primaryAbility = ability;
+		return this;
 	}
 
 	/** Checks if this species has a secondary ability. */
@@ -190,13 +200,14 @@ public class Species {
 	}
 
 	/** Sets this species' secondary ability. */
-	public void setSecondaryAbility(String ability) {
+	public Species setSecondaryAbility(String ability) {
 		this.secondaryAbility = ability;
+		return this;
 	}
-	
+
 	/** Checks if this species has a dreamworld (hidden) ability. */
 	public boolean hasDreamAbility() {
-		return (!dreamAbility.equalsIgnoreCase(primaryAbility));
+		return (dreamAbility != null);
 	}
 
 	/** Gets this species' dreamworld (hidden) ability. */
@@ -205,8 +216,9 @@ public class Species {
 	}
 
 	/** Sets this species' dreamworld (hidden) ability. */
-	public void setDreamAbility(String ability) {
+	public Species setDreamAbility(String ability) {
 		this.dreamAbility = ability;
+		return this;
 	}
 
 	/** Gets the type of experience curve for this species. */
@@ -215,92 +227,100 @@ public class Species {
 	}
 
 	/** Sets the type of experience curve for this species. */
-	public void setExperienceCurve(ExperienceCurve expCurve) {
+	public Species setExperienceCurve(ExperienceCurve expCurve) {
 		this.expCurve = expCurve;
+		return this;
 	}
 
 	/** Gets this species' average height. */
-	public float getHeight() {
-		return height;
+	public float getAverageHeight() {
+		return averageHeight;
 	}
 
 	/** Sets this species' average height. */
-	public void setHeight(float height) {
-		this.height = height;
+	public Species setAverageHeight(float height) {
+		this.averageHeight = height;
+		return this;
 	}
 
 	/** Gets this species' average weight. */
-	public float getWeight() {
-		return weight;
+	public float getAverageWeight() {
+		return averageWeight;
 	}
 
 	/** Sets this species' average weight. */
-	public void setWeight(float weight) {
-		this.weight = weight;
+	public Species setAverageWeight(float weight) {
+		this.averageWeight = weight;
+		return this;
 	}
 
 	/** Gets this species' colour classification. */
-	public String getColour() {
-		return colour;
+	public String getColor() {
+		return color;
 	}
 
 	/** Sets this species' colour classification. */
-	public void setColour(String colour) {
-		this.colour = colour;
+	public Species setColor(String color) {
+		this.color = color;
+		return this;
 	}
 
 	/** Gets the Pokédex entry for this species. */
-	public String getPokedexEntry() {
-		return dexEntry;
+	public String getDescription() {
+		return description;
 	}
 
 	/** Sets the Pokédex entry for this species. */
-	public void setPokedexEntry(String dexEntry) {
-		this.dexEntry = dexEntry;
+	public Species setDescription(String description) {
+		this.description = description;
+		return this;
 	}
 
 	/** Get the number of steps required to hatch an egg for this species. */
-	public int getSteps() {
-		return steps;
+	public int getEggSteps() {
+		return eggSteps;
 	}
 
 	/** Sets the number of steps required to hatch an egg for this species. */
-	public void setSteps(int steps) {
-		this.steps = steps;
+	public Species setEggSteps(int steps) {
+		this.eggSteps = steps;
+		return this;
 	}
 
-	/** 
-	 * Gets a base stat with the given name for this species. Note that an 
-	 * invalid key will retrieve a value of 0.
+	/**
+	 * Gets a base stat with the given name for this species. Note that an invalid
+	 * key will retrieve a value of -1.
 	 * 
-	 * @param  name The name of the base stat, e.g. "Attack".
-	 * @return      The integer value of the base stat, e.g. 47.
+	 * @param name The name of the base stat, e.g. "Attack".
+	 * @return The integer value of the base stat, e.g. 47.
 	 */
 	public int getBaseStat(String name) {
 		if (baseStats == null) {
-			return 0;
-		} else if (!baseStats.containsKey(name)) {
-			return 0;
+			return -1;
+		}
+		else if (!baseStats.containsKey(name)) {
+			return -1;
 		}
 		return baseStats.get(name);
 	}
 
-	/** 
-	 * Sets a base stat with the given name for this species. Instantiates the 
+	/**
+	 * Sets a base stat with the given name for this species. Instantiates the
 	 * base stat map if necessary.
 	 * 
-	 * @param name  The name of the base stat, e.g. "Attack".
+	 * @param name The name of the base stat, e.g. "Attack".
 	 * @param value The integer value of the base stat, e.g. 47.
 	 */
-	public void setBaseStat(String name, int value) {
+	public Species setBaseStat(String name, int value) {
 		if (baseStats == null) {
 			baseStats = new HashMap<String, Integer>();
 		}
 		baseStats.put(name, value);
+		return this;
 	}
 
 	/**
-	 * Gets the base stats for this species as a map of name keys to integer 
+	 * Gets the base stats for this species as a map of name keys to integer
 	 * values.
 	 */
 	public Map<String, Integer> getBaseStats() {
@@ -310,45 +330,48 @@ public class Species {
 	/**
 	 * Sets the base stats for this species.
 	 * 
-	 * @param  baseStats A map of name keys to integer values.
+	 * @param baseStats A map of name keys to integer values.
 	 */
-	public void setBaseStats(Map<String, Integer> baseStats) {
+	public Species setBaseStats(Map<String, Integer> baseStats) {
 		this.baseStats = baseStats;
+		return this;
 	}
 
-	/** 
-	 * Gets the effort value with a given name awarded for defeating this 
-	 * species. Note that an invalid key will retrieve a value of 0.
+	/**
+	 * Gets the effort value with a given name awarded for defeating this species.
+	 * Note that an invalid key will retrieve a value of -1.
 	 * 
-	 * @param  name The name of the effort value, typicaly a base stat.
-	 * @return      The integer value of the EV, e.g. 3.
+	 * @param name The name of the effort value, typicaly a base stat.
+	 * @return The integer value of the EV, e.g. 3.
 	 */
 	public int getEffortValue(String name) {
 		if (effortValues == null) {
-			return 0;
-		} else if (!effortValues.containsKey(name)) {
-			return 0;
+			return -1;
+		}
+		else if (!effortValues.containsKey(name)) {
+			return -1;
 		}
 		return effortValues.get(name);
 	}
 
-	/** 
-	 * Sets the effort value with a given name awarded for defeating this 
-	 * species. Instantiates the effort value map if necessary.
+	/**
+	 * Sets the effort value with a given name awarded for defeating this species.
+	 * Instantiates the effort value map if necessary.
 	 * 
-	 * @param name  The name of the effort value, typicaly a base stat.
+	 * @param name The name of the effort value, typicaly a base stat.
 	 * @param value The integer value of the EV, e.g. 3.
 	 */
-	public void setEffortValue(String name, int value) {
+	public Species setEffortValue(String name, int value) {
 		if (effortValues == null) {
 			effortValues = new HashMap<String, Integer>();
 		}
 		effortValues.put(name, value);
+		return this;
 	}
 
 	/**
-	 * Gets the effort values awarded for defeating this species as a map of 
-	 * name keys to integer values.
+	 * Gets the effort values awarded for defeating this species as a map of name
+	 * keys to integer values.
 	 */
 	public Map<String, Integer> getEffortValues() {
 		return effortValues;
@@ -357,10 +380,11 @@ public class Species {
 	/**
 	 * Sets the effort values awarded for defeating this species.
 	 * 
-	 * @param  effortValues A map of name keys to integer values.
+	 * @param effortValues A map of name keys to integer values.
 	 */
-	public void setEffortValues(Map<String, Integer> effortValues) {
+	public Species setEffortValues(Map<String, Integer> effortValues) {
 		this.effortValues = effortValues;
+		return this;
 	}
 
 	/** Checks whether this species is genderless. */
@@ -369,18 +393,20 @@ public class Species {
 	}
 
 	/** Sets whether this species should be genderless. */
-	public void setGenderless(boolean genderless) {
+	public Species setGenderless(boolean genderless) {
 		this.genderless = genderless;
+		return this;
 	}
 
 	/** Gets the proportion of this species that are male. */
 	public float getMaleRatio() {
-		return percentMale;
+		return maleRatio;
 	}
 
 	/** Sets the proportion of this species that should be male. */
-	public void setMaleRatio(float percentMale) {
-		this.percentMale = percentMale;
+	public Species setMaleRatio(float percentMale) {
+		this.maleRatio = percentMale;
+		return this;
 	}
 
 	/** Gets the catch rate for this species. */
@@ -389,8 +415,9 @@ public class Species {
 	}
 
 	/** Sets the catch rate for this species. */
-	public void setCatchRate(int catchRate) {
+	public Species setCatchRate(int catchRate) {
 		this.catchRate = catchRate;
+		return this;
 	}
 
 	/** Gets the base level of happiness for this species. */
@@ -399,33 +426,36 @@ public class Species {
 	}
 
 	/** Sets the base level of happiness for this species. */
-	public void setTameness(int tameness) {
+	public Species setTameness(int tameness) {
 		this.tameness = tameness;
+		return this;
 	}
 
 	/** Gets the egg group for this species. */
-	public int getEggGroup() {
-		return eggGroup;
+	public String getFirstEggGroup() {
+		return firstEggGroup;
 	}
 
 	/** Sets the egg group for this species. */
-	public void setEggGroup(int eggGroup) {
-		this.eggGroup = eggGroup;
+	public Species setFirstEggGroup(String eggGroup) {
+		this.firstEggGroup = eggGroup;
+		return this;
 	}
 
 	/** Checks if this species has a second egg group */
 	public boolean hasSecondEggGroup() {
-		return (secondEggGroup != -1);
+		return (secondEggGroup != null);
 	}
 
 	/** Gets the second egg group for this species (if it has one). */
-	public int getSecondEggGroup() {
+	public String getSecondEggGroup() {
 		return secondEggGroup;
 	}
 
 	/** Sets the second egg group for this species. */
-	public void setSecondEggGroup(int secondEggGroup) {
+	public Species setSecondEggGroup(String secondEggGroup) {
 		this.secondEggGroup = secondEggGroup;
+		return this;
 	}
 
 	/** Checks whether this species can be bred at all. */
@@ -434,8 +464,100 @@ public class Species {
 	}
 
 	/** Sets whether this species can be bred at all. */
-	public void setBreedable(boolean breedable) {
+	public Species setBreedable(boolean breedable) {
 		this.breedable = breedable;
+		return this;
+	}
+
+	/**
+	 * Checks whether this species evolves into another at some point.
+	 */
+	public boolean hasEvolution() {
+		return (evolutions != null && !evolutions.isEmpty());
+	}
+
+	/** Gets all the mapped evolutions of this species */
+	public List<PokemonEvolution> getEvolutions() {
+		return evolutions;
+	}
+
+	/** Maps an evolution from this species to another */
+	public Species addEvolution(PokemonEvolution evolution) {
+		if (evolutions == null) {
+			evolutions = new ArrayList<PokemonEvolution>();
+		}
+		evolutions.add(evolution);
+		return this;
+	}
+
+	/** Removes an evolution mapping from this species */
+	public Species removeEvolution(PokemonEvolution evolution) {
+		if (evolutions != null) {
+			evolutions.remove(evolution);
+		}
+		return this;
+	}
+
+	/** Sets all evolutionary mappings of this species */
+	public Species setEvolutions(List<PokemonEvolution> evolutions) {
+		this.evolutions = evolutions;
+		return this;
+	}
+
+	/** Gets the list of moves that can be learned by breeding. */
+	public List<String> getEggMoves() {
+		return eggMoves;
+	}
+
+	/** Adds a move that may be known automatically by this species */
+	public Species addEggMove(String eggMove) {
+		if (eggMoves == null) {
+			eggMoves = new ArrayList<String>();
+		}
+		eggMoves.add(eggMove);
+		return this;
+	}
+
+	/** Removes a move that may be known at birth by Pokémon of this species */
+	public Species removeEggMove(String eggMove) {
+		if (eggMoves != null) {
+			eggMoves.remove(eggMove);
+		}
+		return this;
+	}
+
+	/** Sets the list of moves that can be learned by breeding. */
+	public Species setEggMoves(List<String> eggMoves) {
+		this.eggMoves = eggMoves;
+		return this;
+	}
+
+	/** Gets the list of moves that can be learned by TMs and HMs. */
+	public List<String> getMachineMoves() {
+		return machineMoves;
+	}
+
+	/** Specifies that a move can be learned by TM or HM by this species */
+	public Species addMachineMove(String move) {
+		if (machineMoves == null) {
+			machineMoves = new ArrayList<String>();
+		}
+		machineMoves.add(move);
+		return this;
+	}
+
+	/** Removes a move from being learned by TM or HM */
+	public Species removeMachineMove(String move) {
+		if (machineMoves != null) {
+			machineMoves.remove(move);
+		}
+		return this;
+	}
+
+	/** Sets the list of moves that can be learned by TMs and HMs. */
+	public Species setMachineMoves(List<String> machineMoves) {
+		this.machineMoves = machineMoves;
+		return this;
 	}
 
 	/** Sets the move list learned by levelling up. */
@@ -444,55 +566,8 @@ public class Species {
 	}
 
 	/** Sets the move list learned by levelling up. */
-	public void setMoveList(HashMap<Integer, String> moveList) {
+	public Species setMoveList(HashMap<Integer, String> moveList) {
 		this.moveList = moveList;
-	}
-
-	/** Gets the list of moves that can be learned by breeding. */
-	public String[] getEggMoves() {
-		return eggMoveList;
-	}
-
-	/** Sets the list of moves that can be learned by breeding. */
-	public void setEggMoves(String[] eggMoveList) {
-		this.eggMoveList = eggMoveList;
-	}
-
-	/** Gets the list of moves that can be learned by TMs and HMs. */
-	public String[] getMachineMoves() {
-		return machineMoveList;
-	}
-
-	/** Sets the list of moves that can be learned by TMs and HMs. */
-	public void setMachineMoves(String[]  machineMoveList) {
-		this.machineMoveList = machineMoveList;
-	}
-
-	/**
-	 * Checks whether this species evolves into another at some point.
-	 */
-	public boolean hasEvolution() {
-		return (evolutions != null);
-	}
-
-	@Override
-	public String toString() {
-		String value = 	"Species name: " + name +
-						"\nBase stats: " + baseStats +
-						"\nHeight: " + height + " Weight: " + weight;
-
-		if (secondaryType != null) {
-			value += "\nTypes: " + primaryType + " " + secondaryType;
-		} else {
-			value += "\nType: " + primaryType;
-		}
-		if (secondaryAbility != null) {
-			value += "\nAbilities: " + primaryAbility + " " + secondaryAbility;
-		} else {
-			value += "\nAbility: " + primaryAbility;
-		}
-		if(!dreamAbility.equalsIgnoreCase(primaryAbility))
-			value += " " + dreamAbility;
-		return value;
+		return this;
 	}
 }

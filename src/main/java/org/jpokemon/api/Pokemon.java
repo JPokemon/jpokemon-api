@@ -16,14 +16,14 @@ import org.jpokemon.api.moves.MoveInstance;
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
- * @since  0.1
+ * @since 0.1
  */
 public class Pokemon {
 	/** Indicates the name of this Pokémon. */
 	protected String name;
 
 	/** Indicates the species of this Pokémon. */
-	protected Species species;
+	protected String species;
 
 	/** Indicates the moves of this Pokémon */
 	protected List<MoveInstance> moves = new ArrayList<MoveInstance>();
@@ -46,9 +46,14 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Adds a move to this Pokémon's move set */
-	public Pokemon addMove(MoveInstance move) {
-		moves.add(move);
+	/** Gets the species of this Pokémon */
+	public String getSpecies() {
+		return species;
+	}
+
+	/** Sets the species of this Pokémon */
+	public Pokemon setSpecies(String species) {
+		this.species = species;
 		return this;
 	}
 
@@ -66,6 +71,12 @@ public class Pokemon {
 		return Collections.unmodifiableList(moves);
 	}
 
+	/** Adds a move to this Pokémon's move set */
+	public Pokemon addMove(MoveInstance move) {
+		moves.add(move);
+		return this;
+	}
+
 	/** Removes a move from this Pokémon's move set at the specified index */
 	public MoveInstance removeMove(int index) {
 		if (index >= moves.size() || index < 0) {
@@ -78,12 +89,6 @@ public class Pokemon {
 	/** Removes the specified MoveInstance from this Pokémon's move set */
 	public Pokemon removeMove(MoveInstance move) {
 		moves.remove(move);
-		return this;
-	}
-
-	/** Adds a Stat to this Pokémon with the specified name */
-	public Pokemon addStat(String name, Stat stat) {
-		stats.put(name, stat);
 		return this;
 	}
 
@@ -100,7 +105,13 @@ public class Pokemon {
 			statList.add(s);
 		}
 
-		return statList;
+		return Collections.unmodifiableList(statList);
+	}
+
+	/** Adds a Stat to this Pokémon with the specified name */
+	public Pokemon putStat(String name, Stat stat) {
+		stats.put(name, stat);
+		return this;
 	}
 
 	/** Removes a Stat with the specified name from this Pokémon. */

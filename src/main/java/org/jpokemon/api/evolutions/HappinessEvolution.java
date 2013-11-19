@@ -1,6 +1,11 @@
 package org.jpokemon.api.evolutions;
 
+import org.jpokemon.api.Manager;
+
 public class HappinessEvolution implements Evolution {
+	/** Indicates the manager being used to register happiness evolutions. May be ``null``. */
+	public static Manager<HappinessEvolution> manager;
+
 	/** Indicates the hapiness rating at which the Pokémon evolves */
 	private int happiness;
 

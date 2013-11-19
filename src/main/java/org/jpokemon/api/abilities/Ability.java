@@ -1,5 +1,8 @@
 package org.jpokemon.api.abilities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jpokemon.api.Manager;
 
 /**
@@ -20,8 +23,8 @@ public class Ability {
 	/** Indicates the description of the ability */
 	protected String description;
 
-	/** Indicates the effect of the ability. */
-	protected AbilityEffect effect;
+	/** Indicates the effect(s) of the ability. */
+	protected List<Object> effects;
 
 	/** Gets the name of this ability. */
 	public String getName() {
@@ -45,14 +48,29 @@ public class Ability {
 		return this;
 	}
 
-	/** Gets the effect of this ability. */
-	public AbilityEffect getEffect() {
-		return this.effect;
+	/** Adds an effect to this ability. */
+	public Ability addEffect(Object effect) {
+		if (this.effects == null) {
+			this.effects = new ArrayList<Object>();
+		}
+		this.effects.add(effect);
+		return this;
 	}
 
-	/** Sets the effect of this ability. */
-	public Ability setEffect(AbilityEffect effect) {
-		this.effect = effect;
+	/** Gets the effects of this ability. */
+	public List<Object> getEffects() {
+		return this.effects;
+	}
+
+	/** Removes an effect of this ability. */
+	public Ability removeEffect(Object effect) {
+		this.effects.remove(effect);
+		return this;
+	}
+
+	/** Sets the effects of this ability. */
+	public Ability setEffects(List<Object> effects) {
+		this.effects = effects;
 		return this;
 	}
 }

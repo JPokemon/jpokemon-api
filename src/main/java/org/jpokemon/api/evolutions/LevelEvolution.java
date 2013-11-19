@@ -1,9 +1,17 @@
 package org.jpokemon.api.evolutions;
 
+import org.jpokemon.api.Manager;
+
 /**
  * Defines an evolution that occurs at a certain level.
  */
 public class LevelEvolution implements Evolution {
+	/**
+	 * Indicates the manager being used to register level evolutions. May be
+	 * ``null``.
+	 */
+	public static Manager<StoneEvolution> manager;
+
 	/** Indicates the level at which the Pokémon evolves */
 	protected int level;
 

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.api.classic.ExperienceCurve;
 import org.jpokemon.api.evolutions.Evolution;
 
 /**
@@ -42,13 +41,13 @@ public class Species {
 	protected String primaryAbility;
 
 	/** Indicates the secondary Ability of this species (if it has one). */
-	protected String secondaryAbility = null;
+	protected String secondaryAbility;
 
 	/** Indicates the dream world Ability of this species */
 	protected String dreamAbility;
 
 	/** Indicates this species' experience gain behavior. */
-	protected ExperienceCurve expCurve;
+	protected String experienceCurve;
 
 	/** Indicates the average height of the species */
 	protected float averageHeight;
@@ -62,10 +61,16 @@ public class Species {
 	/** Indicates the description of the species */
 	protected String description;
 
-	/** Indicates the base stats (hp, atk, def, satk, sdef, spd, exp) for this species. */
+	/**
+	 * Indicates the base stats (hp, atk, def, satk, sdef, spd, exp) for this
+	 * species.
+	 */
 	protected Map<String, Integer> baseStats;
 
-	/** Indicates the EVs gained (hp, atk, def, satk, sdef, spd) from defeating this species. */
+	/**
+	 * Indicates the EVs gained (xp, hp, atk, def, satk, sdef, spd) from defeating
+	 * this species.
+	 */
 	protected Map<String, Integer> effortValues;
 
 	/** Indicates the number of steps required to hatch an egg of this species. */
@@ -84,10 +89,10 @@ public class Species {
 	protected int tameness;
 
 	/** Indicates the first egg group of this species. */
-	protected String firstEggGroup;
+	protected String primaryEggGroup;
 
 	/** Indicates the second egg group of this species. */
-	protected String secondEggGroup;
+	protected String secondaryEggGroup;
 
 	/** Indicates whether this species is breedable in any way. */
 	protected boolean breedable;
@@ -102,7 +107,7 @@ public class Species {
 	protected List<String> machineMoves;
 
 	/** Indicates the moves learned at a given level by this species. */
-	protected HashMap<Integer, String> moveList;
+	protected HashMap<Integer, List<String>> moveLists;
 
 	/** Provides the default constructor. */
 	public Species() {
@@ -222,13 +227,13 @@ public class Species {
 	}
 
 	/** Gets the type of experience curve for this species. */
-	public ExperienceCurve getExperienceCurveType() {
-		return expCurve;
+	public String getExperienceCurve() {
+		return experienceCurve;
 	}
 
 	/** Sets the type of experience curve for this species. */
-	public Species setExperienceCurve(ExperienceCurve expCurve) {
-		this.expCurve = expCurve;
+	public Species setExperienceCurve(String expCurve) {
+		this.experienceCurve = expCurve;
 		return this;
 	}
 
@@ -432,29 +437,29 @@ public class Species {
 	}
 
 	/** Gets the egg group for this species. */
-	public String getFirstEggGroup() {
-		return firstEggGroup;
+	public String getPrimaryEggGroup() {
+		return primaryEggGroup;
 	}
 
 	/** Sets the egg group for this species. */
-	public Species setFirstEggGroup(String eggGroup) {
-		this.firstEggGroup = eggGroup;
+	public Species setPrimaryEggGroup(String eggGroup) {
+		this.primaryEggGroup = eggGroup;
 		return this;
 	}
 
 	/** Checks if this species has a second egg group */
-	public boolean hasSecondEggGroup() {
-		return (secondEggGroup != null);
+	public boolean hasSecondaryEggGroup() {
+		return (secondaryEggGroup != null);
 	}
 
 	/** Gets the second egg group for this species (if it has one). */
-	public String getSecondEggGroup() {
-		return secondEggGroup;
+	public String getSecondaryEggGroup() {
+		return secondaryEggGroup;
 	}
 
 	/** Sets the second egg group for this species. */
-	public Species setSecondEggGroup(String secondEggGroup) {
-		this.secondEggGroup = secondEggGroup;
+	public Species setSecondaryEggGroup(String secondEggGroup) {
+		this.secondaryEggGroup = secondEggGroup;
 		return this;
 	}
 
@@ -554,20 +559,84 @@ public class Species {
 		return this;
 	}
 
-	/** Sets the list of moves that can be learned by TMs and HMs. */
+	/** Sets the list of moves that can be learned by TMs and HMs */
 	public Species setMachineMoves(List<String> machineMoves) {
 		this.machineMoves = machineMoves;
 		return this;
 	}
 
-	/** Sets the move list learned by levelling up. */
-	public HashMap<Integer, String> getMoveList() {
-		return moveList;
+	/**
+	 * Gets the list of move names that this species learns at the specified level
+	 * 
+	 * @param level The level to check for available moves
+	 * @return The list of move names, or null if no moves are available
+	 */
+	public List<String> getMoveList(int level) {
+		if (this.moveLists == null) {
+			return null;
+		}
+		if (!this.moveLists.containsKey(level)) {
+			return null;
+		}
+		return this.moveLists.get(level);
+	}
+
+	/**
+	 * Adds a move to the list of moves this species learns at the specified level
+	 * 
+	 * @param level The level at which the move is learned
+	 * @param move The move to learn
+	 * @return This species
+	 */
+	public Species addToMoveList(int level, String move) {
+		if (this.moveLists == null) {
+			this.moveLists = new HashMap<Integer, List<String>>();
+		}
+		if (!this.moveLists.containsKey(level)) {
+			this.moveLists.put(level, new ArrayList<String>());
+		}
+		this.moveLists.get(level).add(move);
+		return this;
+	}
+
+	/**
+	 * Removes a move from the list of moves this species learns at the specified
+	 * level
+	 * 
+	 * @param level The level at which the move is learned
+	 * @param move The move to remove from the learn list
+	 * @return This species
+	 */
+	public Species removeFromMoveList(int level, String move) {
+		if (this.moveLists != null && this.moveLists.containsKey(level)) {
+			this.moveLists.get(level).remove(move);
+		}
+		return this;
+	}
+
+	/**
+	 * Sets the list of moves that this species learns at the specified level
+	 * 
+	 * @param level The level at which the list of moves is available
+	 * @param moves The list of moves which is available
+	 * @return This species
+	 */
+	public Species setMoveList(int level, List<String> moves) {
+		if (this.moveLists == null) {
+			this.moveLists = new HashMap<Integer, List<String>>();
+		}
+		this.moveLists.put(level, moves);
+		return this;
 	}
 
 	/** Sets the move list learned by levelling up. */
-	public Species setMoveList(HashMap<Integer, String> moveList) {
-		this.moveList = moveList;
+	public HashMap<Integer, List<String>> getMoveLists() {
+		return moveLists;
+	}
+
+	/** Sets the move list learned by levelling up. */
+	public Species setMoveLists(HashMap<Integer, List<String>> moveList) {
+		this.moveLists = moveList;
 		return this;
 	}
 }

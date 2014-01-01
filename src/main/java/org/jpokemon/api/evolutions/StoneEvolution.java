@@ -1,14 +1,7 @@
 package org.jpokemon.api.evolutions;
 
-import org.jpokemon.api.Manager;
 
 public class StoneEvolution implements Evolution {
-	/**
-	 * Indicates the manager being used to register level evolutions. May be
-	 * ``null``.
-	 */
-	public static Manager<LevelEvolution> manager;
-
 	/** Indicates the stone type applicable to this evolution */
 	private String type;
 
@@ -25,7 +18,7 @@ public class StoneEvolution implements Evolution {
 		this.type = type;
 		return this;
 	}
- 
+
 	@Override
 	public String getSpecies() {
 		return this.species;

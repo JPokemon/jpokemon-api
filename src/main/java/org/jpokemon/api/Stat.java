@@ -9,17 +9,17 @@ package org.jpokemon.api;
  * 
  * @author Zach Taylor
  * 
- * @since  0.1
+ * @since 0.1
  */
 public class Stat {
 	/** Indicates the current value */
-	private int value;
+	protected int value;
 
 	/** Indicates the ev value */
-	private int ev;
+	protected int ev;
 
 	/** Indicates the iv value */
-	private int iv;
+	protected int iv;
 
 	/** Gets the current value */
 	public int getValue() {

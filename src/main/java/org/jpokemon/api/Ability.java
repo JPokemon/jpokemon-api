@@ -1,9 +1,7 @@
-package org.jpokemon.api.abilities;
+package org.jpokemon.api;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jpokemon.api.Manager;
 
 /**
  * Defines an ability that a Pokémon may possess.

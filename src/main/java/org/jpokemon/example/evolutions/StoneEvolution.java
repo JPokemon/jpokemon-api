@@ -1,12 +1,20 @@
-package org.jpokemon.api.evolutions;
+package org.jpokemon.example.evolutions;
 
+import org.jpokemon.api.Evolution;
 
+/**
+ * Provides a possible evolution type for evolution stone usage
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class StoneEvolution implements Evolution {
 	/** Indicates the stone type applicable to this evolution */
-	private String type;
+	protected String type;
 
 	/** Indicates the species the Pokémon will evolve into. */
-	private String species;
+	protected String species;
 
 	/** Getter for the stone type of this evolution */
 	public String getType() {

@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.api.evolutions.Evolution;
-
 /**
  * Defines a Pokémon species. Note that this refers to an object like
  * 'Bulbasaur' and not the tag 'Seed Pokémon'.

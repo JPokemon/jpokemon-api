@@ -1,8 +1,13 @@
-package org.jpokemon.api.evolutions;
+package org.jpokemon.example.evolutions;
 
+import org.jpokemon.api.Evolution;
 
 /**
- * Defines an evolution that occurs at a certain level.
+ * Provides a possible evolution type for level-up
+ * 
+ * @author zach
+ * 
+ * @since 0.1
  */
 public class LevelEvolution implements Evolution {
 	/** Indicates the level at which the Pokémon evolves */

@@ -1,11 +1,6 @@
 package org.jpokemon.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.jpokemon.api.exceptions.JPokemonError;
-import org.jpokemon.api.items.*;
-import org.jpokemon.api.items.attributes.*;
 import org.jpokemon.api.managers.SimpleItemManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,18 +22,5 @@ public class ItemTest {
 		Manager<Item> manager = new SimpleItemManager();
 		manager.register(new Item().setName("Test Item"));
 		manager.register(new Item().setName("Test Item"));
-	}
-
-	/**
-	 * Checks if an attribute can be properly added to an item.
-	 */
-	@Test
-	public void testItemAttribute() {
-		// Define the Berry Pocket. setName will call register
-		new PocketAttribute().setPocketName("berries");
-
-		Item cheriBerry = new Item().setProperty("pocket", "berries");
-		assertTrue("Berry pocket", cheriBerry.hasProperty("pocket"));
-		assertEquals("Berry pocket", "berries", cheriBerry.getProperty("pocket"));
 	}
 }

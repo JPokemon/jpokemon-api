@@ -25,6 +25,9 @@ public class Pokemon {
 	/** Indicates the species of this Pokémon. */
 	protected String species;
 
+	/** Indicates the ability of this Pokémon. */
+	protected String ability;
+
 	/** Indicates the moves of this Pokémon */
 	protected List<MoveInstance> moves = new ArrayList<MoveInstance>();
 

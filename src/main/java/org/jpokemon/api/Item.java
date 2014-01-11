@@ -1,10 +1,8 @@
-package org.jpokemon.api.items;
+package org.jpokemon.api;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-
-import org.jpokemon.api.Manager;
+import java.util.List;
 
 /**
  * Defines a basic item. This class provides the most basic attributes that all
@@ -14,7 +12,7 @@ import org.jpokemon.api.Manager;
  * 
  * <p>
  * 
- * Note that the ``attributes`` {@link HashMap} will not initialize until an
+ * Note that the attributes {@link ArrayList} will not initialize until an
  * attribute is added. Thus, if a traditional inheritance scheme is preferable
  * for your project, this functionality can be ignored without memory
  * inefficiency.
@@ -22,8 +20,7 @@ import org.jpokemon.api.Manager;
  * <p>
  * 
  * The same goes for the management features; if the ``manager`` field remains
- * ``null``, its functionality is ignored, and only a very weak protest is made
- * by the constructor in the form of an unchecked error.
+ * ``null``, its functionality is ignored.
  * 
  * @author atheriel@gmail.com
  * 
@@ -31,18 +28,15 @@ import org.jpokemon.api.Manager;
  */
 public class Item {
 	/** Indicates the manager being used to register items. May be ``null``. */
-	public static Manager<Item> manager = null;
+	public static Manager<Item> manager;
 
-	/** Indicates attributed properties of the item. */
-	protected HashMap<String, String> properties = new HashMap<String, String>();
+	/** Indicates attributes of the item. */
+	protected List<Object> attributes;
 
 	/** Indicates the name of the item (as it would appear in the bag or a shop). */
 	protected String name = "????";
 
-	/**
-	 * Indicates the description of this item (as it would appear in the bag or a
-	 * shop).
-	 */
+	/** Indicates the description of this item */
 	protected String description = "";
 
 	/** Indicates whether this item is sellable to a vendor. Defaults to `false`. */
@@ -51,27 +45,21 @@ public class Item {
 	/** Indicates the sale price for this item. Defaults to `0`. */
 	protected int salePrice = 0;
 
-	/**
-	 * Indicates whether this item is usable outside of battle. Defaults to
-	 * `false`.
-	 */
+	/** Indicates whether this item is usable outside of battle. Defaults to false */
 	protected boolean usableOutsideBattle = false;
 
-	/** Indicates whether this item is during battle. Defaults to `false`. */
+	/** Indicates whether this item is during battle. Defaults to false */
 	protected boolean usableDuringBattle = false;
 
-	/**
-	 * Indicates whether this item is consumed upon use, including use while
-	 * holding. Defaults to `false`.
-	 */
+	/** Indicates whether this item is consumed on use. Defaults to false */
 	protected boolean consumable = false;
 
-	/** Indicates whether this item is holdable by a Pokémon. Defaults to `false`. */
+	/** Indicates whether this item is holdable by a Pokémon. Defaults to false */
 	protected boolean holdable = false;
 
 	/**
 	 * Indicates whether this item has a passive effect when held by a Pokémon.
-	 * Defaults to `false`.
+	 * Defaults to false
 	 */
 	protected boolean passiveHoldEffect = false;
 
@@ -195,46 +183,46 @@ public class Item {
 		return this;
 	}
 
-	/** Checks if the item has a given property. */
-	public boolean hasProperty(String key) {
-		if (key == null) {
+	/** Checks if the item has a given attribute. */
+	public boolean hasAttribute(Object attribute) {
+		if (attributes == null || attribute == null) {
 			return false;
 		}
 
-		return properties.containsKey(key);
+		return attributes.contains(attribute);
 	}
 
-	/** Sets a property of this item. It must have a unique name. */
-	public Item setProperty(String key, String value) {
-		if (!properties.containsKey(key)) {
-			properties.put(key, value);
+	/** Adds an attribute to this item */
+	public Item addAttribute(Object attribute) {
+		if (attributes == null) {
+			attributes = new ArrayList<Object>();
+		}
+		if (!attributes.contains(attribute)) {
+			attributes.add(attribute);
 		}
 
 		return this;
 	}
 
-	/**
-	 * Gets the property of this item for the given key
-	 * 
-	 * @param key The key of the property requested
-	 * 
-	 * @return The item's property under this name, or `null` if it does not
-	 *         possess one
-	 */
-	public String getProperty(String key) {
-		if (!properties.containsKey(key)) {
-			return null;
+	/** Gets all attributes of this item as an unmodifiable list */
+	public List<Object> getAttributes() {
+		if (attributes == null) {
+			return new ArrayList<Object>();
 		}
-
-		return properties.get(key);
+		return Collections.unmodifiableList(attributes);
 	}
 
-	/**
-	 * Gets all of the attribute keys of this Item as an UnmodifiableCollection
-	 * 
-	 * @return A collection of this Item's attribute keys
-	 */
-	public Collection<String> getAllProperties() {
-		return Collections.unmodifiableCollection(properties.keySet());
+	/** Removes an attribute of this item */
+	public Item removeAttribute(Object attribute) {
+		if (attributes != null && attribute != null) {
+			attributes.remove(attribute);
+		}
+		return this;
+	}
+
+	/** Sets all attributes of this item */
+	public Item setAttributes(List<Object> attributes) {
+		this.attributes = attributes;
+		return this;
 	}
 }

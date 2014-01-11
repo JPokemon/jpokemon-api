@@ -2,9 +2,9 @@ package org.jpokemon.api.managers;
 
 import java.util.TreeMap;
 
+import org.jpokemon.api.Item;
 import org.jpokemon.api.Manager;
 import org.jpokemon.api.exceptions.JPokemonError;
-import org.jpokemon.api.items.Item;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link ItemManager}

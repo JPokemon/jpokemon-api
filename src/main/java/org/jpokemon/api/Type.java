@@ -6,19 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Defines a Pokémon type (such as Grass or Dark). For convenience, the classic
- * 17 types are instantiated by the {@link ClassicTypes} class.
- * 
- * If a {@link Manager} has been defined, calling {@link #setName} will
- * automatically register it with the manager under that name.
+ * Defines a Pokémon type (such as Grass or Dark)
  * 
  * @author atheriel@gmail.com
  * @author Zach Taylor
  * 
  * @since 0.1
- * 
- * @see Manager
- * @see ClassicTypes
  */
 public class Type {
 	/** Indicates the configured Manager for Types, if set */

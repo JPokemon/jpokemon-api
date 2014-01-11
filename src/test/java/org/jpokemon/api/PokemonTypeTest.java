@@ -3,8 +3,7 @@ package org.jpokemon.api;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.jpokemon.api.classic.ClassicTypes;
-import org.jpokemon.api.managers.SimpleTypeManager;
+import org.jpokemon.example.ClassicTypeManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -21,9 +20,9 @@ public class PokemonTypeTest {
 	/** Tests some properties of classic types. */
 	@Test
 	public void testClassicTypes() {
-		Type.manager = new SimpleTypeManager();
+		Type.manager = new ClassicTypeManager();
 
-		assertTrue("Dark is known.", Type.manager.isRegistered(ClassicTypes.DARK));
+		assertTrue("Dark is known.", Type.manager.isRegistered(Type.manager.getByName("Dark")));
 		assertTrue("Normal is ineffective against Ghost.", Type.manager.getByName("Normal").isIneffectiveAgainst("Ghost"));
 		assertFalse("Normal is not super-effective against Fighting.", Type.manager.getByName("Normal").isSuperEffectiveAgainst("Fighting"));
 	}
@@ -31,7 +30,7 @@ public class PokemonTypeTest {
 	/** Creates a new type and tests that it has been registered. */
 	@Test
 	public void testTypeAddition() {
-		Manager<Type> manager = new SimpleTypeManager();
+		Manager<Type> manager = new ClassicTypeManager();
 		Type test = new Type().setName("Test");
 		manager.register(test);
 
@@ -41,7 +40,7 @@ public class PokemonTypeTest {
 	/** Tests setting type effectiveness (i.e. "Super-effective"). */
 	@Test
 	public void testEffectivenessCollision() {
-		Manager<Type> manager = new SimpleTypeManager();
+		Manager<Type> manager = new ClassicTypeManager();
 		Type t1 = new Type().setName("Type1");
 		Type t2 = new Type().setName("Type2");
 		manager.register(t1);

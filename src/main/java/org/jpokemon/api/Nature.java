@@ -1,8 +1,10 @@
 package org.jpokemon.api;
 
+import org.jpokemon.example.ClassicNatureManager;
+
 /**
  * Defines a nature (personality) for a Pokémon. The 25 classic natures are
- * instantiated in the {@link ClassicNatures} class.
+ * instantiated in the {@link ClassicNatureManager} class.
  * 
  * <p>
  * To define your own nature, construct instances of this class. If you want to
@@ -24,9 +26,6 @@ package org.jpokemon.api;
  * @author Zach Taylor
  * 
  * @since 0.1
- * 
- * @see ClassicNatures
- * @see SimpleNatureManager
  */
 public class Nature {
 	/** Indicates the manager being used to register items. May be ``null``. */

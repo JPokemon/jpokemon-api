@@ -9,6 +9,10 @@ import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Defines the 17 classic types.
+ * 
+ * @author zach
+ * 
+ * @since 0.1
  */
 public class ClassicTypeManager implements Manager<Type> {
 	protected Map<String, Type> types = new HashMap<String, Type>();
@@ -76,7 +80,7 @@ public class ClassicTypeManager implements Manager<Type> {
 
 	public static void init() throws JPokemonError {
 		if (Type.manager != null) {
-			throw new JPokemonError("Type.manager already defined");
+			throw new JPokemonError("Type.manager is already defined");
 		}
 
 		Type.manager = new ClassicTypeManager();

@@ -11,6 +11,10 @@ import org.jpokemon.api.exceptions.JPokemonError;
  * Defines a "simplest-possible" implementation of the {@link Manager} for
  * abilities. Note that, as Abilities are extremely implementation-specific,
  * SimpleAbilityManager provides no "Classic" abilities.
+ * 
+ * @author zach
+ * 
+ * @since 0.1
  */
 public class SimpleAbilityManager implements Manager<Ability> {
 	private final Map<String, Ability> abilityMap = new HashMap<String, Ability>();
@@ -43,5 +47,13 @@ public class SimpleAbilityManager implements Manager<Ability> {
 	@Override
 	public Ability getByName(String name) {
 		return abilityMap.get(name);
+	}
+
+	public static void init() throws JPokemonError {
+		if (Ability.manager != null) {
+			throw new JPokemonError("Ability.manager is already defined");
+		}
+
+		Ability.manager = new SimpleAbilityManager();
 	}
 }

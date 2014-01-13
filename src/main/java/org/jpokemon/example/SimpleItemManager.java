@@ -1,6 +1,7 @@
-package org.jpokemon.api.managers;
+package org.jpokemon.example;
 
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jpokemon.api.Item;
 import org.jpokemon.api.Manager;
@@ -8,37 +9,49 @@ import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link ItemManager}
- * interface.
+ * interface for items.
  * 
  * @author atheriel@gmail.com
  * 
- * @since  0.1
+ * @since 0.1
  */
 public class SimpleItemManager implements Manager<Item> {
-	private final TreeMap<String, Item> itemList = new TreeMap<String, Item>();
+	private final Map<String, Item> itemMap = new HashMap<String, Item>();
+
+	/** Provides the default constructor */
+	public SimpleItemManager() {
+	}
 
 	@Override
 	public boolean register(Item item) throws JPokemonError {
-		if (itemList.containsKey(item.getName())) {
+		if (itemMap.containsKey(item.getName())) {
 			throw new JPokemonError("A item with the name " + item.getName() + " has already been registered!");
 		}
-		if (itemList.containsValue(item)) {
+		if (itemMap.containsValue(item)) {
 			throw new JPokemonError("This item is already registered!");
 		}
-		itemList.put(item.getName(), item);
+		itemMap.put(item.getName(), item);
 		return true;
 	}
 
 	@Override
 	public boolean isRegistered(Item item) {
-		return itemList.containsValue(item);
+		return itemMap.containsValue(item);
 	}
 
 	@Override
 	public Item getByName(String name) {
-		if (!itemList.containsKey(name)) {
+		if (!itemMap.containsKey(name)) {
 			return null;
 		}
-		return itemList.get(name);
+		return itemMap.get(name);
+	}
+
+	public static void init() throws JPokemonError {
+		if (Item.manager != null) {
+			throw new JPokemonError("Item.manager is already defined");
+		}
+
+		Item.manager = new SimpleItemManager();
 	}
 }

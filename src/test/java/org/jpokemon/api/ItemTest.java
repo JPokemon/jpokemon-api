@@ -1,7 +1,7 @@
 package org.jpokemon.api;
 
 import org.jpokemon.api.exceptions.JPokemonError;
-import org.jpokemon.api.managers.SimpleItemManager;
+import org.jpokemon.example.SimpleItemManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

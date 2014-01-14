@@ -11,6 +11,11 @@ import org.jpokemon.api.ExperienceCurve;
  */
 public class FluctuatingExperienceCurve extends ExperienceCurve {
 	@Override
+	public String getName() {
+		return "fluctuating";
+	}
+
+	@Override
 	public int experienceRequiredForLevel(int level) {
 		if (level <= 15) {
 			return (int) (level * level * level * ((Math.floor((level + 1) / 3) + 24) / 50));

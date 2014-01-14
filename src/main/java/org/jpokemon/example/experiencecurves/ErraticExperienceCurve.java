@@ -11,6 +11,11 @@ import org.jpokemon.api.ExperienceCurve;
  */
 public class ErraticExperienceCurve extends ExperienceCurve {
 	@Override
+	public String getName() {
+		return "erratic";
+	}
+
+	@Override
 	public int experienceRequiredForLevel(int level) {
 		if (level <= 50) {
 			return ((level * level * level) * (100 - level)) / 50;

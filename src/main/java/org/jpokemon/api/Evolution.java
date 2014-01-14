@@ -9,8 +9,8 @@ package org.jpokemon.api;
  */
 public interface Evolution {
 	/** Gets the species the Pokémon will evolve into. */
-	public abstract String getSpecies();
+	public String getSpecies();
 
 	/** Sets the species the Pokémon will evolve into. */
-	public abstract void setSpecies(String species);
+	public void setSpecies(String species);
 }

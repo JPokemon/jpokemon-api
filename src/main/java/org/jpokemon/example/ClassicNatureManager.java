@@ -89,7 +89,7 @@ public class ClassicNatureManager implements Manager<Nature> {
 		}
 
 		natures.put(nature.getName(), nature);
-		return false;
+		return true;
 	}
 
 	@Override

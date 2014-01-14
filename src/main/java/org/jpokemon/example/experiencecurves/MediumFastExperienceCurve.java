@@ -11,6 +11,11 @@ import org.jpokemon.api.ExperienceCurve;
  */
 public class MediumFastExperienceCurve extends ExperienceCurve {
 	@Override
+	public String getName() {
+		return "medium-fast";
+	}
+
+	@Override
 	public int experienceRequiredForLevel(int level) {
 		return level * level * level;
 	}

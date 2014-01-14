@@ -8,7 +8,7 @@ import org.jpokemon.api.Manager;
 import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
- * Defines a "simplest-possible" implementation of the {@link ItemManager}
+ * Defines a "simplest-possible" implementation of the {@link Manager}
  * interface for items.
  * 
  * @author atheriel@gmail.com

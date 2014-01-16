@@ -5,23 +5,25 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Defines a gender, as it is assigned to a trainer or Pokémon. Provides some 
+ * Defines a gender, as it is assigned to a trainer or Pokémon. Provides some
  * convenient language and random generation functionality as well.
- *
+ * 
  * @author atheriel@gmail.com
- *
- * @since  0.1
- *
+ * 
+ * @since 0.1
+ * 
  * @note This classes's language features are very specific to English.
+ * @deprecated Being deprecated pre-0.1 doesn't look good... I'm talking to you,
+ *             Gender.class!
  */
 public class Gender {
 
 	/** Indicates the possession of "Male" gender. */
 	public static final Gender MALE = new Gender("Male", "He", "Him", "His", "His", "Himself");
-	
+
 	/** Indicates the possession of "Female" gender. */
 	public static final Gender FEMALE = new Gender("Female", "She", "Her", "Her", "Hers", "Herself");
-	
+
 	/** Indicates the possession of neither "Male" nor "Female" gender. */
 	public static final Gender GENDERLESS = new Gender("Genderless", "It", "It", "Its", "Its", "Itself");
 
@@ -34,7 +36,8 @@ public class Gender {
 	private final String possessivePronoun;
 	private final String reflexivePronoun;
 
-	private Gender(String name, String subjectPronoun, String objectPronoun, String possessiveDeterminer, String possessivePronoun, String reflexivePronoun) {
+	private Gender(String name, String subjectPronoun, String objectPronoun, String possessiveDeterminer,
+			String possessivePronoun, String reflexivePronoun) {
 		this.name = name;
 		this.subjectPronoun = subjectPronoun;
 		this.objectPronoun = objectPronoun;
@@ -64,7 +67,7 @@ public class Gender {
 		return possessiveDeterminer;
 	}
 
-	/** 
+	/**
 	 * Gets the possessive pronoun for this gender.
 	 * 
 	 * @note Due to English weirdness, this gives odd results with GENDERLESS.
@@ -82,9 +85,11 @@ public class Gender {
 	public static Gender getGenderByName(String name) {
 		if (name.equals(MALE.getName())) {
 			return MALE;
-		} else if (name.equals(FEMALE.getName())) {
+		}
+		else if (name.equals(FEMALE.getName())) {
 			return FEMALE;
-		} else if (name.equals(GENDERLESS.getName())) {
+		}
+		else if (name.equals(GENDERLESS.getName())) {
 			return GENDERLESS;
 		}
 		return null;
@@ -92,7 +97,7 @@ public class Gender {
 
 	/**
 	 * Gets a random male or female gender, with an equal chance of each.
-	 *
+	 * 
 	 * @param ranomd The random generator to use in the selection.
 	 */
 	public static Gender getRandomBinaryGender(Random random) {

@@ -7,7 +7,7 @@ import java.util.List;
  * Defines an ability that a Pokémon may possess.
  * 
  * @author atheriel@gmail.com
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
@@ -46,23 +46,27 @@ public class Ability {
 		return this;
 	}
 
-	/** Adds an effect to this ability. */
-	public Ability addEffect(Object effect) {
-		if (this.effects == null) {
-			this.effects = new ArrayList<Object>();
-		}
-		this.effects.add(effect);
-		return this;
-	}
-
 	/** Gets the effects of this ability. */
 	public List<Object> getEffects() {
-		return this.effects;
+		return effects;
+	}
+
+	/** Adds an effect to this ability. */
+	public Ability addEffect(Object effect) {
+		if (effects == null) {
+			effects = new ArrayList<Object>();
+		}
+
+		effects.add(effect);
+		return this;
 	}
 
 	/** Removes an effect of this ability. */
 	public Ability removeEffect(Object effect) {
-		this.effects.remove(effect);
+		if (effects != null) {
+			effects.remove(effect);
+		}
+
 		return this;
 	}
 

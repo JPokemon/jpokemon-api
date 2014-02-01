@@ -21,5 +21,5 @@ public abstract class EvolutionFactory {
 	public abstract String getName();
 
 	/** Builds an evolution, given the options provided */
-	public abstract Evolution buildEvolution(String options);
+	public abstract Evolution buildEvolution(String options) throws JPokemonException;
 }

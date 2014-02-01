@@ -1,13 +1,22 @@
-package org.jpokemon.example.evolutions.factory;
+package org.jpokemon.example.evolutions;
 
 import org.jpokemon.api.Evolution;
 import org.jpokemon.api.EvolutionFactory;
-import org.jpokemon.example.evolutions.StoneEvolution;
 
+/**
+ * Provides an {@link EvolutionFactory} which builds {@link StoneEvolution}
+ * instances. Assigns options as stone type.
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class StoneEvolutionFactory extends EvolutionFactory {
+	public static final String EVOLUTION_NAME = "stone";
+
 	@Override
 	public String getName() {
-		return "stone";
+		return EVOLUTION_NAME;
 	}
 
 	@Override

@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.ExperienceCurve;
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.example.experiencecurves.ErraticExperienceCurve;
 import org.jpokemon.example.experiencecurves.FastExperienceCurve;
 import org.jpokemon.example.experiencecurves.FluctuatingExperienceCurve;
@@ -26,13 +26,12 @@ public class ClassicExperienceCurveManager implements Manager<ExperienceCurve> {
 	}
 
 	@Override
-	public boolean register(ExperienceCurve experienceCurve) throws JPokemonError {
+	public void register(ExperienceCurve experienceCurve) throws JPokemonException {
 		if (isRegistered(experienceCurve)) {
-			throw new JPokemonError("Experience Curve already registered: " + experienceCurve.toString());
+			throw new JPokemonException("Experience Curve already registered: " + experienceCurve.toString());
 		}
 
 		experienceCurves.put(experienceCurve.getName(), experienceCurve);
-		return true;
 	}
 
 	@Override
@@ -49,9 +48,9 @@ public class ClassicExperienceCurveManager implements Manager<ExperienceCurve> {
 		return experienceCurves.get(name);
 	}
 
-	public static void init() throws JPokemonError {
+	public static void init() throws JPokemonException {
 		if (ExperienceCurve.manager != null) {
-			throw new JPokemonError("ExperienceCurve.manager is already defined");
+			throw new JPokemonException("ExperienceCurve.manager is already defined");
 		}
 
 		ExperienceCurve.manager = new ClassicExperienceCurveManager();

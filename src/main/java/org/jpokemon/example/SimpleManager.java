@@ -3,8 +3,8 @@ package org.jpokemon.example;
 import java.lang.reflect.Method;
 import java.util.TreeMap;
 
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Provides generic management for any type, 'T'. In order for this class to
@@ -35,20 +35,21 @@ public class SimpleManager<T> implements Manager<T> {
 	 * 
 	 * @param managedClass The class of the managed type, e.g. 'MyObject.class'
 	 * 
-	 * @throws JPokemonError In the case that T does not have a 'getName' method
+	 * @throws JPokemonException In the case that T does not have a 'getName'
+	 *           method
 	 */
-	public SimpleManager(Class<T> managedClass) throws JPokemonError {
+	public SimpleManager(Class<T> managedClass) throws JPokemonException {
 		this.managedClass = managedClass;
 
 		try {
 			managedClass.getMethod("getName");
 		} catch (Exception e) {
-			throw new JPokemonError("No method \"getName\" available for class: " + managedClass.toString());
+			throw new JPokemonException("No method \"getName\" available for class: " + managedClass.toString());
 		}
 	}
 
 	@Override
-	public boolean register(T managed) throws JPokemonError {
+	public void register(T managed) throws JPokemonException {
 		// Get the name via reflection
 		String name = null;
 		try {
@@ -59,15 +60,13 @@ public class SimpleManager<T> implements Manager<T> {
 
 		// Use the name to register, and check that it does not conflict
 		if (name == null) {
-			throw new JPokemonError("The object does not have a name to register under!");
+			throw new JPokemonException("The object does not have a name to register under!");
 		}
-		else if (objectMap.containsKey(name) && objectMap.get(name) != managed) {
-			throw new JPokemonError("A object with the name " + name + " has already been registered!");
+		else if (objectMap.containsKey(name) && !managed.equals(objectMap.get(name))) {
+			throw new JPokemonException("A object with the name " + name + " has already been registered!");
 		}
-		else {
-			objectMap.put(name, managed);
-			return true;
-		}
+
+		objectMap.put(name, managed);
 	}
 
 	@Override

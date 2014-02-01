@@ -2,7 +2,6 @@ package org.jpokemon.api;
 
 import static org.junit.Assert.assertTrue;
 
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.example.SimpleManager;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class ManagerTest {
 	/**
 	 * Checks that only objects with names can be registered.
 	 */
-	@Test(expected = JPokemonError.class)
+	@Test(expected = JPokemonException.class)
 	public void testNameRequirement() {
 		Type type2 = new Type();
 		manager.register(type2);

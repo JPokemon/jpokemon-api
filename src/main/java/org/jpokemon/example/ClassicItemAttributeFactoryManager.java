@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.ItemAttributeFactory;
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.example.itemattribute.factory.BallAttributeFactory;
 import org.jpokemon.example.itemattribute.factory.BerryAttributeFactory;
 import org.jpokemon.example.itemattribute.factory.EvolutionStoneAttributeFactory;
@@ -26,13 +26,12 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 	}
 
 	@Override
-	public boolean register(ItemAttributeFactory itemAttributeFactory) throws JPokemonError {
+	public void register(ItemAttributeFactory itemAttributeFactory) throws JPokemonException {
 		if (isRegistered(itemAttributeFactory)) {
-			throw new JPokemonError("Item Attribute Factory already registered: " + itemAttributeFactory.toString());
+			throw new JPokemonException("Item Attribute Factory already registered: " + itemAttributeFactory.toString());
 		}
 
 		itemAttributeFactories.put(itemAttributeFactory.getName(), itemAttributeFactory);
-		return true;
 	}
 
 	@Override

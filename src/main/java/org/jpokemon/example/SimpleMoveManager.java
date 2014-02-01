@@ -3,8 +3,8 @@ package org.jpokemon.example;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.api.moves.Move;
 
 /**
@@ -25,19 +25,18 @@ public class SimpleMoveManager implements Manager<Move> {
 	}
 
 	@Override
-	public boolean register(Move move) throws JPokemonError {
+	public void register(Move move) throws JPokemonException {
 		if (move == null) {
-			throw new JPokemonError("Cannot register a null move");
+			throw new JPokemonException("Cannot register a null move");
 		}
 		if (move.getName() == null) {
-			throw new JPokemonError("A move cannot be registered if it has no name");
+			throw new JPokemonException("A move cannot be registered if it has no name");
 		}
 		if (moveMap.containsKey(move.getName())) {
-			throw new JPokemonError("A move with the same name is already registered: " + move.getName());
+			throw new JPokemonException("A move with the same name is already registered: " + move.getName());
 		}
 
 		moveMap.put(move.getName(), move);
-		return true;
 	}
 
 	@Override
@@ -50,9 +49,9 @@ public class SimpleMoveManager implements Manager<Move> {
 		return moveMap.get(name);
 	}
 
-	public static void init() throws JPokemonError {
+	public static void init() throws JPokemonException {
 		if (Move.manager != null) {
-			throw new JPokemonError("Move.manager is already defined");
+			throw new JPokemonException("Move.manager is already defined");
 		}
 
 		Move.manager = new SimpleMoveManager();

@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.jpokemon.api.exceptions.JPokemonException;
+import org.jpokemon.api.JPokemonException;
 
 /**
  * Provides a way of generating unique ID numbers for trainers. The generation 

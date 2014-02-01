@@ -1,6 +1,5 @@
 package org.jpokemon.api;
 
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.example.SimpleManager;
 
 /**
@@ -8,40 +7,37 @@ import org.jpokemon.example.SimpleManager;
  * generic implementation is provided by the {@link SimpleManager} class that
  * works across all classes in the library.
  * 
- * <p>
- * 
- * For implementations specific to each class, see:
- * 
  * @author atheriel@gmail.com
+ * @author zach
  * 
  * @since 0.1
  */
 public interface Manager<T> {
 
 	/**
-	 * Registers the object with the manager so it can be looked up by name.
+	 * Registers the object with the manager so it can be looked up by name
 	 * 
-	 * @param managed The object to be registered.
+	 * @param managed The object to be registered
 	 * 
-	 * @return Whether the object is in fact registered.
-	 * 
-	 * @throws JPokemonError if there is an error registering the object.
+	 * @throws JPokemonException if there is an error registering the object
 	 */
-	public boolean register(T managed) throws JPokemonError;
+	public void register(T managed) throws JPokemonException;
 
 	/**
-	 * Checks if an object is registered with the manager.
+	 * Checks if an object is registered with the manager
 	 * 
-	 * @return ``true`` if the object is known to the manager.
+	 * @param managed The object to check for registration
+	 * 
+	 * @return Whether the object is known to the manager
 	 */
 	public boolean isRegistered(T managed);
 
 	/**
-	 * Gets an object registered by this manager by name.
+	 * Gets an object registered by this manager by name
 	 * 
-	 * @param name The name of the object requested.
+	 * @param name The name of the object requested
 	 * 
-	 * @return The object by this name, or ``null`` if it does not exist.
+	 * @return The object by this name, or null if it does not exist
 	 */
 	public T getByName(String name);
 }

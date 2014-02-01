@@ -1,6 +1,5 @@
 package org.jpokemon.api;
 
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.example.SimpleItemManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,7 @@ public class ItemTest {
 	/**
 	 * Checks that managed items must indeed have a unique name.
 	 */
-	@Test(expected = JPokemonError.class)
+	@Test(expected = JPokemonException.class)
 	public void testEnforcedItemUniqueness() {
 		Manager<Item> manager = new SimpleItemManager();
 		manager.register(new Item().setName("Test Item"));

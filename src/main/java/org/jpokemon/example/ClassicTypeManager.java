@@ -3,9 +3,9 @@ package org.jpokemon.example;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
 import org.jpokemon.api.Type;
-import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Defines the 17 classic types.
@@ -55,13 +55,12 @@ public class ClassicTypeManager implements Manager<Type> {
 	}
 
 	@Override
-	public boolean register(Type type) throws JPokemonError {
+	public void register(Type type) throws JPokemonException {
 		if (isRegistered(type)) {
-			throw new JPokemonError("Type already registered: " + type.toString());
+			throw new JPokemonException("Type already registered: " + type.toString());
 		}
 
 		types.put(type.getName(), type);
-		return false;
 	}
 
 	@Override
@@ -78,9 +77,9 @@ public class ClassicTypeManager implements Manager<Type> {
 		return types.get(name);
 	}
 
-	public static void init() throws JPokemonError {
+	public static void init() throws JPokemonException {
 		if (Type.manager != null) {
-			throw new JPokemonError("Type.manager is already defined");
+			throw new JPokemonException("Type.manager is already defined");
 		}
 
 		Type.manager = new ClassicTypeManager();

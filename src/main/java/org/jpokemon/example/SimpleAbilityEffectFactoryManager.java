@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.AbilityEffectFactory;
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 
 public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectFactory> {
 	protected Map<String, AbilityEffectFactory> abilityEffectFactories = new HashMap<String, AbilityEffectFactory>();
@@ -14,13 +14,12 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 	}
 
 	@Override
-	public boolean register(AbilityEffectFactory abilityEffectFactory) throws JPokemonError {
+	public void register(AbilityEffectFactory abilityEffectFactory) throws JPokemonException {
 		if (isRegistered(abilityEffectFactory)) {
-			throw new JPokemonError("Ability Effect Factory already registered: " + abilityEffectFactory.toString());
+			throw new JPokemonException("Ability Effect Factory already registered: " + abilityEffectFactory.toString());
 		}
 
 		abilityEffectFactories.put(abilityEffectFactory.getName(), abilityEffectFactory);
-		return true;
 	}
 
 	@Override

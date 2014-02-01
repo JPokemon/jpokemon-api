@@ -3,9 +3,9 @@ package org.jpokemon.example;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
 import org.jpokemon.api.Nature;
-import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
  * Defines the 25 classic natures (personalities) for a Pokémon.
@@ -83,13 +83,12 @@ public class ClassicNatureManager implements Manager<Nature> {
 	}
 
 	@Override
-	public boolean register(Nature nature) throws JPokemonError {
+	public void register(Nature nature) throws JPokemonException {
 		if (isRegistered(nature)) {
-			throw new JPokemonError("Nature already registered: " + nature.toString());
+			throw new JPokemonException("Nature already registered: " + nature.toString());
 		}
 
 		natures.put(nature.getName(), nature);
-		return true;
 	}
 
 	@Override
@@ -106,9 +105,9 @@ public class ClassicNatureManager implements Manager<Nature> {
 		return natures.get(name);
 	}
 
-	public static void init() throws JPokemonError {
+	public static void init() throws JPokemonException {
 		if (Nature.manager != null) {
-			throw new JPokemonError("Nature.manager is already defined");
+			throw new JPokemonException("Nature.manager is already defined");
 		}
 
 		Nature.manager = new ClassicNatureManager();

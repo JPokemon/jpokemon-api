@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.Item;
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 
 /**
- * Defines a "simplest-possible" implementation of the {@link Manager}
- * interface for items.
+ * Defines a "simplest-possible" implementation of the {@link Manager} interface
+ * for items.
  * 
  * @author atheriel@gmail.com
  * 
@@ -23,15 +23,15 @@ public class SimpleItemManager implements Manager<Item> {
 	}
 
 	@Override
-	public boolean register(Item item) throws JPokemonError {
+	public void register(Item item) throws JPokemonException {
 		if (itemMap.containsKey(item.getName())) {
-			throw new JPokemonError("A item with the name " + item.getName() + " has already been registered!");
+			throw new JPokemonException("A item with the name " + item.getName() + " has already been registered!");
 		}
-		if (itemMap.containsValue(item)) {
-			throw new JPokemonError("This item is already registered!");
+		else if (itemMap.containsKey(item.getName()) && !item.equals(itemMap.get(item.getName()))) {
+			throw new JPokemonException("A item with the name " + item.getName() + " has already been registered!");
 		}
+
 		itemMap.put(item.getName(), item);
-		return true;
 	}
 
 	@Override
@@ -47,9 +47,9 @@ public class SimpleItemManager implements Manager<Item> {
 		return itemMap.get(name);
 	}
 
-	public static void init() throws JPokemonError {
+	public static void init() throws JPokemonException {
 		if (Item.manager != null) {
-			throw new JPokemonError("Item.manager is already defined");
+			throw new JPokemonException("Item.manager is already defined");
 		}
 
 		Item.manager = new SimpleItemManager();

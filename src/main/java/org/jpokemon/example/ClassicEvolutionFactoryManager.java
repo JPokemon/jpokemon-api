@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jpokemon.api.EvolutionFactory;
+import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.exceptions.JPokemonError;
 import org.jpokemon.example.evolutions.factory.HappinessEvolutionFactory;
 import org.jpokemon.example.evolutions.factory.LevelEvolutionFactory;
 import org.jpokemon.example.evolutions.factory.StoneEvolutionFactory;
@@ -20,13 +20,15 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	}
 
 	@Override
-	public boolean register(EvolutionFactory evolutionFactory) throws JPokemonError {
+	public void register(EvolutionFactory evolutionFactory) throws JPokemonException {
+		if (evolutionFactory == null) {
+			throw new JPokemonException("Cannot register null evolution factory");
+		}
 		if (isRegistered(evolutionFactory)) {
-			throw new JPokemonError("Evolution Factory already registered: " + evolutionFactory.toString());
+			throw new JPokemonException("Evolution Factory already registered: " + evolutionFactory.toString());
 		}
 
 		evolutionFactories.put(evolutionFactory.getName(), evolutionFactory);
-		return true;
 	}
 
 	@Override
@@ -43,9 +45,9 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 		return evolutionFactories.get(name);
 	}
 
-	public static void init() throws JPokemonError {
+	public static void init() throws JPokemonException {
 		if (EvolutionFactory.manager != null) {
-			throw new JPokemonError("EvolutionFactory.manager is already defined");
+			throw new JPokemonException("EvolutionFactory.manager is already defined");
 		}
 
 		EvolutionFactory.manager = new ClassicEvolutionFactoryManager();

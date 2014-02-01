@@ -10,9 +10,12 @@ import org.jpokemon.api.ExperienceCurve;
  * @since 0.1
  */
 public class ErraticExperienceCurve extends ExperienceCurve {
+	/** Indicates the name of this experience curve */
+	public static final String EXPERIENCE_CURVE_NAME = "erratic";
+
 	@Override
 	public String getName() {
-		return "erratic";
+		return EXPERIENCE_CURVE_NAME;
 	}
 
 	@Override

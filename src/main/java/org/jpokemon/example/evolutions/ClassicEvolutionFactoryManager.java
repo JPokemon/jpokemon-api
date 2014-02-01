@@ -71,7 +71,8 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	 * Initializes a new ClassicEvolutionFactoryManager as the
 	 * {@link EvolutionFactory#manager}
 	 * 
-	 * @throws JPokemonException
+	 * @throws JPokemonException If the Evolution.factory manager is already
+	 *           defined
 	 */
 	public static void init() throws JPokemonException {
 		if (EvolutionFactory.manager != null) {

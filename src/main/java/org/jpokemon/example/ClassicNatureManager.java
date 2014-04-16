@@ -20,66 +20,66 @@ public class ClassicNatureManager implements Manager<Nature> {
 
 	public ClassicNatureManager() {
 		// Neutral Natures
-		register(new Nature().setName("Bashful").setStatIncreased("NONE").setStatDecreased("NONE").setTasteFavorite("NONE")
-				.setTasteDisliked("NONE"));
-		register(new Nature().setName("Docile").setStatIncreased("NONE").setStatDecreased("NONE").setTasteFavorite("NONE")
-				.setTasteDisliked("NONE"));
-		register(new Nature().setName("Hardy").setStatIncreased("NONE").setStatDecreased("NONE").setTasteFavorite("NONE")
-				.setTasteDisliked("NONE"));
-		register(new Nature().setName("Quirky").setStatIncreased("NONE").setStatDecreased("NONE").setTasteFavorite("NONE")
-				.setTasteDisliked("NONE"));
-		register(new Nature().setName("Serious").setStatIncreased("NONE").setStatDecreased("NONE").setTasteFavorite("NONE")
-				.setTasteDisliked("NONE"));
+		register(new Nature().setName("Bashful").setStatIncreased("NONE").setStatDecreased("NONE").setFlavorFavorite("NONE")
+				.setFlavorDisliked("NONE"));
+		register(new Nature().setName("Docile").setStatIncreased("NONE").setStatDecreased("NONE").setFlavorFavorite("NONE")
+				.setFlavorDisliked("NONE"));
+		register(new Nature().setName("Hardy").setStatIncreased("NONE").setStatDecreased("NONE").setFlavorFavorite("NONE")
+				.setFlavorDisliked("NONE"));
+		register(new Nature().setName("Quirky").setStatIncreased("NONE").setStatDecreased("NONE").setFlavorFavorite("NONE")
+				.setFlavorDisliked("NONE"));
+		register(new Nature().setName("Serious").setStatIncreased("NONE").setStatDecreased("NONE").setFlavorFavorite("NONE")
+				.setFlavorDisliked("NONE"));
 
 		// Attack-Increasing, Spice-Loving Natures
 		register(new Nature().setName("Adamant").setStatIncreased("Attack").setStatDecreased("Special Attack")
-				.setTasteFavorite("Spicy").setTasteDisliked("Dry"));
+				.setFlavorFavorite("Spicy").setFlavorDisliked("Dry"));
 		register(new Nature().setName("Brave").setStatIncreased("Attack").setStatDecreased("Speed")
-				.setTasteFavorite("Spicy").setTasteDisliked("Sweet"));
+				.setFlavorFavorite("Spicy").setFlavorDisliked("Sweet"));
 		register(new Nature().setName("Lonely").setStatIncreased("Attack").setStatDecreased("Defense")
-				.setTasteFavorite("Spicy").setTasteDisliked("Sour"));
+				.setFlavorFavorite("Spicy").setFlavorDisliked("Sour"));
 		register(new Nature().setName("Naughty").setStatIncreased("Attack").setStatDecreased("Special Defense")
-				.setTasteFavorite("Spicy").setTasteDisliked("Bitter"));
+				.setFlavorFavorite("Spicy").setFlavorDisliked("Bitter"));
 
 		// Defense-Increasing, Sour-Loving Natures
 		register(new Nature().setName("Bold").setStatIncreased("Defense").setStatDecreased("Attack")
-				.setTasteFavorite("Sour").setTasteDisliked("Spicy"));
+				.setFlavorFavorite("Sour").setFlavorDisliked("Spicy"));
 		register(new Nature().setName("Relaxed").setStatIncreased("Defense").setStatDecreased("Speed")
-				.setTasteFavorite("Sour").setTasteDisliked("Sweet"));
+				.setFlavorFavorite("Sour").setFlavorDisliked("Sweet"));
 		register(new Nature().setName("Impish").setStatIncreased("Defense").setStatDecreased("Special Attack")
-				.setTasteFavorite("Sour").setTasteDisliked("Dry"));
+				.setFlavorFavorite("Sour").setFlavorDisliked("Dry"));
 		register(new Nature().setName("Lax").setStatIncreased("Defense").setStatDecreased("Special Defense")
-				.setTasteFavorite("Sour").setTasteDisliked("Bitter"));
+				.setFlavorFavorite("Sour").setFlavorDisliked("Bitter"));
 
 		// Special Attack-Increasing, Dry-Loving Natures
 		register(new Nature().setName("Modest").setStatIncreased("Special Attack").setStatDecreased("Attack")
-				.setTasteFavorite("Dry").setTasteDisliked("Spicy"));
+				.setFlavorFavorite("Dry").setFlavorDisliked("Spicy"));
 		register(new Nature().setName("Mild").setStatIncreased("Special Attack").setStatDecreased("Defense")
-				.setTasteFavorite("Dry").setTasteDisliked("Sour"));
+				.setFlavorFavorite("Dry").setFlavorDisliked("Sour"));
 		register(new Nature().setName("Quiet").setStatIncreased("Special Attack").setStatDecreased("Speed")
-				.setTasteFavorite("Dry").setTasteDisliked("Sweet"));
+				.setFlavorFavorite("Dry").setFlavorDisliked("Sweet"));
 		register(new Nature().setName("Rash").setStatIncreased("Special Attack").setStatDecreased("Special Defense")
-				.setTasteFavorite("Dry").setTasteDisliked("Bitter"));
+				.setFlavorFavorite("Dry").setFlavorDisliked("Bitter"));
 
 		// Special Defense-Increasing, Bitter-Loving Natures
 		register(new Nature().setName("Calm").setStatIncreased("Special Defense").setStatDecreased("Attack")
-				.setTasteFavorite("Bitter").setTasteDisliked("Spicy"));
+				.setFlavorFavorite("Bitter").setFlavorDisliked("Spicy"));
 		register(new Nature().setName("Gentle").setStatIncreased("Special Defense").setStatDecreased("Defense")
-				.setTasteFavorite("Bitter").setTasteDisliked("Sour"));
+				.setFlavorFavorite("Bitter").setFlavorDisliked("Sour"));
 		register(new Nature().setName("Sassy").setStatIncreased("Special Defense").setStatDecreased("Speed")
-				.setTasteFavorite("Bitter").setTasteDisliked("Sweet"));
+				.setFlavorFavorite("Bitter").setFlavorDisliked("Sweet"));
 		register(new Nature().setName("Careful").setStatIncreased("Special Defense").setStatDecreased("Special Attack")
-				.setTasteFavorite("Bitter").setTasteDisliked("Dry"));
+				.setFlavorFavorite("Bitter").setFlavorDisliked("Dry"));
 
 		// Speed-Increasing, Sweet-Loving Natures
 		register(new Nature().setName("Timid").setStatIncreased("Speed").setStatDecreased("Attack")
-				.setTasteFavorite("Sweet").setTasteDisliked("Spicy"));
+				.setFlavorFavorite("Sweet").setFlavorDisliked("Spicy"));
 		register(new Nature().setName("Hasty").setStatIncreased("Speed").setStatDecreased("Defense")
-				.setTasteFavorite("Sweet").setTasteDisliked("Sour"));
+				.setFlavorFavorite("Sweet").setFlavorDisliked("Sour"));
 		register(new Nature().setName("Jolly").setStatIncreased("Speed").setStatDecreased("Special Attack")
-				.setTasteFavorite("Sweet").setTasteDisliked("Dry"));
+				.setFlavorFavorite("Sweet").setFlavorDisliked("Dry"));
 		register(new Nature().setName("Naive").setStatIncreased("Speed").setStatDecreased("Special Defense")
-				.setTasteFavorite("Sweet").setTasteDisliked("Bitter"));
+				.setFlavorFavorite("Sweet").setFlavorDisliked("Bitter"));
 	}
 
 	@Override

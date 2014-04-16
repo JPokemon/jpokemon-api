@@ -19,7 +19,7 @@ import org.jpokemon.example.ClassicNatureManager;
  * <pre>
  * Nature aweseome = new Nature().setName("Awesome");
  * awesome.setStatIncreased("Speed").setStatDecreased("Special Defense");
- * awesome.setTasteFavorite("Sweet").setTasteDisliked("Bitter");
+ * awesome.setFlavorFavorite("Sweet").setFlavorDisliked("Bitter");
  * </pre>
  * 
  * @author atheriel@gmail.com
@@ -40,11 +40,11 @@ public class Nature {
 	/** Indicates the stat decreased by this nature. */
 	protected String statDecreased;
 
-	/** Indicates the taste favoured by Pokémon of this nature. */
-	protected String tasteFavorite;
+	/** Indicates the flavor favoured by Pokémon of this nature. */
+	protected String flavorFavorite;
 
-	/** Indicates the taste disliked by Pokémon of this nature. */
-	protected String tasteDisliked;
+	/** Indicates the flavor disliked by Pokémon of this nature. */
+	protected String flavorDisliked;
 
 	/** Provides the default constructor. */
 	public Nature() {
@@ -83,25 +83,25 @@ public class Nature {
 		return this;
 	}
 
-	/** Gets the taste preference of this nature. */
-	public String getTasteFavorite() {
-		return tasteFavorite;
+	/** Gets the flavor preference of this nature. */
+	public String getFlavorFavorite() {
+		return flavorFavorite;
 	}
 
-	/** Sets the favorite taste of this nature. */
-	public Nature setTasteFavorite(String taste) {
-		this.tasteFavorite = taste;
+	/** Sets the favorite flavor of this nature. */
+	public Nature setFlavorFavorite(String flavor) {
+		this.flavorFavorite = flavor;
 		return this;
 	}
 
-	/** Gets the disliked taste of this nature. */
-	public String getTasteDisliked() {
-		return tasteDisliked;
+	/** Gets the disliked flavor of this nature. */
+	public String getFlavorDisliked() {
+		return flavorDisliked;
 	}
 
-	/** Sets the disliked taste of this nature. */
-	public Nature setTasteDisliked(String taste) {
-		this.tasteDisliked = taste;
+	/** Sets the disliked flavor of this nature. */
+	public Nature setFlavorDisliked(String flavor) {
+		this.flavorDisliked = flavor;
 		return this;
 	}
 

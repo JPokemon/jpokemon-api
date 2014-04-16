@@ -39,21 +39,21 @@ public class BerryAttribute {
 		this.growthTime = growthTime;
 	}
 
-	/** Gets the amount of flavor for the given taste. */
-	public int getFlavor(String taste) {
-		if (flavors == null || !flavors.containsKey(taste)) {
+	/** Gets the amount of flavor for the given flavor. */
+	public int getFlavor(String flavor) {
+		if (flavors == null || !flavors.containsKey(flavor)) {
 			return -1;
 		}
 
-		return flavors.get(taste);
+		return flavors.get(flavor);
 	}
 
 	/** Sets the amount of bitter flavor for this berry. */
-	public BerryAttribute setFlavor(String taste, int flavor) {
+	public BerryAttribute setFlavor(String flavor, int strength) {
 		if (flavors == null) {
 			flavors = new HashMap<String, Integer>();
 		}
-		flavors.put(taste, flavor);
+		flavors.put(flavor, strength);
 		return this;
 	}
 

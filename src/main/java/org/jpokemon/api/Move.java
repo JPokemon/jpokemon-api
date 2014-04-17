@@ -42,6 +42,9 @@ public class Move {
 	/** Indicates the priority of this move. */
 	protected int priority;
 
+	/** Indicates the contest category this move belongs to */
+	protected String contextCategory;
+
 	/** Indicates the contest appeal of this move */
 	protected int appeal;
 
@@ -141,14 +144,26 @@ public class Move {
 		return this;
 	}
 
+	/** Gets the contest category this move belongs to */
+	public String getContextCategory() {
+		return contextCategory;
+	}
+
+	/** Sets the contest category this move belongs to */
+	public Move setContextCategory(String contextCategory) {
+		this.contextCategory = contextCategory;
+		return this;
+	}
+
 	/** Gets the contest appeal of this move */
 	public int getAppeal() {
 		return appeal;
 	}
 
 	/** Sets the contest appeal of this move */
-	public void setAppeal(int appeal) {
+	public Move setAppeal(int appeal) {
 		this.appeal = appeal;
+		return this;
 	}
 
 	/** Gets the contest jam of this move */
@@ -157,8 +172,9 @@ public class Move {
 	}
 
 	/** Sets the contest jam of this move */
-	public void setJam(int jam) {
+	public Move setJam(int jam) {
 		this.jam = jam;
+		return this;
 	}
 
 	/** Checks whether this move targets the user instead of its opponent. */
@@ -221,7 +237,8 @@ public class Move {
 	}
 
 	/** Sets the properties of this move */
-	public void setProperties(HashMap<String, String> properties) {
+	public Move setProperties(HashMap<String, String> properties) {
 		this.properties = properties;
+		return this;
 	}
 }

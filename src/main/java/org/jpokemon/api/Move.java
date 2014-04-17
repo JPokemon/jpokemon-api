@@ -42,6 +42,12 @@ public class Move {
 	/** Indicates the priority of this move. */
 	protected int priority;
 
+	/** Indicates the contest appeal of this move */
+	protected int appeal;
+
+	/** Indicates the contest jam of this move */
+	protected int jam;
+
 	/** Indicates whether this move uses `Special` stats. */
 	protected boolean special;
 
@@ -135,6 +141,26 @@ public class Move {
 		return this;
 	}
 
+	/** Gets the contest appeal of this move */
+	public int getAppeal() {
+		return appeal;
+	}
+
+	/** Sets the contest appeal of this move */
+	public void setAppeal(int appeal) {
+		this.appeal = appeal;
+	}
+
+	/** Gets the contest jam of this move */
+	public int getJam() {
+		return jam;
+	}
+
+	/** Sets the contest jam of this move */
+	public void setJam(int jam) {
+		this.jam = jam;
+	}
+
 	/** Checks whether this move targets the user instead of its opponent. */
 	public boolean isSelfTargeting() {
 		return selfTargeting;
@@ -181,11 +207,21 @@ public class Move {
 	}
 
 	/**
-	 * Gets all of the attribute keys of this Move as an UnmodifiableCollection
+	 * Gets all of the property keys of this Move as an UnmodifiableCollection
 	 * 
 	 * @return A collection of this Move's attribute keys
 	 */
 	public Collection<String> getAllProperties() {
 		return Collections.unmodifiableCollection(properties.keySet());
+	}
+
+	/** Gets the properties of this move */
+	public HashMap<String, String> getProperties() {
+		return properties;
+	}
+
+	/** Sets the properties of this move */
+	public void setProperties(HashMap<String, String> properties) {
+		this.properties = properties;
 	}
 }

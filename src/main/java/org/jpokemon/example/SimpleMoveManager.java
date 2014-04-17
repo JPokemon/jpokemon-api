@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
-import org.jpokemon.api.moves.Move;
+import org.jpokemon.api.Move;
 
 /**
  * Defines a "simplest-possible" implementation of the {@link MoveManager}

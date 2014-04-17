@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jpokemon.api.moves.MoveInstance;
-
 /**
  * Defines a particular instance of a Pokémon. Pokémon may have extra values
  * applied through the 'metaData.' Meta-data in this class is the same pattern

@@ -1,10 +1,8 @@
-package org.jpokemon.api.moves;
+package org.jpokemon.api;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-
-import org.jpokemon.api.Manager;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.

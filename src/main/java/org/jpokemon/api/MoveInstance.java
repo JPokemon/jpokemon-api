@@ -1,4 +1,4 @@
-package org.jpokemon.api.moves;
+package org.jpokemon.api;
 
 /**
  * Defines a move as it is owned and used by a Pokemon.

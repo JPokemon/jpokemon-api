@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Provides a possible attribute describing qualities of berry items, including
- * growth rate and flavors.
+ * Provides a possible item attribute describing qualities of berry items,
+ * including growth rate and flavors.
  * 
  * <p>
  * 
- * NOTE: {@link #equals} returns true for all instances of BerryAttribute! This
- * is to prevent an Item from storing multiple BerryAttributes. It is strongly
- * advised to overwrite equals in subclasses of BerryAttribute.
+ * NOTE: {@link #equals} returns true when the object in question is the same
+ * class as this. This is to prevent an Item from storing multiple
+ * BerryAttributes.
  * 
  * @author atheriel@gmail.com
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
@@ -25,7 +25,7 @@ public class BerryAttribute {
 	/** Indicates the flavors of this berry */
 	protected Map<String, Integer> flavors;
 
-	/** Provides the default constructor. */
+	/** Provides the default constructor */
 	public BerryAttribute() {
 	}
 
@@ -35,8 +35,9 @@ public class BerryAttribute {
 	}
 
 	/** Sets the amount of time this berry requires to grow */
-	public void setGrowthTime(String growthTime) {
+	public BerryAttribute setGrowthTime(String growthTime) {
 		this.growthTime = growthTime;
+		return this;
 	}
 
 	/** Gets the amount of flavor for the given flavor. */
@@ -48,12 +49,23 @@ public class BerryAttribute {
 		return flavors.get(flavor);
 	}
 
-	/** Sets the amount of bitter flavor for this berry. */
+	/** Sets the amount of bitter flavor for this berry */
 	public BerryAttribute setFlavor(String flavor, int strength) {
 		if (flavors == null) {
 			flavors = new HashMap<String, Integer>();
 		}
 		flavors.put(flavor, strength);
+		return this;
+	}
+
+	/** Gets all flavor strengths for this berry */
+	public Map<String, Integer> getFlavors() {
+		return flavors;
+	}
+
+	/** Sets all flavor strengths for this berry */
+	public BerryAttribute setFlavors(Map<String, Integer> flavors) {
+		this.flavors = flavors;
 		return this;
 	}
 

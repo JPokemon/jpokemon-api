@@ -13,11 +13,11 @@ import org.jpokemon.api.JPokemonException;
  * @since 0.1
  */
 public class LevelEvolutionFactory extends EvolutionFactory {
-	public static final String EVOLUTION_NAME = "level";
+	public static final String EVOLUTION_FACTORY_NAME = "level";
 
 	@Override
 	public String getName() {
-		return EVOLUTION_NAME;
+		return EVOLUTION_FACTORY_NAME;
 	}
 
 	@Override

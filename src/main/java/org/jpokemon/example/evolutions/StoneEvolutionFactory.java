@@ -12,11 +12,11 @@ import org.jpokemon.api.EvolutionFactory;
  * @since 0.1
  */
 public class StoneEvolutionFactory extends EvolutionFactory {
-	public static final String EVOLUTION_NAME = "stone";
+	public static final String EVOLUTION_FACTORY_NAME = "stone";
 
 	@Override
 	public String getName() {
-		return EVOLUTION_NAME;
+		return EVOLUTION_FACTORY_NAME;
 	}
 
 	@Override

@@ -1,15 +1,26 @@
-package org.jpokemon.example.itemattribute.factory;
+package org.jpokemon.example.itemattribute;
 
 import org.jpokemon.api.ItemAttributeFactory;
-import org.jpokemon.example.itemattribute.BerryAttribute;
 
+/**
+ * Provides an implementation of {@link ItemAttributeFactory} which can build
+ * {@link BerryAttribute BerryAttributes}.
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class BerryAttributeFactory extends ItemAttributeFactory {
+	/** Indicates the name of item attributes this factory produces */
+	public static final String ITEM_ATTRIBUTE_NAME = "berry";
+
+	/** Provides the default constructor */
 	public BerryAttributeFactory() {
 	}
 
 	@Override
 	public String getName() {
-		return "berry";
+		return ITEM_ATTRIBUTE_NAME;
 	}
 
 	@Override
@@ -27,10 +38,8 @@ public class BerryAttributeFactory extends ItemAttributeFactory {
 				int strength = Integer.parseInt(flavorAssignment[1]);
 				berryAttribute.setFlavor(flavor, strength);
 			}
-		}
-		catch (NumberFormatException e) { // TODO - log
-		}
-		catch (IndexOutOfBoundsException e) { // TODO - log
+		} catch (NumberFormatException e) { // TODO - log
+		} catch (IndexOutOfBoundsException e) { // TODO - log
 		}
 
 		return berryAttribute;

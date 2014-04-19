@@ -69,12 +69,12 @@ public class ClassicExperienceCurveManager implements Manager<ExperienceCurve> {
 	}
 
 	@Override
-	public boolean isRegistered(ExperienceCurve experienceCurve) {
-		if (experienceCurve == null) {
+	public boolean isRegistered(String experienceCurveName) {
+		if (experienceCurveName == null) {
 			return false;
 		}
 
-		return getByName(experienceCurve.getName()) != null;
+		return getByName(experienceCurveName) != null;
 	}
 
 	@Override
@@ -86,8 +86,7 @@ public class ClassicExperienceCurveManager implements Manager<ExperienceCurve> {
 	 * Initializes a new ClassicExperienceCurveManager as the
 	 * {@link ExperienceCurve#manager}
 	 * 
-	 * @throws JPokemonException If the ExperienceCurve.factory manager is already
-	 *           defined
+	 * @throws JPokemonException If the ExperienceCurve.manager is already defined
 	 */
 	public static void init() throws JPokemonException {
 		if (ExperienceCurve.manager != null) {

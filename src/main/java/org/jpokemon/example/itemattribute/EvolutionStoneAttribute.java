@@ -1,17 +1,16 @@
 package org.jpokemon.example.itemattribute;
 
 /**
- * Provides a possible attribute describing qualities of evolution stone items,
- * namely its' type.
+ * Provides a possible item attribute describing qualities of evolution stone
+ * items, namely its' type.
  * 
  * <p>
  * 
- * NOTE: {@link #equals} returns true for all instances of
- * EvolutionStoneAttribute! This is to prevent an Item from storing multiple
- * EvolutionStoneAttributes. It is strongly advised to overwrite equals in
- * subclasses of EvolutionStoneAttribute.
+ * NOTE: {@link #equals} returns true when the object in question is the same
+ * class as this. This is to prevent an Item from storing multiple
+ * EvolutionStoneAttributes.
  * 
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
@@ -26,8 +25,9 @@ public class EvolutionStoneAttribute {
 		return type;
 	}
 
-	public void setType(String type) {
+	public EvolutionStoneAttribute setType(String type) {
 		this.type = type;
+		return this;
 	}
 
 	@Override

@@ -26,11 +26,11 @@ public interface Manager<T> {
 	/**
 	 * Checks if an object is registered with the manager
 	 * 
-	 * @param managed The object to check for registration
+	 * @param managed The name of the object to check for registration
 	 * 
 	 * @return Whether the object is known to the manager
 	 */
-	public boolean isRegistered(T managed);
+	public boolean isRegistered(String name);
 
 	/**
 	 * Gets an object registered by this manager by name

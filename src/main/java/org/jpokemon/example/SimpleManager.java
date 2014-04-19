@@ -1,6 +1,7 @@
 package org.jpokemon.example;
 
 import java.lang.reflect.Method;
+import java.util.Map;
 import java.util.TreeMap;
 
 import org.jpokemon.api.JPokemonException;
@@ -24,7 +25,7 @@ import org.jpokemon.api.Manager;
  * @param T The type to be managed
  */
 public class SimpleManager<T> implements Manager<T> {
-	protected final TreeMap<String, T> objectMap = new TreeMap<String, T>();
+	protected final Map<String, T> objectMap = new TreeMap<String, T>();
 	protected final Class<T> managedClass;
 
 	/**
@@ -50,6 +51,9 @@ public class SimpleManager<T> implements Manager<T> {
 
 	@Override
 	public void register(T managed) throws JPokemonException {
+		if (managed == null) {
+			throw new JPokemonException("Cannot register null object");
+		}
 		// Get the name via reflection
 		String name = null;
 		try {
@@ -60,25 +64,30 @@ public class SimpleManager<T> implements Manager<T> {
 
 		// Use the name to register, and check that it does not conflict
 		if (name == null) {
-			throw new JPokemonException("The object does not have a name to register under!");
+			throw new JPokemonException("Cannot register object without a name: " + managed);
 		}
 		else if (objectMap.containsKey(name) && !managed.equals(objectMap.get(name))) {
-			throw new JPokemonException("A object with the name " + name + " has already been registered!");
+			throw new JPokemonException("A object with the same name is already registered: " + name);
 		}
 
 		objectMap.put(name, managed);
 	}
 
 	@Override
-	public boolean isRegistered(T managed) {
-		return objectMap.containsValue(managed);
+	public boolean isRegistered(String name) {
+		if (name == null) {
+			return false;
+		}
+
+		return objectMap.containsKey(name);
 	}
 
 	@Override
 	public T getByName(String name) {
-		if (!objectMap.containsKey(name)) {
+		if (!isRegistered(name)) {
 			return null;
 		}
+
 		return objectMap.get(name);
 	}
 }

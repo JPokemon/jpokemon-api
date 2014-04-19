@@ -1,18 +1,18 @@
 package org.jpokemon.example.itemattribute;
 
 /**
- * Provides a possible attribute describing qualities of machine items,
+ * Provides a possible item attribute describing qualities of machine items,
  * including move name. TM / HM consumability and naming differences should be
- * implemented as part of the Item class. This is an example attribute for
+ * implemented as part of the Item class. Proper usage of this attribute is
  * attaching a move name.
  * 
  * <p>
  * 
- * NOTE: {@link #equals} returns true for all instances of MachineAttribute!
- * This is to prevent an Item from storing multiple MachineAttributes. It is
- * strongly advised to overwrite equals in subclasses of MachineAttribute.
+ * NOTE: {@link #equals} returns true when the object in question is the same
+ * class as this. This is to prevent an Item from storing multiple
+ * MachineAttributes.
  * 
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
@@ -30,8 +30,9 @@ public class MachineAttribute {
 	}
 
 	/** Sets the move name of this machine */
-	public void setMoveName(String m) {
-		moveName = m;
+	public MachineAttribute setMoveName(String moveName) {
+		this.moveName = moveName;
+		return this;
 	}
 
 	@Override

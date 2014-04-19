@@ -1,15 +1,26 @@
-package org.jpokemon.example.itemattribute.factory;
+package org.jpokemon.example.itemattribute;
 
 import org.jpokemon.api.ItemAttributeFactory;
-import org.jpokemon.example.itemattribute.MedicineAttribute;
 
+/**
+ * Provides an implementation of {@link ItemAttributeFactory} which can build
+ * {@link MedicineAttribute MedicineAttributes}.
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class MedicineAttributeFactory extends ItemAttributeFactory {
+	/** Indicates the name of item attributes this factory produces */
+	public static final String ITEM_ATTRIBUTE_NAME = "medicine";
+
+	/** Provides the default constructor */
 	public MedicineAttributeFactory() {
 	}
 
 	@Override
 	public String getName() {
-		return "medicine";
+		return ITEM_ATTRIBUTE_NAME;
 	}
 
 	@Override
@@ -27,10 +38,8 @@ public class MedicineAttributeFactory extends ItemAttributeFactory {
 
 			boolean permanent = Boolean.parseBoolean(options[2]);
 			medicineAttribute.setPermanent(permanent);
-		}
-		catch (NumberFormatException e) { // TODO - log
-		}
-		catch (IndexOutOfBoundsException e) { // TODO - log
+		} catch (NumberFormatException e) { // TODO - log
+		} catch (IndexOutOfBoundsException e) { // TODO - log
 		}
 
 		return medicineAttribute;

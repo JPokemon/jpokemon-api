@@ -14,11 +14,11 @@ import org.jpokemon.api.JPokemonException;
  */
 public class HappinessEvolutionFactory extends EvolutionFactory {
 	/** Indicates the name of this evolution factory */
-	public static final String EVOLUTION_NAME = "happiness";
+	public static final String EVOLUTION_FACTORY_NAME = "happiness";
 
 	@Override
 	public String getName() {
-		return EVOLUTION_NAME;
+		return EVOLUTION_FACTORY_NAME;
 	}
 
 	@Override

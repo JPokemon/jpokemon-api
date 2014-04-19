@@ -23,13 +23,13 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	protected Map<String, EvolutionFactory> evolutionFactories = new HashMap<String, EvolutionFactory>();
 
 	/** Indicates the name of the happiness evolution factory */
-	public static final String HAPPINESS_FACTORY = HappinessEvolutionFactory.EVOLUTION_NAME;
+	public static final String HAPPINESS_EVOLUTION_FACTORY = HappinessEvolutionFactory.EVOLUTION_FACTORY_NAME;
 
 	/** Indicates the name of the level evolution factory */
-	public static final String LEVEL_FACTORY = LevelEvolutionFactory.EVOLUTION_NAME;
+	public static final String LEVEL_EVOLUTION_FACTORY = LevelEvolutionFactory.EVOLUTION_FACTORY_NAME;
 
 	/** Indicates the name of the stone evolution factory */
-	public static final String STONE_FACTORY = StoneEvolutionFactory.EVOLUTION_NAME;
+	public static final String STONE_EVOLUTION_FACTORY = StoneEvolutionFactory.EVOLUTION_FACTORY_NAME;
 
 	public ClassicEvolutionFactoryManager() {
 		register(new HappinessEvolutionFactory());
@@ -54,12 +54,12 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	}
 
 	@Override
-	public boolean isRegistered(EvolutionFactory evolutionFactory) {
-		if (evolutionFactory == null) {
+	public boolean isRegistered(String evolutionFactoryName) {
+		if (evolutionFactoryName == null) {
 			return false;
 		}
 
-		return getByName(evolutionFactory.getName()) != null;
+		return getByName(evolutionFactoryName) != null;
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	 * Initializes a new ClassicEvolutionFactoryManager as the
 	 * {@link EvolutionFactory#manager}
 	 * 
-	 * @throws JPokemonException If the Evolution.factory manager is already
+	 * @throws JPokemonException If the EvolutionFactory.manager is already
 	 *           defined
 	 */
 	public static void init() throws JPokemonException {

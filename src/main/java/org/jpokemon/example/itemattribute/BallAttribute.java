@@ -1,16 +1,16 @@
 package org.jpokemon.example.itemattribute;
 
 /**
- * Provides a possible attribute describing qualities of ball items, including
- * catch rate. This can be extended to include type modifiers, etc.
+ * Provides a possible item attribute describing qualities of ball items,
+ * including catch rate. This can be extended to include type modifiers, etc.
  * 
  * <p>
  * 
- * NOTE: {@link #equals} returns true for all instances of BallAttribute! This
- * is to prevent an Item from storing multiple BallAttributes. It is strongly
- * advised to overwrite equals in subclasses of BallAttribute.
+ * NOTE: {@link #equals} returns true when the object in question is the same
+ * class as this. This is to prevent an Item from storing multiple
+ * BallAttributes.
  * 
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
@@ -24,12 +24,13 @@ public class BallAttribute {
 
 	/** Gets the catch rate of this ball */
 	public int getCatchRate() {
-		return catchRate;
+		return this.catchRate;
 	}
 
 	/** Sets the catch rate of this ball */
-	public void setCatchRate(int cr) {
-		catchRate = cr;
+	public BallAttribute setCatchRate(int catchRate) {
+		this.catchRate = catchRate;
+		return this;
 	}
 
 	@Override

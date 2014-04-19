@@ -1,14 +1,14 @@
 package org.jpokemon.example.itemattribute;
 
 /**
- * Provides a possible attribute describing qualities of medicine items,
+ * Provides a possible item attribute describing qualities of medicine items,
  * including stat affected, medicine strength, and permanence.
  * 
  * <p>
  * 
- * NOTE: {@link #equals} returns true for all instances of MedicineAttribute!
- * This is to prevent an Item from storing multiple MedicineAttributes. It is
- * strongly advised to overwrite equals in subclasses of MedicineAttributes.
+ * NOTE: {@link #equals} returns true when the object in question is the same
+ * class as this. This is to prevent an Item from storing multiple
+ * MedicineAttributes.
  * 
  * @author zach
  * 
@@ -28,28 +28,36 @@ public class MedicineAttribute {
 	public MedicineAttribute() {
 	}
 
+	/** Gets the stat that this medicine affects */
 	public String getStat() {
 		return stat;
 	}
 
+	/** Sets the stat that this medicine affects */
 	public void setStat(String stat) {
 		this.stat = stat;
 	}
 
+	/** Gets the strength of this medicine */
 	public int getStrength() {
 		return strength;
 	}
 
-	public void setStrength(int strength) {
+	/** Sets the strength of this medicine */
+	public MedicineAttribute setStrength(int strength) {
 		this.strength = strength;
+		return this;
 	}
 
+	/** Gets whether this medicine will wear off */
 	public boolean isPermanent() {
 		return permanent;
 	}
 
-	public void setPermanent(boolean permanent) {
+	/** Sets whether this medicine will wear off */
+	public MedicineAttribute setPermanent(boolean permanent) {
 		this.permanent = permanent;
+		return this;
 	}
 
 	@Override

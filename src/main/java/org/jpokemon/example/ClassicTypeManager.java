@@ -74,12 +74,12 @@ public class ClassicTypeManager implements Manager<Type> {
 	}
 
 	@Override
-	public boolean isRegistered(Type type) {
-		if (type == null) {
+	public boolean isRegistered(String typeName) {
+		if (typeName == null) {
 			return false;
 		}
 
-		return getByName(type.getName()) != null;
+		return getByName(typeName) != null;
 	}
 
 	@Override

@@ -1,15 +1,18 @@
-package org.jpokemon.example.itemattribute.factory;
+package org.jpokemon.example.itemattribute;
 
 import org.jpokemon.api.ItemAttributeFactory;
-import org.jpokemon.example.itemattribute.PocketAttribute;
 
 public class PocketAttributeFactory extends ItemAttributeFactory {
+	/** Indicates the name of item attributes this factory produces */
+	public static final String ITEM_ATTRIBUTE_NAME = "pocket";
+
+	/** Provides the default constructor */
 	public PocketAttributeFactory() {
 	}
 
 	@Override
 	public String getName() {
-		return "pocket";
+		return ITEM_ATTRIBUTE_NAME;
 	}
 
 	@Override

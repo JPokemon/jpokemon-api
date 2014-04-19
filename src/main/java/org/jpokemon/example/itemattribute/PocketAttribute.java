@@ -1,17 +1,16 @@
 package org.jpokemon.example.itemattribute;
 
 /**
- * Provides a possible attribute describing the pocket an item belongs to. The
- * names of the pockets each have their own static field, which can of course be
- * modified.
+ * Provides a possible item attribute describing the pocket an item belongs to.
  * 
  * <p>
  * 
- * NOTE: {@link #equals} returns true for all instances of PocketAttribute! This
- * is to prevent an Item from storing multiple PocketAttributes. It is strongly
- * advised to overwrite equals in subclasses of PocketAttribute.
+ * NOTE: {@link #equals} returns true when the object in question is the same
+ * class as this. This is to prevent an Item from storing multiple
+ * MedicineAttributes.
  * 
  * @author atheriel@gmail.com
+ * @author zach
  * 
  * @since 0.1
  */

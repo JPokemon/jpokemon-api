@@ -8,7 +8,8 @@ import org.jpokemon.api.Manager;
 import org.jpokemon.api.Type;
 
 /**
- * Defines the 17 classic types.
+ * Provides a possible implementation of the {@link Type#manager}, using the 18
+ * classic types
  * 
  * @author zach
  * 
@@ -33,7 +34,7 @@ public class ClassicTypeManager implements Manager<Type> {
 				.setNotVeryEffectiveAgainst("Fire", "Water", "Ice", "Steel"));
 		register(new Type().setName("Fighting").setSuperEffectiveAgainst("Normal", "Ice", "Rock", "Dark", "Steel")
 				.setNotVeryEffectiveAgainst("Poison", "Flying", "Psychic", "Bug").setIneffectiveAgainst("Ghost"));
-		register(new Type().setName("Poison").setSuperEffectiveAgainst("Grass")
+		register(new Type().setName("Poison").setSuperEffectiveAgainst("Grass", "Fairy")
 				.setNotVeryEffectiveAgainst("Poison", "Ground", "Rock", "Ghost").setIneffectiveAgainst("Steel"));
 		register(new Type().setName("Ground").setSuperEffectiveAgainst("Fire", "Electric", "Poison", "Rock", "Steel")
 				.setNotVeryEffectiveAgainst("Bug", "Grass").setIneffectiveAgainst("Flying"));
@@ -42,22 +43,31 @@ public class ClassicTypeManager implements Manager<Type> {
 		register(new Type().setName("Psychic").setSuperEffectiveAgainst("Fighting", "Poison")
 				.setNotVeryEffectiveAgainst("Psychic", "Steel").setIneffectiveAgainst("Dark"));
 		register(new Type().setName("Bug").setSuperEffectiveAgainst("Grass", "Psychic", "Dark")
-				.setNotVeryEffectiveAgainst("Fire", "Fighting", "Poison", "Flying", "Ghost", "Steel"));
+				.setNotVeryEffectiveAgainst("Fairy", "Fire", "Fighting", "Poison", "Flying", "Ghost", "Steel"));
 		register(new Type().setName("Rock").setSuperEffectiveAgainst("Fire", "Ice", "Flying", "Bug")
 				.setNotVeryEffectiveAgainst("Fighting", "Ground", "Steel"));
 		register(new Type().setName("Ghost").setSuperEffectiveAgainst("Ghost", "Psychic")
 				.setNotVeryEffectiveAgainst("Dark", "Steel").setIneffectiveAgainst("Normal"));
-		register(new Type().setName("Dragon").setSuperEffectiveAgainst("Dragon").setNotVeryEffectiveAgainst("Steel"));
+		register(new Type().setName("Dragon").setSuperEffectiveAgainst("Dragon").setNotVeryEffectiveAgainst("Steel")
+				.setIneffectiveAgainst("Fairy"));
 		register(new Type().setName("Dark").setSuperEffectiveAgainst("Psychic", "Ghost")
-				.setNotVeryEffectiveAgainst("Fighting", "Dark", "Steel"));
-		register(new Type().setName("Steel").setSuperEffectiveAgainst("Ice", "Rock")
+				.setNotVeryEffectiveAgainst("Fighting", "Dark", "Steel", "Fairy"));
+		register(new Type().setName("Steel").setSuperEffectiveAgainst("Ice", "Rock", "Fairy")
 				.setNotVeryEffectiveAgainst("Fire", "Water", "Electric", "Steel"));
+		register(new Type().setName("Fairy").setSuperEffectiveAgainst("Dark", "Dragon", "Fighting")
+				.setNotVeryEffectiveAgainst("Fire", "Poison", "Steel"));
 	}
 
 	@Override
 	public void register(Type type) throws JPokemonException {
-		if (isRegistered(type)) {
-			throw new JPokemonException("Type already registered: " + type.toString());
+		if (type == null) {
+			throw new JPokemonException("Cannot register null type");
+		}
+		else if (type.getName() == null) {
+			throw new JPokemonException("Cannot register type without a name: " + type);
+		}
+		if (types.containsKey(type.getName()) && !type.equals(types.get(type.getName()))) {
+			throw new JPokemonException("A type with the same name is already registered: " + type);
 		}
 
 		types.put(type.getName(), type);

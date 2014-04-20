@@ -35,7 +35,7 @@ public class ManagerTest {
 	 */
 	@Test
 	public void testManagement() {
-		assertTrue(manager.isRegistered(type));
+		assertTrue(manager.isRegistered("TestType"));
 		assertTrue(manager.getByName("TestType") == type);
 	}
 

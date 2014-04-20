@@ -22,7 +22,7 @@ public class PokemonTypeTest {
 	public void testClassicTypes() {
 		Type.manager = new ClassicTypeManager();
 
-		assertTrue("Dark is known.", Type.manager.isRegistered(Type.manager.getByName("Dark")));
+		assertTrue("Dark is known.", Type.manager.isRegistered("Dark"));
 		assertTrue("Normal is ineffective against Ghost.", Type.manager.getByName("Normal").isIneffectiveAgainst("Ghost"));
 		assertFalse("Normal is not super-effective against Fighting.", Type.manager.getByName("Normal").isSuperEffectiveAgainst("Fighting"));
 	}
@@ -34,7 +34,7 @@ public class PokemonTypeTest {
 		Type test = new Type().setName("Test");
 		manager.register(test);
 
-		assertTrue("Test is now a type.", manager.isRegistered(test));
+		assertTrue("Test is now a type.", manager.isRegistered("Test"));
 	}
 
 	/** Tests setting type effectiveness (i.e. "Super-effective"). */

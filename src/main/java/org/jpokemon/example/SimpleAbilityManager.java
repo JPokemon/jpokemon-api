@@ -8,8 +8,8 @@ import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
 
 /**
- * Defines a "simplest-possible" implementation of the {@link Manager} for
- * abilities. Note that, as Abilities are extremely implementation-specific,
+ * Defines a "simplest-possible" implementation of the {@link Ability#manager}.
+ * Note that, as Abilities are extremely implementation-specific,
  * SimpleAbilityManager provides no "Classic" abilities.
  * 
  * @author zach
@@ -17,7 +17,7 @@ import org.jpokemon.api.Manager;
  * @since 0.1
  */
 public class SimpleAbilityManager implements Manager<Ability> {
-	private final Map<String, Ability> abilityMap = new HashMap<String, Ability>();
+	private final Map<String, Ability> abilities = new HashMap<String, Ability>();
 
 	/** Provides the default constructor. */
 	public SimpleAbilityManager() {
@@ -26,28 +26,37 @@ public class SimpleAbilityManager implements Manager<Ability> {
 	@Override
 	public void register(Ability ability) throws JPokemonException {
 		if (ability == null) {
-			throw new JPokemonException("Cannot register a null ability");
+			throw new JPokemonException("Cannot register null ability");
 		}
 		if (ability.getName() == null) {
-			throw new JPokemonException("An ability cannot be registered if it has no name");
+			throw new JPokemonException("Cannot register ability without a name: " + ability);
 		}
-		if (abilityMap.containsKey(ability.getName())) {
-			throw new JPokemonException("An ability with the same name is already registered: " + ability.getName());
+		if (abilities.containsKey(ability.getName()) && !ability.equals(abilities.get(ability.getName()))) {
+			throw new JPokemonException("An ability with the same name is already registered: " + ability);
 		}
 
-		abilityMap.put(ability.getName(), ability);
+		abilities.put(ability.getName(), ability);
 	}
 
 	@Override
-	public boolean isRegistered(Ability ability) {
-		return abilityMap.containsValue(ability);
+	public boolean isRegistered(String abilityName) {
+		if (abilityName == null) {
+			return false;
+		}
+
+		return abilities.get(abilityName) != null;
 	}
 
 	@Override
 	public Ability getByName(String name) {
-		return abilityMap.get(name);
+		return abilities.get(name);
 	}
 
+	/**
+	 * Initializes a new SimpleAbilityManager as the {@link Ability#manager}
+	 * 
+	 * @throws JPokemonException If the Ability.manager is already defined
+	 */
 	public static void init() throws JPokemonException {
 		if (Ability.manager != null) {
 			throw new JPokemonException("Ability.manager is already defined");

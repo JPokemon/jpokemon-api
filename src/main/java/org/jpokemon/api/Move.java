@@ -43,13 +43,19 @@ public class Move {
 	protected int priority;
 
 	/** Indicates the contest category this move belongs to */
-	protected String contextCategory;
+	protected String contestCategory;
 
 	/** Indicates the contest appeal of this move */
-	protected int appeal;
+	protected int contestAppeal;
 
 	/** Indicates the contest jam of this move */
-	protected int jam;
+	protected int contestJam;
+
+	/** Indicates the contest appeal of this move */
+	protected int superContestAppeal;
+
+	/** Indicates the contest jam of this move */
+	protected int superContestJam;
 
 	/** Indicates whether this move uses `Special` stats. */
 	protected boolean special;
@@ -145,35 +151,57 @@ public class Move {
 	}
 
 	/** Gets the contest category this move belongs to */
-	public String getContextCategory() {
-		return contextCategory;
+	public String getContestCategory() {
+		return contestCategory;
 	}
 
 	/** Sets the contest category this move belongs to */
-	public Move setContextCategory(String contextCategory) {
-		this.contextCategory = contextCategory;
+	public Move setContestCategory(String contestCategory) {
+		this.contestCategory = contestCategory;
 		return this;
 	}
 
 	/** Gets the contest appeal of this move */
-	public int getAppeal() {
-		return appeal;
+	public int getContestAppeal() {
+		return contestAppeal;
 	}
 
 	/** Sets the contest appeal of this move */
-	public Move setAppeal(int appeal) {
-		this.appeal = appeal;
+	public Move setContestAppeal(int contestAppeal) {
+		this.contestAppeal = contestAppeal;
 		return this;
 	}
 
 	/** Gets the contest jam of this move */
-	public int getJam() {
-		return jam;
+	public int getContestJam() {
+		return contestJam;
 	}
 
 	/** Sets the contest jam of this move */
-	public Move setJam(int jam) {
-		this.jam = jam;
+	public Move setContestJam(int contestjam) {
+		this.contestJam = contestjam;
+		return this;
+	}
+
+	/** Gets the super contest appeal of this move */
+	public int getSuperContestAppeal() {
+		return superContestAppeal;
+	}
+
+	/** Sets the super contest appeal of this move */
+	public Move setSuperContestAppeal(int superContestAppeal) {
+		this.superContestAppeal = superContestAppeal;
+		return this;
+	}
+
+	/** Gets the super contest jam of this move */
+	public int getSuperContestJam() {
+		return superContestJam;
+	}
+
+	/** Sets the super contest jam of this move */
+	public Move setSuperContestJam(int superContestJam) {
+		this.superContestJam = superContestJam;
 		return this;
 	}
 

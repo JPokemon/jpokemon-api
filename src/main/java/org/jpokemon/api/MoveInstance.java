@@ -3,13 +3,13 @@ package org.jpokemon.api;
 /**
  * Defines a move as it is owned and used by a Pokemon.
  * 
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
 public class MoveInstance {
 	/** Indicates the Move that this is an instance of */
-	protected Move move;
+	protected String move;
 
 	/** Indicates the current PP of this move */
 	protected int currentPP;
@@ -22,12 +22,12 @@ public class MoveInstance {
 	}
 
 	/** Gets the move associated with this instance */
-	public Move getMove() {
+	public String getMove() {
 		return move;
 	}
 
 	/** Sets the move associated with this instance */
-	public MoveInstance setMove(Move move) {
+	public MoveInstance setMove(String move) {
 		this.move = move;
 		return this;
 	}

@@ -17,7 +17,7 @@ import java.util.List;
  * @since 0.1
  */
 public class Move {
-	/** Indicates the manager being used to register moves. May be ``null``. */
+	/** Indicates the manager used to register moves. May be null. */
 	public static Manager<Move> manager;
 
 	/** Indicates the name of this move */
@@ -54,7 +54,7 @@ public class Move {
 	protected int jam;
 
 	/** Indicates the contest description of this move */
-	protected int contestDescription;
+	protected String contestDescription;
 
 	/** Indicates the priority of this move */
 	protected int priority;
@@ -184,12 +184,12 @@ public class Move {
 	}
 
 	/** Gets the contest description of this move */
-	public int getContestDescription() {
+	public String getContestDescription() {
 		return contestDescription;
 	}
 
 	/** Sets the contest description of this move */
-	public Move setContestDescription(int contestDescription) {
+	public Move setContestDescription(String contestDescription) {
 		this.contestDescription = contestDescription;
 		return this;
 	}

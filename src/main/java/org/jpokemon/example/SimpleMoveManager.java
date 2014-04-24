@@ -18,7 +18,7 @@ import org.jpokemon.api.Move;
  */
 public class SimpleMoveManager implements Manager<Move> {
 	/** The map of Moves that have been registered by name */
-	private Map<String, Move> moveMap = new HashMap<String, Move>();
+	protected Map<String, Move> moveMap = new HashMap<String, Move>();
 
 	/** Provides the default constructor */
 	public SimpleMoveManager() {

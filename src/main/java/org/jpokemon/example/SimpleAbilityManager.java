@@ -17,7 +17,7 @@ import org.jpokemon.api.Manager;
  * @since 0.1
  */
 public class SimpleAbilityManager implements Manager<Ability> {
-	private final Map<String, Ability> abilities = new HashMap<String, Ability>();
+	protected Map<String, Ability> abilities = new HashMap<String, Ability>();
 
 	/** Provides the default constructor. */
 	public SimpleAbilityManager() {
@@ -28,10 +28,10 @@ public class SimpleAbilityManager implements Manager<Ability> {
 		if (ability == null) {
 			throw new JPokemonException("Cannot register null ability");
 		}
-		if (ability.getName() == null) {
+		else if (ability.getName() == null) {
 			throw new JPokemonException("Cannot register ability without a name: " + ability);
 		}
-		if (abilities.containsKey(ability.getName()) && !ability.equals(abilities.get(ability.getName()))) {
+		else if (abilities.containsKey(ability.getName()) && !ability.equals(abilities.get(ability.getName()))) {
 			throw new JPokemonException("An ability with the same name is already registered: " + ability);
 		}
 
@@ -44,7 +44,7 @@ public class SimpleAbilityManager implements Manager<Ability> {
 			return false;
 		}
 
-		return abilities.get(abilityName) != null;
+		return getByName(abilityName) != null;
 	}
 
 	@Override

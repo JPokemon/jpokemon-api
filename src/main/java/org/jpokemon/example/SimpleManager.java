@@ -25,8 +25,8 @@ import org.jpokemon.api.Manager;
  * @param T The type to be managed
  */
 public class SimpleManager<T> implements Manager<T> {
-	protected final Map<String, T> objectMap = new TreeMap<String, T>();
-	protected final Class<T> managedClass;
+	protected Map<String, T> objectMap = new TreeMap<String, T>();
+	protected Class<T> managedClass;
 
 	/**
 	 * Constructs a new SimpleManager for the given type, 'T'

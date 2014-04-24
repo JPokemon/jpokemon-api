@@ -18,7 +18,7 @@ import org.jpokemon.api.Manager;
  * @since 0.1
  */
 public class SimpleItemManager implements Manager<Item> {
-	private final Map<String, Item> items = new HashMap<String, Item>();
+	protected Map<String, Item> items = new HashMap<String, Item>();
 
 	/** Provides the default constructor */
 	public SimpleItemManager() {

@@ -11,7 +11,7 @@ package org.jpokemon.api;
  * @since 0.1
  */
 public abstract class EvolutionFactory {
-	/** Indicates the manager used to register evolution factories. May be 'null' */
+	/** Indicates the manager used to register evolution factories. May be null. */
 	public static Manager<EvolutionFactory> manager;
 
 	/**

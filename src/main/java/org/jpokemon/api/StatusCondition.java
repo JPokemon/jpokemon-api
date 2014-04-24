@@ -7,10 +7,7 @@ package org.jpokemon.api;
  * @author zach
  */
 public class StatusCondition {
-	/**
-	 * Indicates the {@link Manager manager} used to reference StatusConditions.
-	 * May be null.
-	 */
+	/** Indicates the manager used to register status conditions. May be null. */
 	public static Manager<StatusCondition> manager;
 
 	/** Indicates the name of this condition */

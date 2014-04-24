@@ -9,25 +9,25 @@ import java.util.Map;
  * Defines a Pokémon type (such as Grass or Dark)
  * 
  * @author atheriel@gmail.com
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */
 public class Type {
-	/** Indicates the configured Manager for Types, if set */
+	/** Indicates the manager used to register types. May be null. */
 	public static Manager<Type> manager;
 
-	/** Indicates the name of the type. */
+	/** Indicates the name of the type */
 	protected String name;
 
-	/** Defines a mapping of this type's effectiveness against others. */
+	/** Defines a mapping of this type's effectiveness against others */
 	protected Map<String, TypeEffectiveness> effectivenessMap = new HashMap<String, TypeEffectiveness>();
 
-	/** Provides the default constructor. */
+	/** Provides the default constructor */
 	public Type() {
 	}
 
-	/** Gets the name of this type. */
+	/** Gets the name of this type */
 	public String getName() {
 		return name;
 	}
@@ -41,12 +41,12 @@ public class Type {
 		return this;
 	}
 
-	/** Gets the list of types this type is super-effective against by name. */
+	/** Gets the list of types this type is super-effective against by name */
 	public List<String> getSuperEffectiveAgainst() {
 		return this.getEffectivenessList(TypeEffectiveness.SUPER);
 	}
 
-	/** Sets the list of types this type is super-effective against by name. */
+	/** Sets the list of types this type is super-effective against by name */
 	public Type setSuperEffectiveAgainst(String... superEffectiveAgainst) {
 		this.putEffectiveness(TypeEffectiveness.SUPER, superEffectiveAgainst);
 		return this;
@@ -67,18 +67,18 @@ public class Type {
 		return this;
 	}
 
-	/** Gets the list of types this type is ineffective against by name. */
+	/** Gets the list of types this type is ineffective against by name */
 	public List<String> getIneffectiveAgainst() {
 		return this.getEffectivenessList(TypeEffectiveness.INEFFECTIVE);
 	}
 
-	/** Sets the list of types this type is ineffective against by name. */
+	/** Sets the list of types this type is ineffective against by name */
 	public Type setIneffectiveAgainst(String... ineffectiveAgainst) {
 		this.putEffectiveness(TypeEffectiveness.INEFFECTIVE, ineffectiveAgainst);
 		return this;
 	}
 
-	/** Checks whether this type is super-effective against a given type. */
+	/** Checks whether this type is super-effective against a given type */
 	public boolean isSuperEffectiveAgainst(Type type) {
 		return isSuperEffectiveAgainst(type.getName());
 	}
@@ -97,7 +97,7 @@ public class Type {
 		return true;
 	}
 
-	/** Checks whether this type is not very effective against a given type. */
+	/** Checks whether this type is not very effective against a given type */
 	public boolean isNotVeryEffectiveAgainst(Type type) {
 		return isNotVeryEffectiveAgainst(type.getName());
 	}
@@ -116,7 +116,7 @@ public class Type {
 		return true;
 	}
 
-	/** Checks whether this type is ineffective against a given type. */
+	/** Checks whether this type is ineffective against a given type */
 	public boolean isIneffectiveAgainst(Type type) {
 		return isIneffectiveAgainst(type.getName());
 	}
@@ -134,7 +134,7 @@ public class Type {
 		return true;
 	}
 
-	/** Retrieves a list of types for a given effectiveness from the mapping. */
+	/** Retrieves a list of types for a given effectiveness from the mapping */
 	private List<String> getEffectivenessList(TypeEffectiveness effectiveness) {
 		List<String> found = new ArrayList<String>();
 		for (Map.Entry<String, TypeEffectiveness> effectivenessEntry : this.effectivenessMap.entrySet()) {
@@ -145,7 +145,7 @@ public class Type {
 		return found;
 	}
 
-	/** Adds the name of the type to the effectiveness mapping. */
+	/** Adds the name of the type to the effectiveness mapping */
 	private void putEffectiveness(TypeEffectiveness effectiveness, String... types) {
 		if (types == null) {
 			return;
@@ -155,7 +155,7 @@ public class Type {
 		}
 	}
 
-	/** Provides an internal enum for the available kinds of "effective". */
+	/** Provides an internal enum for the available kinds of "effective" */
 	private enum TypeEffectiveness {
 		SUPER, NOT_VERY, INEFFECTIVE;
 	}

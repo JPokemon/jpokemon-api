@@ -7,7 +7,7 @@ package org.jpokemon.api;
  * Note that a stat "value" may be defined to mean any necessary-to-record value
  * relative to the Pokemon instance.
  * 
- * @author Zach Taylor
+ * @author zach
  * 
  * @since 0.1
  */

@@ -60,16 +60,16 @@ public class Pokemon {
 	/** Provides a hook for storing meta-data */
 	protected List<Object> metaData;
 
-	/** Provides the default constructor. */
+	/** Provides the default constructor */
 	public Pokemon() {
 	}
 
-	/** Gets the name of this Pokémon. */
+	/** Gets the name of this Pokémon */
 	public String getName() {
 		return name;
 	}
 
-	/** Sets the name of this Pokémon. */
+	/** Sets the name of this Pokémon */
 	public Pokemon setName(String name) {
 		this.name = name;
 		return this;

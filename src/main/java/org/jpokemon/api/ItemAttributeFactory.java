@@ -13,7 +13,7 @@ package org.jpokemon.api;
 public abstract class ItemAttributeFactory {
 	/**
 	 * Indicates the manager used to register item attribute factories. May be
-	 * 'null'
+	 * null.
 	 */
 	public static Manager<ItemAttributeFactory> manager;
 

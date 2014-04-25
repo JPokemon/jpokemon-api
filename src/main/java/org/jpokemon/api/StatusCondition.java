@@ -19,6 +19,12 @@ public class StatusCondition {
 	/** Indicates the chance this condition will randomly be cured */
 	protected double cureChance;
 
+	/** Indicates the chance that this condition prevents a move from being used */
+	protected double preventMoveChance;
+
+	/** Indicates whether this condition prevents switching out */
+	protected boolean preventSwitchOut;
+
 	/** Indicates the amount this condition affects catch rate */
 	protected int catchRateModifier;
 
@@ -38,8 +44,9 @@ public class StatusCondition {
 	}
 
 	/** Sets the name of this status condition */
-	public void setName(String name) {
+	public StatusCondition setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	/** Gets whether this status condition is volatile */
@@ -48,8 +55,9 @@ public class StatusCondition {
 	}
 
 	/** Sets whether this status condition is volatile */
-	public void setVolatile(boolean isVolatile) {
+	public StatusCondition setVolatile(boolean isVolatile) {
 		this.isVolatile = isVolatile;
+		return this;
 	}
 
 	/** Gets the random cure chance of this status condition */
@@ -58,8 +66,29 @@ public class StatusCondition {
 	}
 
 	/** Sets the random cure chance of this status condition */
-	public void setCureChance(double cureChance) {
+	public StatusCondition setCureChance(double cureChance) {
 		this.cureChance = cureChance;
+		return this;
+	}
+
+	/** Gets the chance that this condition prevents a move from being used */
+	public double getPreventMoveChance() {
+		return preventMoveChance;
+	}
+
+	/** Sets the chance that this condition prevents a move from being used */
+	public StatusCondition setPreventMoveChance(double preventMoveChance) {
+		this.preventMoveChance = preventMoveChance;
+		return this;
+	}
+
+	public boolean doesPreventSwitchOut() {
+		return preventSwitchOut;
+	}
+
+	public StatusCondition setPreventSwitchOut(boolean preventSwitchOut) {
+		this.preventSwitchOut = preventSwitchOut;
+		return this;
 	}
 
 	/** Gets the catch rate modifier of this status condition */
@@ -68,8 +97,9 @@ public class StatusCondition {
 	}
 
 	/** Sets the catch rate modifier of this status condition */
-	public void setCatchRateModifier(int catchRateModifier) {
+	public StatusCondition setCatchRateModifier(int catchRateModifier) {
 		this.catchRateModifier = catchRateModifier;
+		return this;
 	}
 
 	/** Gets the minimum number of turns this status condition is applied */
@@ -78,8 +108,9 @@ public class StatusCondition {
 	}
 
 	/** Sets the minimum number of turns this status condition is applied */
-	public void setTurnCountMinimum(int turnCountMinimum) {
+	public StatusCondition setTurnCountMinimum(int turnCountMinimum) {
 		this.turnCountMinimum = turnCountMinimum;
+		return this;
 	}
 
 	/** Gets the maximum number of turns this status condition is applied */
@@ -88,7 +119,8 @@ public class StatusCondition {
 	}
 
 	/** Sets the maximum number of turns this status condition is applied */
-	public void setTurnCountMaximum(int turnCountMaximum) {
+	public StatusCondition setTurnCountMaximum(int turnCountMaximum) {
 		this.turnCountMaximum = turnCountMaximum;
+		return this;
 	}
 }

@@ -1,4 +1,4 @@
-package org.jpokemon.example.itemattribute;
+package org.jpokemon.example;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,18 @@ import java.util.Map;
 import org.jpokemon.api.ItemAttributeFactory;
 import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
+import org.jpokemon.example.itemattribute.BallAttribute;
+import org.jpokemon.example.itemattribute.BallAttributeFactory;
+import org.jpokemon.example.itemattribute.BerryAttribute;
+import org.jpokemon.example.itemattribute.BerryAttributeFactory;
+import org.jpokemon.example.itemattribute.EvolutionStoneAttribute;
+import org.jpokemon.example.itemattribute.EvolutionStoneAttributeFactory;
+import org.jpokemon.example.itemattribute.MachineAttribute;
+import org.jpokemon.example.itemattribute.MachineAttributeFactory;
+import org.jpokemon.example.itemattribute.MedicineAttribute;
+import org.jpokemon.example.itemattribute.MedicineAttributeFactory;
+import org.jpokemon.example.itemattribute.PocketAttribute;
+import org.jpokemon.example.itemattribute.PocketAttributeFactory;
 
 /**
  * Provides an example implementation of the
@@ -26,22 +38,22 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 	protected Map<String, ItemAttributeFactory> itemAttributeFactories = new HashMap<String, ItemAttributeFactory>();
 
 	/** Indicates the name of the ball attribute factory */
-	public static final String BALL_ATTRIBUTE_FACTORY = BallAttributeFactory.ITEM_ATTRIBUTE_NAME;
+	public static final String BALL_ATTRIBUTE_FACTORY = BallAttribute.class.getName();
 
 	/** Indicates the name of the berry attribute factory */
-	public static final String BERRY_ATTRIBUTE_FACTORY = BerryAttributeFactory.ITEM_ATTRIBUTE_NAME;
+	public static final String BERRY_ATTRIBUTE_FACTORY = BerryAttribute.class.getName();
 
 	/** Indicates the name of the evolution stone attribute factory */
-	public static final String EVOLUTION_STONE_ATTRIBUTE_FACTORY = EvolutionStoneAttributeFactory.ITEM_ATTRIBUTE_NAME;
+	public static final String EVOLUTION_STONE_ATTRIBUTE_FACTORY = EvolutionStoneAttribute.class.getName();
 
 	/** Indicates the name of the machine attribute factory */
-	public static final String MACHINE_ATTRIBUTE_FACTORY = MachineAttributeFactory.ITEM_ATTRIBUTE_NAME;
+	public static final String MACHINE_ATTRIBUTE_FACTORY = MachineAttribute.class.getName();
 
 	/** Indicates the name of the medicine attribute factory */
-	public static final String MEDICINE_ATTRIBUTE_FACTORY = MedicineAttributeFactory.ITEM_ATTRIBUTE_NAME;
+	public static final String MEDICINE_ATTRIBUTE_FACTORY = MedicineAttribute.class.getName();
 
 	/** Indicates the name of the pocket attribute factory */
-	public static final String POCKET_ATTRIBUTE_FACTORY = PocketAttributeFactory.ITEM_ATTRIBUTE_NAME;
+	public static final String POCKET_ATTRIBUTE_FACTORY = PocketAttribute.class.getName();
 
 	public ClassicItemAttributeFactoryManager() {
 		register(new BallAttributeFactory());
@@ -57,16 +69,18 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 		if (itemAttributeFactory == null) {
 			throw new JPokemonException("Cannot register null item attribute factory");
 		}
-		else if (itemAttributeFactory.getName() == null) {
-			throw new JPokemonException("Cannot register item attribute factory without a name: " + itemAttributeFactory);
+		else if (itemAttributeFactory.getItemAttributeClass() == null) {
+			throw new JPokemonException("Cannot register item attribute factory without item attribute class: "
+					+ itemAttributeFactory);
 		}
-		else if (itemAttributeFactories.containsKey(itemAttributeFactory.getName())
-				&& !itemAttributeFactory.equals(itemAttributeFactories.get(itemAttributeFactory.getName()))) {
+		else if (itemAttributeFactories.containsKey(itemAttributeFactory.getItemAttributeClass().getName())
+				&& !itemAttributeFactory.equals(itemAttributeFactories.get(itemAttributeFactory.getItemAttributeClass()
+						.getName()))) {
 			throw new JPokemonException("An item attribute factory with the same name is already registered: "
 					+ itemAttributeFactory);
 		}
 
-		itemAttributeFactories.put(itemAttributeFactory.getName(), itemAttributeFactory);
+		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
 	}
 
 	@Override

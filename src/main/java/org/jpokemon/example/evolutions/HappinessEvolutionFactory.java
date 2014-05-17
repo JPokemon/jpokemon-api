@@ -13,12 +13,9 @@ import org.jpokemon.api.JPokemonException;
  * @since 0.1
  */
 public class HappinessEvolutionFactory extends EvolutionFactory {
-	/** Indicates the name of this evolution factory */
-	public static final String EVOLUTION_FACTORY_NAME = "happiness";
-
 	@Override
-	public String getName() {
-		return EVOLUTION_FACTORY_NAME;
+	public Class<HappinessEvolutionFactory> getEvolutionClass() {
+		return HappinessEvolutionFactory.class;
 	}
 
 	@Override
@@ -33,5 +30,15 @@ public class HappinessEvolutionFactory extends EvolutionFactory {
 		}
 
 		return happinessEvolution;
+	}
+
+	@Override
+	public String serializeEvolution(Object object) throws JPokemonException {
+		if (!(object instanceof HappinessEvolution)) {
+			throw new JPokemonException("Expected happiness evolution object: " + object);
+		}
+
+		HappinessEvolution happinessEvolution = (HappinessEvolution) object;
+		return Integer.toString(happinessEvolution.getHappiness());
 	}
 }

@@ -1,4 +1,4 @@
-package org.jpokemon.example.evolutions;
+package org.jpokemon.example;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,12 @@ import java.util.Map;
 import org.jpokemon.api.EvolutionFactory;
 import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
+import org.jpokemon.example.evolutions.HappinessEvolution;
+import org.jpokemon.example.evolutions.HappinessEvolutionFactory;
+import org.jpokemon.example.evolutions.LevelEvolution;
+import org.jpokemon.example.evolutions.LevelEvolutionFactory;
+import org.jpokemon.example.evolutions.StoneEvolution;
+import org.jpokemon.example.evolutions.StoneEvolutionFactory;
 
 /**
  * Provides an example implementation of the {@link EvolutionFactory#manager},
@@ -23,13 +29,13 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	protected Map<String, EvolutionFactory> evolutionFactories = new HashMap<String, EvolutionFactory>();
 
 	/** Indicates the name of the happiness evolution factory */
-	public static final String HAPPINESS_EVOLUTION_FACTORY = HappinessEvolutionFactory.EVOLUTION_FACTORY_NAME;
+	public static final String HAPPINESS_EVOLUTION_FACTORY = HappinessEvolution.class.getName();
 
 	/** Indicates the name of the level evolution factory */
-	public static final String LEVEL_EVOLUTION_FACTORY = LevelEvolutionFactory.EVOLUTION_FACTORY_NAME;
+	public static final String LEVEL_EVOLUTION_FACTORY = LevelEvolution.class.getName();
 
 	/** Indicates the name of the stone evolution factory */
-	public static final String STONE_EVOLUTION_FACTORY = StoneEvolutionFactory.EVOLUTION_FACTORY_NAME;
+	public static final String STONE_EVOLUTION_FACTORY = StoneEvolution.class.getName();
 
 	public ClassicEvolutionFactoryManager() {
 		register(new HappinessEvolutionFactory());
@@ -42,15 +48,15 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 		if (evolutionFactory == null) {
 			throw new JPokemonException("Cannot register null evolution factory");
 		}
-		else if (evolutionFactory.getName() == null) {
-			throw new JPokemonException("Cannot register evolution factory without a name: " + evolutionFactory);
+		else if (evolutionFactory.getEvolutionClass() == null) {
+			throw new JPokemonException("Cannot register evolution factory without evolution class: " + evolutionFactory);
 		}
-		else if (evolutionFactories.containsKey(evolutionFactory.getName())
-				&& !evolutionFactory.equals(evolutionFactories.get(evolutionFactory.getName()))) {
+		else if (evolutionFactories.containsKey(evolutionFactory.getEvolutionClass().getName())
+				&& !evolutionFactory.equals(evolutionFactories.get(evolutionFactory.getEvolutionClass().getName()))) {
 			throw new JPokemonException("An evolution factory with the same name is already registered: " + evolutionFactory);
 		}
 
-		evolutionFactories.put(evolutionFactory.getName(), evolutionFactory);
+		evolutionFactories.put(evolutionFactory.getEvolutionClass().getName(), evolutionFactory);
 	}
 
 	@Override

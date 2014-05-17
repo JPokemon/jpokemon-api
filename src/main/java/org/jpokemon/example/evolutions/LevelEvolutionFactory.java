@@ -13,11 +13,9 @@ import org.jpokemon.api.JPokemonException;
  * @since 0.1
  */
 public class LevelEvolutionFactory extends EvolutionFactory {
-	public static final String EVOLUTION_FACTORY_NAME = "level";
-
 	@Override
-	public String getName() {
-		return EVOLUTION_FACTORY_NAME;
+	public Class<LevelEvolution> getEvolutionClass() {
+		return LevelEvolution.class;
 	}
 
 	@Override
@@ -32,5 +30,15 @@ public class LevelEvolutionFactory extends EvolutionFactory {
 		}
 
 		return levelEvolution;
+	}
+
+	@Override
+	public String serializeEvolution(Object object) throws JPokemonException {
+		if (!(object instanceof LevelEvolution)) {
+			throw new JPokemonException("Expected level evolution object: " + object);
+		}
+
+		LevelEvolution levelEvolution = (LevelEvolution) object;
+		return Integer.toString(levelEvolution.getLevel());
 	}
 }

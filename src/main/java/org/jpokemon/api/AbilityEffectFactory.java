@@ -17,12 +17,12 @@ public abstract class AbilityEffectFactory {
 	 */
 	public static Manager<AbilityEffectFactory> manager;
 
-	/**
-	 * Gets the unique name of this factory. Effectively, the class of ability
-	 * effect that this factory produces.
-	 */
-	public abstract String getName();
+	/** Gets the class of ability effects that this factory produces */
+	public abstract Class<?> getAbilityEffectClass();
 
 	/** Builds an ability effect, given the options provided */
-	public abstract Object buildAbilityEffect(String options);
+	public abstract Object buildAbilityEffect(String options) throws JPokemonException;
+
+	/** Serializes an ability effect to a string for registration */
+	public abstract String serializeAbilityEffect(Object object) throws JPokemonException;
 }

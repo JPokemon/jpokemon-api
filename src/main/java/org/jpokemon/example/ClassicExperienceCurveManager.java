@@ -1,4 +1,4 @@
-package org.jpokemon.example.experiencecurves;
+package org.jpokemon.example;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,12 @@ import java.util.Map;
 import org.jpokemon.api.ExperienceCurve;
 import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
+import org.jpokemon.example.experiencecurves.ErraticExperienceCurve;
+import org.jpokemon.example.experiencecurves.FastExperienceCurve;
+import org.jpokemon.example.experiencecurves.FluctuatingExperienceCurve;
+import org.jpokemon.example.experiencecurves.MediumFastExperienceCurve;
+import org.jpokemon.example.experiencecurves.MediumSlowExperienceCurve;
+import org.jpokemon.example.experiencecurves.SlowExperienceCurve;
 
 /**
  * Provides an example implementation of the {@link ExperienceCurve#manager},

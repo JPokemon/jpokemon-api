@@ -30,16 +30,18 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 		if (abilityEffectFactory == null) {
 			throw new JPokemonException("Cannot register null ability effect factory");
 		}
-		else if (abilityEffectFactory.getName() == null) {
-			throw new JPokemonException("Cannot register ability effect factory without a name: " + abilityEffectFactory);
+		else if (abilityEffectFactory.getAbilityEffectClass() == null) {
+			throw new JPokemonException("Cannot register ability effect factory without ability effect class: "
+					+ abilityEffectFactory);
 		}
-		else if (abilityEffectFactories.containsKey(abilityEffectFactory.getName())
-				&& !abilityEffectFactory.equals(abilityEffectFactories.get(abilityEffectFactory.getName()))) {
+		else if (abilityEffectFactories.containsKey(abilityEffectFactory.getAbilityEffectClass().getName())
+				&& !abilityEffectFactory.equals(abilityEffectFactories.get(abilityEffectFactory.getAbilityEffectClass()
+						.getName()))) {
 			throw new JPokemonException("An ability effect factory with the same name is already registered: "
 					+ abilityEffectFactory);
 		}
 
-		abilityEffectFactories.put(abilityEffectFactory.getName(), abilityEffectFactory);
+		abilityEffectFactories.put(abilityEffectFactory.getAbilityEffectClass().getName(), abilityEffectFactory);
 	}
 
 	@Override

@@ -17,12 +17,12 @@ public abstract class ItemAttributeFactory {
 	 */
 	public static Manager<ItemAttributeFactory> manager;
 
-	/**
-	 * Gets the unique name of this factory. Effectively, the class of item
-	 * attributes that this factory produces
-	 */
-	public abstract String getName();
+	/** Gets the class of item attributes that this factory produces */
+	public abstract Class<?> getItemAttributeClass();
 
 	/** Builds an item attribute, given the options provided */
-	public abstract Object buildItemAttribute(String options);
+	public abstract Object buildItemAttribute(String options) throws JPokemonException;
+
+	/** Serializes an item attribute to a string for registration */
+	public abstract String serializeItemAttribute(Object object) throws JPokemonException;
 }

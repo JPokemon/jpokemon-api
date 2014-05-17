@@ -14,12 +14,12 @@ public abstract class EvolutionFactory {
 	/** Indicates the manager used to register evolution factories. May be null. */
 	public static Manager<EvolutionFactory> manager;
 
-	/**
-	 * Gets the unique name of this factory. Effectively, the class of evolution
-	 * that this factory produces
-	 */
-	public abstract String getName();
+	/** Gets the class of evolutions that this factory produces */
+	public abstract Class<?> getEvolutionClass();
 
 	/** Builds an evolution, given the options provided */
 	public abstract Evolution buildEvolution(String options) throws JPokemonException;
+
+	/** Serializes an evolution to a string for registration */
+	public abstract String serializeEvolution(Object object) throws JPokemonException;
 }

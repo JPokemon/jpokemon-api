@@ -17,12 +17,12 @@ public abstract class MovePropertyFactory {
 	 */
 	public static Manager<MovePropertyFactory> manager;
 
-	/**
-	 * Gets the unique name of this factory. Effectively, the class of move
-	 * properties that this factory produces
-	 */
-	public abstract String getName();
+	/** Gets the class of move properties that this factory produces */
+	public abstract Class<?> getMovePropertyClass();
 
 	/** Builds an item attribute, given the options provided */
-	public abstract Object buildMoveProperty(String options);
+	public abstract Object buildMoveProperty(String options) throws JPokemonException;
+
+	/** Serializes a move property to a string for registration */
+	public abstract String serializeMoveProperty(Object object) throws JPokemonException;
 }

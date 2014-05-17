@@ -1,6 +1,7 @@
 package org.jpokemon.example.itemattribute;
 
 import org.jpokemon.api.ItemAttributeFactory;
+import org.jpokemon.api.JPokemonException;
 
 /**
  * Provides an implementation of {@link ItemAttributeFactory} which can build
@@ -11,16 +12,13 @@ import org.jpokemon.api.ItemAttributeFactory;
  * @since 0.1
  */
 public class MachineAttributeFactory extends ItemAttributeFactory {
-	/** Indicates the name of item attributes this factory produces */
-	public static final String ITEM_ATTRIBUTE_NAME = "machine";
-
 	/** Provides the default constructor */
 	public MachineAttributeFactory() {
 	}
 
 	@Override
-	public String getName() {
-		return ITEM_ATTRIBUTE_NAME;
+	public Class<MachineAttribute> getItemAttributeClass() {
+		return MachineAttribute.class;
 	}
 
 	@Override
@@ -28,5 +26,15 @@ public class MachineAttributeFactory extends ItemAttributeFactory {
 		MachineAttribute machineAttribute = new MachineAttribute();
 		machineAttribute.setMoveName(options);
 		return machineAttribute;
+	}
+
+	@Override
+	public String serializeItemAttribute(Object object) throws JPokemonException {
+		if (!(object instanceof MachineAttribute)) {
+			throw new JPokemonException("Expected machine item attribute object: " + object);
+		}
+
+		MachineAttribute machineAttribute = (MachineAttribute) object;
+		return machineAttribute.getMoveName();
 	}
 }

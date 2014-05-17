@@ -1,6 +1,7 @@
 package org.jpokemon.example.itemattribute;
 
 import org.jpokemon.api.ItemAttributeFactory;
+import org.jpokemon.api.JPokemonException;
 
 /**
  * Provides an implementation of {@link ItemAttributeFactory} which can build
@@ -11,28 +12,36 @@ import org.jpokemon.api.ItemAttributeFactory;
  * @since 0.1
  */
 public class BallAttributeFactory extends ItemAttributeFactory {
-	/** Indicates the name of item attributes this factory produces */
-	public static final String ITEM_ATTRIBUTE_NAME = "ball";
-
 	/** Provides the default constructor */
 	public BallAttributeFactory() {
 	}
 
 	@Override
-	public String getName() {
-		return ITEM_ATTRIBUTE_NAME;
+	public Class<BallAttributeFactory> getItemAttributeClass() {
+		return BallAttributeFactory.class;
 	}
 
 	@Override
-	public Object buildItemAttribute(String options) {
+	public Object buildItemAttribute(String options) throws JPokemonException {
 		BallAttribute ballAttribute = new BallAttribute();
 
 		try {
 			int catchRate = Integer.parseInt(options);
 			ballAttribute.setCatchRate(catchRate);
-		} catch (NumberFormatException e) { // TODO - log
+		} catch (NumberFormatException e) {
+			throw new JPokemonException("Expected catch rate integer score: " + options);
 		}
 
 		return ballAttribute;
+	}
+
+	@Override
+	public String serializeItemAttribute(Object object) throws JPokemonException {
+		if (!(object instanceof BallAttribute)) {
+			throw new JPokemonException("Expected ball item attribute object: " + object);
+		}
+
+		BallAttribute ballAttribute = (BallAttribute) object;
+		return Integer.toString(ballAttribute.getCatchRate());
 	}
 }

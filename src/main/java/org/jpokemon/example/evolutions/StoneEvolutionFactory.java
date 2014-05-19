@@ -26,12 +26,12 @@ public class StoneEvolutionFactory extends EvolutionFactory {
 	}
 
 	@Override
-	public String serializeEvolution(Object object) throws JPokemonException {
-		if (!(object instanceof StoneEvolution)) {
-			throw new JPokemonException("Expected stone evolution object: " + object);
+	public String serializeEvolution(Evolution evolution) throws JPokemonException {
+		if (!(evolution instanceof StoneEvolution)) {
+			throw new JPokemonException("Expected stone evolution object: " + evolution);
 		}
 
-		StoneEvolution stoneEvolution = (StoneEvolution) object;
+		StoneEvolution stoneEvolution = (StoneEvolution) evolution;
 		return stoneEvolution.getType();
 	}
 }

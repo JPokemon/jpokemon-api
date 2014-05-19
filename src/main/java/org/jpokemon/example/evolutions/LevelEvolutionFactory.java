@@ -33,12 +33,12 @@ public class LevelEvolutionFactory extends EvolutionFactory {
 	}
 
 	@Override
-	public String serializeEvolution(Object object) throws JPokemonException {
-		if (!(object instanceof LevelEvolution)) {
-			throw new JPokemonException("Expected level evolution object: " + object);
+	public String serializeEvolution(Evolution evolution) throws JPokemonException {
+		if (!(evolution instanceof LevelEvolution)) {
+			throw new JPokemonException("Expected level evolution object: " + evolution);
 		}
 
-		LevelEvolution levelEvolution = (LevelEvolution) object;
+		LevelEvolution levelEvolution = (LevelEvolution) evolution;
 		return Integer.toString(levelEvolution.getLevel());
 	}
 }

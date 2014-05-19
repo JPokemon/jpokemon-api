@@ -33,12 +33,12 @@ public class HappinessEvolutionFactory extends EvolutionFactory {
 	}
 
 	@Override
-	public String serializeEvolution(Object object) throws JPokemonException {
-		if (!(object instanceof HappinessEvolution)) {
-			throw new JPokemonException("Expected happiness evolution object: " + object);
+	public String serializeEvolution(Evolution evolution) throws JPokemonException {
+		if (!(evolution instanceof HappinessEvolution)) {
+			throw new JPokemonException("Expected happiness evolution object: " + evolution);
 		}
 
-		HappinessEvolution happinessEvolution = (HappinessEvolution) object;
+		HappinessEvolution happinessEvolution = (HappinessEvolution) evolution;
 		return Integer.toString(happinessEvolution.getHappiness());
 	}
 }

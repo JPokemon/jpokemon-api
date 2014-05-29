@@ -24,29 +24,29 @@ public class Pokemon {
 	/** Indicates the gender of this Pokémon */
 	protected String gender;
 
+	/** Indicates the ID of the original trainer of this Pokémon */
+	protected int originalTrainerID;
+
+	/** Indicates the name of the original trainer of this Pokémon */
+	protected String originalTrainerName;
+
+	/** Indicates the level of this Pokémon */
+	protected int level;
+
+	/** Indicates the experience points this Pokémon has */
+	protected int experience;
+
+	/** Indicates the friendship rating of this Pokémon */
+	protected int friendship;
+
 	/** Indicates the ability of this Pokémon */
 	protected String ability;
 
-	/**
-	 * Indicates the primary type of this Pokémon, which may differ from it's
-	 * species' primary type
-	 */
-	protected String primaryType;
-
-	/**
-	 * Indicates the secondary type of this Pokémon, which may differ from it's
-	 * species' secondary type
-	 */
-	protected String secondaryType;
-
 	/** Indicates the height of this Pokémon */
-	protected float height;
+	protected double height;
 
 	/** Indicates the weight of this Pokémon */
-	protected float weight;
-
-	/** Indicates the original trainer of this Pokémon. Probably 'null' for wild */
-	protected String originalTrainer;
+	protected double weight;
 
 	/** Indicates the conditions affecting this Pokémon */
 	protected List<String> statusConditions;
@@ -56,6 +56,12 @@ public class Pokemon {
 
 	/** Indicates the stats of this Pokémon */
 	protected Map<String, Stat> stats;
+
+	/** Indicates the markings on this Pokémon */
+	protected List<String> markings;
+
+	/** Indicates the ribbons earned by this Pokémon */
+	protected List<String> ribbons;
 
 	/** Provides a hook for storing meta-data */
 	protected List<Object> metaData;
@@ -97,6 +103,61 @@ public class Pokemon {
 		return this;
 	}
 
+	/** Gets the ID of the original trainer of this Pokémon */
+	public int getOriginalTrainerID() {
+		return originalTrainerID;
+	}
+
+	/** Sets the ID of the original trainer of this Pokémon */
+	public Pokemon setOriginalTrainerID(int originalTrainerID) {
+		this.originalTrainerID = originalTrainerID;
+		return this;
+	}
+
+	/** Gets the name of the original trainer of this Pokémon */
+	public String getOriginalTrainerName() {
+		return originalTrainerName;
+	}
+
+	/** Sets the name of the original trainer of this Pokémon */
+	public Pokemon setOriginalTrainerName(String originalTrainerName) {
+		this.originalTrainerName = originalTrainerName;
+		return this;
+	}
+
+	/** Gets the level of this Pokémon */
+	public int getLevel() {
+		return level;
+	}
+
+	/** Sets the level of this Pokémon */
+	public Pokemon setLevel(int level) {
+		this.level = level;
+		return this;
+	}
+
+	/** Gets the experience points this Pokémon has */
+	public int getExperience() {
+		return experience;
+	}
+
+	/** Sets the experience points this Pokémon has */
+	public Pokemon setExperience(int experience) {
+		this.experience = experience;
+		return this;
+	}
+
+	/** Gets the friendship rating of this Pokémon */
+	public int getFriendship() {
+		return friendship;
+	}
+
+	/** Sets the friendship rating of this Pokémon */
+	public Pokemon setFriendship(int friendship) {
+		this.friendship = friendship;
+		return this;
+	}
+
 	/** Gets the ability of this Pokémon */
 	public String getAbility() {
 		return ability;
@@ -108,64 +169,26 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Gets the primary type of this Pokémon */
-	public String getPrimaryType() {
-		return primaryType;
-	}
-
-	/** Sets the primary type of this Pokémon */
-	public Pokemon setPrimaryType(String primaryType) {
-		this.primaryType = primaryType;
-		return this;
-	}
-
-	/** Gets the secondary type of this Pokémon */
-	public String getSecondaryType() {
-		return secondaryType;
-	}
-
-	/** Sets the secondary type of this Pokémon */
-	public Pokemon setSecondaryType(String secondaryType) {
-		this.secondaryType = secondaryType;
-		return this;
-	}
-
 	/** Gets the height of this Pokémon */
-	public float getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
 	/** Sets the height of this Pokémon */
-	public Pokemon setHeight(float height) {
+	public Pokemon setHeight(double height) {
 		this.height = height;
 		return this;
 	}
 
 	/** Gets the weight of this Pokémon */
-	public float getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
 	/** Sets the weight of this Pokémon */
-	public Pokemon setWeight(float weight) {
+	public Pokemon setWeight(double weight) {
 		this.weight = weight;
 		return this;
-	}
-
-	/** Gets the original trainer of this Pokémon */
-	public String getOriginalTrainer() {
-		return originalTrainer;
-	}
-
-	/** Sets the original trainer of this Pokémon */
-	public Pokemon setOriginalTrainer(String originalTrainer) {
-		this.originalTrainer = originalTrainer;
-		return this;
-	}
-
-	/** Gets all the status conditions affecting this Pokémon */
-	public List<String> getStatusConditions() {
-		return statusConditions;
 	}
 
 	/** Adds a condition to this Pokémon status */
@@ -178,22 +201,18 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Adds all status conditions to those already affecting this Pokémon */
-	public Pokemon addAllStatusConditions(List<String> extraConditions) {
-		if (statusConditions == null) {
-			statusConditions = new ArrayList<String>();
-		}
-
-		statusConditions.addAll(extraConditions);
-		return this;
-	}
-
 	/** Removes a condition from this Pokémon status */
 	public Pokemon removeStatusCondition(String condition) {
 		if (statusConditions != null) {
 			statusConditions.remove(condition);
 		}
+
 		return this;
+	}
+
+	/** Gets all the status conditions affecting this Pokémon */
+	public List<String> getStatusConditions() {
+		return statusConditions;
 	}
 
 	/** Sets all status conditions affecting this Pokémon */
@@ -211,11 +230,6 @@ public class Pokemon {
 		return moves.get(index);
 	}
 
-	/** Gets the moves associated with this Pokemon as a list */
-	public List<MoveInstance> getMoves() {
-		return moves;
-	}
-
 	/** Adds a move to this Pokémon's move set */
 	public Pokemon addMove(MoveInstance move) {
 		if (moves == null) {
@@ -226,19 +240,23 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Removes a move from this Pokémon's move set at the specified index */
-	public Pokemon removeMove(int index) {
-		if (index >= moves.size() || index < 0) {
-			return null;
+	/** Removes the specified MoveInstance from this Pokémon's move set */
+	public Pokemon removeMove(MoveInstance move) {
+		if (moves != null) {
+			moves.remove(move);
 		}
 
-		moves.remove(index);
 		return this;
 	}
 
-	/** Removes the specified MoveInstance from this Pokémon's move set */
-	public Pokemon removeMove(MoveInstance move) {
-		moves.remove(move);
+	/** Gets the moves associated with this Pokemon */
+	public List<MoveInstance> getMoves() {
+		return moves;
+	}
+
+	/** Sets all moves associated with this Pokemon */
+	public Pokemon setMoves(List<MoveInstance> moves) {
+		this.moves = moves;
 		return this;
 	}
 
@@ -251,13 +269,8 @@ public class Pokemon {
 		return stats.get(name);
 	}
 
-	/** Gets the stats associated with this Pokémon as a list */
-	public Map<String, Stat> getStats() {
-		return stats;
-	}
-
 	/** Adds a Stat to this Pokémon with the specified name */
-	public Pokemon putStat(String name, Stat stat) {
+	public Pokemon addStat(String name, Stat stat) {
 		if (stats == null) {
 			stats = new HashMap<String, Stat>();
 		}
@@ -275,9 +288,15 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Gets all meta data of this Pokémon */
-	public List<Object> getMetaData() {
-		return this.metaData;
+	/** Gets the stats associated with this Pokémon */
+	public Map<String, Stat> getStats() {
+		return stats;
+	}
+
+	/** Sets the stats associated with this Pokémon */
+	public Pokemon setStats(Map<String, Stat> stats) {
+		this.stats = stats;
+		return this;
 	}
 
 	/** Adds a meta data item to this Pokémon */
@@ -297,6 +316,11 @@ public class Pokemon {
 		}
 
 		return this;
+	}
+
+	/** Gets all meta data of this Pokémon */
+	public List<Object> getMetaData() {
+		return this.metaData;
 	}
 
 	/** Sets all meta data of this Pokémon */

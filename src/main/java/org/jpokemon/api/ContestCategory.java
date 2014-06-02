@@ -128,6 +128,17 @@ public class ContestCategory {
 		return this;
 	}
 
+	/** Clears reactions for a list of categories, regardless of reaction */
+	public ContestCategory removeReaction(String... contestCategories) {
+		if (this.reactions != null && contestCategories != null) {
+			for (String contestCategory : contestCategories) {
+				this.reactions.remove(contestCategory);
+			}
+		}
+
+		return this;
+	}
+
 	private boolean isReaction(Reaction reaction, String contestCategory) {
 		if (this.reactions == null) {
 			return false;
@@ -151,7 +162,7 @@ public class ContestCategory {
 	}
 
 	private void setReaction(Reaction reaction, String... contestCategories) {
-		if (contestCategories == null || contestCategories.length < 1) {
+		if (contestCategories == null) {
 			return;
 		}
 		if (this.reactions == null) {

@@ -37,5 +37,8 @@ public class AbilityTest extends TestCase {
 		ability.removeEffect(abilityEffect);
 		assertNotNull(ability.getEffects());
 		assertEquals(0, ability.getEffects().size());
+
+		ability.setEffects(null);
+		assertNotNull(ability.getEffects());
 	}
 }

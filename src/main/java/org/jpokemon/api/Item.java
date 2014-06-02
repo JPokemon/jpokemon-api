@@ -42,17 +42,17 @@ public class Item {
 	/** Indicates the sale price for this item */
 	protected int salePrice;
 
-	/** Indicates whether this item is usable outside of battle. Defaults to false */
-	protected boolean usableOutsideBattle = false;
+	/** Indicates whether this item is usable outside of battle */
+	protected boolean usableOutsideBattle;
 
-	/** Indicates whether this item is during battle. Defaults to false */
-	protected boolean usableDuringBattle = false;
+	/** Indicates whether this item is during battle */
+	protected boolean usableDuringBattle;
 
-	/** Indicates whether this item is consumed on use. Defaults to false */
-	protected boolean consumable = false;
+	/** Indicates whether this item is consumed on use */
+	protected boolean consumable;
 
-	/** Indicates whether this item is holdable by a Pokémon. Defaults to false */
-	protected boolean holdable = false;
+	/** Indicates whether this item is holdable by a Pokémon */
+	protected boolean holdable;
 
 	/** Indicates attributes of the item */
 	protected List<Object> attributes;
@@ -169,7 +169,11 @@ public class Item {
 
 	/** Gets all attributes of this item */
 	public List<Object> getAttributes() {
-		return this.attributes;
+		if (attributes == null) {
+			return new ArrayList<Object>();
+		}
+
+		return attributes;
 	}
 
 	/** Sets all attributes of this item */

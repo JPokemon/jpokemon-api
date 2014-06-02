@@ -61,5 +61,8 @@ public class ContestCategoryTest extends TestCase {
 
 		contestCategory.removeReaction(categoryName);
 		assertEquals(0, contestCategory.getIndifferenceReactions().size());
+
+		contestCategory.setDiscontentReaction(null);
+		assertNotNull(contestCategory.getDiscontentReaction());
 	}
 }

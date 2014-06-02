@@ -48,6 +48,10 @@ public class Ability {
 
 	/** Gets the effects of this ability */
 	public List<Object> getEffects() {
+		if (effects == null) {
+			return new ArrayList<Object>();
+		}
+
 		return effects;
 	}
 

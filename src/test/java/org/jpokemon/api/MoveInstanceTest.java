@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 public class MoveInstanceTest extends TestCase {
-
 	@Test
 	public void testMove() {
 		String moveName = "FooMove";

@@ -1,26 +1,7 @@
 package org.jpokemon.api;
 
-import org.jpokemon.example.ClassicNatureManager;
-
 /**
- * Defines a nature (personality) for a Pokémon. The 25 classic natures are
- * instantiated in the {@link ClassicNatureManager} class.
- * 
- * <p>
- * To define your own nature, construct instances of this class. If you want to
- * add attributes to the nature, it can of course be extended.
- * <p>
- * 
- * <h2>Usage Example</h2>
- * 
- * <p>
- * One could create a nature in the following way:
- * 
- * <pre>
- * Nature aweseome = new Nature().setName("Awesome");
- * awesome.setStatIncreased("Speed").setStatDecreased("Special Defense");
- * awesome.setFlavorFavorite("Sweet").setFlavorDisliked("Bitter");
- * </pre>
+ * Defines a nature (personality) for a Pokémon
  * 
  * @author atheriel@gmail.com
  * @author zach
@@ -103,21 +84,5 @@ public class Nature {
 	public Nature setFlavorDisliked(String flavor) {
 		this.flavorDisliked = flavor;
 		return this;
-	}
-
-	/**
-	 * Gets the stat modifier for a given stat as a float.
-	 * 
-	 * @deprecated Use {@link #getStatIncreased} or {@link #getStatDecreased}
-	 *             instead.
-	 */
-	public float getStatModifier(String stat) {
-		if (statIncreased.equals(stat)) {
-			return 1.1f;
-		}
-		else if (statDecreased.equals(stat)) {
-			return 0.9f;
-		}
-		return 1.0f;
 	}
 }

@@ -151,17 +151,17 @@ public class Item {
 
 	/** Adds an attribute to this item */
 	public Item addAttribute(Object attribute) {
-		if (this.attributes == null) {
-			this.attributes = new ArrayList<Object>();
+		if (attributes == null) {
+			attributes = new ArrayList<Object>();
 		}
 
-		this.attributes.add(attribute);
+		attributes.add(attribute);
 		return this;
 	}
 
 	public Item removeAttribute(Object attribute) {
-		if (this.attributes != null) {
-			this.attributes.remove(attribute);
+		if (attributes != null) {
+			attributes.remove(attribute);
 		}
 
 		return this;
@@ -170,7 +170,7 @@ public class Item {
 	/** Gets all attributes of this item */
 	public List<Object> getAttributes() {
 		if (attributes == null) {
-			return new ArrayList<Object>();
+			attributes = new ArrayList<Object>();
 		}
 
 		return attributes;

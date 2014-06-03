@@ -130,9 +130,9 @@ public class ContestCategory {
 
 	/** Clears reactions for a list of categories, regardless of reaction */
 	public ContestCategory removeReaction(String... contestCategories) {
-		if (this.reactions != null && contestCategories != null) {
+		if (reactions != null && contestCategories != null) {
 			for (String contestCategory : contestCategories) {
-				this.reactions.remove(contestCategory);
+				reactions.remove(contestCategory);
 			}
 		}
 
@@ -140,25 +140,25 @@ public class ContestCategory {
 	}
 
 	private boolean isReaction(Reaction reaction, String contestCategory) {
-		if (this.reactions == null) {
+		if (reactions == null) {
 			return false;
 		}
 
-		return reaction == this.reactions.get(contestCategory);
+		return reaction == reactions.get(contestCategory);
 	}
 
 	private List<String> getReaction(Reaction reaction) {
-		List<String> reactionList = new ArrayList<String>();
+		List<String> contestCategories = new ArrayList<String>();
 
-		if (this.reactions != null) {
-			for (Map.Entry<String, Reaction> reactionEntry : this.reactions.entrySet()) {
-				if (reaction == reactionEntry.getValue()) {
-					reactionList.add(reactionEntry.getKey());
+		if (reactions != null) {
+			for (Map.Entry<String, Reaction> contestReaction : reactions.entrySet()) {
+				if (reaction == contestReaction.getValue()) {
+					contestCategories.add(contestReaction.getKey());
 				}
 			}
 		}
 
-		return reactionList;
+		return contestCategories;
 	}
 
 	private void setReaction(Reaction reaction, String... contestCategories) {

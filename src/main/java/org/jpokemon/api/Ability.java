@@ -46,15 +46,6 @@ public class Ability {
 		return this;
 	}
 
-	/** Gets the effects of this ability */
-	public List<Object> getEffects() {
-		if (effects == null) {
-			return new ArrayList<Object>();
-		}
-
-		return effects;
-	}
-
 	/** Adds an effect to this ability */
 	public Ability addEffect(Object effect) {
 		if (effects == null) {
@@ -72,6 +63,15 @@ public class Ability {
 		}
 
 		return this;
+	}
+
+	/** Gets the effects of this ability */
+	public List<Object> getEffects() {
+		if (effects == null) {
+			effects = new ArrayList<Object>();
+		}
+
+		return effects;
 	}
 
 	/** Sets the effects of this ability */

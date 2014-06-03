@@ -207,18 +207,18 @@ public class Move {
 
 	/** Adds a property to this move */
 	public Move addProperty(Object property) {
-		if (this.properties == null) {
-			this.properties = new ArrayList<Object>();
+		if (properties == null) {
+			properties = new ArrayList<Object>();
 		}
 
-		this.properties.add(property);
+		properties.add(property);
 		return this;
 	}
 
 	/** Removes a property from this move */
 	public Move removeProperty(Object property) {
-		if (this.properties != null) {
-			this.properties.remove(property);
+		if (properties != null) {
+			properties.remove(property);
 		}
 
 		return this;
@@ -226,6 +226,10 @@ public class Move {
 
 	/** Gets all properties of this move */
 	public List<Object> getProperties() {
+		if (properties == null) {
+			properties = new ArrayList<Object>();
+		}
+
 		return properties;
 	}
 

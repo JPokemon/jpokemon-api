@@ -21,7 +21,7 @@ public class Type {
 	protected String name;
 
 	/** Defines a mapping of this type's effectiveness against others */
-	protected Map<String, TypeEffectiveness> effectivenessMap = new HashMap<String, TypeEffectiveness>();
+	protected Map<String, Effectiveness> effectivenessMap;
 
 	/** Provides the default constructor */
 	public Type() {
@@ -32,49 +32,9 @@ public class Type {
 		return name;
 	}
 
-	/**
-	 * Sets the name of this type, and registers it with the {@link TypeManager}
-	 * if one is defined.
-	 */
+	/** Sets the name of this type */
 	public Type setName(String name) {
 		this.name = name;
-		return this;
-	}
-
-	/** Gets the list of types this type is super-effective against by name */
-	public List<String> getSuperEffectiveAgainst() {
-		return this.getEffectivenessList(TypeEffectiveness.SUPER);
-	}
-
-	/** Sets the list of types this type is super-effective against by name */
-	public Type setSuperEffectiveAgainst(String... superEffectiveAgainst) {
-		this.putEffectiveness(TypeEffectiveness.SUPER, superEffectiveAgainst);
-		return this;
-	}
-
-	/**
-	 * Gets the list of types this type is not very effective against by name.
-	 */
-	public List<String> getNotVeryEffectiveAgainst() {
-		return this.getEffectivenessList(TypeEffectiveness.NOT_VERY);
-	}
-
-	/**
-	 * Sets the list of types this type is not very effective against by name.
-	 */
-	public Type setNotVeryEffectiveAgainst(String... notVeryEffectiveAgainst) {
-		this.putEffectiveness(TypeEffectiveness.NOT_VERY, notVeryEffectiveAgainst);
-		return this;
-	}
-
-	/** Gets the list of types this type is ineffective against by name */
-	public List<String> getIneffectiveAgainst() {
-		return this.getEffectivenessList(TypeEffectiveness.INEFFECTIVE);
-	}
-
-	/** Sets the list of types this type is ineffective against by name */
-	public Type setIneffectiveAgainst(String... ineffectiveAgainst) {
-		this.putEffectiveness(TypeEffectiveness.INEFFECTIVE, ineffectiveAgainst);
 		return this;
 	}
 
@@ -85,16 +45,21 @@ public class Type {
 
 	/**
 	 * Checks whether this type is super-effective against a type of the given
-	 * name.
+	 * name
 	 */
 	public boolean isSuperEffectiveAgainst(String typeName) {
-		if (typeName == null) {
-			return false;
-		}
-		if (this.effectivenessMap.get(typeName) != TypeEffectiveness.SUPER) {
-			return false;
-		}
-		return true;
+		return isEffectivenessAgainst(Effectiveness.SUPER, typeName);
+	}
+
+	/** Gets the list of types this type is super-effective against by name */
+	public List<String> getSuperEffectiveAgainst() {
+		return getEffectivenessList(Effectiveness.SUPER);
+	}
+
+	/** Sets the list of types this type is super-effective against by name */
+	public Type setSuperEffectiveAgainst(String... types) {
+		putEffectiveness(Effectiveness.SUPER, types);
+		return this;
 	}
 
 	/** Checks whether this type is not very effective against a given type */
@@ -104,16 +69,32 @@ public class Type {
 
 	/**
 	 * Checks whether this type is not very effective against a type of the given
-	 * name.
+	 * name
 	 */
 	public boolean isNotVeryEffectiveAgainst(String typeName) {
-		if (typeName == null) {
-			return false;
-		}
-		if (this.effectivenessMap.get(typeName) != TypeEffectiveness.NOT_VERY) {
-			return false;
-		}
-		return true;
+		return isEffectivenessAgainst(Effectiveness.NOT_VERY, typeName);
+	}
+
+	/** Gets the list of types this type is not very effective against by name */
+	public List<String> getNotVeryEffectiveAgainst() {
+		return getEffectivenessList(Effectiveness.NOT_VERY);
+	}
+
+	/** Sets the list of types this type is not very effective against by name */
+	public Type setNotVeryEffectiveAgainst(String... types) {
+		putEffectiveness(Effectiveness.NOT_VERY, types);
+		return this;
+	}
+
+	/** Gets the list of types this type is ineffective against by name */
+	public List<String> getIneffectiveAgainst() {
+		return getEffectivenessList(Effectiveness.INEFFECTIVE);
+	}
+
+	/** Sets the list of types this type is ineffective against by name */
+	public Type setIneffectiveAgainst(String... types) {
+		putEffectiveness(Effectiveness.INEFFECTIVE, types);
+		return this;
 	}
 
 	/** Checks whether this type is ineffective against a given type */
@@ -121,42 +102,64 @@ public class Type {
 		return isIneffectiveAgainst(type.getName());
 	}
 
-	/**
-	 * Checks whether this type is ineffective against a type of the given name.
-	 */
+	/** Checks whether this type is ineffective against a type of the given name */
 	public boolean isIneffectiveAgainst(String typeName) {
-		if (typeName == null) {
+		return isEffectivenessAgainst(Effectiveness.INEFFECTIVE, typeName);
+	}
+
+	/** Removes effectiveness measurements for a list of types */
+	public Type removeEffectiveness(String... types) {
+		if (types != null && effectivenessMap != null) {
+			for (String type : types) {
+				effectivenessMap.remove(type);
+			}
+		}
+
+		return this;
+	}
+
+	/**
+	 * Indicates whether this type is the specified effectiveness against the type
+	 * specified
+	 */
+	private boolean isEffectivenessAgainst(Effectiveness effectiveness, String type) {
+		if (type == null || effectivenessMap == null) {
 			return false;
 		}
-		if (this.effectivenessMap.get(typeName) != TypeEffectiveness.INEFFECTIVE) {
-			return false;
-		}
-		return true;
+
+		return effectivenessMap.get(type) == effectiveness;
 	}
 
 	/** Retrieves a list of types for a given effectiveness from the mapping */
-	private List<String> getEffectivenessList(TypeEffectiveness effectiveness) {
-		List<String> found = new ArrayList<String>();
-		for (Map.Entry<String, TypeEffectiveness> effectivenessEntry : this.effectivenessMap.entrySet()) {
-			if (effectivenessEntry.getValue() == effectiveness) {
-				found.add(effectivenessEntry.getKey());
+	private List<String> getEffectivenessList(Effectiveness effectiveness) {
+		List<String> types = new ArrayList<String>();
+
+		if (effectivenessMap != null) {
+			for (Map.Entry<String, Effectiveness> effectivenessEntry : effectivenessMap.entrySet()) {
+				if (effectivenessEntry.getValue() == effectiveness) {
+					types.add(effectivenessEntry.getKey());
+				}
 			}
 		}
-		return found;
+
+		return types;
 	}
 
 	/** Adds the name of the type to the effectiveness mapping */
-	private void putEffectiveness(TypeEffectiveness effectiveness, String... types) {
+	private void putEffectiveness(Effectiveness effectiveness, String... types) {
 		if (types == null) {
 			return;
 		}
-		for (String s : types) {
-			this.effectivenessMap.put(s, effectiveness);
+		if (effectivenessMap == null) {
+			effectivenessMap = new HashMap<String, Effectiveness>();
+		}
+
+		for (String type : types) {
+			effectivenessMap.put(type, effectiveness);
 		}
 	}
 
-	/** Provides an internal enum for the available kinds of "effective" */
-	private enum TypeEffectiveness {
+	protected enum Effectiveness {
 		SUPER, NOT_VERY, INEFFECTIVE;
 	}
 }

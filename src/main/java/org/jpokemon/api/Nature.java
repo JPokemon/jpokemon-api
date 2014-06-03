@@ -48,8 +48,8 @@ public class Nature {
 	}
 
 	/** Sets the stat increased by this nature */
-	public Nature setStatIncreased(String stat) {
-		this.statIncreased = stat;
+	public Nature setStatIncreased(String statIncreased) {
+		this.statIncreased = statIncreased;
 		return this;
 	}
 
@@ -59,8 +59,8 @@ public class Nature {
 	}
 
 	/** Sets the stat decreased by this nature */
-	public Nature setStatDecreased(String stat) {
-		this.statDecreased = stat;
+	public Nature setStatDecreased(String statDecreased) {
+		this.statDecreased = statDecreased;
 		return this;
 	}
 
@@ -70,8 +70,8 @@ public class Nature {
 	}
 
 	/** Sets the favorite flavor of this nature */
-	public Nature setFlavorFavorite(String flavor) {
-		this.flavorFavorite = flavor;
+	public Nature setFlavorFavorite(String flavorFavorite) {
+		this.flavorFavorite = flavorFavorite;
 		return this;
 	}
 
@@ -81,8 +81,8 @@ public class Nature {
 	}
 
 	/** Sets the disliked flavor of this nature */
-	public Nature setFlavorDisliked(String flavor) {
-		this.flavorDisliked = flavor;
+	public Nature setFlavorDisliked(String flavorDisliked) {
+		this.flavorDisliked = flavorDisliked;
 		return this;
 	}
 }

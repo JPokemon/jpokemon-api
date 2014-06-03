@@ -1,56 +1,48 @@
 package org.jpokemon.api;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
-import org.jpokemon.example.ClassicTypeManager;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 /**
  * Tests type properties and the use of ClassicTypes.
  * 
  * @author atheriel@gmail.com
- * @author Zach Taylor
+ * @author zach
  */
-@RunWith(JUnit4.class)
-public class PokemonTypeTest {
-
-	/** Tests some properties of classic types. */
+public class TypeTest extends TestCase {
 	@Test
-	public void testClassicTypes() {
-		Type.manager = new ClassicTypeManager();
-
-		assertTrue("Dark is known.", Type.manager.isRegistered("Dark"));
-		assertTrue("Normal is ineffective against Ghost.", Type.manager.getByName("Normal").isIneffectiveAgainst("Ghost"));
-		assertFalse("Normal is not super-effective against Fighting.", Type.manager.getByName("Normal").isSuperEffectiveAgainst("Fighting"));
+	public void testName() {
+		String typeName = "FooType";
+		Type type = new Type();
+		type.setName(typeName);
+		assertEquals(typeName, type.getName());
 	}
 
-	/** Creates a new type and tests that it has been registered. */
 	@Test
-	public void testTypeAddition() {
-		Manager<Type> manager = new ClassicTypeManager();
-		Type test = new Type().setName("Test");
-		manager.register(test);
+	public void testEffectiveness() {
+		String typeName = "Type1";
+		Type type = new Type();
+		assertNotNull(type.getSuperEffectiveAgainst());
+		assertEquals(0, type.getSuperEffectiveAgainst().size());
+		assertNotNull(type.getNotVeryEffectiveAgainst());
+		assertEquals(0, type.getNotVeryEffectiveAgainst().size());
+		assertNotNull(type.getIneffectiveAgainst());
+		assertEquals(0, type.getIneffectiveAgainst().size());
 
-		assertTrue("Test is now a type.", manager.isRegistered("Test"));
-	}
+		type.setSuperEffectiveAgainst(typeName);
+		assertEquals(1, type.getSuperEffectiveAgainst().size());
+		assertEquals(typeName, type.getSuperEffectiveAgainst().get(0));
 
-	/** Tests setting type effectiveness (i.e. "Super-effective"). */
-	@Test
-	public void testEffectivenessCollision() {
-		Manager<Type> manager = new ClassicTypeManager();
-		Type t1 = new Type().setName("Type1");
-		Type t2 = new Type().setName("Type2");
-		manager.register(t1);
-		manager.register(t2);
+		type.setIneffectiveAgainst(typeName);
+		assertEquals(0, type.getSuperEffectiveAgainst().size());
+		assertEquals(1, type.getIneffectiveAgainst().size());
+		assertEquals(typeName, type.getIneffectiveAgainst().get(0));
 
-		t1.setSuperEffectiveAgainst("Type2", "OtherType");
-		assertTrue("Type effectivity saved", t1.isSuperEffectiveAgainst("Type2"));
+		type.removeEffectiveness(typeName);
+		assertEquals(0, type.getIneffectiveAgainst().size());
 
-		t1.setIneffectiveAgainst("Type2");
-		assertTrue("Ineffective overrides Super Effective", !t1.isSuperEffectiveAgainst("Type2"));
-		assertTrue("Ineffective overrides Super Effective", t1.isIneffectiveAgainst("Type2"));
+		type.setNotVeryEffectiveAgainst(null);
+		assertNotNull(type.getNotVeryEffectiveAgainst());
 	}
 }

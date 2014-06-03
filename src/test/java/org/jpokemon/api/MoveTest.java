@@ -9,7 +9,7 @@ import org.junit.Test;
 public class MoveTest extends TestCase {
 	@Test
 	public void testName() {
-		String moveName = "FooItem";
+		String moveName = "FooMove";
 		Move move = new Move();
 		move.setName(moveName);
 		assertEquals(moveName, move.getName());
@@ -25,7 +25,7 @@ public class MoveTest extends TestCase {
 
 	@Test
 	public void testCategory() {
-		String moveCategory = "FooType";
+		String moveCategory = "FooCategory";
 		Move move = new Move();
 		move.setCategory(moveCategory);
 		assertEquals(moveCategory, move.getCategory());
@@ -41,10 +41,10 @@ public class MoveTest extends TestCase {
 
 	@Test
 	public void testPp() {
-		int movePp = 123456;
+		int movePP = 123456;
 		Move move = new Move();
-		move.setPp(movePp);
-		assertEquals(movePp, move.getPp());
+		move.setPP(movePP);
+		assertEquals(movePP, move.getPP());
 	}
 
 	@Test

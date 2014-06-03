@@ -33,7 +33,7 @@ public class Move {
 	protected String description;
 
 	/** Indicates the base PP for this move */
-	protected int pp;
+	protected int PP;
 
 	/** Indicates the power of this move */
 	protected int power;
@@ -107,13 +107,13 @@ public class Move {
 	}
 
 	/** Gets the base PP for this move */
-	public int getPp() {
-		return pp;
+	public int getPP() {
+		return PP;
 	}
 
 	/** Sets the base PP for this move */
-	public Move setPp(int pp) {
-		this.pp = pp;
+	public Move setPP(int PP) {
+		this.PP = PP;
 		return this;
 	}
 

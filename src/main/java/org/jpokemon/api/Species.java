@@ -95,7 +95,7 @@ public class Species {
 	protected List<Evolution> evolutions;
 
 	/** Indicates the moves learned at a given level by this species */
-	protected HashMap<Integer, List<String>> moveLists;
+	protected Map<Integer, List<String>> moveLists;
 
 	/** Indicates the egg moves for this species */
 	protected List<String> eggMoves;
@@ -156,18 +156,18 @@ public class Species {
 
 	/** Adds a type to this species */
 	public Species addType(String type) {
-		if (this.types == null) {
-			this.types = new ArrayList<String>();
+		if (types == null) {
+			types = new ArrayList<String>();
 		}
 
-		this.types.add(type);
+		types.add(type);
 		return this;
 	}
 
 	/** Removes a type from this species */
 	public Species removeType(String type) {
-		if (this.types != null) {
-			this.types.remove(type);
+		if (types != null) {
+			types.remove(type);
 		}
 
 		return this;
@@ -175,6 +175,10 @@ public class Species {
 
 	/** Gets this species' types */
 	public List<String> getTypes() {
+		if (types == null) {
+			types = new ArrayList<String>();
+		}
+
 		return types;
 	}
 
@@ -186,18 +190,18 @@ public class Species {
 
 	/** Adds an ability to this species */
 	public Species addAbility(String ability) {
-		if (this.abilities == null) {
-			this.abilities = new ArrayList<String>();
+		if (abilities == null) {
+			abilities = new ArrayList<String>();
 		}
 
-		this.abilities.add(ability);
+		abilities.add(ability);
 		return this;
 	}
 
 	/** Removes an ability from this species */
 	public Species removeAbility(String ability) {
-		if (this.abilities != null) {
-			this.abilities.remove(ability);
+		if (abilities != null) {
+			abilities.remove(ability);
 		}
 
 		return this;
@@ -205,6 +209,10 @@ public class Species {
 
 	/** Gets abilities available to this species */
 	public List<String> getAbilities() {
+		if (abilities == null) {
+			abilities = new ArrayList<String>();
+		}
+
 		return abilities;
 	}
 
@@ -271,18 +279,18 @@ public class Species {
 
 	/** Adds an egg group to this species */
 	public Species addEggGroup(String eggGroup) {
-		if (this.eggGroups == null) {
-			this.eggGroups = new ArrayList<String>();
+		if (eggGroups == null) {
+			eggGroups = new ArrayList<String>();
 		}
 
-		this.eggGroups.add(eggGroup);
+		eggGroups.add(eggGroup);
 		return this;
 	}
 
 	/** Removes an egg group from this species */
 	public Species removeEggGroup(String eggGroup) {
-		if (this.eggGroups != null) {
-			this.eggGroups.remove(eggGroup);
+		if (eggGroups != null) {
+			eggGroups.remove(eggGroup);
 		}
 
 		return this;
@@ -290,6 +298,10 @@ public class Species {
 
 	/** Gets the egg groups of this species is a member of */
 	public List<String> getEggGroups() {
+		if (eggGroups == null) {
+			eggGroups = new ArrayList<String>();
+		}
+
 		return eggGroups;
 	}
 
@@ -356,25 +368,38 @@ public class Species {
 
 	/** Gets the effort value for defeating this species for a specified stat */
 	public int getEffortValue(String stat) {
-		if (this.effortValues == null || !this.effortValues.containsKey(stat)) {
+		if (effortValues == null || !effortValues.containsKey(stat)) {
 			return 0;
 		}
 
-		return this.effortValues.get(stat);
+		return effortValues.get(stat);
 	}
 
 	/** Sets the effort value for defeating this species for a specified stat */
 	public Species setEffortValue(String stat, int value) {
-		if (this.effortValues == null) {
-			this.effortValues = new HashMap<String, Integer>();
+		if (effortValues == null) {
+			effortValues = new HashMap<String, Integer>();
 		}
 
-		this.effortValues.put(stat, value);
+		effortValues.put(stat, value);
+		return this;
+	}
+
+	/** Removes the effort value for a defeating this species for a specified stat */
+	public Species removeEffortValue(String stat) {
+		if (effortValues != null) {
+			effortValues.remove(stat);
+		}
+
 		return this;
 	}
 
 	/** Gets all effort values for defeating this species */
 	public Map<String, Integer> getEffortValues() {
+		if (effortValues == null) {
+			effortValues = new HashMap<String, Integer>();
+		}
+
 		return effortValues;
 	}
 
@@ -419,25 +444,38 @@ public class Species {
 
 	/** Gets this species' base value for the specified stat */
 	public int getBaseStat(String stat) {
-		if (this.baseStats == null || !this.baseStats.containsKey(stat)) {
+		if (baseStats == null || !baseStats.containsKey(stat)) {
 			return 0;
 		}
 
-		return this.effortValues.get(stat);
+		return this.baseStats.get(stat);
 	}
 
 	/** Sets this species' base value for the specified stat */
 	public Species setBaseStat(String stat, int value) {
-		if (this.baseStats == null) {
-			this.baseStats = new HashMap<String, Integer>();
+		if (baseStats == null) {
+			baseStats = new HashMap<String, Integer>();
 		}
 
-		this.baseStats.put(stat, value);
+		baseStats.put(stat, value);
+		return this;
+	}
+
+	/** Removes a species' base value for the specified stat */
+	public Species removeBaseStat(String stat) {
+		if (baseStats != null) {
+			baseStats.remove(stat);
+		}
+
 		return this;
 	}
 
 	/** Gets this species' base values all stats */
 	public Map<String, Integer> getBaseStats() {
+		if (baseStats == null) {
+			baseStats = new HashMap<String, Integer>();
+		}
+
 		return baseStats;
 	}
 
@@ -449,18 +487,18 @@ public class Species {
 
 	/** Adds an evolution to this species */
 	public Species addEvolution(Evolution evolution) {
-		if (this.evolutions == null) {
-			this.evolutions = new ArrayList<Evolution>();
+		if (evolutions == null) {
+			evolutions = new ArrayList<Evolution>();
 		}
 
-		this.evolutions.add(evolution);
+		evolutions.add(evolution);
 		return this;
 	}
 
 	/** Removes an evolution from this species */
 	public Species removeEvolution(Evolution evolution) {
-		if (this.evolutions != null) {
-			this.evolutions.remove(evolution);
+		if (evolutions != null) {
+			evolutions.remove(evolution);
 		}
 
 		return this;
@@ -468,6 +506,10 @@ public class Species {
 
 	/** Gets the possible evolutions of this species */
 	public List<Evolution> getEvolutions() {
+		if (evolutions == null) {
+			evolutions = new ArrayList<Evolution>();
+		}
+
 		return evolutions;
 	}
 
@@ -479,21 +521,23 @@ public class Species {
 
 	/** Adds a move for this species to learn at the specified level */
 	public Species addMove(int level, String move) {
-		if (this.moveLists == null) {
-			this.moveLists = new HashMap<Integer, List<String>>();
+		if (moveLists == null) {
+			moveLists = new HashMap<Integer, List<String>>();
 		}
-		if (this.moveLists.get(move) == null) {
-			this.moveLists.put(level, new ArrayList<String>());
+		if (moveLists.get(level) == null) {
+			moveLists.put(level, new ArrayList<String>());
 		}
 
-		this.moveLists.get(level).add(move);
+		moveLists.get(level).add(move);
 		return this;
 	}
 
 	/** Removes a move for this species to learn at the specified level */
 	public Species removeMove(int level, String move) {
-		if (this.moveLists != null && this.moveLists.containsKey(level)) {
-			this.moveLists.remove(move);
+		if (moveLists != null && moveLists.containsKey(level)) {
+			if (moveLists.get(level).remove(move) && moveLists.get(level).size() < 1) {
+				moveLists.remove(level);
+			}
 		}
 
 		return this;
@@ -501,25 +545,47 @@ public class Species {
 
 	/** Gets the moves available to this species at the specified level */
 	public List<String> getMoveList(int level) {
-		if (this.moveLists == null) {
-			return null;
+		if (moveLists == null) {
+			moveLists = new HashMap<Integer, List<String>>();
+		}
+		if (moveLists.get(level) == null) {
+			moveLists.put(level, new ArrayList<String>());
 		}
 
-		return this.moveLists.get(level);
+		return moveLists.get(level);
 	}
 
 	/** Sets the moves available to this species at the specified level */
 	public Species setMoveList(int level, List<String> moveList) {
-		if (this.moveLists == null) {
-			this.moveLists = new HashMap<Integer, List<String>>();
+		if (moveLists == null) {
+			moveLists = new HashMap<Integer, List<String>>();
 		}
 
-		this.moveLists.put(level, moveList);
+		if (moveList == null) {
+			moveLists.remove(level);
+		}
+		else {
+			moveLists.put(level, moveList);
+		}
+
+		return this;
+	}
+
+	/** Removes all moves available to this species for the specified level */
+	public Species removeMoveList(int level) {
+		if (moveLists != null) {
+			moveLists.remove(level);
+		}
+
 		return this;
 	}
 
 	/** Gets all moves available to this species, mapped by level available */
-	public HashMap<Integer, List<String>> getMoveLists() {
+	public Map<Integer, List<String>> getMoveLists() {
+		if (moveLists == null) {
+			moveLists = new HashMap<Integer, List<String>>();
+		}
+
 		return moveLists;
 	}
 
@@ -531,18 +597,18 @@ public class Species {
 
 	/** Adds a move this species may know at birth */
 	public Species addEggMove(String eggMove) {
-		if (this.eggMoves == null) {
-			this.eggMoves = new ArrayList<String>();
+		if (eggMoves == null) {
+			eggMoves = new ArrayList<String>();
 		}
 
-		this.eggMoves.add(eggMove);
+		eggMoves.add(eggMove);
 		return this;
 	}
 
 	/** Removes a move this species may know at birth */
 	public Species removeEggMove(String eggMove) {
-		if (this.eggMoves != null) {
-			this.eggMoves.remove(eggMove);
+		if (eggMoves != null) {
+			eggMoves.remove(eggMove);
 		}
 
 		return this;
@@ -550,6 +616,10 @@ public class Species {
 
 	/** Gets the moves this species may know at birth */
 	public List<String> getEggMoves() {
+		if (eggMoves == null) {
+			eggMoves = new ArrayList<String>();
+		}
+
 		return eggMoves;
 	}
 
@@ -561,18 +631,18 @@ public class Species {
 
 	/** Adds a move that can be learned from machines by this species */
 	public Species addMachineMove(String machineMove) {
-		if (this.machineMoves == null) {
-			this.machineMoves = new ArrayList<String>();
+		if (machineMoves == null) {
+			machineMoves = new ArrayList<String>();
 		}
 
-		this.machineMoves.add(machineMove);
+		machineMoves.add(machineMove);
 		return this;
 	}
 
 	/** Removes a move that can be learned from machines by this species */
 	public Species removeMachineMove(String machineMove) {
-		if (this.machineMoves != null) {
-			this.machineMoves.remove(machineMove);
+		if (machineMoves != null) {
+			machineMoves.remove(machineMove);
 		}
 
 		return this;
@@ -580,6 +650,10 @@ public class Species {
 
 	/** Gets the moves that can be learned from machines by this species */
 	public List<String> getMachineMoves() {
+		if (machineMoves == null) {
+			machineMoves = new ArrayList<String>();
+		}
+
 		return machineMoves;
 	}
 
@@ -591,18 +665,18 @@ public class Species {
 
 	/** Adds a move that can be learned from move tutors by this species */
 	public Species addTutorMove(String tutorMove) {
-		if (this.tutorMoves == null) {
-			this.tutorMoves = new ArrayList<String>();
+		if (tutorMoves == null) {
+			tutorMoves = new ArrayList<String>();
 		}
 
-		this.tutorMoves.add(tutorMove);
+		tutorMoves.add(tutorMove);
 		return this;
 	}
 
 	/** Removes a move that can be learned from move tutors by this species */
 	public Species removeTutorMove(String tutorMove) {
-		if (this.tutorMoves != null) {
-			this.tutorMoves.remove(tutorMove);
+		if (tutorMoves != null) {
+			tutorMoves.remove(tutorMove);
 		}
 
 		return this;
@@ -610,6 +684,10 @@ public class Species {
 
 	/** Gets the moves that can be learned from move tutors by this species */
 	public List<String> getTutorMoves() {
+		if (tutorMoves == null) {
+			tutorMoves = new ArrayList<String>();
+		}
+
 		return tutorMoves;
 	}
 

@@ -26,17 +26,20 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 	}
 
 	@Override
+	public boolean isRegistered(String abilityEffectFactoryName) {
+		return abilityEffectFactories.containsKey(abilityEffectFactoryName);
+	}
+
+	@Override
 	public void register(AbilityEffectFactory abilityEffectFactory) throws JPokemonException {
 		if (abilityEffectFactory == null) {
 			throw new JPokemonException("Cannot register null ability effect factory");
 		}
-		else if (abilityEffectFactory.getAbilityEffectClass() == null) {
+		if (abilityEffectFactory.getAbilityEffectClass() == null) {
 			throw new JPokemonException("Cannot register ability effect factory without ability effect class: "
 					+ abilityEffectFactory);
 		}
-		else if (abilityEffectFactories.containsKey(abilityEffectFactory.getAbilityEffectClass().getName())
-				&& !abilityEffectFactory.equals(abilityEffectFactories.get(abilityEffectFactory.getAbilityEffectClass()
-						.getName()))) {
+		if (abilityEffectFactories.containsKey(abilityEffectFactory.getAbilityEffectClass().getName())) {
 			throw new JPokemonException("An ability effect factory with the same name is already registered: "
 					+ abilityEffectFactory);
 		}
@@ -45,17 +48,37 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 	}
 
 	@Override
-	public boolean isRegistered(String abilityEffectFactoryName) {
-		if (abilityEffectFactoryName == null) {
-			return false;
-		}
-
-		return getByName(abilityEffectFactoryName) != null;
+	public AbilityEffectFactory getByName(String name) {
+		return abilityEffectFactories.get(name);
 	}
 
 	@Override
-	public AbilityEffectFactory getByName(String name) {
-		return abilityEffectFactories.get(name);
+	public void update(AbilityEffectFactory abilityEffectFactory) throws JPokemonException {
+		if (abilityEffectFactory == null) {
+			throw new JPokemonException("Cannot register null ability effect factory");
+		}
+		if (abilityEffectFactory.getAbilityEffectClass() == null) {
+			throw new JPokemonException("Cannot register ability effect factory without ability effect class: "
+					+ abilityEffectFactory);
+		}
+		if (!abilityEffectFactories.containsKey(abilityEffectFactory.getAbilityEffectClass().getName())) {
+			throw new JPokemonException("An ability effect factory with the same name is not registered: "
+					+ abilityEffectFactory);
+		}
+
+		abilityEffectFactories.put(abilityEffectFactory.getAbilityEffectClass().getName(), abilityEffectFactory);
+	}
+
+	@Override
+	public void unregister(String abilityEffectClass) throws JPokemonException {
+		if (abilityEffectClass == null) {
+			throw new JPokemonException("Cannot unregister ability effect factory without ability effect class");
+		}
+		if (!abilityEffectFactories.containsKey(abilityEffectClass)) {
+			throw new JPokemonException("There is no ability effect factory with ability effect class: " + abilityEffectClass);
+		}
+
+		abilityEffectFactories.remove(abilityEffectClass);
 	}
 
 	/**

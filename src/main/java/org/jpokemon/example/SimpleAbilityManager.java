@@ -24,14 +24,19 @@ public class SimpleAbilityManager implements Manager<Ability> {
 	}
 
 	@Override
+	public boolean isRegistered(String abilityName) {
+		return abilities.containsKey(abilityName);
+	}
+
+	@Override
 	public void register(Ability ability) throws JPokemonException {
 		if (ability == null) {
 			throw new JPokemonException("Cannot register null ability");
 		}
-		else if (ability.getName() == null) {
+		if (ability.getName() == null) {
 			throw new JPokemonException("Cannot register ability without a name: " + ability);
 		}
-		else if (abilities.containsKey(ability.getName()) && !ability.equals(abilities.get(ability.getName()))) {
+		if (abilities.containsKey(ability.getName())) {
 			throw new JPokemonException("An ability with the same name is already registered: " + ability);
 		}
 
@@ -39,17 +44,35 @@ public class SimpleAbilityManager implements Manager<Ability> {
 	}
 
 	@Override
-	public boolean isRegistered(String abilityName) {
-		if (abilityName == null) {
-			return false;
-		}
-
-		return getByName(abilityName) != null;
+	public Ability getByName(String name) {
+		return abilities.get(name);
 	}
 
 	@Override
-	public Ability getByName(String name) {
-		return abilities.get(name);
+	public void update(Ability ability) throws JPokemonException {
+		if (ability == null) {
+			throw new JPokemonException("Cannot register null ability");
+		}
+		if (ability.getName() == null) {
+			throw new JPokemonException("Cannot register ability without a name: " + ability);
+		}
+		if (!abilities.containsKey(ability.getName())) {
+			throw new JPokemonException("An ability with the same name is not registered: " + ability);
+		}
+
+		abilities.put(ability.getName(), ability);
+	}
+
+	@Override
+	public void unregister(String name) throws JPokemonException {
+		if (name == null) {
+			throw new JPokemonException("Cannot unregister ability without a name");
+		}
+		if (!abilities.containsKey(name)) {
+			throw new JPokemonException("There is no ability with name: " + name);
+		}
+
+		abilities.remove(name);
 	}
 
 	/**

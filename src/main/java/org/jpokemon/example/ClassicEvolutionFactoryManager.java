@@ -44,15 +44,19 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	}
 
 	@Override
+	public boolean isRegistered(String evolutionFactoryName) {
+		return evolutionFactories.containsKey(evolutionFactoryName);
+	}
+
+	@Override
 	public void register(EvolutionFactory evolutionFactory) throws JPokemonException {
 		if (evolutionFactory == null) {
 			throw new JPokemonException("Cannot register null evolution factory");
 		}
-		else if (evolutionFactory.getEvolutionClass() == null) {
+		if (evolutionFactory.getEvolutionClass() == null) {
 			throw new JPokemonException("Cannot register evolution factory without evolution class: " + evolutionFactory);
 		}
-		else if (evolutionFactories.containsKey(evolutionFactory.getEvolutionClass().getName())
-				&& !evolutionFactory.equals(evolutionFactories.get(evolutionFactory.getEvolutionClass().getName()))) {
+		if (evolutionFactories.containsKey(evolutionFactory.getEvolutionClass().getName())) {
 			throw new JPokemonException("An evolution factory with the same name is already registered: " + evolutionFactory);
 		}
 
@@ -60,17 +64,35 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 	}
 
 	@Override
-	public boolean isRegistered(String evolutionFactoryName) {
-		if (evolutionFactoryName == null) {
-			return false;
-		}
-
-		return getByName(evolutionFactoryName) != null;
+	public EvolutionFactory getByName(String name) {
+		return evolutionFactories.get(name);
 	}
 
 	@Override
-	public EvolutionFactory getByName(String name) {
-		return evolutionFactories.get(name);
+	public void update(EvolutionFactory evolutionFactory) throws JPokemonException {
+		if (evolutionFactory == null) {
+			throw new JPokemonException("Cannot register null evolution factory");
+		}
+		if (evolutionFactory.getEvolutionClass() == null) {
+			throw new JPokemonException("Cannot register evolution factory without evolution class: " + evolutionFactory);
+		}
+		if (!evolutionFactories.containsKey(evolutionFactory.getEvolutionClass().getName())) {
+			throw new JPokemonException("An evolution factory with the same name is not registered: " + evolutionFactory);
+		}
+
+		evolutionFactories.put(evolutionFactory.getEvolutionClass().getName(), evolutionFactory);
+	}
+
+	@Override
+	public void unregister(String evolutionClass) throws JPokemonException {
+		if (evolutionClass == null) {
+			throw new JPokemonException("Cannot unregister evolution factory without evolution class");
+		}
+		if (!evolutionFactories.containsKey(evolutionClass)) {
+			throw new JPokemonException("There is no evolution factory with evolution class: " + evolutionClass);
+		}
+
+		evolutionFactories.remove(evolutionClass);
 	}
 
 	/**

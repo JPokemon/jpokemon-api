@@ -25,32 +25,55 @@ public class SimpleItemManager implements Manager<Item> {
 	}
 
 	@Override
+	public boolean isRegistered(String itemName) {
+		return items.containsKey(itemName);
+	}
+
+	@Override
 	public void register(Item item) throws JPokemonException {
 		if (item == null) {
 			throw new JPokemonException("Cannot register null item");
 		}
-		else if (item.getName() == null) {
+		if (item.getName() == null) {
 			throw new JPokemonException("Cannot register item without a name: " + item);
 		}
-		else if (items.containsKey(item.getName()) && !item.equals(items.get(item.getName()))) {
-			throw new JPokemonException("An item witht he same name is already registered: " + item);
+		if (items.containsKey(item.getName())) {
+			throw new JPokemonException("An item with the same name is already registered: " + item);
 		}
 
 		items.put(item.getName(), item);
 	}
 
 	@Override
-	public boolean isRegistered(String itemName) {
-		if (itemName == null) {
-			return false;
-		}
-
-		return items.get(itemName) != null;
+	public Item getByName(String name) {
+		return items.get(name);
 	}
 
 	@Override
-	public Item getByName(String name) {
-		return items.get(name);
+	public void update(Item item) throws JPokemonException {
+		if (item == null) {
+			throw new JPokemonException("Cannot register null item");
+		}
+		if (item.getName() == null) {
+			throw new JPokemonException("Cannot register item without a name: " + item);
+		}
+		if (!items.containsKey(item.getName())) {
+			throw new JPokemonException("An item with the same name is not registered: " + item);
+		}
+
+		items.put(item.getName(), item);
+	}
+
+	@Override
+	public void unregister(String name) throws JPokemonException {
+		if (name == null) {
+			throw new JPokemonException("Cannot unregister item without a name");
+		}
+		if (!items.containsKey(name)) {
+			throw new JPokemonException("There is no item with name: " + name);
+		}
+
+		items.remove(name);
 	}
 
 	/**

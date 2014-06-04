@@ -59,15 +59,19 @@ public class ClassicExperienceCurveManager implements Manager<ExperienceCurve> {
 	}
 
 	@Override
+	public boolean isRegistered(String experienceCurveName) {
+		return experienceCurves.containsKey(experienceCurveName);
+	}
+
+	@Override
 	public void register(ExperienceCurve experienceCurve) throws JPokemonException {
 		if (experienceCurve == null) {
 			throw new JPokemonException("Cannot register null experience curve");
 		}
-		else if (experienceCurve.getName() == null) {
+		if (experienceCurve.getName() == null) {
 			throw new JPokemonException("Cannot register experience curve without a name: " + experienceCurve);
 		}
-		else if (experienceCurves.containsKey(experienceCurve.getName())
-				&& !experienceCurve.equals(experienceCurves.get(experienceCurve.getName()))) {
+		if (experienceCurves.containsKey(experienceCurve.getName())) {
 			throw new JPokemonException("An experience curve with the same name is already registered: " + experienceCurve);
 		}
 
@@ -75,17 +79,35 @@ public class ClassicExperienceCurveManager implements Manager<ExperienceCurve> {
 	}
 
 	@Override
-	public boolean isRegistered(String experienceCurveName) {
-		if (experienceCurveName == null) {
-			return false;
-		}
-
-		return getByName(experienceCurveName) != null;
+	public ExperienceCurve getByName(String name) {
+		return experienceCurves.get(name);
 	}
 
 	@Override
-	public ExperienceCurve getByName(String name) {
-		return experienceCurves.get(name);
+	public void update(ExperienceCurve experienceCurve) throws JPokemonException {
+		if (experienceCurve == null) {
+			throw new JPokemonException("Cannot register null experience curve");
+		}
+		if (experienceCurve.getName() == null) {
+			throw new JPokemonException("Cannot register experience curve without a name: " + experienceCurve);
+		}
+		if (!experienceCurves.containsKey(experienceCurve.getName())) {
+			throw new JPokemonException("An experience curve with the same name is not registered: " + experienceCurve);
+		}
+
+		experienceCurves.put(experienceCurve.getName(), experienceCurve);
+	}
+
+	@Override
+	public void unregister(String name) throws JPokemonException {
+		if (name == null) {
+			throw new JPokemonException("Cannot unregister experience curve without a name");
+		}
+		if (!experienceCurves.containsKey(name)) {
+			throw new JPokemonException("There is no experience curve with name: " + name);
+		}
+
+		experienceCurves.remove(name);
 	}
 
 	/**

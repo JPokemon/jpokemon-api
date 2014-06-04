@@ -159,14 +159,19 @@ public class ClassicNatureManager implements Manager<Nature> {
 	}
 
 	@Override
+	public boolean isRegistered(String natureName) {
+		return natures.containsKey(natureName);
+	}
+
+	@Override
 	public void register(Nature nature) throws JPokemonException {
 		if (nature == null) {
 			throw new JPokemonException("Cannot register null nature");
 		}
-		else if (nature.getName() == null) {
+		if (nature.getName() == null) {
 			throw new JPokemonException("Cannot register nature without a name: " + nature);
 		}
-		else if (natures.containsKey(nature.getName()) && !nature.equals(natures.get(nature.getName()))) {
+		if (natures.containsKey(nature.getName())) {
 			throw new JPokemonException("A nature with the same name is already registered: " + nature);
 		}
 
@@ -174,17 +179,35 @@ public class ClassicNatureManager implements Manager<Nature> {
 	}
 
 	@Override
-	public boolean isRegistered(String natureName) {
-		if (natureName == null) {
-			return false;
-		}
-
-		return getByName(natureName) != null;
+	public Nature getByName(String name) {
+		return natures.get(name);
 	}
 
 	@Override
-	public Nature getByName(String name) {
-		return natures.get(name);
+	public void update(Nature nature) throws JPokemonException {
+		if (nature == null) {
+			throw new JPokemonException("Cannot register null nature");
+		}
+		if (nature.getName() == null) {
+			throw new JPokemonException("Cannot register nature without a name: " + nature);
+		}
+		if (!natures.containsKey(nature.getName())) {
+			throw new JPokemonException("A nature with the same name is not registered: " + nature);
+		}
+
+		natures.put(nature.getName(), nature);
+	}
+
+	@Override
+	public void unregister(String name) throws JPokemonException {
+		if (name == null) {
+			throw new JPokemonException("Cannot unregister nature without a name");
+		}
+		if (!natures.containsKey(name)) {
+			throw new JPokemonException("There is no nature with name: " + name);
+		}
+
+		natures.remove(name);
 	}
 
 	/**

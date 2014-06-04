@@ -123,14 +123,19 @@ public class ClassicTypeManager implements Manager<Type> {
 	}
 
 	@Override
+	public boolean isRegistered(String typeName) {
+		return types.containsKey(typeName);
+	}
+
+	@Override
 	public void register(Type type) throws JPokemonException {
 		if (type == null) {
 			throw new JPokemonException("Cannot register null type");
 		}
-		else if (type.getName() == null) {
+		if (type.getName() == null) {
 			throw new JPokemonException("Cannot register type without a name: " + type);
 		}
-		if (types.containsKey(type.getName()) && !type.equals(types.get(type.getName()))) {
+		if (types.containsKey(type.getName())) {
 			throw new JPokemonException("A type with the same name is already registered: " + type);
 		}
 
@@ -138,17 +143,35 @@ public class ClassicTypeManager implements Manager<Type> {
 	}
 
 	@Override
-	public boolean isRegistered(String typeName) {
-		if (typeName == null) {
-			return false;
-		}
-
-		return getByName(typeName) != null;
+	public Type getByName(String name) {
+		return types.get(name);
 	}
 
 	@Override
-	public Type getByName(String name) {
-		return types.get(name);
+	public void update(Type type) throws JPokemonException {
+		if (type == null) {
+			throw new JPokemonException("Cannot register null type");
+		}
+		if (type.getName() == null) {
+			throw new JPokemonException("Cannot register type without a name: " + type);
+		}
+		if (!types.containsKey(type.getName())) {
+			throw new JPokemonException("A type with the same name is not registered: " + type);
+		}
+
+		types.put(type.getName(), type);
+	}
+
+	@Override
+	public void unregister(String name) throws JPokemonException {
+		if (name == null) {
+			throw new JPokemonException("Cannot unregister type without a name");
+		}
+		if (!types.containsKey(name)) {
+			throw new JPokemonException("There is no type with name: " + name);
+		}
+
+		types.remove(name);
 	}
 
 	/**

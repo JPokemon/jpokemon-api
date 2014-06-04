@@ -19,6 +19,7 @@ import org.jpokemon.api.Manager;
  * repressed.
  * 
  * @author atheriel@gmail.com
+ * @author zach
  * 
  * @since 0.1
  * 
@@ -26,7 +27,7 @@ import org.jpokemon.api.Manager;
  */
 public class SimpleManager<T> implements Manager<T> {
 	protected Map<String, T> objectMap = new TreeMap<String, T>();
-	protected Class<T> managedClass;
+	protected Method getNameMethod;
 
 	/**
 	 * Constructs a new SimpleManager for the given type, 'T'
@@ -40,37 +41,11 @@ public class SimpleManager<T> implements Manager<T> {
 	 *           method
 	 */
 	public SimpleManager(Class<T> managedClass) throws JPokemonException {
-		this.managedClass = managedClass;
-
 		try {
-			managedClass.getMethod("getName");
+			getNameMethod = managedClass.getMethod("getName");
 		} catch (Exception e) {
-			throw new JPokemonException("No method \"getName\" available for class: " + managedClass.toString());
+			throw new JPokemonException("No method \"getName\" available for class: " + managedClass.getName());
 		}
-	}
-
-	@Override
-	public void register(T managed) throws JPokemonException {
-		if (managed == null) {
-			throw new JPokemonException("Cannot register null object");
-		}
-		// Get the name via reflection
-		String name = null;
-		try {
-			Method getName = managedClass.getMethod("getName");
-			name = (String) getName.invoke(managed);
-		} catch (Exception e) {
-		}
-
-		// Use the name to register, and check that it does not conflict
-		if (name == null) {
-			throw new JPokemonException("Cannot register object without a name: " + managed);
-		}
-		else if (objectMap.containsKey(name) && !managed.equals(objectMap.get(name))) {
-			throw new JPokemonException("A object with the same name is already registered: " + name);
-		}
-
-		objectMap.put(name, managed);
 	}
 
 	@Override
@@ -83,11 +58,65 @@ public class SimpleManager<T> implements Manager<T> {
 	}
 
 	@Override
-	public T getByName(String name) {
-		if (!isRegistered(name)) {
-			return null;
+	public void register(T managed) throws JPokemonException {
+		if (managed == null) {
+			throw new JPokemonException("Cannot register null object");
 		}
 
+		// Get the name via reflection
+		String name = null;
+		try {
+			name = (String) getNameMethod.invoke(managed);
+		} catch (Exception e) {
+		}
+
+		if (name == null) {
+			throw new JPokemonException("Cannot register object without a name: " + managed);
+		}
+		if (objectMap.containsKey(name)) {
+			throw new JPokemonException("A object with the same name is already registered: " + managed);
+		}
+
+		objectMap.put(name, managed);
+	}
+
+	@Override
+	public T getByName(String name) {
 		return objectMap.get(name);
+	}
+
+	@Override
+	public void update(T managed) throws JPokemonException {
+		if (managed == null) {
+			throw new JPokemonException("Cannot register null object");
+		}
+
+		// Get the name via reflection
+		String name = null;
+		try {
+			name = (String) getNameMethod.invoke(managed);
+		} catch (Exception e) {
+		}
+
+		if (name == null) {
+			throw new JPokemonException("Cannot register object without a name: " + managed);
+		}
+		if (!objectMap.containsKey(name)) {
+			throw new JPokemonException("An object with the same name is not registered: " + managed);
+		}
+
+		objectMap.put(name, managed);
+	}
+
+	@Override
+	public void unregister(String name) throws JPokemonException {
+		if (name == null) {
+			throw new JPokemonException("Cannot unregister object without a name");
+		}
+		if (!objectMap.containsKey(name)) {
+			throw new JPokemonException("There is no object registered with name: " + name);
+		}
+
+		objectMap.remove(name);
 	}
 }

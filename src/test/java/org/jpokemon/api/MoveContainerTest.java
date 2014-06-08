@@ -4,11 +4,11 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-public class MoveInstanceTest extends TestCase {
+public class MoveContainerTest extends TestCase {
 	@Test
 	public void testMove() {
 		String moveName = "FooMove";
-		MoveInstance move = new MoveInstance();
+		MoveContainer move = new MoveContainer();
 		move.setMove(moveName);
 		assertEquals(moveName, move.getMove());
 	}
@@ -16,7 +16,7 @@ public class MoveInstanceTest extends TestCase {
 	@Test
 	public void testCurrentPP() {
 		int currentPP = 123456;
-		MoveInstance move = new MoveInstance();
+		MoveContainer move = new MoveContainer();
 		move.setCurrentPP(currentPP);
 		assertEquals(currentPP, move.getCurrentPP());
 	}
@@ -24,7 +24,7 @@ public class MoveInstanceTest extends TestCase {
 	@Test
 	public void testMaxPP() {
 		int maxPP = 123456;
-		MoveInstance move = new MoveInstance();
+		MoveContainer move = new MoveContainer();
 		move.setMaxPP(maxPP);
 		assertEquals(maxPP, move.getMaxPP());
 	}

@@ -52,7 +52,7 @@ public class Pokemon {
 	protected List<String> statusConditions;
 
 	/** Indicates the moves of this Pokémon */
-	protected List<MoveInstance> moves;
+	protected List<MoveContainer> moves;
 
 	/** Indicates the stats of this Pokémon */
 	protected Map<String, Stat> stats;
@@ -222,7 +222,7 @@ public class Pokemon {
 	}
 
 	/** Gets the move with the specified index in this Pokémon's move set */
-	public MoveInstance getMove(int index) {
+	public MoveContainer getMove(int index) {
 		if (moves == null || index < 0 || index >= moves.size()) {
 			return null;
 		}
@@ -231,9 +231,9 @@ public class Pokemon {
 	}
 
 	/** Adds a move to this Pokémon's move set */
-	public Pokemon addMove(MoveInstance move) {
+	public Pokemon addMove(MoveContainer move) {
 		if (moves == null) {
-			moves = new ArrayList<MoveInstance>();
+			moves = new ArrayList<MoveContainer>();
 		}
 
 		moves.add(move);
@@ -241,7 +241,7 @@ public class Pokemon {
 	}
 
 	/** Removes the specified MoveInstance from this Pokémon's move set */
-	public Pokemon removeMove(MoveInstance move) {
+	public Pokemon removeMove(MoveContainer move) {
 		if (moves != null) {
 			moves.remove(move);
 		}
@@ -250,12 +250,12 @@ public class Pokemon {
 	}
 
 	/** Gets the moves associated with this Pokemon */
-	public List<MoveInstance> getMoves() {
+	public List<MoveContainer> getMoves() {
 		return moves;
 	}
 
 	/** Sets all moves associated with this Pokemon */
-	public Pokemon setMoves(List<MoveInstance> moves) {
+	public Pokemon setMoves(List<MoveContainer> moves) {
 		this.moves = moves;
 		return this;
 	}

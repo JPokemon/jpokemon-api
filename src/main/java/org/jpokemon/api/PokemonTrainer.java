@@ -15,6 +15,9 @@ import java.util.Map;
  * @since 0.1
  */
 public class PokemonTrainer {
+	/** Indicates the manager used to register Pokémon trainers. May be null. */
+	public static Manager<PokemonTrainer> manager;
+
 	/** Indicates the name of the trainer */
 	protected String name;
 

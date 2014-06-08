@@ -10,7 +10,7 @@ import org.jpokemon.api.Pokemon;
 import org.jpokemon.api.PokemonManager;
 
 public class SimplePokemonManager implements PokemonManager {
-	/** The map of Moves that have been registered by name */
+	/** The map of Pokémon that have been registered by trainer id */
 	protected Map<Integer, List<Pokemon>> pokemon = new HashMap<Integer, List<Pokemon>>();
 
 	/** Provides the default constructor */

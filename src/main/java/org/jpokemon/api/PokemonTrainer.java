@@ -33,6 +33,9 @@ public class PokemonTrainer {
 	/** Indicates the trainer's Pokémon */
 	protected List<Pokemon> pokemon;
 
+	/** Provides a hook for storing meta-data */
+	protected List<Object> metaData;
+
 	/** Gets the name of this trainer */
 	public String getName() {
 		return this.name;
@@ -123,6 +126,36 @@ public class PokemonTrainer {
 	/** Sets the trainer's Pokémon */
 	public PokemonTrainer setPokemon(List<Pokemon> pokemon) {
 		this.pokemon = pokemon;
+		return this;
+	}
+
+	/** Adds a meta data item to this trainer */
+	public PokemonTrainer addMetaData(Object metaData) {
+		if (this.metaData == null) {
+			this.metaData = new ArrayList<Object>();
+		}
+
+		this.metaData.add(metaData);
+		return this;
+	}
+
+	/** Removes a meta data item from this trainer */
+	public PokemonTrainer removeMetaData(Object metaData) {
+		if (this.metaData != null) {
+			this.metaData.remove(metaData);
+		}
+
+		return this;
+	}
+
+	/** Gets all meta data of this trainer */
+	public List<Object> getMetaData() {
+		return this.metaData;
+	}
+
+	/** Sets all meta data of this trainer */
+	public PokemonTrainer setMetaData(List<Object> metaData) {
+		this.metaData = metaData;
 		return this;
 	}
 }

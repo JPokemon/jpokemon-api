@@ -18,7 +18,7 @@ import org.jpokemon.api.PokemonTrainer;
  * @since 0.1
  */
 public class SimplePokemonTrainerManager implements Manager<PokemonTrainer> {
-	/** The map of Moves that have been registered by name */
+	/** The map of Pokémon trainers that have been registered by name */
 	protected Map<String, PokemonTrainer> pokemonTrainers = new HashMap<String, PokemonTrainer>();
 
 	/** Provides the default constructor */

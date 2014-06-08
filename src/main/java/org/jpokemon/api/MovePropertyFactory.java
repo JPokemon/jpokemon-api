@@ -20,7 +20,7 @@ public abstract class MovePropertyFactory {
 	/** Gets the class of move properties that this factory produces */
 	public abstract Class<?> getMovePropertyClass();
 
-	/** Builds an item attribute, given the options provided */
+	/** Builds a move property, given the options provided */
 	public abstract Object buildMoveProperty(String options) throws JPokemonException;
 
 	/** Serializes a move property to a string for registration */

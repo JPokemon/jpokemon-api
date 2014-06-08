@@ -1,114 +1,125 @@
-package org.jpokemon.api.trainers;
+package org.jpokemon.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Defines a basic trainer class. Trainers possess a party of Pokemon instances 
+ * Defines a basic trainer class. Trainers possess a party of Pokemon instances
  * and a list of item names. They may also belong to a class of other trainers.
- *
+ * 
  * @author atheriel@gmail.com
- *
- * @since  0.1
- *
- * @see TrainerClass
+ * @author zach
+ * 
+ * @since 0.1
  */
 public class PokemonTrainer {
-	/** Indicates the name of the trainer. */
+	/** Indicates the name of the trainer */
 	protected String name;
 
-	/** Indicates the trainer's ID number. */
-	protected int ID;
+	/** Indicates the trainer's ID number */
+	protected int trainerID;
 
-	/** Indicates the name of the trainer's class, or `null` if it has none. */
-	protected String className = null;
-	
-	/** Indicates the list of items the trainer has (by name). */
-	protected ArrayList<String> items;
-	
-	/** Indicates the trainer's party Pokémon. */
-	//protected ArrayList<Pokemon> party;
+	/** Indicates the name of the trainer's class */
+	protected String trainerClass;
 
-	/** Gets the name of this trainer. */
+	/** Indicates the quantity of each item the trainer has (by name) */
+	protected Map<String, Integer> items;
+
+	/** Indicates the trainer's Pokémon */
+	protected List<Pokemon> pokemon;
+
+	/** Gets the name of this trainer */
 	public String getName() {
 		return this.name;
 	}
 
-	/** Sets the name of this trainer. */
+	/** Sets the name of this trainer */
 	public PokemonTrainer setName(String name) {
 		this.name = name;
 		return this;
 	}
 
-	/** Gets the ID number of this trainer. */
-	public int getID() {
-		return this.ID;
+	/** Gets the trainer's ID number */
+	public int getTrainerID() {
+		return trainerID;
 	}
 
-	/** Sets the ID number of this trainer. */
-	public void setID(int ID) {
-		this.ID = ID;
+	/** Sets the trainer's ID number */
+	public PokemonTrainer setTrainerID(int trainerID) {
+		this.trainerID = trainerID;
+		return this;
 	}
 
-	/** Checks if this trainer belongs to a trainer class. */
-	public boolean hasClass() {
-		return (className != null);
+	/** Gets the name of the trainer's class */
+	public String getTrainerClass() {
+		return trainerClass;
 	}
 
-	/** Gets the name of this trainer's class. */
-	public String getClassName() {
-		return this.className;
+	/** Sets the name of the trainer's class */
+	public PokemonTrainer setTrainerClass(String trainerClass) {
+		this.trainerClass = trainerClass;
+		return this;
 	}
 
-	/** Sets the name of this trainer's class. */
-	public void setClassName(String className) {
-		this.className = className;
-	}
-
-	/** Gets the names of the items this trainer possesses. */
-	public String[] getItems() {
-		return (String[]) this.items.toArray();
-	}
-
-	/** Sets the items this trainer possesses by name. */
-	public void setItems(String... items) {
-		if (items != null) {
-			this.items = new ArrayList<String>();
-			for (String i : items) {
-				this.items.add(i);
-			}
+	/** Gets the quantity of an item the trainer has (by name) */
+	public int getItemQuantity(String item) {
+		if (items == null || !items.containsKey(item)) {
+			return 0;
 		}
+
+		return items.get(item);
 	}
 
-	/**
-	 * Adds an item to this trainer by name.
-	 * 
-	 * @return      `true` if the item has been successfully added to the list.
-	 */
-	public boolean addItem(String name) {
-		if (this.items == null) {
-			this.items = new ArrayList<String>();
+	/** Sets the quantity of an item the trainer has (by name) */
+	public PokemonTrainer setItemQuantity(String item, int quantity) {
+		if (items == null) {
+			items = new HashMap<String, Integer>();
 		}
-		return this.items.add(name);
+
+		items.put(item, quantity);
+		return this;
 	}
 
-	/**
-	 * Removes an item from this trainer by name.
-	 * 
-	 * @return      `true` if the item has been successfully removed from the 
-	 *               list.
-	 */
-	public boolean removeItem(String name) {
-		if (!this.items.contains(name)) {
-			return false;
-		}
-		return this.items.remove(name);
+	/** Gets the quantity of each item the trainer has (by name) */
+	public Map<String, Integer> getItems() {
+		return items;
 	}
 
-	/** Checks if the trainer has an item of this name. */
-	public boolean hasItem(String name) {
-		if (this.items.contains(name)) {
-			return true;
+	/** Sets the quantity of each item the trainer has (by name) */
+	public PokemonTrainer setItems(Map<String, Integer> items) {
+		this.items = items;
+		return this;
+	}
+
+	/** Adds a Pokémon to the trainer's collection */
+	public PokemonTrainer addPokemon(Pokemon pokemon) {
+		if (this.pokemon == null) {
+			this.pokemon = new ArrayList<Pokemon>();
 		}
-		return false;
+
+		this.pokemon.add(pokemon);
+		return this;
+	}
+
+	/** Removes a Pokémon from the trainer's collection */
+	public PokemonTrainer removePokemon(Pokemon pokemon) {
+		if (this.pokemon != null) {
+			this.pokemon.remove(pokemon);
+		}
+
+		return this;
+	}
+
+	/** Gets the trainer's Pokémon */
+	public List<Pokemon> getPokemon() {
+		return pokemon;
+	}
+
+	/** Sets the trainer's Pokémon */
+	public PokemonTrainer setPokemon(List<Pokemon> pokemon) {
+		this.pokemon = pokemon;
+		return this;
 	}
 }

@@ -79,8 +79,8 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 					+ itemAttributeFactory);
 		}
 		if (itemAttributeFactories.containsKey(itemAttributeFactory.getItemAttributeClass().getName())) {
-			throw new JPokemonException("An item attribute factory with the same name is already registered: "
-					+ itemAttributeFactory);
+			throw new JPokemonException("An item attribute factory is already registered with item attribute class: "
+					+ itemAttributeFactory.getClass().getName());
 		}
 
 		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
@@ -101,8 +101,8 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 					+ itemAttributeFactory);
 		}
 		if (!itemAttributeFactories.containsKey(itemAttributeFactory.getItemAttributeClass().getName())) {
-			throw new JPokemonException("An item attribute factory with the same name is not registered: "
-					+ itemAttributeFactory);
+			throw new JPokemonException("An item attribute factory is not registered with item attribute class: "
+					+ itemAttributeFactory.getClass().getName());
 		}
 
 		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
@@ -114,7 +114,8 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 			throw new JPokemonException("Cannot unregister item attribute factory without item attribute class");
 		}
 		if (!itemAttributeFactories.containsKey(itemAttributeClass)) {
-			throw new JPokemonException("There is no item attribute factory with item attribute class: " + itemAttributeClass);
+			throw new JPokemonException("An item attribute factory is already registered with item attribute class: "
+					+ itemAttributeClass);
 		}
 
 		itemAttributeFactories.remove(itemAttributeClass);

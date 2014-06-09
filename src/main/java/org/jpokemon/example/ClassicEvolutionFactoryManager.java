@@ -57,7 +57,8 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 			throw new JPokemonException("Cannot register evolution factory without evolution class: " + evolutionFactory);
 		}
 		if (evolutionFactories.containsKey(evolutionFactory.getEvolutionClass().getName())) {
-			throw new JPokemonException("An evolution factory with the same name is already registered: " + evolutionFactory);
+			throw new JPokemonException("An evolution factory is already registered with evolution class: "
+					+ evolutionFactory.getClass().getName());
 		}
 
 		evolutionFactories.put(evolutionFactory.getEvolutionClass().getName(), evolutionFactory);
@@ -77,7 +78,8 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 			throw new JPokemonException("Cannot register evolution factory without evolution class: " + evolutionFactory);
 		}
 		if (!evolutionFactories.containsKey(evolutionFactory.getEvolutionClass().getName())) {
-			throw new JPokemonException("An evolution factory with the same name is not registered: " + evolutionFactory);
+			throw new JPokemonException("An evolution factory is not registered with evolution class: "
+					+ evolutionFactory.getClass().getName());
 		}
 
 		evolutionFactories.put(evolutionFactory.getEvolutionClass().getName(), evolutionFactory);
@@ -89,7 +91,7 @@ public class ClassicEvolutionFactoryManager implements Manager<EvolutionFactory>
 			throw new JPokemonException("Cannot unregister evolution factory without evolution class");
 		}
 		if (!evolutionFactories.containsKey(evolutionClass)) {
-			throw new JPokemonException("There is no evolution factory with evolution class: " + evolutionClass);
+			throw new JPokemonException("An evolution factory is not registered with evolution class: " + evolutionClass);
 		}
 
 		evolutionFactories.remove(evolutionClass);

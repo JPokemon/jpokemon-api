@@ -1,8 +1,8 @@
 package org.jpokemon.api;
 
 /**
- * Defines an algorithm for producing {@link PokemonTrainer#metaData}. Provides a
- * {@link Manager} reference for construction libraries to target. It is
+ * Defines an algorithm for producing {@link PokemonTrainer#metaData}. Provides
+ * a {@link Manager} reference for construction libraries to target. It is
  * recommended for library code, and therefore, library consumers. A simple
  * project may choose to completely ignore this class.
  * 
@@ -12,8 +12,8 @@ package org.jpokemon.api;
  */
 public abstract class TrainerMetaDataFactory {
 	/**
-	 * Indicates the manager used to register Pokémon meta data factories. May be
-	 * null.
+	 * Indicates the manager used to register Pokémon trainer meta data factories.
+	 * May be null.
 	 */
 	public static Manager<TrainerMetaDataFactory> manager;
 

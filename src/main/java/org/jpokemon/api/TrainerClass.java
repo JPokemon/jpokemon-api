@@ -9,6 +9,12 @@ package org.jpokemon.api;
  * @since 0.1
  */
 public class TrainerClass {
+	/**
+	 * Indicates the manager used to register Pokémon trainer classes. May be
+	 * null.
+	 */
+	public static Manager<TrainerClass> manager;
+
 	/** Indicates the name of the trainer class */
 	protected String name;
 

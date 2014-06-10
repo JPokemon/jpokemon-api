@@ -19,7 +19,7 @@ import org.jpokemon.api.Manager;
 public class SimpleAbilityManager implements Manager<Ability> {
 	protected Map<String, Ability> abilities = new HashMap<String, Ability>();
 
-	/** Provides the default constructor. */
+	/** Provides the default constructor */
 	public SimpleAbilityManager() {
 	}
 
@@ -36,8 +36,8 @@ public class SimpleAbilityManager implements Manager<Ability> {
 		if (ability.getName() == null) {
 			throw new JPokemonException("Cannot register ability without a name: " + ability);
 		}
-		if (abilities.containsKey(ability.getName())) {
-			throw new JPokemonException("An ability with the same name is already registered: " + ability);
+		if (isRegistered(ability.getName())) {
+			throw new JPokemonException("An ability is already registered with name: " + ability.getName());
 		}
 
 		abilities.put(ability.getName(), ability);
@@ -56,8 +56,8 @@ public class SimpleAbilityManager implements Manager<Ability> {
 		if (ability.getName() == null) {
 			throw new JPokemonException("Cannot register ability without a name: " + ability);
 		}
-		if (!abilities.containsKey(ability.getName())) {
-			throw new JPokemonException("An ability with the same name is not registered: " + ability);
+		if (!isRegistered(ability.getName())) {
+			throw new JPokemonException("An ability is not registered with name: " + ability.getName());
 		}
 
 		abilities.put(ability.getName(), ability);
@@ -68,8 +68,8 @@ public class SimpleAbilityManager implements Manager<Ability> {
 		if (name == null) {
 			throw new JPokemonException("Cannot unregister ability without a name");
 		}
-		if (!abilities.containsKey(name)) {
-			throw new JPokemonException("There is no ability with name: " + name);
+		if (!isRegistered(name)) {
+			throw new JPokemonException("An ability is not registered with name: " + name);
 		}
 
 		abilities.remove(name);

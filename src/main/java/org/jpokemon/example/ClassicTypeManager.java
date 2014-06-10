@@ -1,10 +1,6 @@
 package org.jpokemon.example;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jpokemon.api.JPokemonException;
-import org.jpokemon.api.Manager;
 import org.jpokemon.api.Type;
 
 /**
@@ -15,9 +11,7 @@ import org.jpokemon.api.Type;
  * 
  * @since 0.1
  */
-public class ClassicTypeManager implements Manager<Type> {
-	protected Map<String, Type> types = new HashMap<String, Type>();
-
+public class ClassicTypeManager extends SimpleTypeManager {
 	/** Indicates the name of the "???" type */
 	public static final String QUESTION_NAME = "???";
 
@@ -120,58 +114,6 @@ public class ClassicTypeManager implements Manager<Type> {
 				.setNotVeryEffectiveAgainst(FIRE_NAME, WATER_NAME, ELECTRIC_NAME, STEEL_NAME));
 		register(new Type().setName(FAIRY_NAME).setSuperEffectiveAgainst(DARK_NAME, DRAGON_NAME, FIGHTING_NAME)
 				.setNotVeryEffectiveAgainst(FIRE_NAME, POISON_NAME, STEEL_NAME));
-	}
-
-	@Override
-	public boolean isRegistered(String typeName) {
-		return types.containsKey(typeName);
-	}
-
-	@Override
-	public void register(Type type) throws JPokemonException {
-		if (type == null) {
-			throw new JPokemonException("Cannot register null type");
-		}
-		if (type.getName() == null) {
-			throw new JPokemonException("Cannot register type without a name: " + type);
-		}
-		if (types.containsKey(type.getName())) {
-			throw new JPokemonException("A type with the same name is already registered: " + type);
-		}
-
-		types.put(type.getName(), type);
-	}
-
-	@Override
-	public Type getByName(String name) {
-		return types.get(name);
-	}
-
-	@Override
-	public void update(Type type) throws JPokemonException {
-		if (type == null) {
-			throw new JPokemonException("Cannot register null type");
-		}
-		if (type.getName() == null) {
-			throw new JPokemonException("Cannot register type without a name: " + type);
-		}
-		if (!types.containsKey(type.getName())) {
-			throw new JPokemonException("A type with the same name is not registered: " + type);
-		}
-
-		types.put(type.getName(), type);
-	}
-
-	@Override
-	public void unregister(String name) throws JPokemonException {
-		if (name == null) {
-			throw new JPokemonException("Cannot unregister type without a name");
-		}
-		if (!types.containsKey(name)) {
-			throw new JPokemonException("There is no type with name: " + name);
-		}
-
-		types.remove(name);
 	}
 
 	/**

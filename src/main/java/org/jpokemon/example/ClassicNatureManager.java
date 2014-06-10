@@ -1,10 +1,6 @@
 package org.jpokemon.example;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jpokemon.api.JPokemonException;
-import org.jpokemon.api.Manager;
 import org.jpokemon.api.Nature;
 
 /**
@@ -16,9 +12,7 @@ import org.jpokemon.api.Nature;
  * 
  * @since 0.1
  */
-public class ClassicNatureManager implements Manager<Nature> {
-	protected Map<String, Nature> natures = new HashMap<String, Nature>();
-
+public class ClassicNatureManager extends SimpleNatureManager {
 	/** Indicates the name of the Bashful nature */
 	public static final String BASHFUL_NATURE = "Bashful";
 
@@ -158,57 +152,6 @@ public class ClassicNatureManager implements Manager<Nature> {
 				.setFlavorFavorite("Sweet").setFlavorDisliked("Bitter"));
 	}
 
-	@Override
-	public boolean isRegistered(String natureName) {
-		return natures.containsKey(natureName);
-	}
-
-	@Override
-	public void register(Nature nature) throws JPokemonException {
-		if (nature == null) {
-			throw new JPokemonException("Cannot register null nature");
-		}
-		if (nature.getName() == null) {
-			throw new JPokemonException("Cannot register nature without a name: " + nature);
-		}
-		if (natures.containsKey(nature.getName())) {
-			throw new JPokemonException("A nature with the same name is already registered: " + nature);
-		}
-
-		natures.put(nature.getName(), nature);
-	}
-
-	@Override
-	public Nature getByName(String name) {
-		return natures.get(name);
-	}
-
-	@Override
-	public void update(Nature nature) throws JPokemonException {
-		if (nature == null) {
-			throw new JPokemonException("Cannot register null nature");
-		}
-		if (nature.getName() == null) {
-			throw new JPokemonException("Cannot register nature without a name: " + nature);
-		}
-		if (!natures.containsKey(nature.getName())) {
-			throw new JPokemonException("A nature with the same name is not registered: " + nature);
-		}
-
-		natures.put(nature.getName(), nature);
-	}
-
-	@Override
-	public void unregister(String name) throws JPokemonException {
-		if (name == null) {
-			throw new JPokemonException("Cannot unregister nature without a name");
-		}
-		if (!natures.containsKey(name)) {
-			throw new JPokemonException("There is no nature with name: " + name);
-		}
-
-		natures.remove(name);
-	}
 
 	/**
 	 * Initializes a new ClassicNatureManager as the {@link Nature#manager}

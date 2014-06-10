@@ -17,7 +17,6 @@ import org.jpokemon.api.Move;
  * @since 0.1
  */
 public class SimpleMoveManager implements Manager<Move> {
-	/** The map of Moves that have been registered by name */
 	protected Map<String, Move> moves = new HashMap<String, Move>();
 
 	/** Provides the default constructor */
@@ -26,11 +25,7 @@ public class SimpleMoveManager implements Manager<Move> {
 
 	@Override
 	public boolean isRegistered(String moveName) {
-		if (moveName == null) {
-			return false;
-		}
-
-		return moves.get(moveName) != null;
+		return moves.containsKey(moveName);
 	}
 
 	@Override
@@ -41,8 +36,8 @@ public class SimpleMoveManager implements Manager<Move> {
 		if (move.getName() == null) {
 			throw new JPokemonException("Cannot register move without a name: " + move);
 		}
-		if (moves.containsKey(move.getName())) {
-			throw new JPokemonException("A move with the same name is already registered: " + move);
+		if (isRegistered(move.getName())) {
+			throw new JPokemonException("A move is already registered with name: " + move.getName());
 		}
 
 		moves.put(move.getName(), move);
@@ -61,8 +56,8 @@ public class SimpleMoveManager implements Manager<Move> {
 		if (move.getName() == null) {
 			throw new JPokemonException("Cannot register move without a name: " + move);
 		}
-		if (!moves.containsKey(move.getName())) {
-			throw new JPokemonException("A move with the same name is not registered: " + move);
+		if (!isRegistered(move.getName())) {
+			throw new JPokemonException("A move is not registered with name: " + move.getName());
 		}
 
 		moves.put(move.getName(), move);
@@ -73,8 +68,8 @@ public class SimpleMoveManager implements Manager<Move> {
 		if (name == null) {
 			throw new JPokemonException("Cannot unregister move without a name");
 		}
-		if (!moves.containsKey(name)) {
-			throw new JPokemonException("There is no move with name: " + name);
+		if (!isRegistered(name)) {
+			throw new JPokemonException("A move is not registered with name: " + name);
 		}
 
 		moves.remove(name);

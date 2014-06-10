@@ -42,8 +42,8 @@ public class SimplePokemonTrainerManager implements Manager<PokemonTrainer> {
 		if (pokemonTrainer.getName() == null) {
 			throw new JPokemonException("Cannot register pokemon trainer without a name: " + pokemonTrainer);
 		}
-		if (pokemonTrainers.containsKey(pokemonTrainer.getName())) {
-			throw new JPokemonException("A pokemon trainer with the same name is already registered: " + pokemonTrainer);
+		if (isRegistered(pokemonTrainer.getName())) {
+			throw new JPokemonException("A pokemon trainer is already registered with name: " + pokemonTrainer.getName());
 		}
 
 		pokemonTrainers.put(pokemonTrainer.getName(), pokemonTrainer);
@@ -62,8 +62,8 @@ public class SimplePokemonTrainerManager implements Manager<PokemonTrainer> {
 		if (pokemonTrainer.getName() == null) {
 			throw new JPokemonException("Cannot register pokemon trainer without a name: " + pokemonTrainer);
 		}
-		if (!pokemonTrainers.containsKey(pokemonTrainer.getName())) {
-			throw new JPokemonException("A pokemon trainer with the same name is not registered: " + pokemonTrainer);
+		if (!isRegistered(pokemonTrainer.getName())) {
+			throw new JPokemonException("A pokemon trainer is not registered with name: " + pokemonTrainer.getName());
 		}
 
 		pokemonTrainers.put(pokemonTrainer.getName(), pokemonTrainer);
@@ -74,8 +74,8 @@ public class SimplePokemonTrainerManager implements Manager<PokemonTrainer> {
 		if (name == null) {
 			throw new JPokemonException("Cannot unregister pokemon trainer without a name");
 		}
-		if (!pokemonTrainers.containsKey(name)) {
-			throw new JPokemonException("There is no pokemon trainer with name: " + name);
+		if (!isRegistered(name)) {
+			throw new JPokemonException("A pokemon trainer is not registered with name: " + name);
 		}
 
 		pokemonTrainers.remove(name);

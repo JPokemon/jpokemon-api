@@ -37,8 +37,8 @@ public class SimpleItemManager implements Manager<Item> {
 		if (item.getName() == null) {
 			throw new JPokemonException("Cannot register item without a name: " + item);
 		}
-		if (items.containsKey(item.getName())) {
-			throw new JPokemonException("An item with the same name is already registered: " + item);
+		if (isRegistered(item.getName())) {
+			throw new JPokemonException("An item is already registered with name: " + item.getName());
 		}
 
 		items.put(item.getName(), item);
@@ -57,8 +57,8 @@ public class SimpleItemManager implements Manager<Item> {
 		if (item.getName() == null) {
 			throw new JPokemonException("Cannot register item without a name: " + item);
 		}
-		if (!items.containsKey(item.getName())) {
-			throw new JPokemonException("An item with the same name is not registered: " + item);
+		if (!isRegistered(item.getName())) {
+			throw new JPokemonException("An item is not registered with name: " + item.getName());
 		}
 
 		items.put(item.getName(), item);
@@ -69,8 +69,8 @@ public class SimpleItemManager implements Manager<Item> {
 		if (name == null) {
 			throw new JPokemonException("Cannot unregister item without a name");
 		}
-		if (!items.containsKey(name)) {
-			throw new JPokemonException("There is no item with name: " + name);
+		if (!isRegistered(name)) {
+			throw new JPokemonException("An item is not registered with name: " + name);
 		}
 
 		items.remove(name);

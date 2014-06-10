@@ -1,11 +1,7 @@
 package org.jpokemon.example;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.jpokemon.api.ItemAttributeFactory;
 import org.jpokemon.api.JPokemonException;
-import org.jpokemon.api.Manager;
 import org.jpokemon.example.itemattribute.BallAttribute;
 import org.jpokemon.example.itemattribute.BallAttributeFactory;
 import org.jpokemon.example.itemattribute.BerryAttribute;
@@ -34,9 +30,7 @@ import org.jpokemon.example.itemattribute.PocketAttributeFactory;
  * 
  * @since 0.1
  */
-public class ClassicItemAttributeFactoryManager implements Manager<ItemAttributeFactory> {
-	protected Map<String, ItemAttributeFactory> itemAttributeFactories = new HashMap<String, ItemAttributeFactory>();
-
+public class ClassicItemAttributeFactoryManager extends SimpleItemAttributeFactoryManager {
 	/** Indicates the name of the ball attribute factory */
 	public static final String BALL_ATTRIBUTE_FACTORY = BallAttribute.class.getName();
 
@@ -62,63 +56,6 @@ public class ClassicItemAttributeFactoryManager implements Manager<ItemAttribute
 		register(new MachineAttributeFactory());
 		register(new MedicineAttributeFactory());
 		register(new PocketAttributeFactory());
-	}
-
-	@Override
-	public boolean isRegistered(String itemAttributeFactoryName) {
-		return itemAttributeFactories.containsKey(itemAttributeFactoryName);
-	}
-
-	@Override
-	public void register(ItemAttributeFactory itemAttributeFactory) throws JPokemonException {
-		if (itemAttributeFactory == null) {
-			throw new JPokemonException("Cannot register null item attribute factory");
-		}
-		if (itemAttributeFactory.getItemAttributeClass() == null) {
-			throw new JPokemonException("Cannot register item attribute factory without item attribute class: "
-					+ itemAttributeFactory);
-		}
-		if (itemAttributeFactories.containsKey(itemAttributeFactory.getItemAttributeClass().getName())) {
-			throw new JPokemonException("An item attribute factory is already registered with item attribute class: "
-					+ itemAttributeFactory.getClass().getName());
-		}
-
-		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
-	}
-
-	@Override
-	public ItemAttributeFactory getByName(String name) {
-		return itemAttributeFactories.get(name);
-	}
-
-	@Override
-	public void update(ItemAttributeFactory itemAttributeFactory) throws JPokemonException {
-		if (itemAttributeFactory == null) {
-			throw new JPokemonException("Cannot register null item attribute factory");
-		}
-		if (itemAttributeFactory.getItemAttributeClass() == null) {
-			throw new JPokemonException("Cannot register item attribute factory without item attribute class: "
-					+ itemAttributeFactory);
-		}
-		if (!itemAttributeFactories.containsKey(itemAttributeFactory.getItemAttributeClass().getName())) {
-			throw new JPokemonException("An item attribute factory is not registered with item attribute class: "
-					+ itemAttributeFactory.getClass().getName());
-		}
-
-		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
-	}
-
-	@Override
-	public void unregister(String itemAttributeClass) throws JPokemonException {
-		if (itemAttributeClass == null) {
-			throw new JPokemonException("Cannot unregister item attribute factory without item attribute class");
-		}
-		if (!itemAttributeFactories.containsKey(itemAttributeClass)) {
-			throw new JPokemonException("An item attribute factory is already registered with item attribute class: "
-					+ itemAttributeClass);
-		}
-
-		itemAttributeFactories.remove(itemAttributeClass);
 	}
 
 	/**

@@ -28,9 +28,9 @@ public class SimplePokemonMetaDataFactoryManager implements Manager<PokemonMetaD
 			throw new JPokemonException("Cannot register pokemon meta data factory without meta data class: "
 					+ pokemonMetaDataFactory);
 		}
-		if (pokemonMetaDataFactories.containsKey(pokemonMetaDataFactory.getMetaDataClass().getName())) {
-			throw new JPokemonException("A pokemon meta data factory with the same meta data class is already registered: "
-					+ pokemonMetaDataFactory);
+		if (isRegistered(pokemonMetaDataFactory.getMetaDataClass().getName())) {
+			throw new JPokemonException("A pokemon meta data factory is already registered with meta data class: "
+					+ pokemonMetaDataFactory.getMetaDataClass().getName());
 		}
 
 		pokemonMetaDataFactories.put(pokemonMetaDataFactory.getMetaDataClass().getName(), pokemonMetaDataFactory);
@@ -50,9 +50,9 @@ public class SimplePokemonMetaDataFactoryManager implements Manager<PokemonMetaD
 			throw new JPokemonException("Cannot register pokemon meta data factory without meta data class: "
 					+ pokemonMetaDataFactory);
 		}
-		if (!pokemonMetaDataFactories.containsKey(pokemonMetaDataFactory.getMetaDataClass().getName())) {
-			throw new JPokemonException("An pokemon meta data factory is not registered with meta data class: "
-					+ pokemonMetaDataFactory.getClass().getName());
+		if (!isRegistered(pokemonMetaDataFactory.getMetaDataClass().getName())) {
+			throw new JPokemonException("A pokemon meta data factory is not registered with meta data class: "
+					+ pokemonMetaDataFactory.getMetaDataClass().getName());
 		}
 
 		pokemonMetaDataFactories.put(pokemonMetaDataFactory.getMetaDataClass().getName(), pokemonMetaDataFactory);
@@ -63,8 +63,8 @@ public class SimplePokemonMetaDataFactoryManager implements Manager<PokemonMetaD
 		if (metaDataClass == null) {
 			throw new JPokemonException("Cannot unregister pokemon meta data factory without meta data class");
 		}
-		if (!pokemonMetaDataFactories.containsKey(metaDataClass)) {
-			throw new JPokemonException("An pokemon meta data factory is not registered with meta data class: "
+		if (!isRegistered(metaDataClass)) {
+			throw new JPokemonException("A pokemon meta data factory is not registered with meta data class: "
 					+ metaDataClass);
 		}
 

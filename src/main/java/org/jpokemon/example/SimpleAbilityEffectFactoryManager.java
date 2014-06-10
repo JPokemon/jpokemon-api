@@ -39,9 +39,9 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 			throw new JPokemonException("Cannot register ability effect factory without ability effect class: "
 					+ abilityEffectFactory);
 		}
-		if (abilityEffectFactories.containsKey(abilityEffectFactory.getAbilityEffectClass().getName())) {
-			throw new JPokemonException(
-					"An ability effect factory with the same ability effect class is already registered: " + abilityEffectFactory);
+		if (isRegistered(abilityEffectFactory.getAbilityEffectClass().getName())) {
+			throw new JPokemonException("An ability effect factory is already registered with ability effect class: "
+					+ abilityEffectFactory.getAbilityEffectClass().getName());
 		}
 
 		abilityEffectFactories.put(abilityEffectFactory.getAbilityEffectClass().getName(), abilityEffectFactory);
@@ -61,7 +61,7 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 			throw new JPokemonException("Cannot register ability effect factory without ability effect class: "
 					+ abilityEffectFactory);
 		}
-		if (!abilityEffectFactories.containsKey(abilityEffectFactory.getAbilityEffectClass().getName())) {
+		if (!isRegistered(abilityEffectFactory.getAbilityEffectClass().getName())) {
 			throw new JPokemonException("An ability effect factory is not registered with ability effect class: "
 					+ abilityEffectFactory.getClass().getName());
 		}
@@ -74,7 +74,7 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 		if (abilityEffectClass == null) {
 			throw new JPokemonException("Cannot unregister ability effect factory without ability effect class");
 		}
-		if (!abilityEffectFactories.containsKey(abilityEffectClass)) {
+		if (!isRegistered(abilityEffectClass)) {
 			throw new JPokemonException("An ability effect factory is not registered with ability effect class: "
 					+ abilityEffectClass);
 		}

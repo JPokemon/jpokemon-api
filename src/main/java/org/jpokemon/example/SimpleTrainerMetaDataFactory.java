@@ -28,9 +28,9 @@ public class SimpleTrainerMetaDataFactory implements Manager<TrainerMetaDataFact
 			throw new JPokemonException("Cannot register trainer meta data factory without meta data class: "
 					+ trainerMetaDataFactory);
 		}
-		if (trainerMetaDataFactories.containsKey(trainerMetaDataFactory.getMetaDataClass().getName())) {
-			throw new JPokemonException("A trainer meta data factory with the same meta data class is already registered: "
-					+ trainerMetaDataFactory);
+		if (isRegistered(trainerMetaDataFactory.getMetaDataClass().getName())) {
+			throw new JPokemonException("A trainer meta data factory is already registered with meta data class: "
+					+ trainerMetaDataFactory.getMetaDataClass().getName());
 		}
 
 		trainerMetaDataFactories.put(trainerMetaDataFactory.getMetaDataClass().getName(), trainerMetaDataFactory);
@@ -50,9 +50,9 @@ public class SimpleTrainerMetaDataFactory implements Manager<TrainerMetaDataFact
 			throw new JPokemonException("Cannot register v meta data factory without meta data class: "
 					+ trainerMetaDataFactory);
 		}
-		if (!trainerMetaDataFactories.containsKey(trainerMetaDataFactory.getMetaDataClass().getName())) {
-			throw new JPokemonException("An trainer meta data factory is not registered with meta data class: "
-					+ trainerMetaDataFactory.getClass().getName());
+		if (!isRegistered(trainerMetaDataFactory.getMetaDataClass().getName())) {
+			throw new JPokemonException("A trainer meta data factory is not registered with meta data class: "
+					+ trainerMetaDataFactory.getMetaDataClass().getName());
 		}
 
 		trainerMetaDataFactories.put(trainerMetaDataFactory.getMetaDataClass().getName(), trainerMetaDataFactory);
@@ -63,8 +63,8 @@ public class SimpleTrainerMetaDataFactory implements Manager<TrainerMetaDataFact
 		if (metaDataClass == null) {
 			throw new JPokemonException("Cannot unregister trainer meta data factory without meta data class");
 		}
-		if (!trainerMetaDataFactories.containsKey(metaDataClass)) {
-			throw new JPokemonException("An trainer meta data factory is not registered with meta data class: "
+		if (!isRegistered(metaDataClass)) {
+			throw new JPokemonException("A trainer meta data factory is not registered with meta data class: "
 					+ metaDataClass);
 		}
 

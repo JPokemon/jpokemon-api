@@ -55,7 +55,7 @@ public class Pokemon {
 	protected List<String> statusConditions;
 
 	/** Indicates the moves of this Pokémon */
-	protected List<MoveContainer> moves;
+	protected List<Skill> skills;
 
 	/** Indicates the stats of this Pokémon */
 	protected Map<String, Stat> stats;
@@ -224,42 +224,42 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Gets the move with the specified index in this Pokémon's move set */
-	public MoveContainer getMove(int index) {
-		if (moves == null || index < 0 || index >= moves.size()) {
+	/** Gets the skill with the specified index in this Pokémon's skill set */
+	public Skill getSkill(int index) {
+		if (skills == null || index < 0 || index >= skills.size()) {
 			return null;
 		}
 
-		return moves.get(index);
+		return skills.get(index);
 	}
 
-	/** Adds a move to this Pokémon's move set */
-	public Pokemon addMove(MoveContainer move) {
-		if (moves == null) {
-			moves = new ArrayList<MoveContainer>();
+	/** Adds a skill to this Pokémon's skill set */
+	public Pokemon addSkill(Skill skill) {
+		if (skills == null) {
+			skills = new ArrayList<Skill>();
 		}
 
-		moves.add(move);
+		skills.add(skill);
 		return this;
 	}
 
-	/** Removes the specified MoveInstance from this Pokémon's move set */
-	public Pokemon removeMove(MoveContainer move) {
-		if (moves != null) {
-			moves.remove(move);
+	/** Removes the specified skill from this Pokémon's skill set */
+	public Pokemon removeSkill(Skill skill) {
+		if (skills != null) {
+			skills.remove(skill);
 		}
 
 		return this;
 	}
 
-	/** Gets the moves associated with this Pokemon */
-	public List<MoveContainer> getMoves() {
-		return moves;
+	/** Gets the skills associated with this Pokemon */
+	public List<Skill> getSkills() {
+		return skills;
 	}
 
-	/** Sets all moves associated with this Pokemon */
-	public Pokemon setMoves(List<MoveContainer> moves) {
-		this.moves = moves;
+	/** Sets all skills associated with this Pokemon */
+	public Pokemon setSkills(List<Skill> skills) {
+		this.skills = skills;
 		return this;
 	}
 

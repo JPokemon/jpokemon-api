@@ -7,7 +7,7 @@ package org.jpokemon.api;
  * 
  * @since 0.1
  */
-public class MoveContainer {
+public class Skill {
 	/** Indicates the Move that this is an instance of */
 	protected String move;
 
@@ -18,7 +18,7 @@ public class MoveContainer {
 	protected int maxPP;
 
 	/** Provides the default constructor */
-	public MoveContainer() {
+	public Skill() {
 	}
 
 	/** Gets the move associated with this instance */
@@ -27,7 +27,7 @@ public class MoveContainer {
 	}
 
 	/** Sets the move associated with this instance */
-	public MoveContainer setMove(String move) {
+	public Skill setMove(String move) {
 		this.move = move;
 		return this;
 	}
@@ -38,7 +38,7 @@ public class MoveContainer {
 	}
 
 	/** Sets the current PP of this move instance */
-	public MoveContainer setCurrentPP(int currentPP) {
+	public Skill setCurrentPP(int currentPP) {
 		this.currentPP = currentPP;
 		return this;
 	}
@@ -49,7 +49,7 @@ public class MoveContainer {
 	}
 
 	/** Sets the max PP of this move instance */
-	public MoveContainer setMaxPP(int maxPP) {
+	public Skill setMaxPP(int maxPP) {
 		this.maxPP = maxPP;
 		return this;
 	}

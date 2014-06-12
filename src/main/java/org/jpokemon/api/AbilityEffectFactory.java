@@ -1,7 +1,7 @@
 package org.jpokemon.api;
 
 /**
- * Defines an algorithm for producing {@link Ability} effects. Provides a
+ * Defines an algorithm for producing {@link Ability#effects}. Provides a
  * {@link Manager} reference for construction libraries to target. It is
  * recommended for library code, and therefore, library consumers. A simple
  * project may choose to completely ignore this class.

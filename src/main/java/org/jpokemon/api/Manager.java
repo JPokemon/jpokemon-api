@@ -1,6 +1,5 @@
 package org.jpokemon.api;
 
-import org.jpokemon.example.SimpleManager;
 
 /**
  * Provides an interface for object management and lookup functionality. A

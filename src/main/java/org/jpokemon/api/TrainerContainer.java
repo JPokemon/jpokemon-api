@@ -3,6 +3,13 @@ package org.jpokemon.api;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines a wrapper class for Pokémon trainers participating in battles
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class TrainerContainer {
 	/** Indicates the Pokémon trainer associated with this trainer container */
 	protected PokemonTrainer pokemonTrainer;

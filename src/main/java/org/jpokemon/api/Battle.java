@@ -3,6 +3,14 @@ package org.jpokemon.api;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines a Battle, in the most generic sense. Provides an API in an effort to
+ * support Pokémon battles.
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class Battle {
 	/** Indicates the history of rounds in this battle */
 	protected List<Round> rounds;

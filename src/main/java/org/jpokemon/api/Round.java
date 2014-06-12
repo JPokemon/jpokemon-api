@@ -3,6 +3,14 @@ package org.jpokemon.api;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Defines a Round in a Battle, which is composed of 1 turn for each Pokémon
+ * participating in the Battle
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class Round {
 	/** Indicates the turns registered in this round */
 	protected Map<PokemonContainer, Turn> turns;

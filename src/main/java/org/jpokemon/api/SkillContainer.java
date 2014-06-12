@@ -1,5 +1,12 @@
 package org.jpokemon.api;
 
+/**
+ * Defines a wrapper class for Skills of Pokémon participating in battle
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class SkillContainer {
 	/** Indicates the skill associated with this skill container */
 	protected Skill skill;

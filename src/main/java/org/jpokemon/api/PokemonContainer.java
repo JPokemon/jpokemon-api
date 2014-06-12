@@ -5,6 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Defines a wrapper class for Pokémon participating in Battles
+ * 
+ * @author zach
+ * 
+ * @since 0.1
+ */
 public class PokemonContainer {
 	/** Indicates the Pokémon associated with this Pokémon container */
 	protected Pokemon pokemon;

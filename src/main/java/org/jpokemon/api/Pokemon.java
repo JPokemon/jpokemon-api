@@ -54,6 +54,9 @@ public class Pokemon {
 	/** Indicates whether this Pokémon is shiny */
 	protected boolean shiny;
 
+	/** Indicates the item this Pokémon is holding */
+	protected String heldItem;
+
 	/** Indicates the conditions affecting this Pokémon */
 	protected List<String> statusConditions;
 
@@ -205,6 +208,17 @@ public class Pokemon {
 	/** Sets whether this Pokémon is shiny */
 	public Pokemon setShiny(boolean shiny) {
 		this.shiny = shiny;
+		return this;
+	}
+
+	/** Gets the item this Pokémon is holding */
+	public String getHeldItem() {
+		return heldItem;
+	}
+
+	/** Sets the item this Pokémon is holding */
+	public Pokemon setHeldItem(String heldItem) {
+		this.heldItem = heldItem;
 		return this;
 	}
 

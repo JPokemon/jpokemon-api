@@ -5,9 +5,9 @@
 
     <!-- Project details -->
     <groupId>org.jpokemon</groupId>
-    <artifactId>api</artifactId>
+    <artifactId>jpokemon-api</artifactId>
     <packaging>jar</packaging>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
     <name>The jPokémon Library</name>
     <description>Provides well-documented data structures and utilities for Pokémon games written in Java.</description>
     <inceptionYear>2013</inceptionYear>

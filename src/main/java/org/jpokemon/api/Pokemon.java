@@ -51,6 +51,9 @@ public class Pokemon {
 	/** Indicates the weight of this Pokémon */
 	protected double weight;
 
+	/** Indicates whether this Pokémon is shiny */
+	protected boolean shiny;
+
 	/** Indicates the conditions affecting this Pokémon */
 	protected List<String> statusConditions;
 
@@ -194,6 +197,17 @@ public class Pokemon {
 		return this;
 	}
 
+	/** Gets whether this Pokémon is shiny */
+	public boolean isShiny() {
+		return shiny;
+	}
+
+	/** Sets whether this Pokémon is shiny */
+	public Pokemon setShiny(boolean shiny) {
+		this.shiny = shiny;
+		return this;
+	}
+
 	/** Adds a condition to this Pokémon status */
 	public Pokemon addStatusCondition(String condition) {
 		if (statusConditions == null) {
@@ -299,6 +313,74 @@ public class Pokemon {
 	/** Sets the stats associated with this Pokémon */
 	public Pokemon setStats(Map<String, Stat> stats) {
 		this.stats = stats;
+		return this;
+	}
+
+	/** Adds a marking to this Pokémon */
+	public Pokemon addMarking(String marking) {
+		if (markings == null) {
+			markings = new ArrayList<String>();
+		}
+
+		markings.add(marking);
+		return this;
+	}
+
+	/** Removes a marking from this Pokémon */
+	public Pokemon removeMarking(String marking) {
+		if (markings != null) {
+			markings.remove(marking);
+		}
+
+		return this;
+	}
+
+	/** Gets the markings on this Pokémon */
+	public List<String> getMarkings() {
+		if (markings == null) {
+			markings = new ArrayList<String>();
+		}
+
+		return markings;
+	}
+
+	/** Sets all the markings on this Pokémon */
+	public Pokemon setMarkings(List<String> markings) {
+		this.markings = markings;
+		return this;
+	}
+
+	/** Adds a ribbon to those earned by this Pokémon */
+	public Pokemon addRibbon(String ribbon) {
+		if (ribbons == null) {
+			ribbons = new ArrayList<String>();
+		}
+
+		ribbons.add(ribbon);
+		return this;
+	}
+
+	/** Removes a ribbon from those earned by this Pokémon */
+	public Pokemon removeRibbon(String ribbon) {
+		if (ribbons != null) {
+			ribbons.remove(ribbon);
+		}
+
+		return this;
+	}
+
+	/** Gets the ribbons earned by this Pokémon */
+	public List<String> getRibbons() {
+		if (ribbons == null) {
+			ribbons = new ArrayList<String>();
+		}
+
+		return ribbons;
+	}
+
+	/** Sets the ribbons earned by this Pokémon */
+	public Pokemon setRibbons(List<String> ribbons) {
+		this.ribbons = ribbons;
 		return this;
 	}
 

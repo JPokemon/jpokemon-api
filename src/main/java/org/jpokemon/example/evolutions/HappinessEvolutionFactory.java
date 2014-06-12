@@ -14,8 +14,8 @@ import org.jpokemon.api.JPokemonException;
  */
 public class HappinessEvolutionFactory extends EvolutionFactory {
 	@Override
-	public Class<HappinessEvolutionFactory> getEvolutionClass() {
-		return HappinessEvolutionFactory.class;
+	public Class<HappinessEvolution> getEvolutionClass() {
+		return HappinessEvolution.class;
 	}
 
 	@Override

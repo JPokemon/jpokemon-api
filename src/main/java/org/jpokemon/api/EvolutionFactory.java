@@ -15,7 +15,7 @@ public abstract class EvolutionFactory {
 	public static Manager<EvolutionFactory> manager;
 
 	/** Gets the class of evolutions that this factory produces */
-	public abstract Class<?> getEvolutionClass();
+	public abstract Class<? extends Evolution> getEvolutionClass();
 
 	/** Builds an evolution, given the options provided */
 	public abstract Evolution buildEvolution(String options) throws JPokemonException;

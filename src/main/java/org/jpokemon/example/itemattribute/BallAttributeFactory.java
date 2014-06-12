@@ -17,8 +17,8 @@ public class BallAttributeFactory extends ItemAttributeFactory {
 	}
 
 	@Override
-	public Class<BallAttributeFactory> getItemAttributeClass() {
-		return BallAttributeFactory.class;
+	public Class<BallAttribute> getItemAttributeClass() {
+		return BallAttribute.class;
 	}
 
 	@Override

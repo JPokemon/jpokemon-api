@@ -180,7 +180,7 @@ public class ContestCategory {
 			return false;
 		}
 
-		return reaction == reactions.get(contestCategory);
+		return reaction.equals(reactions.get(contestCategory));
 	}
 
 	private List<String> getReaction(String reaction) {
@@ -188,7 +188,7 @@ public class ContestCategory {
 
 		if (reactions != null) {
 			for (Map.Entry<String, String> contestReaction : reactions.entrySet()) {
-				if (reaction == contestReaction.getValue()) {
+				if (reaction.equals(contestReaction.getValue())) {
 					contestCategories.add(contestReaction.getKey());
 				}
 			}

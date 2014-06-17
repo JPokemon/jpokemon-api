@@ -163,7 +163,7 @@ public class Type {
 			return false;
 		}
 
-		return this.effectiveness.get(type) == effectiveness;
+		return effectiveness.equals(this.effectiveness.get(type));
 	}
 
 	/** Retrieves a list of types for a given effectiveness from the mapping */
@@ -172,7 +172,7 @@ public class Type {
 
 		if (this.effectiveness != null) {
 			for (Map.Entry<String, String> effectivenessEntry : this.effectiveness.entrySet()) {
-				if (effectivenessEntry.getValue() == effectiveness) {
+				if (effectiveness.equals(effectivenessEntry.getValue())) {
 					types.add(effectivenessEntry.getKey());
 				}
 			}

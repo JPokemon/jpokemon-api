@@ -91,7 +91,7 @@ public class Pokedex {
 			return false;
 		}
 
-		return entries.get(species) == status;
+		return status.equals(entries.get(species));
 	}
 
 	private List<String> getStatus(String status) {
@@ -99,7 +99,7 @@ public class Pokedex {
 
 		if (entries != null) {
 			for (Map.Entry<String, String> statusEntry : entries.entrySet()) {
-				if (statusEntry.getValue() == status) {
+				if (status.equals(statusEntry.getValue())) {
 					species.add(statusEntry.getKey());
 				}
 			}

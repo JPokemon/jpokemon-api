@@ -45,24 +45,24 @@ public class ContestCategoryTest extends TestCase {
 		assertFalse(contestCategory.isIndifferenceReaction(categoryName));
 		assertFalse(contestCategory.isDiscontentReaction(categoryName));
 
-		assertNotNull(contestCategory.getExcitementReaction());
+		assertNotNull(contestCategory.getExcitementReactions());
 		assertNotNull(contestCategory.getIndifferenceReactions());
-		assertNotNull(contestCategory.getDiscontentReaction());
+		assertNotNull(contestCategory.getDiscontentReactions());
 
 		contestCategory.setExcitementReaction(categoryName);
 		assertTrue(contestCategory.isExcitementReaction(categoryName));
-		assertEquals(1, contestCategory.getExcitementReaction().size());
+		assertEquals(1, contestCategory.getExcitementReactions().size());
 
 		contestCategory.setIndifferenceReaction(categoryName);
 		assertTrue(contestCategory.isIndifferenceReaction(categoryName));
 		assertFalse(contestCategory.isExcitementReaction(categoryName));
 		assertEquals(1, contestCategory.getIndifferenceReactions().size());
-		assertEquals(0, contestCategory.getExcitementReaction().size());
+		assertEquals(0, contestCategory.getExcitementReactions().size());
 
 		contestCategory.removeReaction(categoryName);
 		assertEquals(0, contestCategory.getIndifferenceReactions().size());
 
 		contestCategory.setDiscontentReaction(null);
-		assertNotNull(contestCategory.getDiscontentReaction());
+		assertNotNull(contestCategory.getDiscontentReactions());
 	}
 }

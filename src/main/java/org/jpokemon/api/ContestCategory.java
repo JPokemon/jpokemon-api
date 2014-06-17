@@ -97,7 +97,7 @@ public class ContestCategory {
 	}
 
 	/** Gets the list of categories that this contest will react excitedly to */
-	public List<String> getExcitementReaction() {
+	public List<String> getExcitementReactions() {
 		return getReaction(EXCITEMENT_REACTION);
 	}
 
@@ -129,7 +129,7 @@ public class ContestCategory {
 	}
 
 	/** Gets the list of categories that this contest will react discontent to */
-	public List<String> getDiscontentReaction() {
+	public List<String> getDiscontentReactions() {
 		return getReaction(DISCONTENT_REACTION);
 	}
 

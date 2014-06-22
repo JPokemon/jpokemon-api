@@ -150,6 +150,10 @@ public class PokemonTrainer {
 
 	/** Gets all meta data of this trainer */
 	public List<Object> getMetaData() {
+		if (this.metaData == null) {
+			this.metaData = new ArrayList<Object>();
+		}
+
 		return this.metaData;
 	}
 

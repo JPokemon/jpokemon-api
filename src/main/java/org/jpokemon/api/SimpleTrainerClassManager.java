@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleTrainerClassManager implements Manager<TrainerClass> {
@@ -28,6 +30,11 @@ public class SimpleTrainerClassManager implements Manager<TrainerClass> {
 		}
 
 		trainerClasses.put(trainerClass.getName(), trainerClass);
+	}
+
+	@Override
+	public List<TrainerClass> getAll() {
+		return new ArrayList<TrainerClass>(trainerClasses.values());
 	}
 
 	@Override

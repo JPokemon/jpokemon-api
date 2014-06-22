@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleStatusConditionManager implements Manager<StatusCondition> {
@@ -28,6 +30,11 @@ public class SimpleStatusConditionManager implements Manager<StatusCondition> {
 		}
 
 		statusConditions.put(statusCondition.getName(), statusCondition);
+	}
+
+	@Override
+	public List<StatusCondition> getAll() {
+		return new ArrayList<StatusCondition>(statusConditions.values());
 	}
 
 	@Override

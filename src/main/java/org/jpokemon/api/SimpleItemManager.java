@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,6 +40,11 @@ public class SimpleItemManager implements Manager<Item> {
 		}
 
 		items.put(item.getName(), item);
+	}
+
+	@Override
+	public List<Item> getAll() {
+		return new ArrayList<Item>(items.values());
 	}
 
 	@Override

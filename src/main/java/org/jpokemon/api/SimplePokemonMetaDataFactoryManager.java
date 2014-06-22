@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimplePokemonMetaDataFactoryManager implements Manager<PokemonMetaDataFactory> {
@@ -30,6 +32,11 @@ public class SimplePokemonMetaDataFactoryManager implements Manager<PokemonMetaD
 		}
 
 		pokemonMetaDataFactories.put(pokemonMetaDataFactory.getMetaDataClass().getName(), pokemonMetaDataFactory);
+	}
+
+	@Override
+	public List<PokemonMetaDataFactory> getAll() {
+		return new ArrayList<PokemonMetaDataFactory>(pokemonMetaDataFactories.values());
 	}
 
 	@Override

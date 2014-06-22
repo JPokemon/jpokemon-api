@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleBattleEffectFactoryManager implements Manager<BattleEffectFactory> {
@@ -30,6 +32,11 @@ public class SimpleBattleEffectFactoryManager implements Manager<BattleEffectFac
 		}
 
 		battleEffectFactories.put(battleEffectFactory.getBattleEffectClass().getName(), battleEffectFactory);
+	}
+
+	@Override
+	public List<BattleEffectFactory> getAll() {
+		return new ArrayList<BattleEffectFactory>(battleEffectFactories.values());
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package org.jpokemon.api;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,6 +42,22 @@ public class HashedCachingManager<T> implements Manager<T> {
 			cache.put(name, object);
 		} catch (Exception e) {
 		}
+	}
+
+	@Override
+	public List<T> getAll() throws JPokemonException {
+		List<T> allObjects = manager.getAll();
+		cache.clear();
+
+		try {
+			for (T object : allObjects) {
+				String name = (String) object.getClass().getMethod("getName").invoke(object);
+				cache.put(name, object);
+			}
+		} catch (Exception e) {
+		}
+
+		return allObjects;
 	}
 
 	@Override

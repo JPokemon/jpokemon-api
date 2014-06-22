@@ -1,5 +1,6 @@
 package org.jpokemon.api;
 
+import java.util.List;
 
 /**
  * Provides an interface for object management and lookup functionality. A
@@ -27,6 +28,14 @@ public interface Manager<T> {
 	 * @throws JPokemonException If there is an error registering the object
 	 */
 	public void register(T managed) throws JPokemonException;
+
+	/**
+	 * Gets all objects registered by this manager
+	 * 
+	 * @return All objects currently registered with this manager
+	 * @throws JPokemonException If there is an error retrieving the objects
+	 */
+	public List<T> getAll() throws JPokemonException;
 
 	/**
 	 * Gets an object registered by this manager by name

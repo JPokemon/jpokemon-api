@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleTargetingSchemeManager implements Manager<TargetingScheme> {
@@ -28,6 +30,11 @@ public class SimpleTargetingSchemeManager implements Manager<TargetingScheme> {
 		}
 
 		targetingSchemes.put(targetingScheme.getName(), targetingScheme);
+	}
+
+	@Override
+	public List<TargetingScheme> getAll() {
+		return new ArrayList<TargetingScheme>(targetingSchemes.values());
 	}
 
 	@Override

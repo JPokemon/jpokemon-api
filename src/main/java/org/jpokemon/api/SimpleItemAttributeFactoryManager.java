@@ -1,24 +1,28 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
- * Defines a "simplest-possible" implementation of the {@link ItemAttributeFactory#manager}
+ * Defines a "simplest-possible" implementation of the
+ * {@link ItemAttributeFactory#manager}
+ * 
  * @author zach
  * 
  * @since 0.1
  */
 public class SimpleItemAttributeFactoryManager implements Manager<ItemAttributeFactory> {
-	protected Map<String, ItemAttributeFactory> items = new HashMap<String, ItemAttributeFactory>();
+	protected Map<String, ItemAttributeFactory> itemAttributeFactories = new HashMap<String, ItemAttributeFactory>();
 
 	/** Provides the default constructor */
 	public SimpleItemAttributeFactoryManager() {
 	}
 
 	@Override
-	public boolean isRegistered(String itemName) {
-		return items.containsKey(itemName);
+	public boolean isRegistered(String itemAttributeFactoryName) {
+		return itemAttributeFactories.containsKey(itemAttributeFactoryName);
 	}
 
 	@Override
@@ -34,12 +38,17 @@ public class SimpleItemAttributeFactoryManager implements Manager<ItemAttributeF
 					+ itemAttributeFactory.getItemAttributeClass().getName());
 		}
 
-		items.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
+		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
+	}
+
+	@Override
+	public List<ItemAttributeFactory> getAll() {
+		return new ArrayList<ItemAttributeFactory>(itemAttributeFactories.values());
 	}
 
 	@Override
 	public ItemAttributeFactory getByName(String name) {
-		return items.get(name);
+		return itemAttributeFactories.get(name);
 	}
 
 	@Override
@@ -55,7 +64,7 @@ public class SimpleItemAttributeFactoryManager implements Manager<ItemAttributeF
 					+ itemAttributeFactory.getItemAttributeClass().getName());
 		}
 
-		items.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
+		itemAttributeFactories.put(itemAttributeFactory.getItemAttributeClass().getName(), itemAttributeFactory);
 	}
 
 	@Override
@@ -67,7 +76,7 @@ public class SimpleItemAttributeFactoryManager implements Manager<ItemAttributeF
 			throw new JPokemonException("An item is not registered with item attribute class: " + itemAttributeClass);
 		}
 
-		items.remove(itemAttributeClass);
+		itemAttributeFactories.remove(itemAttributeClass);
 	}
 
 	/**

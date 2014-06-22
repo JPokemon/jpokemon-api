@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleTypeManager implements Manager<Type> {
@@ -28,6 +30,11 @@ public class SimpleTypeManager implements Manager<Type> {
 		}
 
 		types.put(type.getName(), type);
+	}
+
+	@Override
+	public List<Type> getAll() {
+		return new ArrayList<Type>(types.values());
 	}
 
 	@Override

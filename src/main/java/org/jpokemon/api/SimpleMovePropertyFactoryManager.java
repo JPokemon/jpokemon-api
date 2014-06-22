@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleMovePropertyFactoryManager implements Manager<MovePropertyFactory> {
@@ -30,6 +32,11 @@ public class SimpleMovePropertyFactoryManager implements Manager<MovePropertyFac
 		}
 
 		movePropertyFactories.put(movePropertyFactory.getMovePropertyClass().getName(), movePropertyFactory);
+	}
+
+	@Override
+	public List<MovePropertyFactory> getAll() {
+		return new ArrayList<MovePropertyFactory>(movePropertyFactories.values());
 	}
 
 	@Override

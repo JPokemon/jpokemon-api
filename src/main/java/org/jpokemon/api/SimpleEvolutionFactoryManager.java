@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,6 +39,11 @@ public class SimpleEvolutionFactoryManager implements Manager<EvolutionFactory> 
 		}
 
 		evolutionFactories.put(evolutionFactory.getEvolutionClass().getName(), evolutionFactory);
+	}
+
+	@Override
+	public List<EvolutionFactory> getAll() {
+		return new ArrayList<EvolutionFactory>(evolutionFactories.values());
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,6 +39,11 @@ public class SimpleAbilityManager implements Manager<Ability> {
 		}
 
 		abilities.put(ability.getName(), ability);
+	}
+
+	@Override
+	public List<Ability> getAll() {
+		return new ArrayList<Ability>(abilities.values());
 	}
 
 	@Override

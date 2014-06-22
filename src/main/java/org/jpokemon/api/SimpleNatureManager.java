@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +18,7 @@ public class SimpleNatureManager implements Manager<Nature> {
 	/** Provides the default constructor */
 	public SimpleNatureManager() {
 	}
-	
+
 	@Override
 	public boolean isRegistered(String natureName) {
 		return natures.containsKey(natureName);
@@ -35,6 +37,11 @@ public class SimpleNatureManager implements Manager<Nature> {
 		}
 
 		natures.put(nature.getName(), nature);
+	}
+
+	@Override
+	public List<Nature> getAll() {
+		return new ArrayList<Nature>(natures.values());
 	}
 
 	@Override

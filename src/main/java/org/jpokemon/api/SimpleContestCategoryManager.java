@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,6 +38,11 @@ public class SimpleContestCategoryManager implements Manager<ContestCategory> {
 		}
 
 		contestCategories.put(contestCategory.getName(), contestCategory);
+	}
+
+	@Override
+	public List<ContestCategory> getAll() {
+		return new ArrayList<ContestCategory>(contestCategories.values());
 	}
 
 	@Override

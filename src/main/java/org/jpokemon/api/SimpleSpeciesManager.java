@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SimpleSpeciesManager implements Manager<Species> {
@@ -28,6 +30,11 @@ public class SimpleSpeciesManager implements Manager<Species> {
 		}
 
 		registeredSpecies.put(species.getName(), species);
+	}
+
+	@Override
+	public List<Species> getAll() {
+		return new ArrayList<Species>(registeredSpecies.values());
 	}
 
 	@Override

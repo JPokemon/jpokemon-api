@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,6 +38,11 @@ public class SimpleExperienceCurveManager implements Manager<ExperienceCurve> {
 		}
 
 		experienceCurves.put(experienceCurve.getName(), experienceCurve);
+	}
+
+	@Override
+	public List<ExperienceCurve> getAll() {
+		return new ArrayList<ExperienceCurve>(experienceCurves.values());
 	}
 
 	@Override

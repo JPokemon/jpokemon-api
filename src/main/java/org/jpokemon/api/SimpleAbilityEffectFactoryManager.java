@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,6 +43,11 @@ public class SimpleAbilityEffectFactoryManager implements Manager<AbilityEffectF
 		}
 
 		abilityEffectFactories.put(abilityEffectFactory.getAbilityEffectClass().getName(), abilityEffectFactory);
+	}
+
+	@Override
+	public List<AbilityEffectFactory> getAll() {
+		return new ArrayList<AbilityEffectFactory>(abilityEffectFactories.values());
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -37,6 +39,11 @@ public class SimpleMoveManager implements Manager<Move> {
 		}
 
 		moves.put(move.getName(), move);
+	}
+
+	@Override
+	public List<Move> getAll() {
+		return new ArrayList<Move>(moves.values());
 	}
 
 	@Override

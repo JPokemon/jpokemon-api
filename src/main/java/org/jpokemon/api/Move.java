@@ -1,7 +1,7 @@
 package org.jpokemon.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Defines a move that can be learned and used by a Pokémon.
@@ -59,8 +59,8 @@ public class Move {
 	/** Indicates the priority of this move */
 	protected int priority;
 
-	/** Indicates properties of this move */
-	protected List<Object> properties;
+	/** Indicates the properties of this move */
+	protected Map<String, Object> properties;
 
 	/** Gets the name of this move */
 	public String getName() {
@@ -205,36 +205,45 @@ public class Move {
 		return this;
 	}
 
-	/** Adds a property to this move */
-	public Move addProperty(Object property) {
+	/** Gets a property of this move by name */
+	public Object getProperty(String name) {
 		if (properties == null) {
-			properties = new ArrayList<Object>();
+			return null;
 		}
 
-		properties.add(property);
+		return properties.get(name);
+	}
+
+	/** Sets a property of this move */
+	public Move setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
 		return this;
 	}
 
-	/** Removes a property from this move */
-	public Move removeProperty(Object property) {
+	/** Removes a property from this move by name */
+	public Move removeProperty(String name) {
 		if (properties != null) {
-			properties.remove(property);
+			properties.remove(name);
 		}
 
 		return this;
 	}
 
 	/** Gets all properties of this move */
-	public List<Object> getProperties() {
+	public Map<String, Object> getProperties() {
 		if (properties == null) {
-			properties = new ArrayList<Object>();
+			properties = new HashMap<String, Object>();
 		}
 
 		return properties;
 	}
 
 	/** Sets all properties of this move */
-	public Move setProperties(List<Object> properties) {
+	public Move setProperties(Map<String, Object> properties) {
 		this.properties = properties;
 		return this;
 	}

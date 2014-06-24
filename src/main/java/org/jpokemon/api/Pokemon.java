@@ -72,8 +72,8 @@ public class Pokemon {
 	/** Indicates the ribbons earned by this Pokémon */
 	protected List<String> ribbons;
 
-	/** Provides a hook for storing meta-data */
-	protected List<Object> metaData;
+	/** Indicates the properties of this Pokémon */
+	protected Map<String, Object> properties;
 
 	/** Provides the default constructor */
 	public Pokemon() {
@@ -168,12 +168,12 @@ public class Pokemon {
 	}
 
 	/** Gets the ability of this Pokémon */
-	public String getAbility() {
+	public String getPokemon() {
 		return ability;
 	}
 
 	/** Sets the ability of this Pokémon */
-	public Pokemon setAbility(String ability) {
+	public Pokemon setPokemon(String ability) {
 		this.ability = ability;
 		return this;
 	}
@@ -398,33 +398,46 @@ public class Pokemon {
 		return this;
 	}
 
-	/** Adds a meta data item to this Pokémon */
-	public Pokemon addMetaData(Object metaData) {
-		if (this.metaData == null) {
-			this.metaData = new ArrayList<Object>();
+	/** Gets a property of this Pokémon by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
 		}
 
-		this.metaData.add(metaData);
+		return properties.get(name);
+	}
+
+	/** Sets a property of this Pokémon */
+	public Pokemon setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
 		return this;
 	}
 
-	/** Removes a meta data item from this Pokémon */
-	public Pokemon removeMetaData(Object metaData) {
-		if (this.metaData != null) {
-			this.metaData.remove(metaData);
+	/** Removes a property from this Pokémon by name */
+	public Pokemon removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
 		}
 
 		return this;
 	}
 
-	/** Gets all meta data of this Pokémon */
-	public List<Object> getMetaData() {
-		return this.metaData;
+	/** Gets all properties of this Pokémon */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		return properties;
 	}
 
-	/** Sets all meta data of this Pokémon */
-	public Pokemon setMetaData(List<Object> metaData) {
-		this.metaData = metaData;
+	/** Sets all properties of this Pokémon */
+	public Pokemon setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 		return this;
 	}
 }

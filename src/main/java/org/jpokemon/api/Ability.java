@@ -1,7 +1,7 @@
 package org.jpokemon.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Defines an ability that a Pokémon may possess.
@@ -21,8 +21,8 @@ public class Ability {
 	/** Indicates the description of the ability */
 	protected String description;
 
-	/** Indicates the effect(s) of the ability */
-	protected List<Object> effects;
+	/** Indicates the properties of this ability */
+	protected Map<String, Object> properties;
 
 	/** Gets the name of this ability */
 	public String getName() {
@@ -46,37 +46,46 @@ public class Ability {
 		return this;
 	}
 
-	/** Adds an effect to this ability */
-	public Ability addEffect(Object effect) {
-		if (effects == null) {
-			effects = new ArrayList<Object>();
+	/** Gets a property of this ability by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
 		}
 
-		effects.add(effect);
+		return properties.get(name);
+	}
+
+	/** Sets a property of this ability */
+	public Ability setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
 		return this;
 	}
 
-	/** Removes an effect of this ability */
-	public Ability removeEffect(Object effect) {
-		if (effects != null) {
-			effects.remove(effect);
+	/** Removes a property from this ability by name */
+	public Ability removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
 		}
 
 		return this;
 	}
 
-	/** Gets the effects of this ability */
-	public List<Object> getEffects() {
-		if (effects == null) {
-			effects = new ArrayList<Object>();
+	/** Gets all properties of this ability */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
 		}
 
-		return effects;
+		return properties;
 	}
 
-	/** Sets the effects of this ability */
-	public Ability setEffects(List<Object> effects) {
-		this.effects = effects;
+	/** Sets all properties of this ability */
+	public Ability setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 		return this;
 	}
 }

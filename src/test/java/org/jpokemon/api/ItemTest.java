@@ -73,20 +73,21 @@ public class ItemTest extends TestCase {
 
 	@Test
 	public void testAttributes() {
-		Object itemAttribute = new Observable();
+		String itemPropertyKey = "ItemPropertyKey";
+		Object itemProperty = new Observable();
 		Item item = new Item();
-		assertNotNull(item.getAttributes());
-		assertEquals(0, item.getAttributes().size());
+		assertNotNull(item.getProperties());
+		assertEquals(0, item.getProperties().size());
 
-		item.addAttribute(itemAttribute);
-		assertEquals(1, item.getAttributes().size());
-		assertEquals(itemAttribute, item.getAttributes().get(0));
+		item.setProperty(itemPropertyKey, itemProperty);
+		assertEquals(1, item.getProperties().size());
+		assertEquals(itemProperty, item.getProperty(itemPropertyKey));
 
-		item.removeAttribute(itemAttribute);
-		assertNotNull(item.getAttributes());
-		assertEquals(0, item.getAttributes().size());
+		item.removeProperty(itemPropertyKey);
+		assertNotNull(item.getProperties());
+		assertEquals(0, item.getProperties().size());
 
-		item.setAttributes(null);
-		assertNotNull(item.getAttributes());
+		item.setProperties(null);
+		assertNotNull(item.getProperties());
 	}
 }

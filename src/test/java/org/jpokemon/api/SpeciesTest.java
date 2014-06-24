@@ -283,19 +283,11 @@ public class SpeciesTest extends TestCase {
 			public String getSpecies() {
 				return "FooSpecies";
 			}
-
-			@Override
-			public void setSpecies(String species) {
-			}
 		};
 		Evolution evolution2 = new Evolution() {
 			@Override
 			public String getSpecies() {
 				return "BarSpecies";
-			}
-
-			@Override
-			public void setSpecies(String species) {
 			}
 		};
 		Species species = new Species();

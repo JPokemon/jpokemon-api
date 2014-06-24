@@ -2,6 +2,8 @@ package org.jpokemon.api;
 
 import java.util.List;
 
+import org.jpokemon.manager.SimpleManager;
+
 /**
  * Provides an interface for object management and lookup functionality. A
  * generic implementation is provided by the {@link SimpleManager} class that

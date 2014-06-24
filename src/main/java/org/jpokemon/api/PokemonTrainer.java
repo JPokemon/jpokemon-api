@@ -33,8 +33,8 @@ public class PokemonTrainer {
 	/** Indicates the trainer's Pokémon */
 	protected List<Pokemon> pokemon;
 
-	/** Provides a hook for storing meta-data */
-	protected List<Object> metaData;
+	/** Indicates the properties of this Pokémon trainer */
+	protected Map<String, Object> properties;
 
 	/** Gets the name of this trainer */
 	public String getName() {
@@ -129,37 +129,46 @@ public class PokemonTrainer {
 		return this;
 	}
 
-	/** Adds a meta data item to this trainer */
-	public PokemonTrainer addMetaData(Object metaData) {
-		if (this.metaData == null) {
-			this.metaData = new ArrayList<Object>();
+	/** Gets a property of this Pokémon trainer by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
 		}
 
-		this.metaData.add(metaData);
+		return properties.get(name);
+	}
+
+	/** Sets a property of this Pokémon trainer */
+	public PokemonTrainer setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
 		return this;
 	}
 
-	/** Removes a meta data item from this trainer */
-	public PokemonTrainer removeMetaData(Object metaData) {
-		if (this.metaData != null) {
-			this.metaData.remove(metaData);
+	/** Removes a property from this Pokémon trainer by name */
+	public PokemonTrainer removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
 		}
 
 		return this;
 	}
 
-	/** Gets all meta data of this trainer */
-	public List<Object> getMetaData() {
-		if (this.metaData == null) {
-			this.metaData = new ArrayList<Object>();
+	/** Gets all properties of this Pokémon */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
 		}
 
-		return this.metaData;
+		return properties;
 	}
 
-	/** Sets all meta data of this trainer */
-	public PokemonTrainer setMetaData(List<Object> metaData) {
-		this.metaData = metaData;
+	/** Sets all properties of this Pokémon trainer */
+	public PokemonTrainer setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 		return this;
 	}
 }

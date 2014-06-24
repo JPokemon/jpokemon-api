@@ -25,20 +25,21 @@ public class AbilityTest extends TestCase {
 
 	@Test
 	public void testEffects() {
-		Object abilityEffect = new HashMap<String, String>();
+		String abilityPropertyKey = "AbilityPropertyKey";
+		Object abilityProperty = new HashMap<String, String>();
 		Ability ability = new Ability();
-		assertNotNull(ability.getEffects());
-		assertEquals(0, ability.getEffects().size());
+		assertNotNull(ability.getProperties());
+		assertEquals(0, ability.getProperties().size());
 
-		ability.addEffect(abilityEffect);
-		assertEquals(1, ability.getEffects().size());
-		assertEquals(abilityEffect, ability.getEffects().get(0));
+		ability.setProperty(abilityPropertyKey, abilityProperty);
+		assertEquals(1, ability.getProperties().size());
+		assertEquals(abilityProperty, ability.getProperty(abilityPropertyKey));
 
-		ability.removeEffect(abilityEffect);
-		assertNotNull(ability.getEffects());
-		assertEquals(0, ability.getEffects().size());
+		ability.removeProperty(abilityPropertyKey);
+		assertNotNull(ability.getProperties());
+		assertEquals(0, ability.getProperties().size());
 
-		ability.setEffects(null);
-		assertNotNull(ability.getEffects());
+		ability.setProperties(null);
+		assertNotNull(ability.getProperties());
 	}
 }

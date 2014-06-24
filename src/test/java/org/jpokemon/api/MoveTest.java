@@ -113,16 +113,17 @@ public class MoveTest extends TestCase {
 
 	@Test
 	public void testProperties() {
+		String movePropertyKey = "MovePropertyKey";
 		Object moveProperty = new ArrayList<Integer>();
 		Move move = new Move();
 		assertNotNull(move.getProperties());
 		assertEquals(0, move.getProperties().size());
 
-		move.addProperty(moveProperty);
+		move.setProperty(movePropertyKey, moveProperty);
 		assertEquals(1, move.getProperties().size());
-		assertEquals(moveProperty, move.getProperties().get(0));
+		assertEquals(moveProperty, move.getProperty(movePropertyKey));
 
-		move.removeProperty(moveProperty);
+		move.removeProperty(movePropertyKey);
 		assertNotNull(move.getProperties());
 		assertEquals(0, move.getProperties().size());
 

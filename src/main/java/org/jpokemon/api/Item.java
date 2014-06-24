@@ -1,25 +1,11 @@
 package org.jpokemon.api;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Defines a basic item. This class provides the most basic attributes that all
- * items in a Pokémon game are likely to share. To create your own items, you
- * have two options: (1) extend this class, or (2) make use of the ``attribute``
- * system. See the wiki for details.
- * 
- * <p>
- * 
- * Note that the attributes {@link ArrayList} will not initialize until an
- * attribute is added. Thus, if a traditional inheritance scheme is preferable
- * for your project, this functionality can be ignored without memory
- * inefficiency.
- * 
- * <p>
- * 
- * The same goes for the management features; if the ``manager`` field remains
- * ``null``, its functionality is ignored.
+ * items in a Pokémon game are likely to share.
  * 
  * @author atheriel@gmail.com
  * @author zach
@@ -54,8 +40,8 @@ public class Item {
 	/** Indicates whether this item is holdable by a Pokémon */
 	protected boolean holdable;
 
-	/** Indicates attributes of the item */
-	protected List<Object> attributes;
+	/** Indicates the properties of this item */
+	protected Map<String, Object> properties;
 
 	/** Provides the default constructor */
 	public Item() {
@@ -149,36 +135,46 @@ public class Item {
 		return this;
 	}
 
-	/** Adds an attribute to this item */
-	public Item addAttribute(Object attribute) {
-		if (attributes == null) {
-			attributes = new ArrayList<Object>();
+	/** Gets a property of this item by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
 		}
 
-		attributes.add(attribute);
+		return properties.get(name);
+	}
+
+	/** Sets a property of this item */
+	public Item setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
 		return this;
 	}
 
-	public Item removeAttribute(Object attribute) {
-		if (attributes != null) {
-			attributes.remove(attribute);
+	/** Removes a property from this item by name */
+	public Item removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
 		}
 
 		return this;
 	}
 
-	/** Gets all attributes of this item */
-	public List<Object> getAttributes() {
-		if (attributes == null) {
-			attributes = new ArrayList<Object>();
+	/** Gets all properties of this item */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
 		}
 
-		return attributes;
+		return properties;
 	}
 
-	/** Sets all attributes of this item */
-	public Item setAttributes(List<Object> attributes) {
-		this.attributes = attributes;
+	/** Sets all properties of this item */
+	public Item setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 		return this;
 	}
 }

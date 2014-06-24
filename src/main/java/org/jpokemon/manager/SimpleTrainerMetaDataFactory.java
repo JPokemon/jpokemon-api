@@ -1,9 +1,12 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Manager;
 
 public class SimpleTrainerMetaDataFactory implements Manager<TrainerMetaDataFactory> {
 	protected Map<String, TrainerMetaDataFactory> trainerMetaDataFactories = new HashMap<String, TrainerMetaDataFactory>();

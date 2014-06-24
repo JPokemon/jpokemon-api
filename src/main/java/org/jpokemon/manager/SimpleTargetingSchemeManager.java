@@ -1,9 +1,13 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Manager;
+import org.jpokemon.api.TargetingScheme;
 
 public class SimpleTargetingSchemeManager implements Manager<TargetingScheme> {
 	protected Map<String, TargetingScheme> targetingSchemes = new HashMap<String, TargetingScheme>();

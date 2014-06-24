@@ -1,9 +1,13 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Manager;
+import org.jpokemon.api.StatusCondition;
 
 public class SimpleStatusConditionManager implements Manager<StatusCondition> {
 	protected Map<String, StatusCondition> statusConditions = new HashMap<String, StatusCondition>();

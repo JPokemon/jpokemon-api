@@ -1,9 +1,13 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.jpokemon.api.BattleEffectFactory;
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Manager;
 
 public class SimpleBattleEffectFactoryManager implements Manager<BattleEffectFactory> {
 	protected Map<String, BattleEffectFactory> battleEffectFactories = new HashMap<String, BattleEffectFactory>();

@@ -1,10 +1,13 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Manager;
 
 /**
  * Provides generic management for any type, 'T'. In order for this class to

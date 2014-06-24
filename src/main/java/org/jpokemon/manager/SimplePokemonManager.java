@@ -1,9 +1,13 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Pokemon;
+import org.jpokemon.api.PokemonManager;
 
 public class SimplePokemonManager implements PokemonManager {
 	/** The map of Pokémon that have been registered by trainer id */

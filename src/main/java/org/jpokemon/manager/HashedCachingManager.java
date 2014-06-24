@@ -1,8 +1,11 @@
-package org.jpokemon.api;
+package org.jpokemon.manager;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.jpokemon.api.JPokemonException;
+import org.jpokemon.api.Manager;
 
 /**
  * Provides a simple implementation of the {@link Manager} interface, which

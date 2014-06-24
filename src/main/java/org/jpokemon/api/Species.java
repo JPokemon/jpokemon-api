@@ -106,6 +106,9 @@ public class Species {
 	/** Indicates the moves that can be learned from move tutors by this species */
 	protected List<String> tutorMoves;
 
+	/** Indicates the properties of this species */
+	protected Map<String, Object> properties;
+
 	/** Provides the default constructor */
 	public Species() {
 	}
@@ -694,6 +697,60 @@ public class Species {
 	/** Sets the moves that can be learned from move tutors by this species */
 	public Species setTutorMoves(List<String> tutorMoves) {
 		this.tutorMoves = tutorMoves;
+		return this;
+	}
+
+	/** Gets a property of this species using class name as the key */
+	@SuppressWarnings("unchecked")
+	public <T> T getProperty(Class<T> clazz) {
+		return (T) getProperty(clazz.getName());
+	}
+
+	/** Gets a property of this species by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
+		}
+
+		return properties.get(name);
+	}
+
+	/** Adds a property to this species using the class name as the key */
+	public Species addProperty(Object object) {
+		return setProperty(object.getClass().getName(), object);
+	}
+
+	/** Sets a property of this species */
+	public Species setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
+		return this;
+	}
+
+	/** Removes a property from this species by name */
+	public Species removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
+		}
+
+		return this;
+	}
+
+	/** Gets all properties of this species */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		return properties;
+	}
+
+	/** Sets all properties of this species */
+	public Species setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 		return this;
 	}
 }

@@ -135,6 +135,12 @@ public class Item {
 		return this;
 	}
 
+	/** Gets a property of this item using class name as the key */
+	@SuppressWarnings("unchecked")
+	public <T> T getProperty(Class<T> clazz) {
+		return (T) getProperty(clazz.getName());
+	}
+
 	/** Gets a property of this item by name */
 	public Object getProperty(String name) {
 		if (properties == null) {
@@ -142,6 +148,11 @@ public class Item {
 		}
 
 		return properties.get(name);
+	}
+
+	/** Adds a property to this item using the class name as the key */
+	public Item addProperty(Object object) {
+		return setProperty(object.getClass().getName(), object);
 	}
 
 	/** Sets a property of this item */

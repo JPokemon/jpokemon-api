@@ -46,6 +46,12 @@ public class Ability {
 		return this;
 	}
 
+	/** Gets a property of this ability using class name as the key */
+	@SuppressWarnings("unchecked")
+	public <T> T getProperty(Class<T> clazz) {
+		return (T) getProperty(clazz.getName());
+	}
+
 	/** Gets a property of this ability by name */
 	public Object getProperty(String name) {
 		if (properties == null) {
@@ -53,6 +59,11 @@ public class Ability {
 		}
 
 		return properties.get(name);
+	}
+
+	/** Adds a property to this ability using the class name as the key */
+	public Ability addProperty(Object object) {
+		return setProperty(object.getClass().getName(), object);
 	}
 
 	/** Sets a property of this ability */

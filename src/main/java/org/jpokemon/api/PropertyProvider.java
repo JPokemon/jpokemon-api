@@ -11,20 +11,25 @@ import java.util.Map;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public abstract class PropertyProvider<T> {
 	/** Indicates the property providers available */
-	private static final Map<Class<?>, PropertyProvider> propertyProviders = new HashMap<Class<?>, PropertyProvider>();
+	private static final Map<String, PropertyProvider> propertyProviders = new HashMap<String, PropertyProvider>();
 
-	/** Gets a PropertyProvider for the class specified */
+	/** Gets a PropertyProvider for the name of the class specified */
 	public static final <T> PropertyProvider<T> get(Class<T> clazz) {
-		return propertyProviders.get(clazz);
+		return get(clazz.getName());
+	}
+
+	/** Gets a PropertyProvider for the name specified */
+	public static final PropertyProvider get(String name) {
+		return propertyProviders.get(name);
 	}
 
 	/** Registers a PropertyProvider */
 	public static final void register(PropertyProvider<?> propertyProvider) {
-		propertyProviders.put(propertyProvider.getPropertyClass(), propertyProvider);
+		propertyProviders.put(propertyProvider.getName(), propertyProvider);
 	}
 
 	/** Gets the class of property that this factory produces */
-	public abstract Class<T> getPropertyClass();
+	public abstract String getName();
 
 	/** Builds a property, given the options provided */
 	public abstract T build(String options) throws JPokemonException;

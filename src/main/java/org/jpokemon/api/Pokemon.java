@@ -398,6 +398,12 @@ public class Pokemon {
 		return this;
 	}
 
+	/** Gets a property of this Pokémon using class name as the key */
+	@SuppressWarnings("unchecked")
+	public <T> T getProperty(Class<T> clazz) {
+		return (T) getProperty(clazz.getName());
+	}
+
 	/** Gets a property of this Pokémon by name */
 	public Object getProperty(String name) {
 		if (properties == null) {
@@ -405,6 +411,11 @@ public class Pokemon {
 		}
 
 		return properties.get(name);
+	}
+
+	/** Adds a property to this Pokémon using the class name as the key */
+	public Pokemon addProperty(Object object) {
+		return setProperty(object.getClass().getName(), object);
 	}
 
 	/** Sets a property of this Pokémon */

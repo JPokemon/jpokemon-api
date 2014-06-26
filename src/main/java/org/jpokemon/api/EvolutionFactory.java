@@ -18,7 +18,7 @@ public abstract class EvolutionFactory {
 	public abstract Class<? extends Evolution> getEvolutionClass();
 
 	/** Builds an evolution, given the options provided */
-	public abstract Evolution buildEvolution(String options) throws JPokemonException;
+	public abstract Evolution buildEvolution(String species, String options) throws JPokemonException;
 
 	/** Serializes an evolution to a string for registration */
 	public abstract String serializeEvolution(Evolution evolution) throws JPokemonException;

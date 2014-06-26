@@ -168,12 +168,12 @@ public class Pokemon {
 	}
 
 	/** Gets the ability of this Pokémon */
-	public String getPokemon() {
+	public String getAbility() {
 		return ability;
 	}
 
 	/** Sets the ability of this Pokémon */
-	public Pokemon setPokemon(String ability) {
+	public Pokemon setAbility(String ability) {
 		this.ability = ability;
 		return this;
 	}

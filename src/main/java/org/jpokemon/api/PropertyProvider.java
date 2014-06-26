@@ -28,6 +28,11 @@ public abstract class PropertyProvider<T> {
 		propertyProviders.put(propertyProvider.getName(), propertyProvider);
 	}
 
+	/** Unregisters a PropertyProvider */
+	public static final void unregister(String name) {
+		propertyProviders.remove(name);
+	}
+
 	/** Gets the class of property that this factory produces */
 	public abstract String getName();
 

@@ -1,7 +1,9 @@
 package org.jpokemon.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Defines an Overworld that a Pokémon trainer may walk around in.
@@ -29,14 +31,18 @@ public class Overworld {
 	/** Indicates the entities in this overworld */
 	protected List<OverworldEntity> entities;
 
+	/** Indicates the properties of this overworld */
+	protected Map<String, Object> properties;
+
 	/** Gets the name of this overworld */
 	public String getName() {
 		return name;
 	}
 
 	/** Sets the name of this overworld */
-	public void setName(String name) {
+	public Overworld setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	/** Gets the width of this overworld */
@@ -45,8 +51,9 @@ public class Overworld {
 	}
 
 	/** Sets the width of this overworld */
-	public void setWidth(int width) {
+	public Overworld setWidth(int width) {
 		this.width = width;
+		return this;
 	}
 
 	/** Gets the height of this overworld */
@@ -55,8 +62,9 @@ public class Overworld {
 	}
 
 	/** Sets the height of this overworld */
-	public void setHeight(int height) {
+	public Overworld setHeight(int height) {
 		this.height = height;
+		return this;
 	}
 
 	/** Adds a Pokémon trainer to this overworld */
@@ -88,8 +96,9 @@ public class Overworld {
 	}
 
 	/** Sets the Pokémon trainer players currently in this overworld */
-	public void setPokemonTrainers(List<String> pokemonTrainers) {
+	public Overworld setPokemonTrainers(List<String> pokemonTrainers) {
 		this.pokemonTrainers = pokemonTrainers;
+		return this;
 	}
 
 	/** Adds an entity to this overworld */
@@ -121,7 +130,62 @@ public class Overworld {
 	}
 
 	/** Sets the entities in this overworld */
-	public void setEntities(List<OverworldEntity> entities) {
+	public Overworld setEntities(List<OverworldEntity> entities) {
 		this.entities = entities;
+		return this;
+	}
+
+	/** Gets a property of this overworld using class name as the key */
+	@SuppressWarnings("unchecked")
+	public <T> T getProperty(Class<T> clazz) {
+		return (T) getProperty(clazz.getName());
+	}
+
+	/** Gets a property of this ability by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
+		}
+
+		return properties.get(name);
+	}
+
+	/** Adds a property to this overworld using the class name as the key */
+	public Overworld addProperty(Object object) {
+		return setProperty(object.getClass().getName(), object);
+	}
+
+	/** Sets a property of this overworld */
+	public Overworld setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
+		return this;
+	}
+
+	/** Removes a property from this overworld by name */
+	public Overworld removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
+		}
+
+		return this;
+	}
+
+	/** Gets all properties of this overworld */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		return properties;
+	}
+
+	/** Sets all properties of this overworld */
+	public Overworld setProperties(Map<String, Object> properties) {
+		this.properties = properties;
+		return this;
 	}
 }

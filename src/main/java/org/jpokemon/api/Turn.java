@@ -3,9 +3,19 @@ package org.jpokemon.api;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Defines a turn a Pokémon container may use in a {@link Round}.
+ * 
+ * @author zach
+ *
+ * @since 0.1
+ */
 public class Turn {
 	/** Indicates the priority of this turn for turn sorting */
 	protected int priority;
+
+	/** Indicates the PokemonContainer that this turn targets */
+	protected PokemonContainer target;
 
 	/** Indicates the battle effects this turn contains */
 	protected List<BattleEffect> battleEffects;
@@ -18,6 +28,17 @@ public class Turn {
 	/** Sets the priority of this turn for turn sorting */
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	/** Gets the battle effects this turn contains */
+	public PokemonContainer getTarget() {
+		return target;
+	}
+
+	/** Sets the battle effects this turn contains */
+	public Turn setTarget(PokemonContainer target) {
+		this.target = target;
+		return this;
 	}
 
 	/** Adds a battle effect to the battle effects this turn contains */

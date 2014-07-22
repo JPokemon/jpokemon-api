@@ -1,5 +1,8 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Defines a wrapper class for Skills of Pokémon participating in battle
  * 
@@ -11,8 +14,8 @@ public class SkillContainer {
 	/** Indicates the skill associated with this skill container */
 	protected Skill skill;
 
-	/** Indicates the battle effect which is disabling this skill container */
-	protected BattleEffect disablingEffect;
+	/** Indicates the battle effects which are applicable to this skill container */
+	protected List<BattleEffect> battleEffects;
 
 	/** Gets the skill associated with this skill container */
 	public Skill getSkill() {
@@ -24,13 +27,43 @@ public class SkillContainer {
 		this.skill = skill;
 	}
 
-	/** Gets the battle effect which is disabling this skill container */
-	public BattleEffect getDisablingEffect() {
-		return disablingEffect;
+	/**
+	 * Adds a battle effect to the battle effects which are applicable to this
+	 * skill container
+	 */
+	public SkillContainer addBattleEffect(BattleEffect battleEffect) {
+		if (battleEffects == null) {
+			battleEffects = new ArrayList<BattleEffect>();
+		}
+
+		battleEffects.add(battleEffect);
+		return this;
 	}
 
-	/** Sets the battle effect which is disabling this skill container */
-	public void setDisablingEffect(BattleEffect disablingEffect) {
-		this.disablingEffect = disablingEffect;
+	/**
+	 * Removes a battle effect from the battle effects which are applicable to
+	 * this skill container
+	 */
+	public SkillContainer removeBattleEffects(BattleEffect battleEffect) {
+		if (battleEffects != null) {
+			battleEffects.remove(battleEffect);
+		}
+
+		return this;
+	}
+
+	/** Gets the battle effects which are applicable to this skill container */
+	public List<BattleEffect> getBattleEffects() {
+		if (battleEffects == null) {
+			battleEffects = new ArrayList<BattleEffect>();
+		}
+
+		return battleEffects;
+	}
+
+	/** Sets the battle effects which are applicable to this skill container */
+	public SkillContainer setBattleEffects(List<BattleEffect> battleEffects) {
+		this.battleEffects = battleEffects;
+		return this;
 	}
 }

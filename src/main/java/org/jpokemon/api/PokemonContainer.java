@@ -125,7 +125,7 @@ public class PokemonContainer {
 	 * Removes a battle effect from the battle effects which are applicable to
 	 * this Pokémon
 	 */
-	public PokemonContainer removeBattleEffects(BattleEffect battleEffect) {
+	public PokemonContainer removeBattleEffect(BattleEffect battleEffect) {
 		if (battleEffects != null) {
 			battleEffects.remove(battleEffect);
 		}

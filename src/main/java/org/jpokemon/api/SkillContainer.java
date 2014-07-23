@@ -44,7 +44,7 @@ public class SkillContainer {
 	 * Removes a battle effect from the battle effects which are applicable to
 	 * this skill container
 	 */
-	public SkillContainer removeBattleEffects(BattleEffect battleEffect) {
+	public SkillContainer removeBattleEffect(BattleEffect battleEffect) {
 		if (battleEffects != null) {
 			battleEffects.remove(battleEffect);
 		}

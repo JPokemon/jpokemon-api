@@ -52,7 +52,7 @@ public class Turn {
 	}
 
 	/** Removes a battle effect from the battle effects this turn contains */
-	public Turn removeBattleEffects(BattleEffect battleEffect) {
+	public Turn removeBattleEffect(BattleEffect battleEffect) {
 		if (battleEffects != null) {
 			battleEffects.remove(battleEffect);
 		}

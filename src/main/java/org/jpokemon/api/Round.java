@@ -79,7 +79,7 @@ public class Round {
 	 * Removes a battle effect from the battle effects which are applicable to
 	 * this round
 	 */
-	public Round removeBattleEffects(BattleEffect battleEffect) {
+	public Round removeBattleEffect(BattleEffect battleEffect) {
 		if (battleEffects != null) {
 			battleEffects.remove(battleEffect);
 		}

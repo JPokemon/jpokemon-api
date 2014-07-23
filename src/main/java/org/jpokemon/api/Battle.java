@@ -166,7 +166,7 @@ public class Battle {
 	 * Removes a battle effect from the battle effects which are applicable to the
 	 * whole battle
 	 */
-	public Battle removeBattleEffects(BattleEffect battleEffect) {
+	public Battle removeBattleEffect(BattleEffect battleEffect) {
 		if (battleEffects != null) {
 			battleEffects.remove(battleEffect);
 		}

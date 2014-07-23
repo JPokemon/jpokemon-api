@@ -15,6 +15,12 @@ public abstract class BattleEngine {
 	/** Gets the name of this battle engine */
 	public abstract String getName();
 
-	/** Executes the engine for a specified battle and round */
-	public abstract void processRound(Battle battle, Round round);
+	/**
+	 * Executes the engine for a specified battle to execute its' next round.
+	 * This API must add the {@link Battle#nextRound} to the
+	 * {@link Battle#rounds history}, and set a new Round as the next round.
+	 * Additionally, this setup must be done before processing turns, as a turn
+	 * may apply BattleEffects to the next round.
+	 */
+	public abstract void processRound(Battle battle);
 }

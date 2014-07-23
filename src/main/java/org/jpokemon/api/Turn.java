@@ -14,8 +14,11 @@ public class Turn {
 	/** Indicates the priority of this turn for turn sorting */
 	protected int priority;
 
+	/** Indicates the TrainerContainer this turn targets */
+	protected TrainerContainer target;
+
 	/** Indicates the PokemonContainer that this turn targets */
-	protected PokemonContainer target;
+	protected int targetIndex;
 
 	/** Indicates the battle effects this turn contains */
 	protected List<BattleEffect> battleEffects;
@@ -26,18 +29,30 @@ public class Turn {
 	}
 
 	/** Sets the priority of this turn for turn sorting */
-	public void setPriority(int priority) {
+	public Turn setPriority(int priority) {
 		this.priority = priority;
+		return this;
 	}
 
-	/** Gets the battle effects this turn contains */
-	public PokemonContainer getTarget() {
+	/** Gets the TrainerContainer this turn targets */
+	public TrainerContainer getTarget() {
 		return target;
 	}
 
-	/** Sets the battle effects this turn contains */
-	public Turn setTarget(PokemonContainer target) {
+	/** Sets the TrainerContainer this turn targets */
+	public Turn setTarget(TrainerContainer target) {
 		this.target = target;
+		return this;
+	}
+
+	/** Gets the PokemonContainer that this turn targets */
+	public int getTargetIndex() {
+		return targetIndex;
+	}
+
+	/** Sets the PokemonContainer that this turn targets */
+	public Turn setTargetIndex(int targetIndex) {
+		this.targetIndex = targetIndex;
 		return this;
 	}
 

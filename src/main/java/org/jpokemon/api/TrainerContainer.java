@@ -14,11 +14,15 @@ public class TrainerContainer {
 	/** Indicates the Pokémon trainer associated with this trainer container */
 	protected PokemonTrainer pokemonTrainer;
 
+	/** Indicates the number of pokemon containers active in the battle */
+	protected int activePokemonContainers;
+
 	/** Indicates the Pokémon containers this trainer has available */
 	protected List<PokemonContainer> pokemonContainers;
 
 	/**
-	 * Indicates the battle effects which are applicable to this trainer container
+	 * Indicates the battle effects which are applicable to this trainer
+	 * container
 	 */
 	protected List<BattleEffect> battleEffects;
 
@@ -28,8 +32,20 @@ public class TrainerContainer {
 	}
 
 	/** Sets the Pokémon trainer associated with this trainer container */
-	public void setPokemonTrainer(PokemonTrainer pokemonTrainer) {
+	public TrainerContainer setPokemonTrainer(PokemonTrainer pokemonTrainer) {
 		this.pokemonTrainer = pokemonTrainer;
+		return this;
+	}
+
+	/** Gets the number of pokemon containers active in the battle */
+	public int getActivePokemonContainers() {
+		return activePokemonContainers;
+	}
+
+	/** Sets the number of pokemon containers active in the battle */
+	public TrainerContainer setActivePokemonContainers(int activePokemonContainers) {
+		this.activePokemonContainers = activePokemonContainers;
+		return this;
 	}
 
 	/**
@@ -63,8 +79,9 @@ public class TrainerContainer {
 	}
 
 	/** Sets the Pokémon containers this trainer has available */
-	public void setPokemonContainers(List<PokemonContainer> pokemonContainers) {
+	public TrainerContainer setPokemonContainers(List<PokemonContainer> pokemonContainers) {
 		this.pokemonContainers = pokemonContainers;
+		return this;
 	}
 
 	/**
@@ -98,7 +115,8 @@ public class TrainerContainer {
 	}
 
 	/** Sets the battle effects which are applicable to this trainer container */
-	public void setBattleEffects(List<BattleEffect> battleEffects) {
+	public TrainerContainer setBattleEffects(List<BattleEffect> battleEffects) {
 		this.battleEffects = battleEffects;
+		return this;
 	}
 }

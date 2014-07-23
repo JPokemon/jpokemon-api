@@ -24,5 +24,5 @@ public abstract class BattleEffectFactory {
 	public abstract BattleEffect buildBattleEffect(String options);
 
 	/** Serializes a battle effect to a string for registration */
-	public abstract String serializeBattleEffect();
+	public abstract String serializeBattleEffect(BattleEffect battleEffect);
 }

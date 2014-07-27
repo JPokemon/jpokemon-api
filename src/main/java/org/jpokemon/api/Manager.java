@@ -18,7 +18,7 @@ public interface Manager<T> {
 	/**
 	 * Checks if an object is registered with the manager
 	 * 
-	 * @param managed The name of the object to check for registration
+	 * @param name The name of the object to check for registration
 	 * @return Whether the object is known to the manager
 	 */
 	public boolean isRegistered(String name);

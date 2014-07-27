@@ -16,6 +16,9 @@ public class PokemonContainer {
 	/** Indicates the Pokémon associated with this Pokémon container */
 	protected Pokemon pokemon;
 
+	/** Indicates the species of Pokémon associated with this Pokémon container */
+	protected String species;
+
 	/** Indicates the skill containers associated with this Pokémon container */
 	protected List<SkillContainer> skillContainers;
 
@@ -36,9 +39,19 @@ public class PokemonContainer {
 		return this;
 	}
 
+	/** Gets the species of Pokémon associated with this Pokémon container */
+	public String getSpecies() {
+		return species;
+	}
+
+	/** Sets the species of Pokémon associated with this Pokémon container */
+	public void setSpecies(String species) {
+		this.species = species;
+	}
+
 	/**
-	 * Adds a skill container to the skill containers associated with this Pokémon
-	 * container
+	 * Adds a skill container to the skill containers associated with this
+	 * Pokémon container
 	 */
 	public PokemonContainer addSkillContainer(SkillContainer skillContainer) {
 		if (skillContainers == null) {

@@ -46,7 +46,7 @@ public class SimplePokemonManager implements PokemonManager {
 
 	@Override
 	public void update(Pokemon pokemon) {
-		// Don't have to do anything here because of the way pointers work
+		// Don't have to do anything here because pointers
 	}
 
 	@Override
@@ -63,18 +63,5 @@ public class SimplePokemonManager implements PokemonManager {
 		}
 
 		this.pokemon.get(pokemon.getOriginalTrainerID()).remove(pokemon);
-	}
-
-	/**
-	 * Initializes a new SimplePokemonManager as the {@link Pokemon#manager}
-	 * 
-	 * @throws JPokemonException If the Pokemon.manager is already defined
-	 */
-	public static void init() throws JPokemonException {
-		if (Pokemon.manager != null) {
-			throw new JPokemonException("Pokemon.manager is already defined");
-		}
-
-		Pokemon.manager = new SimplePokemonManager();
 	}
 }

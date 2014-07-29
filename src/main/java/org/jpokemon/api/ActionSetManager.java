@@ -16,7 +16,7 @@ public interface ActionSetManager {
 	/**
 	 * Registers an ActionSet with the manager so it can be looked up later
 	 * 
-	 * @param pokemon The ActionSet to be registered
+	 * @param actionSet The ActionSet to be registered
 	 * @throws JPokemonException If there is an error registering the ActionSet
 	 */
 	public void register(ActionSet actionSet) throws JPokemonException;

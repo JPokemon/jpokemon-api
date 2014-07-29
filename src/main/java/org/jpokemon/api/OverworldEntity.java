@@ -31,8 +31,8 @@ public class OverworldEntity {
 	/** Indicates the direction this entity is facing, if applicable */
 	protected String direction;
 
-	/** Indicates the movement scheme this entity enforces, if applicable */
-	protected String overworldMovement;
+	/** Indicates the movement scheme applicable to this entity */
+	protected String movement;
 
 	/** Indicates the x coordinate of this entity */
 	protected int x;
@@ -74,15 +74,14 @@ public class OverworldEntity {
 		return this;
 	}
 
-	/** Gets the movement scheme this entity enforces */
-	public String getOverworldMovement() {
-		return overworldMovement;
+	/** Gets the movement scheme applicable to this entity */
+	public String getMovement() {
+		return movement;
 	}
 
-	/** Sets the movement scheme this entity enforces */
-	public OverworldEntity setOverworldMovement(String overworldMovement) {
-		this.overworldMovement = overworldMovement;
-		return this;
+	/** Sets the movement scheme applicable to this entity */
+	public void setMovement(String movement) {
+		this.movement = movement;
 	}
 
 	/** Gets the x coordinate of this entity */

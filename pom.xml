@@ -23,8 +23,8 @@
     <!-- The project is licensed under the ISC -->
     <licenses> 
         <license> 
-            <name>The ISC License</name>
-            <url>http://copyfree.org/licenses/isc/license.txt</url>            
+            <name>The MIT License</name>
+            <url>http://opensource.org/licenses/MIT</url>            
         </license> 
     </licenses>
 
@@ -45,7 +45,7 @@
         </developer>
         <developer>
             <name>Zach Taylor</name>
-            <email>zack.taylor@gmail.com</email>
+            <email>zach.taylor673@gmail.com</email>
             <roles>
                 <role>Author</role>
                 <role>Maintainer</role>

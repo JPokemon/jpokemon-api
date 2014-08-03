@@ -14,8 +14,8 @@ public abstract class ActionFactory {
 	/** Indicates the manager used to register ActionFactories. May be null. */
 	public static Manager<ActionFactory> manager;
 
-	/** Gets the class of action that this factory produces */
-	public abstract Class<? extends Action> getActionClass();
+	/** Gets the name of action that this factory produces */
+	public abstract String getActionClass();
 
 	/** Builds an action, given the options provided */
 	public abstract Action buildAction(String options) throws JPokemonException;

@@ -14,8 +14,8 @@ public abstract class RequirementFactory {
 	/** Indicates the manager used to register RequirementFactories. May be null. */
 	public static Manager<RequirementFactory> manager;
 
-	/** Gets the class of requirement that this factory produces */
-	public abstract Class<? extends Requirement> getRequirementClass();
+	/** Gets the name of requirement that this factory produces */
+	public abstract String getName();
 
 	/** Builds a requirement, given the options provided */
 	public abstract Requirement buildRequirement(String options) throws JPokemonException;

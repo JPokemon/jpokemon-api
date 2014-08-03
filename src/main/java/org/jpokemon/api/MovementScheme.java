@@ -12,6 +12,9 @@ public abstract class MovementScheme {
 	/** Indicates the manager used to register movement schemes. May be null. */
 	public static Manager<MovementScheme> manager;
 
+	/** Gets the name of this movement scheme */
+	public abstract String getName();
+
 	/** Gets whether a PokemonTrainer can enter the entity from a direction */
 	public abstract boolean canEnterFrom(String direction);
 

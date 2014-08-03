@@ -90,6 +90,33 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.3</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <configuration>
+                            <webappSourceDir>src/main/</webappSourceDir>
+                            <webappTargetDir>target/</webappTargetDir>
+                            <jsSourceDir>js/</jsSourceDir>
+                            <jsTargetDir>js/</jsTargetDir>
+                            <jsFinalFile>${project.artifactId}-${project.version}.js</jsFinalFile>
+                            <jsSourceIncludes>
+                                <jsSourceInclude>**/**</jsSourceInclude>
+                            </jsSourceIncludes>
+                            <jsSourceExcludes>
+                                <jsSourceExclude>**/*.min.js</jsSourceExclude>
+                            </jsSourceExcludes>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+              </plugin>
         </plugins>
     </build>
 

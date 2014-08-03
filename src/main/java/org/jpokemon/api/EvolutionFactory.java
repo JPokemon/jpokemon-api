@@ -14,8 +14,8 @@ public abstract class EvolutionFactory {
 	/** Indicates the manager used to register evolution factories. May be null. */
 	public static Manager<EvolutionFactory> manager;
 
-	/** Gets the class of evolutions that this factory produces */
-	public abstract Class<? extends Evolution> getEvolutionClass();
+	/** Gets the name of evolutions that this factory produces */
+	public abstract String getName();
 
 	/** Builds an evolution, given the options provided */
 	public abstract Evolution buildEvolution(String species, String options) throws JPokemonException;

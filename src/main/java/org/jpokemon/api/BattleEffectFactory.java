@@ -17,8 +17,8 @@ public abstract class BattleEffectFactory {
 	 */
 	public static Manager<BattleEffectFactory> manager;
 
-	/** Gets the class of battle effect that this factory produces */
-	public abstract Class<? extends BattleEffect> getBattleEffectClass();
+	/** Gets the name of battle effect that this factory produces */
+	public abstract String getName();
 
 	/** Builds a battle effect, given the options provided */
 	public abstract BattleEffect buildBattleEffect(String options);

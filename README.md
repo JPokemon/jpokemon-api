@@ -2,7 +2,8 @@
 
 There are many Pokémon fan games. A lot of them are based on RPG Maker, and some are home-rolled. Of those, several are even open-source. Games based on RPG Maker are subject to the authors of that framework, and of course, are limited to the scope of RPG Maker itself. Of the open-source games, few pool their code. This library is an answer to all the disparate fan projects. It aims to provide a capable API for Pokémon games.
 
-This library provides well-documented data structures and utilities for Pokémon games written in Java.
+This library provides well-documented data structures and utilities for Pokémon games written in Java.  
+A javascript version is in development!
 
 ## About
 

@@ -1,12 +1,12 @@
 function(jPokemon) {
-  jPokemon.Ability = function Ability() {
+  jPokemon.TrainerClass = function TrainerClass() {
     this.name = null;
     this.description = null;
     this.properties = {};
   }
 
-  var statics = Ability,
-      exports = Ability.prototype;
+  var statics = TrainerClass,
+      exports = TrainerClass.prototype;
 
   statics.manager = null;
 

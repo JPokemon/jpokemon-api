@@ -15,7 +15,7 @@ public abstract class ActionFactory {
 	public static Manager<ActionFactory> manager;
 
 	/** Gets the name of action that this factory produces */
-	public abstract String getActionClass();
+	public abstract String getName();
 
 	/** Builds an action, given the options provided */
 	public abstract Action buildAction(String options) throws JPokemonException;

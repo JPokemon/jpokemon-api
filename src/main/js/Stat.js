@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Stat = function Stat() {
     this.value = null;
     this.ev = null;
@@ -34,4 +34,4 @@ function(jPokemon) {
     this.iv = iv;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

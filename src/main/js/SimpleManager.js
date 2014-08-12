@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.SimpleManager = function SimpleManager() {
     this.objects = {};
   }
@@ -40,4 +40,4 @@ function(jPokemon) {
   exports.unregister = function(name) {
     delete this.objects[name];
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

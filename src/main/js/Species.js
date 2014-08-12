@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Species = function Species() {
     this.name = null;
     this.tag = null;
@@ -282,4 +282,4 @@ function(jPokemon) {
     this.tutorMoves = tutorMoves;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Skill = function Skill() {
     this.move = null;
     this.currentPP = null;
@@ -34,4 +34,4 @@ function(jPokemon) {
     this.maxPP = maxPP;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

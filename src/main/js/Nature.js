@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Nature = function Nature() {
     this.name = null;
     this.statIncreased = null;
@@ -52,4 +52,4 @@ function(jPokemon) {
     this.flavorDisliked = flavorDisliked;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

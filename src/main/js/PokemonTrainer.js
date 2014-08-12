@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.PokemonTrainer = function PokemonTrainer() {
     this.name = null;
     this.trainerID = null;
@@ -102,4 +102,4 @@ function(jPokemon) {
     this.properties = properties;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

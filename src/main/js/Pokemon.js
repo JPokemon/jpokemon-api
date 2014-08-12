@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Pokemon = function Pokemon() {
     this.name = null;
     this.species = null;
@@ -267,4 +267,4 @@ function(jPokemon) {
     this.properties = properties;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

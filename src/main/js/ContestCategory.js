@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.ContestCategory = function ContestCategory() {
     this.name = null;
     this.flavor = null;
@@ -58,7 +58,7 @@ function(jPokemon) {
     return this.reactions[contestCategory];
   };
 
-  export.setReaction = function(contestCategory, reaction) {
+  exports.setReaction = function(contestCategory, reaction) {
     this.reactions[contestCategory] = reaction;
     return this;
   };
@@ -76,4 +76,4 @@ function(jPokemon) {
     this.reactions = reactions;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

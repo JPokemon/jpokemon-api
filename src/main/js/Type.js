@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Type = function Type() {
     this.name = null;
     this.effectivenessMap = {};
@@ -40,4 +40,4 @@ function(jPokemon) {
     this.effectivenessMap = effectivenessMap;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.Move = function Move() {
     this.name = null;
     this.type = null;
@@ -165,4 +165,4 @@ function(jPokemon) {
     this.properties = properties;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

@@ -1,4 +1,4 @@
-function(jPokemon) {
+(function(jPokemon) {
   jPokemon.TrainerClass = function TrainerClass() {
     this.name = null;
     this.description = null;
@@ -55,4 +55,4 @@ function(jPokemon) {
     this.properties = properties;
     return this;
   };
-}(window.jPokemon = window.jPokemon || {});
+})(window.jPokemon = window.jPokemon || {});

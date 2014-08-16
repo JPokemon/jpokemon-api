@@ -7,8 +7,8 @@
     this.flavorDisliked = null;
   }
 
-  var statics = Nature,
-      exports = Nature.prototype;
+  var statics = jPokemon.Nature,
+      exports = jPokemon.Nature.prototype;
 
   statics.manager = null;
 

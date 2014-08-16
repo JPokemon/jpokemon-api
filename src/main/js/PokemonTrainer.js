@@ -8,8 +8,8 @@
     this.properties = {};
   }
 
-  var statics = PokemonTrainer,
-      exports = PokemonTrainer.prototype;
+  var statics = jPokemon.PokemonTrainer,
+      exports = jPokemon.PokemonTrainer.prototype;
 
   statics.manager = null;
 

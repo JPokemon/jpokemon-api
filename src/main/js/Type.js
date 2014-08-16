@@ -4,8 +4,8 @@
     this.effectivenessMap = {};
   }
 
-  var statics = Type,
-      exports = Type.prototype;
+  var statics = jPokemon.Type,
+      exports = jPokemon.Type.prototype;
 
   statics.manager = null;
 

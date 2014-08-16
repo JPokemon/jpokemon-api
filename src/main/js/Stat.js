@@ -5,8 +5,8 @@
     this.iv = null;
   }
 
-  var statics = Stat,
-      exports = Stat.prototype;
+  var statics = jPokemon.Stat,
+      exports = jPokemon.Stat.prototype;
 
   exports.getValue = function() {
     return this.value;

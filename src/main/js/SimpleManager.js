@@ -3,8 +3,8 @@
     this.objects = {};
   }
 
-  var statics = SimpleManager,
-      exports = SimpleManager.prototype;
+  var statics = jPokemon.SimpleManager,
+      exports = jPokemon.SimpleManager.prototype;
 
   exports.isRegistered = function(name) {
     return this.objects[name] !== undefined;

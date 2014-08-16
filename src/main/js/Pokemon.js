@@ -21,8 +21,8 @@
     this.properties = {};
   }
 
-  var statics = Pokemon,
-      exports = Pokemon.prototype;
+  var statics = jPokemon.Pokemon,
+      exports = jPokemon.Pokemon.prototype;
 
   statics.manager = null;
 

@@ -5,8 +5,8 @@
     this.properties = {};
   }
 
-  var statics = Ability,
-      exports = Ability.prototype;
+  var statics = jPokemon.Ability,
+      exports = jPokemon.Ability.prototype;
 
   statics.manager = null;
 

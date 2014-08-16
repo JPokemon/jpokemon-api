@@ -7,8 +7,8 @@
     this.reactions = {};
   }
 
-  var statics = ContestCategory,
-      exports = ContestCategory.prototype;
+  var statics = jPokemon.ContestCategory,
+      exports = jPokemon.ContestCategory.prototype;
 
   statics.manager = null;
 

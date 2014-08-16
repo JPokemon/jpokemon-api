@@ -30,8 +30,8 @@
     this.properties = {};
   }
 
-  var statics = Species,
-      exports = Species.prototype;
+  var statics = jPokemon.Species,
+      exports = jPokemon.Species.prototype;
 
   statics.manager = null;
 

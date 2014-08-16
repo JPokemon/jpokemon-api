@@ -16,8 +16,8 @@
     this.properties = {};
   }
 
-  var statics = Move,
-      exports = Move.prototype;
+  var statics = jPokemon.Move,
+      exports = jPokemon.Move.prototype;
 
   statics.manager = null;
 

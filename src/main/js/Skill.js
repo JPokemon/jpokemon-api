@@ -5,8 +5,8 @@
     this.maxPP = null;
   }
 
-  var statics = Skill,
-      exports = Skill.prototype;
+  var statics = jPokemon.Skill,
+      exports = jPokemon.Skill.prototype;
 
   exports.getMove = function() {
     return this.move;

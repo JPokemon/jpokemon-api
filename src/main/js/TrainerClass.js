@@ -5,8 +5,8 @@
     this.properties = {};
   }
 
-  var statics = TrainerClass,
-      exports = TrainerClass.prototype;
+  var statics = jPokemon.TrainerClass,
+      exports = jPokemon.TrainerClass.prototype;
 
   statics.manager = null;
 

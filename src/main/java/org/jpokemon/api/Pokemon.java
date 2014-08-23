@@ -27,6 +27,9 @@ public class Pokemon {
 	/** Indicates the gender of this Pokémon */
 	protected String gender;
 
+	/** Indicates the nature of this Pokémon */
+	protected String nature;
+
 	/** Indicates the ID of the original trainer of this Pokémon */
 	protected int originalTrainerID;
 
@@ -110,6 +113,16 @@ public class Pokemon {
 	public Pokemon setGender(String gender) {
 		this.gender = gender;
 		return this;
+	}
+
+	/** Gets the nature of this Pokémon */
+	public String getNature() {
+		return nature;
+	}
+
+	/** Sets the nature of this Pokémon */
+	public void setNature(String nature) {
+		this.nature = nature;
 	}
 
 	/** Gets the ID of the original trainer of this Pokémon */

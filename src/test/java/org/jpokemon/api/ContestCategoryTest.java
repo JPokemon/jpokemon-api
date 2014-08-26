@@ -41,28 +41,26 @@ public class ContestCategoryTest extends TestCase {
 	public void testReactions() {
 		String categoryName = "FooCategory";
 		ContestCategory contestCategory = new ContestCategory();
-		assertFalse(contestCategory.isExcitementReaction(categoryName));
-		assertFalse(contestCategory.isIndifferenceReaction(categoryName));
-		assertFalse(contestCategory.isDiscontentReaction(categoryName));
 
-		assertNotNull(contestCategory.getExcitementReactions());
-		assertNotNull(contestCategory.getIndifferenceReactions());
-		assertNotNull(contestCategory.getDiscontentReactions());
+		assertNotNull(contestCategory.getReactions());
+		assertEquals(0, contestCategory.getReactions().size());
 
-		contestCategory.setExcitementReaction(categoryName);
-		assertTrue(contestCategory.isExcitementReaction(categoryName));
-		assertEquals(1, contestCategory.getExcitementReactions().size());
+		String REACTION_EXCITEMENT = "EXCITEMENT";
+		contestCategory.setReaction(categoryName, REACTION_EXCITEMENT);
 
-		contestCategory.setIndifferenceReaction(categoryName);
-		assertTrue(contestCategory.isIndifferenceReaction(categoryName));
-		assertFalse(contestCategory.isExcitementReaction(categoryName));
-		assertEquals(1, contestCategory.getIndifferenceReactions().size());
-		assertEquals(0, contestCategory.getExcitementReactions().size());
+		assertEquals(1, contestCategory.getReactions().size());
+		assertEquals(REACTION_EXCITEMENT, contestCategory.getReaction(categoryName));
+
+		String REACTION_CUSTOM = "The reviews were mixed, and overall unreceptive";
+		contestCategory.setReaction(categoryName, REACTION_CUSTOM);
+
+		assertEquals(1, contestCategory.getReactions().size());
+		assertEquals(REACTION_CUSTOM, contestCategory.getReaction(categoryName));
 
 		contestCategory.removeReaction(categoryName);
-		assertEquals(0, contestCategory.getIndifferenceReactions().size());
+		assertEquals(0, contestCategory.getReactions().size());
 
-		contestCategory.setDiscontentReaction((String[]) null);
-		assertNotNull(contestCategory.getDiscontentReactions());
+		contestCategory.setReactions(null);
+		assertNotNull(contestCategory.getReactions());
 	}
 }

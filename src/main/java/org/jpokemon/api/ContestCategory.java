@@ -1,11 +1,7 @@
 package org.jpokemon.api;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Defines the different categories of moves for the Pokémon Contests that
@@ -18,15 +14,6 @@ import java.util.Set;
 public class ContestCategory {
 	/** Indicates the manager used to register contest categories. May be null. */
 	public static Manager<ContestCategory> manager;
-
-	/** Indicates the value used to represent an excitement reaction */
-	public static final String EXCITEMENT_REACTION = "EXCITEMENT";
-
-	/** Indicates the value used to represent an indifference reaction */
-	public static final String INDIFFERENCE_REACTION = "INDIFFERENCE";
-
-	/** Indicates the value used to represent a discontent reaction */
-	public static final String DISCONTENT_REACTION = "DISCONTENT";
 
 	/** Indicates the name of this category */
 	protected String name;
@@ -42,10 +29,6 @@ public class ContestCategory {
 
 	/** Indicates how this category reacts to another category */
 	protected Map<String, String> reactions;
-
-	/** Provides the default constructor */
-	public ContestCategory() {
-	}
 
 	/** Gets the name of this contest category */
 	public String getName() {
@@ -91,62 +74,18 @@ public class ContestCategory {
 		return this;
 	}
 
-	/** Gets whether this contest will react excitedly to the specified category */
-	public boolean isExcitementReaction(String contestCategory) {
-		return isReaction(EXCITEMENT_REACTION, contestCategory);
+	public String getReaction(String contestCategory) {
+		return getReactions().get(contestCategory);
 	}
 
-	/** Gets the list of categories that this contest will react excitedly to */
-	public List<String> getExcitementReactions() {
-		return getReaction(EXCITEMENT_REACTION);
-	}
-
-	/** Sets categories that this contest will react excitedly to */
-	public ContestCategory setExcitementReaction(String... contestCategories) {
-		setReaction(EXCITEMENT_REACTION, contestCategories);
-		return this;
-	}
-
-	/** Gets whether this contest will react indifferent to the specified category */
-	public boolean isIndifferenceReaction(String contestCategory) {
-		return isReaction(INDIFFERENCE_REACTION, contestCategory);
-	}
-
-	/** Gets the list of categories that this contest will react indifferently to */
-	public List<String> getIndifferenceReactions() {
-		return getReaction(INDIFFERENCE_REACTION);
-	}
-
-	/** Sets the list of categories that this contest will react indifferently to */
-	public ContestCategory setIndifferenceReaction(String... contestCategories) {
-		setReaction(INDIFFERENCE_REACTION, contestCategories);
-		return this;
-	}
-
-	/** Gets the list of categories that this contest will react discontent to */
-	public boolean isDiscontentReaction(String contestCategory) {
-		return isReaction(DISCONTENT_REACTION, contestCategory);
-	}
-
-	/** Gets the list of categories that this contest will react discontent to */
-	public List<String> getDiscontentReactions() {
-		return getReaction(DISCONTENT_REACTION);
-	}
-
-	/** Sets the list of categories that this contest will react discontent to */
-	public ContestCategory setDiscontentReaction(String... contestCategories) {
-		setReaction(DISCONTENT_REACTION, contestCategories);
+	public ContestCategory setReaction(String contestCategory, String reaction) {
+		getReactions().put(contestCategory, reaction);
 		return this;
 	}
 
 	/** Clears reactions for a list of categories, regardless of reaction */
-	public ContestCategory removeReaction(String... contestCategories) {
-		if (reactions != null && contestCategories != null) {
-			for (String contestCategory : contestCategories) {
-				reactions.remove(contestCategory);
-			}
-		}
-
+	public ContestCategory removeReaction(String contestCategory) {
+		getReactions().remove(contestCategory);
 		return this;
 	}
 
@@ -161,52 +100,7 @@ public class ContestCategory {
 
 	/** Sets all reactions as a map of contest category name -> reaction */
 	public ContestCategory setReactions(Map<String, String> reactions) throws JPokemonException {
-		Set<String> reactionValues = new HashSet<String>();
-		reactionValues.addAll(reactions.values());
-		reactionValues.remove(EXCITEMENT_REACTION);
-		reactionValues.remove(INDIFFERENCE_REACTION);
-		reactionValues.remove(DISCONTENT_REACTION);
-
-		if (reactionValues.size() > 0) {
-			throw new JPokemonException("Reaction map contains invalid reactions: " + reactionValues.toString());
-		}
-
 		this.reactions = reactions;
 		return this;
-	}
-
-	private boolean isReaction(String reaction, String contestCategory) {
-		if (reactions == null) {
-			return false;
-		}
-
-		return reaction.equals(reactions.get(contestCategory));
-	}
-
-	private List<String> getReaction(String reaction) {
-		List<String> contestCategories = new ArrayList<String>();
-
-		if (reactions != null) {
-			for (Map.Entry<String, String> contestReaction : reactions.entrySet()) {
-				if (reaction.equals(contestReaction.getValue())) {
-					contestCategories.add(contestReaction.getKey());
-				}
-			}
-		}
-
-		return contestCategories;
-	}
-
-	private void setReaction(String reaction, String... contestCategories) {
-		if (contestCategories == null) {
-			return;
-		}
-		if (reactions == null) {
-			reactions = new HashMap<String, String>();
-		}
-
-		for (String contestCategory : contestCategories) {
-			reactions.put(contestCategory, reaction);
-		}
 	}
 }

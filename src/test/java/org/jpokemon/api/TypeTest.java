@@ -4,12 +4,6 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-/**
- * Tests type properties and the use of ClassicTypes.
- * 
- * @author atheriel@gmail.com
- * @author zach
- */
 public class TypeTest extends TestCase {
 	@Test
 	public void testName() {
@@ -23,26 +17,26 @@ public class TypeTest extends TestCase {
 	public void testEffectiveness() {
 		String typeName = "Type1";
 		Type type = new Type();
-		assertNotNull(type.getSuperEffectiveAgainst());
-		assertEquals(0, type.getSuperEffectiveAgainst().size());
-		assertNotNull(type.getNotVeryEffectiveAgainst());
-		assertEquals(0, type.getNotVeryEffectiveAgainst().size());
-		assertNotNull(type.getIneffectiveAgainst());
-		assertEquals(0, type.getIneffectiveAgainst().size());
 
-		type.setSuperEffectiveAgainst(typeName);
-		assertEquals(1, type.getSuperEffectiveAgainst().size());
-		assertEquals(typeName, type.getSuperEffectiveAgainst().get(0));
+		assertNotNull(type.getEffectiveness());
+		assertEquals(0, type.getEffectiveness().size());
 
-		type.setIneffectiveAgainst(typeName);
-		assertEquals(0, type.getSuperEffectiveAgainst().size());
-		assertEquals(1, type.getIneffectiveAgainst().size());
-		assertEquals(typeName, type.getIneffectiveAgainst().get(0));
+		String EFFECTIVENESS_SUPER_STRING = "super";
+		type.setEffectiveness(typeName, EFFECTIVENESS_SUPER_STRING);
+
+		assertEquals(1, type.getEffectiveness().size());
+		assertEquals(EFFECTIVENESS_SUPER_STRING, type.getEffectiveness(typeName));
+
+		String EFFECTIVENESS_CUSTOM_STRING = "mega-extreme";
+		type.setEffectiveness(typeName, EFFECTIVENESS_CUSTOM_STRING);
+
+		assertEquals(1, type.getEffectiveness().size());
+		assertEquals(EFFECTIVENESS_CUSTOM_STRING, type.getEffectiveness(typeName));
 
 		type.removeEffectiveness(typeName);
-		assertEquals(0, type.getIneffectiveAgainst().size());
+		assertEquals(0, type.getEffectiveness().size());
 
-		type.setNotVeryEffectiveAgainst(null);
-		assertNotNull(type.getNotVeryEffectiveAgainst());
+		type.setEffectiveness(null);
+		assertNotNull(type.getEffectiveness());
 	}
 }

@@ -9,5 +9,6 @@ package org.jpokemon.api;
  */
 public interface Action {
 	/** Executes this action on the available Pokémon trainer */
-	public void execute(PokemonTrainer pokemonTrainer) throws JPokemonException;
+	public void execute(Overworld overworld, OverworldEntity entity, ActionSet actionSet, PokemonTrainer pokemonTrainer)
+			throws JPokemonException;
 }

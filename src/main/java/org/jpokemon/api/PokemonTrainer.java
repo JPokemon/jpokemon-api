@@ -71,20 +71,12 @@ public class PokemonTrainer {
 
 	/** Gets the quantity of an item the trainer has (by name) */
 	public int getItemQuantity(String item) {
-		if (items == null || !items.containsKey(item)) {
-			return 0;
-		}
-
-		return items.get(item);
+		return getItems().get(item);
 	}
 
 	/** Sets the quantity of an item the trainer has (by name) */
 	public PokemonTrainer setItemQuantity(String item, int quantity) {
-		if (items == null) {
-			items = new HashMap<String, Integer>();
-		}
-
-		items.put(item, quantity);
+		getItems().put(item, quantity);
 		return this;
 	}
 
@@ -101,25 +93,21 @@ public class PokemonTrainer {
 
 	/** Adds a Pokémon to the trainer's collection */
 	public PokemonTrainer addPokemon(Pokemon pokemon) {
-		if (this.pokemon == null) {
-			this.pokemon = new ArrayList<Pokemon>();
-		}
-
-		this.pokemon.add(pokemon);
+		getPokemon().add(pokemon);
 		return this;
 	}
 
 	/** Removes a Pokémon from the trainer's collection */
 	public PokemonTrainer removePokemon(Pokemon pokemon) {
-		if (this.pokemon != null) {
-			this.pokemon.remove(pokemon);
-		}
-
+		getPokemon().remove(pokemon);
 		return this;
 	}
 
 	/** Gets the trainer's Pokémon */
 	public List<Pokemon> getPokemon() {
+		if (pokemon == null) {
+			pokemon = new ArrayList<Pokemon>();
+		}
 		return pokemon;
 	}
 
@@ -129,46 +117,35 @@ public class PokemonTrainer {
 		return this;
 	}
 
-	/** Gets a property of this Pokémon trainer using class name as the key */
+	/** Gets an automatically casted property keyed by the class name */
 	@SuppressWarnings("unchecked")
 	public <T> T getProperty(Class<T> clazz) {
 		return (T) getProperty(clazz.getName());
 	}
 
-	/** Gets a property of this Pokémon trainer by name */
+	/** Gets a property */
 	public Object getProperty(String name) {
-		if (properties == null) {
-			return null;
-		}
-
-		return properties.get(name);
+		return getProperties().get(name);
 	}
 
-	/** Adds a property to this Pokémon trainer using the class name as the key */
-	public PokemonTrainer addProperty(Object object) {
-		return setProperty(object.getClass().getName(), object);
+	/** Sets a property keyed by the class name */
+	public <T> PokemonTrainer setProperty(Class<T> clazz, T property) {
+		return setProperty(clazz.getName(), property);
 	}
 
-	/** Sets a property of this Pokémon trainer */
+	/** Sets a property */
 	public PokemonTrainer setProperty(String name, Object property) {
-		if (properties == null) {
-			properties = new HashMap<String, Object>();
-		}
-
-		properties.put(name, property);
+		getProperties().put(name, property);
 		return this;
 	}
 
-	/** Removes a property from this Pokémon trainer by name */
+	/** Removes a property */
 	public PokemonTrainer removeProperty(String name) {
-		if (properties != null) {
-			properties.remove(name);
-		}
-
+		getProperties().remove(name);
 		return this;
 	}
 
-	/** Gets all properties of this Pokémon */
+	/** Gets all properties */
 	public Map<String, Object> getProperties() {
 		if (properties == null) {
 			properties = new HashMap<String, Object>();
@@ -177,7 +154,7 @@ public class PokemonTrainer {
 		return properties;
 	}
 
-	/** Sets all properties of this Pokémon trainer */
+	/** Sets all properties */
 	public PokemonTrainer setProperties(Map<String, Object> properties) {
 		this.properties = properties;
 		return this;

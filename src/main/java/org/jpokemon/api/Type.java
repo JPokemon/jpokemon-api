@@ -21,10 +21,6 @@ public class Type {
 	/** Defines a mapping of this type's effectiveness against others */
 	protected Map<String, String> effectiveness;
 
-	/** Provides the default constructor */
-	public Type() {
-	}
-
 	/** Gets the name of this type */
 	public String getName() {
 		return name;
@@ -43,13 +39,7 @@ public class Type {
 
 	/** Sets the effectiveness of this type against another */
 	public Type setEffectiveness(String type, String effectiveness) {
-		if (effectiveness == null) {
-			removeEffectiveness(type);
-		}
-		else {
-			getEffectiveness().put(type, effectiveness);
-		}
-
+		getEffectiveness().put(type, effectiveness);
 		return this;
 	}
 
@@ -64,7 +54,6 @@ public class Type {
 		if (effectiveness == null) {
 			effectiveness = new HashMap<String, String>();
 		}
-
 		return effectiveness;
 	}
 

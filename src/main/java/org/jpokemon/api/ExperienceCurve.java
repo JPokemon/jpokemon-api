@@ -11,11 +11,11 @@ package org.jpokemon.api;
  * @since 0.1
  */
 public abstract class ExperienceCurve {
-	/** Indicates the manager used to register experience curves. May be null. */
+	/** Indicates the manager used to register experience curves */
 	public static Manager<ExperienceCurve> manager;
 
-	/** Gets the name of this Experience Curve */
-	public abstract String getName();
+	/** Gets the unique id of this experience curve */
+	public abstract String getId();
 
 	/** Gets the experience required for a level, using this calculation */
 	public abstract int experienceRequiredForLevel(int level);

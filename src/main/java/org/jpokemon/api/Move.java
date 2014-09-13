@@ -17,8 +17,11 @@ import java.util.Map;
  * @since 0.1
  */
 public class Move {
-	/** Indicates the manager used to register moves. May be null. */
+	/** Indicates the manager used to register moves */
 	public static Manager<Move> manager;
+
+	/** Indicates the unique id of this move */
+	protected String id;
 
 	/** Indicates the name of this move */
 	protected String name;
@@ -61,6 +64,16 @@ public class Move {
 
 	/** Indicates the properties of this move */
 	protected Map<String, Object> properties;
+
+	/** Gets the unique id of this move */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this move */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/** Gets the name of this move */
 	public String getName() {
@@ -205,46 +218,35 @@ public class Move {
 		return this;
 	}
 
-	/** Gets a property of this move using class name as the key */
+	/** Gets an automatically casted property keyed by the class name */
 	@SuppressWarnings("unchecked")
 	public <T> T getProperty(Class<T> clazz) {
 		return (T) getProperty(clazz.getName());
 	}
 
-	/** Gets a property of this move by name */
+	/** Gets a property */
 	public Object getProperty(String name) {
-		if (properties == null) {
-			return null;
-		}
-
-		return properties.get(name);
+		return getProperties().get(name);
 	}
 
-	/** Adds a property to this move using the class name as the key */
-	public Move addProperty(Object object) {
-		return setProperty(object.getClass().getName(), object);
+	/** Sets a property keyed by the class name */
+	public <T> Move setProperty(Class<T> clazz, T property) {
+		return setProperty(clazz.getName(), property);
 	}
 
-	/** Sets a property of this move */
+	/** Sets a property */
 	public Move setProperty(String name, Object property) {
-		if (properties == null) {
-			properties = new HashMap<String, Object>();
-		}
-
-		properties.put(name, property);
+		getProperties().put(name, property);
 		return this;
 	}
 
-	/** Removes a property from this move by name */
+	/** Removes a property */
 	public Move removeProperty(String name) {
-		if (properties != null) {
-			properties.remove(name);
-		}
-
+		getProperties().remove(name);
 		return this;
 	}
 
-	/** Gets all properties of this move */
+	/** Gets all properties */
 	public Map<String, Object> getProperties() {
 		if (properties == null) {
 			properties = new HashMap<String, Object>();
@@ -253,7 +255,7 @@ public class Move {
 		return properties;
 	}
 
-	/** Sets all properties of this move */
+	/** Sets all properties */
 	public Move setProperties(Map<String, Object> properties) {
 		this.properties = properties;
 		return this;

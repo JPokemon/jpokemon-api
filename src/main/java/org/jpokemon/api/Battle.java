@@ -33,10 +33,6 @@ public class Battle {
 	/** Indicates the targeting scheme associated with this battle */
 	protected TargetingScheme targetingScheme;
 
-	/** Provides the default constructor */
-	public Battle() {
-	}
-
 	/** Adds a round to the history of rounds in this battle */
 	public Battle addRound(Round round) {
 		if (rounds == null) {

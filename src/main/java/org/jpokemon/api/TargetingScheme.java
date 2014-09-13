@@ -15,11 +15,8 @@ public abstract class TargetingScheme {
 	public static Manager<TargetingScheme> manager;
 
 	/** Gets the name of this targeting scheme */
-	public abstract String getName();
+	public abstract String getId();
 
-	/**
-	 * Gets the potential targets for a Pokémon using a Move which has this
-	 * targeting scheme
-	 */
+	/** Gets the potential targets, given the context */
 	public abstract List<PokemonContainer> getPotentialTargets(PokemonContainer pokemonContainer, Battle battle);
 }

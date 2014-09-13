@@ -22,29 +22,18 @@ public class Round {
 
 	/** Gets the turn registered to a pokemon container */
 	public Turn getTurn(PokemonContainer pokemonContainer) {
-		if (turns != null) {
-			return turns.get(pokemonContainer);
-		}
-
-		return null;
+		return getTurns().get(pokemonContainer);
 	}
 
 	/** Sets the turn registered to a pokemon container */
 	public Round setTurn(PokemonContainer pokemonContainer, Turn turn) {
-		if (turns == null) {
-			turns = new HashMap<PokemonContainer, Turn>();
-		}
-
-		turns.put(pokemonContainer, turn);
+		getTurns().put(pokemonContainer, turn);
 		return this;
 	}
 
 	/** Removes the turn registered to a pokemon container */
 	public Round removeTurn(PokemonContainer pokemonContainer) {
-		if (turns != null) {
-			turns.remove(pokemonContainer);
-		}
-
+		getTurns().remove(pokemonContainer);
 		return this;
 	}
 
@@ -53,13 +42,13 @@ public class Round {
 		if (turns == null) {
 			turns = new HashMap<PokemonContainer, Turn>();
 		}
-
 		return turns;
 	}
 
 	/** Sets the turns registered in this round */
-	public void setTurns(Map<PokemonContainer, Turn> turns) {
+	public Round setTurns(Map<PokemonContainer, Turn> turns) {
 		this.turns = turns;
+		return this;
 	}
 
 	/**
@@ -67,11 +56,7 @@ public class Round {
 	 * round
 	 */
 	public Round addBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects == null) {
-			battleEffects = new ArrayList<BattleEffect>();
-		}
-
-		battleEffects.add(battleEffect);
+		getBattleEffects().add(battleEffect);
 		return this;
 	}
 
@@ -80,10 +65,7 @@ public class Round {
 	 * this round
 	 */
 	public Round removeBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects != null) {
-			battleEffects.remove(battleEffect);
-		}
-
+		getBattleEffects().remove(battleEffect);
 		return this;
 	}
 
@@ -92,7 +74,6 @@ public class Round {
 		if (battleEffects == null) {
 			battleEffects = new ArrayList<BattleEffect>();
 		}
-
 		return battleEffects;
 	}
 

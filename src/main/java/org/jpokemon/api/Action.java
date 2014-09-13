@@ -1,14 +1,16 @@
 package org.jpokemon.api;
 
 /**
- * Defines an Action that an entity in the overworld may perform
+ * Defines an interface for interaction
  * 
  * @author zach
  * 
  * @since 0.1
  */
-public interface Action {
-	/** Executes this action on the available Pokémon trainer */
-	public void execute(Overworld overworld, OverworldEntity entity, ActionSet actionSet, PokemonTrainer pokemonTrainer)
-			throws JPokemonException;
+public abstract class Action {
+	/** Indicates the manager used to register action builders */
+	public static Manager<Builder<Action>> builders;
+
+	/** Executes this action with the provided context */
+	public abstract void execute(Overworld overworld, OverworldEntity entity, PokemonTrainer pokemonTrainer) throws JPokemonException;
 }

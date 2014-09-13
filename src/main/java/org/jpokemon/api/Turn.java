@@ -58,20 +58,13 @@ public class Turn {
 
 	/** Adds a battle effect to the battle effects this turn contains */
 	public Turn addBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects == null) {
-			battleEffects = new ArrayList<BattleEffect>();
-		}
-
-		battleEffects.add(battleEffect);
+		getBattleEffects().add(battleEffect);
 		return this;
 	}
 
 	/** Removes a battle effect from the battle effects this turn contains */
 	public Turn removeBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects != null) {
-			battleEffects.remove(battleEffect);
-		}
-
+		getBattleEffects().remove(battleEffect);
 		return this;
 	}
 

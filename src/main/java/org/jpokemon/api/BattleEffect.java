@@ -39,7 +39,10 @@ package org.jpokemon.api;
  * 
  * @since 0.1
  */
-public interface BattleEffect {
+public abstract class BattleEffect {
+	/** Indicates the manager used to register battle effect builders */
+	public static Manager<Builder<BattleEffect>> builders;
+
 	/**
 	 * Gets the priority of this battle effect, for ordering by a
 	 * {@link BattleEngine}
@@ -47,8 +50,7 @@ public interface BattleEffect {
 	public abstract int getPriority();
 
 	/** Applies the effect to the Battle */
-	public abstract void affect(Battle battle, TrainerContainer trainerContainer, PokemonContainer pokemonContainer,
-			Turn turn);
+	public abstract void affect(Battle battle, TrainerContainer trainerContainer, PokemonContainer pokemonContainer, Turn turn);
 
 	/** Applies the effect to a round in the battle */
 	public abstract void affect(Round round);
@@ -71,6 +73,5 @@ public interface BattleEffect {
 	 * Applies the effect to a battle effect, which is of lower priority than this
 	 * battle effect. Facilitates modification of other BattleEffects.
 	 */
-	public abstract void affect(BattleEffect battleEffect, Battle battle, TrainerContainer trainerContainer,
-			PokemonContainer pokemonContainer, Turn turn);
+	public abstract void affect(BattleEffect battleEffect, Battle battle, TrainerContainer trainerContainer, PokemonContainer pokemonContainer, Turn turn);
 }

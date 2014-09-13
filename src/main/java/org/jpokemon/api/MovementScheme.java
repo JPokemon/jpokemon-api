@@ -9,18 +9,13 @@ package org.jpokemon.api;
  * @since 0.1
  */
 public abstract class MovementScheme {
-	/** Indicates the manager used to register movement schemes. May be null. */
-	public static Manager<MovementScheme> manager;
+	/** Indicates the manager used to register movement schemes builders */
+	public static Manager<Builder<MovementScheme>> builders;
 
 	/** Gets the name of this movement scheme */
 	public abstract String getName();
 
-	/** Gets whether a PokemonTrainer can enter the entity from a direction */
-	public abstract boolean canEnterFrom(String direction);
+	public abstract boolean isSolid();
 
-	/** Gets whether a PokemonTrainer can exit the entity moving a direction */
-	public abstract boolean canExitToward(String direction);
-
-	/** Gets the movement that being inside this entity enforces */
-	public abstract String mustExitToward();
+	public abstract String getNextMove(String move);
 }

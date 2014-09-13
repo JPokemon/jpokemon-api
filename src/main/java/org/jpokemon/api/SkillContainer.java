@@ -32,11 +32,7 @@ public class SkillContainer {
 	 * skill container
 	 */
 	public SkillContainer addBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects == null) {
-			battleEffects = new ArrayList<BattleEffect>();
-		}
-
-		battleEffects.add(battleEffect);
+		getBattleEffects().add(battleEffect);
 		return this;
 	}
 
@@ -45,10 +41,7 @@ public class SkillContainer {
 	 * this skill container
 	 */
 	public SkillContainer removeBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects != null) {
-			battleEffects.remove(battleEffect);
-		}
-
+		getBattleEffects().remove(battleEffect);
 		return this;
 	}
 
@@ -57,7 +50,6 @@ public class SkillContainer {
 		if (battleEffects == null) {
 			battleEffects = new ArrayList<BattleEffect>();
 		}
-
 		return battleEffects;
 	}
 

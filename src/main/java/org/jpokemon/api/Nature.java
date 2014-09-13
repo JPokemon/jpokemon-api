@@ -27,10 +27,6 @@ public class Nature {
 	/** Indicates the flavor disliked by Pokémon of this nature */
 	protected String flavorDisliked;
 
-	/** Provides the default constructor */
-	public Nature() {
-	}
-
 	/** Gets the name of this nature */
 	public String getName() {
 		return name;

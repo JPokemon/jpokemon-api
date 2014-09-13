@@ -21,8 +21,7 @@ public class TrainerContainer {
 	protected List<PokemonContainer> pokemonContainers;
 
 	/**
-	 * Indicates the battle effects which are applicable to this trainer
-	 * container
+	 * Indicates the battle effects which are applicable to this trainer container
 	 */
 	protected List<BattleEffect> battleEffects;
 
@@ -53,11 +52,7 @@ public class TrainerContainer {
 	 * available
 	 */
 	public TrainerContainer addPokemonContainer(PokemonContainer pokemonContainer) {
-		if (pokemonContainers == null) {
-			pokemonContainers = new ArrayList<PokemonContainer>();
-		}
-
-		pokemonContainers.add(pokemonContainer);
+		getPokemonContainers().add(pokemonContainer);
 		return this;
 	}
 
@@ -66,10 +61,7 @@ public class TrainerContainer {
 	 * available
 	 */
 	public TrainerContainer removePokemonContainer(PokemonContainer pokemonContainer) {
-		if (pokemonContainers != null) {
-			pokemonContainers.remove(pokemonContainer);
-		}
-
+		getPokemonContainers().remove(pokemonContainer);
 		return this;
 	}
 
@@ -93,7 +85,7 @@ public class TrainerContainer {
 			battleEffects = new ArrayList<BattleEffect>();
 		}
 
-		battleEffects.add(battleEffect);
+		getBattleEffects().add(battleEffect);
 		return this;
 	}
 
@@ -102,10 +94,7 @@ public class TrainerContainer {
 	 * this trainer container
 	 */
 	public TrainerContainer removeBattleEffect(BattleEffect battleEffect) {
-		if (battleEffects != null) {
-			battleEffects.remove(battleEffect);
-		}
-
+		getBattleEffects().remove(battleEffect);
 		return this;
 	}
 

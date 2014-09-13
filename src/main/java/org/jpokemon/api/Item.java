@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Defines a basic item. This class provides the most basic attributes that all
- * items in a Pokémon game are likely to share.
+ * Provides an API for items, and properties that all items are likely to share
  * 
  * @author atheriel@gmail.com
  * @author zach
@@ -16,7 +15,10 @@ public class Item {
 	/** Indicates the manager used to register items. May be null. */
 	public static Manager<Item> manager;
 
-	/** Indicates the name of the item */
+	/** Indicates the unique id of this item */
+	protected String id;
+
+	/** Indicates the name of this item */
 	protected String name;
 
 	/** Indicates the description of this item */
@@ -43,8 +45,15 @@ public class Item {
 	/** Indicates the properties of this item */
 	protected Map<String, Object> properties;
 
-	/** Provides the default constructor */
-	public Item() {
+	/** Gets the unique id of this item */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this item */
+	public Item setId(String id) {
+		this.id = id;
+		return this;
 	}
 
 	/** Gets the name of this item */

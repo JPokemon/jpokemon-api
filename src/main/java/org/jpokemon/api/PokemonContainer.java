@@ -45,20 +45,17 @@ public class PokemonContainer {
 	}
 
 	/** Sets the species of Pokémon associated with this Pokémon container */
-	public void setSpecies(String species) {
+	public PokemonContainer setSpecies(String species) {
 		this.species = species;
+		return this;
 	}
 
 	/**
-	 * Adds a skill container to the skill containers associated with this
-	 * Pokémon container
+	 * Adds a skill container to the skill containers associated with this Pokémon
+	 * container
 	 */
 	public PokemonContainer addSkillContainer(SkillContainer skillContainer) {
-		if (skillContainers == null) {
-			skillContainers = new ArrayList<SkillContainer>();
-		}
-
-		skillContainers.add(skillContainer);
+		getSkillContainers().add(skillContainer);
 		return this;
 	}
 
@@ -67,10 +64,7 @@ public class PokemonContainer {
 	 * Pokémon container
 	 */
 	public PokemonContainer removeSkillContainer(SkillContainer skillContainer) {
-		if (skillContainers != null) {
-			skillContainers.remove(skillContainer);
-		}
-
+		getSkillContainers().remove(skillContainer);
 		return this;
 	}
 
@@ -79,13 +73,13 @@ public class PokemonContainer {
 		if (skillContainers == null) {
 			skillContainers = new ArrayList<SkillContainer>();
 		}
-
 		return skillContainers;
 	}
 
 	/** Sets the skill containers associated with this Pokémon container */
-	public void setSkillContainers(List<SkillContainer> skillContainers) {
+	public PokemonContainer setSkillContainers(List<SkillContainer> skillContainers) {
 		this.skillContainers = skillContainers;
+		return this;
 	}
 
 	/** Adds a Pokémon to those encountered during battle by this Pokémon */

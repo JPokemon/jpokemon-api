@@ -1,8 +1,12 @@
 package org.jpokemon.api;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
- * Defines a status condition that may affect a Pokemon. This may include
- * non-volatile, volatile, and battle-only conditions.
+ * Defines a status condition that may affect a Pokemon
  * 
  * @author zach
  */
@@ -10,117 +14,131 @@ public class StatusCondition {
 	/** Indicates the manager used to register status conditions. May be null. */
 	public static Manager<StatusCondition> manager;
 
+	/** Indicates the unique id of this status condition */
+	protected String id;
+
 	/** Indicates the name of this condition */
 	protected String name;
 
 	/** Indicates whether this condition is volatile */
-	protected boolean isVolatile;
+	protected boolean volatileCondition;
 
-	/** Indicates the chance this condition will randomly be cured */
-	protected double cureChance;
+	/** Indicates any battle effects of this status condition */
+	protected List<BattleEffect> battleEffects;
 
-	/** Indicates the chance that this condition prevents a move from being used */
-	protected double preventMoveChance;
+	/** Indicates the properties of this status condition */
+	protected Map<String, Object> properties;
 
-	/** Indicates whether this condition prevents switching out */
-	protected boolean preventSwitchOut;
-
-	/** Indicates the amount this condition affects catch rate */
-	protected int catchRateModifier;
-
-	/** Indicates the minimum number of turns this status condition is applied */
-	protected int turnCountMinimum;
-
-	/** Indicates the maximum number of turns this status condition is applied */
-	protected int turnCountMaximum;
-
-	/** Provides the default constructor */
-	public StatusCondition() {
+	/** Indicates the unique id of this status condition */
+	public String getId() {
+		return id;
 	}
 
-	/** Gets the name of this status condition */
+	/** Indicates the unique id of this status condition */
+	public StatusCondition setId(String id) {
+		this.id = id;
+		return this;
+	}
+
+	/** Gets the name of this condition */
 	public String getName() {
 		return name;
 	}
 
-	/** Sets the name of this status condition */
+	/** Sets the name of this condition */
 	public StatusCondition setName(String name) {
 		this.name = name;
 		return this;
 	}
 
-	/** Gets whether this status condition is volatile */
-	public boolean isVolatile() {
-		return isVolatile;
+	/** Gets whether this condition is volatile */
+	public boolean isVolatileCondition() {
+		return volatileCondition;
 	}
 
-	/** Sets whether this status condition is volatile */
-	public StatusCondition setVolatile(boolean isVolatile) {
-		this.isVolatile = isVolatile;
+	/** Sets whether this condition is volatile */
+	public StatusCondition setVolatileCondition(boolean volatileCondition) {
+		this.volatileCondition = volatileCondition;
 		return this;
 	}
 
-	/** Gets the random cure chance of this status condition */
-	public double getCureChance() {
-		return cureChance;
-	}
-
-	/** Sets the random cure chance of this status condition */
-	public StatusCondition setCureChance(double cureChance) {
-		this.cureChance = cureChance;
+	/** Adds a battle effects to this status condition */
+	public StatusCondition addBattleEffect(BattleEffect battleEffect) {
+		getBattleEffects().add(battleEffect);
 		return this;
 	}
 
-	/** Gets the chance that this condition prevents a move from being used */
-	public double getPreventMoveChance() {
-		return preventMoveChance;
-	}
-
-	/** Sets the chance that this condition prevents a move from being used */
-	public StatusCondition setPreventMoveChance(double preventMoveChance) {
-		this.preventMoveChance = preventMoveChance;
+	/** Removes a battle effects to this status condition */
+	public StatusCondition remove(BattleEffect battleEffect) {
+		getBattleEffects().remove(battleEffect);
 		return this;
 	}
 
-	public boolean doesPreventSwitchOut() {
-		return preventSwitchOut;
+	/** Gets any battle effects of this status condition */
+	public List<BattleEffect> getBattleEffects() {
+		if (battleEffects == null) {
+			battleEffects = new ArrayList<BattleEffect>();
+		}
+		return battleEffects;
 	}
 
-	public StatusCondition setPreventSwitchOut(boolean preventSwitchOut) {
-		this.preventSwitchOut = preventSwitchOut;
+	/** Sets any battle effects of this status condition */
+	public StatusCondition setBattleEffects(List<BattleEffect> battleEffects) {
+		this.battleEffects = battleEffects;
 		return this;
 	}
 
-	/** Gets the catch rate modifier of this status condition */
-	public int getCatchRateModifier() {
-		return catchRateModifier;
+	/** Gets a property of this species using class name as the key */
+	@SuppressWarnings("unchecked")
+	public <T> T getProperty(Class<T> clazz) {
+		return (T) getProperty(clazz.getName());
 	}
 
-	/** Sets the catch rate modifier of this status condition */
-	public StatusCondition setCatchRateModifier(int catchRateModifier) {
-		this.catchRateModifier = catchRateModifier;
+	/** Gets a property of this species by name */
+	public Object getProperty(String name) {
+		if (properties == null) {
+			return null;
+		}
+
+		return properties.get(name);
+	}
+
+	/** Adds a property to this species using the class name as the key */
+	public StatusCondition addProperty(Object object) {
+		return setProperty(object.getClass().getName(), object);
+	}
+
+	/** Sets a property of this species */
+	public StatusCondition setProperty(String name, Object property) {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		properties.put(name, property);
 		return this;
 	}
 
-	/** Gets the minimum number of turns this status condition is applied */
-	public int getTurnCountMinimum() {
-		return turnCountMinimum;
-	}
+	/** Removes a property from this species by name */
+	public StatusCondition removeProperty(String name) {
+		if (properties != null) {
+			properties.remove(name);
+		}
 
-	/** Sets the minimum number of turns this status condition is applied */
-	public StatusCondition setTurnCountMinimum(int turnCountMinimum) {
-		this.turnCountMinimum = turnCountMinimum;
 		return this;
 	}
 
-	/** Gets the maximum number of turns this status condition is applied */
-	public int getTurnCountMaximum() {
-		return turnCountMaximum;
+	/** Gets all properties of this species */
+	public Map<String, Object> getProperties() {
+		if (properties == null) {
+			properties = new HashMap<String, Object>();
+		}
+
+		return properties;
 	}
 
-	/** Sets the maximum number of turns this status condition is applied */
-	public StatusCondition setTurnCountMaximum(int turnCountMaximum) {
-		this.turnCountMaximum = turnCountMaximum;
+	/** Sets all properties of this species */
+	public StatusCondition setProperties(Map<String, Object> properties) {
+		this.properties = properties;
 		return this;
 	}
 }

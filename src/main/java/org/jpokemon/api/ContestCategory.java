@@ -12,8 +12,11 @@ import java.util.Map;
  * @since 0.1
  */
 public class ContestCategory {
-	/** Indicates the manager used to register contest categories. May be null. */
+	/** Indicates the manager used to register contest categories */
 	public static Manager<ContestCategory> manager;
+
+	/** Indicates the unique id of this category */
+	protected String id;
 
 	/** Indicates the name of this category */
 	protected String name;
@@ -29,6 +32,16 @@ public class ContestCategory {
 
 	/** Indicates how this category reacts to another category */
 	protected Map<String, String> reactions;
+
+	/** Gets the unique id of this category */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this category */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/** Gets the name of this contest category */
 	public String getName() {

@@ -12,17 +12,31 @@ import java.util.Map;
  * @since 0.1
  */
 public class Ability {
-	/** Indicates the manager used to register abilities. May be null. */
+	/** Indicates the manager used to register abilities */
 	public static Manager<Ability> manager;
 
-	/** Indicates the name of the ability */
+	/** Indicates the unique id of this ability */
+	protected String id;
+
+	/** Indicates the name of this ability */
 	protected String name;
 
-	/** Indicates the description of the ability */
+	/** Indicates the description of this ability */
 	protected String description;
 
 	/** Indicates the properties of this ability */
 	protected Map<String, Object> properties;
+
+	/** Gets the unique id of this ability */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this ability */
+	public Ability setId(String id) {
+		this.id = id;
+		return this;
+	}
 
 	/** Gets the name of this ability */
 	public String getName() {
@@ -46,46 +60,35 @@ public class Ability {
 		return this;
 	}
 
-	/** Gets a property of this ability using class name as the key */
+	/** Gets an automatically casted property keyed by the class name */
 	@SuppressWarnings("unchecked")
 	public <T> T getProperty(Class<T> clazz) {
 		return (T) getProperty(clazz.getName());
 	}
 
-	/** Gets a property of this ability by name */
+	/** Gets a property */
 	public Object getProperty(String name) {
-		if (properties == null) {
-			return null;
-		}
-
-		return properties.get(name);
+		return getProperties().get(name);
 	}
 
-	/** Adds a property to this ability using the class name as the key */
-	public Ability addProperty(Object object) {
-		return setProperty(object.getClass().getName(), object);
+	/** Sets a property keyed by the class name */
+	public <T> Ability setProperty(Class<T> clazz, T property) {
+		return setProperty(clazz.getName(), property);
 	}
 
-	/** Sets a property of this ability */
+	/** Sets a property */
 	public Ability setProperty(String name, Object property) {
-		if (properties == null) {
-			properties = new HashMap<String, Object>();
-		}
-
-		properties.put(name, property);
+		getProperties().put(name, property);
 		return this;
 	}
 
-	/** Removes a property from this ability by name */
+	/** Removes a property */
 	public Ability removeProperty(String name) {
-		if (properties != null) {
-			properties.remove(name);
-		}
-
+		getProperties().remove(name);
 		return this;
 	}
 
-	/** Gets all properties of this ability */
+	/** Gets all properties */
 	public Map<String, Object> getProperties() {
 		if (properties == null) {
 			properties = new HashMap<String, Object>();
@@ -94,7 +97,7 @@ public class Ability {
 		return properties;
 	}
 
-	/** Sets all properties of this ability */
+	/** Sets all properties */
 	public Ability setProperties(Map<String, Object> properties) {
 		this.properties = properties;
 		return this;

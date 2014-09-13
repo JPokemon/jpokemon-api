@@ -2,9 +2,9 @@ package org.jpokemon.manager;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.jpokemon.api.JPokemonException;
 import org.jpokemon.api.Manager;
@@ -18,7 +18,8 @@ import org.jpokemon.api.Manager;
  * 
  * Note that this class uses reflection. Pains have been taken to avoid
  * producing errors, but in the case that they appear, they will be silently
- * repressed.
+ * repressed. Further note that SimpleManager cannot be used to manage any
+ * interfaces or abstract classes.
  * 
  * @author atheriel@gmail.com
  * @author zach
@@ -28,8 +29,11 @@ import org.jpokemon.api.Manager;
  * @param T The type to be managed
  */
 public class SimpleManager<T> implements Manager<T> {
-	protected Map<String, T> objectMap = new TreeMap<String, T>();
-	protected Method getNameMethod;
+	protected Map<String, T> objectMap = new HashMap<String, T>();
+
+	protected Class<T> managedClass;
+
+	protected Method getIdMethod;
 
 	/**
 	 * Constructs a new SimpleManager for the given type, 'T'
@@ -44,42 +48,26 @@ public class SimpleManager<T> implements Manager<T> {
 	 */
 	public SimpleManager(Class<T> managedClass) throws JPokemonException {
 		try {
-			getNameMethod = managedClass.getMethod("getName");
+			this.managedClass = managedClass;
+			getIdMethod = managedClass.getMethod("getId");
 		} catch (Exception e) {
-			throw new JPokemonException("No method \"getName\" available for class: " + managedClass.getName());
+			throw new JPokemonException("No method \"getId\" available for class: " + managedClass.getName());
 		}
+	}
+
+	@Override
+	public T create() {
+		T object = null;
+		try {
+			object = managedClass.newInstance();
+		} catch (Exception e) {
+		}
+		return object;
 	}
 
 	@Override
 	public boolean isRegistered(String name) {
-		if (name == null) {
-			return false;
-		}
-
 		return objectMap.containsKey(name);
-	}
-
-	@Override
-	public void register(T managed) throws JPokemonException {
-		if (managed == null) {
-			throw new JPokemonException("Cannot register null object");
-		}
-
-		// Get the name via reflection
-		String name = null;
-		try {
-			name = (String) getNameMethod.invoke(managed);
-		} catch (Exception e) {
-		}
-
-		if (name == null) {
-			throw new JPokemonException("Cannot register object without a name: " + managed);
-		}
-		if (objectMap.containsKey(name)) {
-			throw new JPokemonException("A object with the same name is already registered: " + managed);
-		}
-
-		objectMap.put(name, managed);
 	}
 
 	@Override
@@ -88,42 +76,65 @@ public class SimpleManager<T> implements Manager<T> {
 	}
 
 	@Override
-	public T getByName(String name) {
-		return objectMap.get(name);
+	public T get(String id) {
+		return objectMap.get(id);
 	}
 
 	@Override
-	public void update(T managed) throws JPokemonException {
-		if (managed == null) {
+	public void register(T object) throws JPokemonException {
+		if (object == null) {
 			throw new JPokemonException("Cannot register null object");
 		}
 
 		// Get the name via reflection
 		String name = null;
 		try {
-			name = (String) getNameMethod.invoke(managed);
+			name = (String) getIdMethod.invoke(object);
 		} catch (Exception e) {
 		}
 
 		if (name == null) {
-			throw new JPokemonException("Cannot register object without a name: " + managed);
+			throw new JPokemonException("Cannot register object without a name: " + object);
 		}
-		if (!objectMap.containsKey(name)) {
-			throw new JPokemonException("An object with the same name is not registered: " + managed);
+		if (objectMap.containsKey(name)) {
+			throw new JPokemonException("A object with the same name is already registered: " + object);
 		}
 
-		objectMap.put(name, managed);
+		objectMap.put(name, object);
 	}
 
 	@Override
-	public void unregister(String name) throws JPokemonException {
-		if (name == null) {
-			throw new JPokemonException("Cannot unregister object without a name");
-		}
-		if (!objectMap.containsKey(name)) {
-			throw new JPokemonException("There is no object registered with name: " + name);
+	public void update(T object) throws JPokemonException {
+		if (object == null) {
+			throw new JPokemonException("Cannot register null object");
 		}
 
-		objectMap.remove(name);
+		// Get the name via reflection
+		String id = null;
+		try {
+			id = (String) getIdMethod.invoke(object);
+		} catch (Exception e) {
+		}
+
+		if (id == null) {
+			throw new JPokemonException("Cannot register object without a name: " + object);
+		}
+		if (!objectMap.containsKey(id)) {
+			throw new JPokemonException("An object with the same name is not registered: " + object);
+		}
+
+		objectMap.put(id, object);
+	}
+
+	@Override
+	public void unregister(String id) throws JPokemonException {
+		if (id == null) {
+			throw new JPokemonException("Cannot unregister object without a name");
+		}
+		if (!objectMap.containsKey(id)) {
+			throw new JPokemonException("There is no object registered with name: " + id);
+		}
+
+		objectMap.remove(id);
 	}
 }

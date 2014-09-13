@@ -15,8 +15,11 @@ import java.util.Map;
  * @since 0.1
  */
 public class Pokemon {
-	/** Indicates the manager used to register Pokémon. May be null. */
-	public static PokemonManager manager;
+	/** Indicates the manager used to register Pokémon */
+	public static Manager<Pokemon> manager;
+
+	/** Indicates the unique id of this Pokémon */
+	protected String id;
 
 	/** Indicates the name of this Pokémon */
 	protected String name;
@@ -78,8 +81,14 @@ public class Pokemon {
 	/** Indicates the properties of this Pokémon */
 	protected Map<String, Object> properties;
 
-	/** Provides the default constructor */
-	public Pokemon() {
+	/** Gets the unique id of this Pokémon */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this Pokémon */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/** Gets the name of this Pokémon */

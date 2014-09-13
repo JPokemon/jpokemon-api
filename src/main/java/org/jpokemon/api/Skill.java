@@ -17,10 +17,6 @@ public class Skill {
 	/** Indicates the maximum PP of this move */
 	protected int maxPP;
 
-	/** Provides the default constructor */
-	public Skill() {
-	}
-
 	/** Gets the move associated with this instance */
 	public String getMove() {
 		return move;

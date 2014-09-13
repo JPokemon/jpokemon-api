@@ -16,6 +16,9 @@ public class Overworld {
 	/** Indicates the manager used to register overworlds. May be null. */
 	public static Manager<Overworld> manager;
 
+	/** Indicates the unique id of this overworld */
+	protected String id;
+
 	/** Indicates the name of this overworld */
 	protected String name;
 
@@ -33,6 +36,16 @@ public class Overworld {
 
 	/** Indicates the properties of this overworld */
 	protected Map<String, Object> properties;
+
+	/** Indicates the unique id of this overworld */
+	public String getId() {
+		return id;
+	}
+
+	/** Indicates the unique id of this overworld */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/** Gets the name of this overworld */
 	public String getName() {
@@ -135,46 +148,35 @@ public class Overworld {
 		return this;
 	}
 
-	/** Gets a property of this overworld using class name as the key */
+	/** Gets an automatically casted property keyed by the class name */
 	@SuppressWarnings("unchecked")
 	public <T> T getProperty(Class<T> clazz) {
 		return (T) getProperty(clazz.getName());
 	}
 
-	/** Gets a property of this ability by name */
+	/** Gets a property */
 	public Object getProperty(String name) {
-		if (properties == null) {
-			return null;
-		}
-
-		return properties.get(name);
+		return getProperties().get(name);
 	}
 
-	/** Adds a property to this overworld using the class name as the key */
-	public Overworld addProperty(Object object) {
-		return setProperty(object.getClass().getName(), object);
+	/** Sets a property keyed by the class name */
+	public <T> Overworld setProperty(Class<T> clazz, T property) {
+		return setProperty(clazz.getName(), property);
 	}
 
-	/** Sets a property of this overworld */
+	/** Sets a property */
 	public Overworld setProperty(String name, Object property) {
-		if (properties == null) {
-			properties = new HashMap<String, Object>();
-		}
-
-		properties.put(name, property);
+		getProperties().put(name, property);
 		return this;
 	}
 
-	/** Removes a property from this overworld by name */
+	/** Removes a property */
 	public Overworld removeProperty(String name) {
-		if (properties != null) {
-			properties.remove(name);
-		}
-
+		getProperties().remove(name);
 		return this;
 	}
 
-	/** Gets all properties of this overworld */
+	/** Gets all properties */
 	public Map<String, Object> getProperties() {
 		if (properties == null) {
 			properties = new HashMap<String, Object>();
@@ -183,7 +185,7 @@ public class Overworld {
 		return properties;
 	}
 
-	/** Sets all properties of this overworld */
+	/** Sets all properties */
 	public Overworld setProperties(Map<String, Object> properties) {
 		this.properties = properties;
 		return this;

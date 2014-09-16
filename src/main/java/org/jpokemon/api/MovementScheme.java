@@ -12,10 +12,5 @@ public abstract class MovementScheme {
 	/** Indicates the manager used to register movement schemes builders */
 	public static Manager<Builder<MovementScheme>> builders;
 
-	/** Gets the name of this movement scheme */
-	public abstract String getName();
-
-	public abstract boolean isSolid();
-
 	public abstract String getNextMove(String move);
 }

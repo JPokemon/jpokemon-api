@@ -11,7 +11,7 @@ package org.jpokemon.api;
  */
 public interface Builder<T> {
 	/** Gets the subclass that this builder produces */
-	public Class<? extends T> getOutputClass();
+	public String getId();
 
 	/** Builds an instance with the options provided */
 	public T construct(String options);

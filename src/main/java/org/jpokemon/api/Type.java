@@ -15,6 +15,9 @@ public class Type {
 	/** Indicates the manager used to register types. May be null. */
 	public static Manager<Type> manager;
 
+	/** Indicates the unique id of the type */
+	protected String id;
+
 	/** Indicates the name of the type */
 	protected String name;
 
@@ -22,11 +25,22 @@ public class Type {
 	protected Map<String, String> effectiveness;
 
 	/** Gets the name of this type */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the name of this type */
+	public Type setId(String id) {
+		this.id = id;
+		return this;
+	}
+
+	/** Gets the name of the type */
 	public String getName() {
 		return name;
 	}
 
-	/** Sets the name of this type */
+	/** Sets the name of the type */
 	public Type setName(String name) {
 		this.name = name;
 		return this;

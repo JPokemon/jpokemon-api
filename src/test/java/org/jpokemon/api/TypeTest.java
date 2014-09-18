@@ -9,8 +9,8 @@ public class TypeTest extends TestCase {
 	public void testName() {
 		String typeName = "FooType";
 		Type type = new Type();
-		type.setName(typeName);
-		assertEquals(typeName, type.getName());
+		type.setId(typeName);
+		assertEquals(typeName, type.getId());
 	}
 
 	@Test

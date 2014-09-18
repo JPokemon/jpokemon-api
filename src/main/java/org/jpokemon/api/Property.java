@@ -5,6 +5,8 @@ package org.jpokemon.api;
  * API.
  * 
  * @author zach
+ * 
+ * @since 0.1
  */
 public final class Property {
 	/** Indicates the manager used to register property builders */

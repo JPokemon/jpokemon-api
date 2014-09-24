@@ -15,6 +15,9 @@ public class TrainerClass {
 	/** Indicates the manager used to register Pokémon trainer classes */
 	public static Manager<TrainerClass> manager;
 
+	/** Indicates the unique id of this trainer class */
+	protected String id;
+
 	/** Indicates the name of the trainer class */
 	protected String name;
 
@@ -23,6 +26,16 @@ public class TrainerClass {
 
 	/** Indicates the properties of this trainer class */
 	protected Map<String, Object> properties;
+
+	/** Gets the unique id of this trainer class */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this trainer class */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/** Gets the name of this trainer class. */
 	public String getName() {

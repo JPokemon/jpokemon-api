@@ -12,6 +12,9 @@ public class Nature {
 	/** Indicates the manager used to register natures. May be null. */
 	public static Manager<Nature> manager;
 
+	/** Indicates the unique id of this nature */
+	protected String id;
+
 	/** Indicates the name of this nature */
 	protected String name;
 
@@ -26,6 +29,17 @@ public class Nature {
 
 	/** Indicates the flavor disliked by Pokémon of this nature */
 	protected String flavorDisliked;
+
+	/** Gets the unique id of this nature */
+	public String getId() {
+		return id;
+	}
+
+	/** Sets the unique id of this nature */
+	public Nature setId(String id) {
+		this.id = id;
+		return this;
+	}
 
 	/** Gets the name of this nature */
 	public String getName() {
